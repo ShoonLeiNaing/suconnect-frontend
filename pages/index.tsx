@@ -7,6 +7,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       Hello World
       <IconButton />
+      <p className="text-2xl">Hello</p>
     </div>
   );
 };
