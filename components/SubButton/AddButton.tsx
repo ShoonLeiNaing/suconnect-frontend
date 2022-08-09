@@ -1,10 +1,11 @@
+import { FunctionComponent } from "react";
 import styles from "./subButton.module.css";
 
 interface IProps {
   color?: string;
 }
 
-const AddButton = ({ color }: IProps) => {
+const AddButton: FunctionComponent<IProps> = ({ color }) => {
   return (
     <svg
       width="78"

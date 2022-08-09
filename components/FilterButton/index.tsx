@@ -1,4 +1,5 @@
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { colors } from "../../data/constant";
 
@@ -9,7 +10,12 @@ interface IProps {
   data: string[];
 }
 
-const FilterButton = ({ outline, color, title, data }: IProps) => {
+const FilterButton: FunctionComponent<IProps> = ({
+  outline,
+  color,
+  title,
+  data,
+}) => {
   return (
     <Menu>
       <MenuButton

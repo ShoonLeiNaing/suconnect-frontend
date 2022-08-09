@@ -1,9 +1,11 @@
+import { FunctionComponent } from "react";
+
 interface IProps {
   fill: boolean;
   color: string;
 }
 
-const SubButtonIcon = ({ fill, color }: IProps) => {
+const SubButtonIcon: FunctionComponent<IProps> = ({ fill, color }) => {
   if (fill) {
     return (
       <svg

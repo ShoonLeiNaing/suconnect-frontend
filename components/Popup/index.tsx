@@ -8,6 +8,7 @@ import {
   Text,
   Icon,
 } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
 import { BsExclamationTriangleFill, BsPlusCircleFill } from "react-icons/bs";
 import { colors } from "../../data/constant";
 import AddButton from "../SubButton/AddButton";
@@ -21,7 +22,13 @@ interface IProps {
   color?: string;
 }
 
-const Popup = ({ type, isOpen, onClose, cancelRef, color }: IProps) => {
+const Popup: FunctionComponent<IProps> = ({
+  type,
+  isOpen,
+  onClose,
+  cancelRef,
+  color,
+}) => {
   return (
     <AlertDialog
       isOpen={isOpen}

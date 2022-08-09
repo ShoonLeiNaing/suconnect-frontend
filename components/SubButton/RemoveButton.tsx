@@ -1,6 +1,7 @@
+import { FunctionComponent } from "react";
 import styles from "./subButton.module.css";
 
-const RemoveButton = () => {
+const RemoveButton: FunctionComponent = () => {
   return (
     <svg
       width="109"
