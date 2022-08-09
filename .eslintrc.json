@@ -23,6 +23,7 @@
     "react/jsx-filename-extension": "off",
     "react/function-component-definition": "off",
     "arrow-body-style": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off"
   }
 }
