@@ -28,3 +28,11 @@ a {
     background: black;
   }
 }
+
+.css-1ozmk1d {
+  min-width: unset !important;
+}
+
+.sub-title {
+  font-size: 22px;
+}
