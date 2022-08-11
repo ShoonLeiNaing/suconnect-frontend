@@ -1,6 +1,9 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
