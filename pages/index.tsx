@@ -2,12 +2,11 @@ import { Box, Button, useDisclosure } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useRef } from "react";
 import Card from "../components/Card";
-import styles from "../styles/Home.module.css";
 import { colors } from "../data/constant";
 import FilterButton from "../components/FilterButton";
 import Popup from "../components/Popup";
 import SubButtonIcon from "../components/SubButton/SubButtonIcon";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 // import SubButtonFill from "../components/SubButton/SubButtonFill";
 
 const data: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday"];
@@ -24,7 +23,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className={styles.container}>
+      <div>
         <div className="flex justify-around my-8">
           <Card
             iconTitleColor={colors.primaryColors.yellow.yellow1}
@@ -81,7 +80,7 @@ const Home: NextPage = () => {
           data={data}
         />
       </Box>
-      <Footer/>
+      <Footer />
     </>
   );
 };
