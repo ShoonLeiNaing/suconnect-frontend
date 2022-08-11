@@ -21,7 +21,7 @@ const Card: FunctionComponent<CardProps> = ({
     <div>
       {type === "normal" && (
         <div
-          className="w-fit p-6 flex"
+          className="w-fit p-4 flex"
           style={{ background: backgroundColor, color: textColor }}
         >
           <svg
@@ -67,7 +67,7 @@ const Card: FunctionComponent<CardProps> = ({
       )}
       {type === "focus" && (
         <div
-          className="w-fit p-8 flex rounded-3xl hover:shadow-lg"
+          className="w-fit p-6 flex rounded-3xl hover:shadow-lg"
           style={{
             background: backgroundColor,
             color: textColor,
