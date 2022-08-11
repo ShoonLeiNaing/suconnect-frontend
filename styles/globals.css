@@ -33,6 +33,26 @@ a {
   min-width: unset !important;
 }
 
+/* swiper css */
+.swiper {
+  padding: 0 10px !important;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+.swiper-wrapper {
+  padding-bottom: 35px;
+}
+.swiper-button-next {
+  margin-right: -10px;
+  content: url("../public/images/rightarrow.svg");
+}
+.swiper-button-prev {
+  margin-left: -10px;
+  content: url("../public/images/leftarrow.svg");
+}
+.css-syzyw {
+  margin: auto;
+}
 .sub-title {
   font-size: 22px;
 }
