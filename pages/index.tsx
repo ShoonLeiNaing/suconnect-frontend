@@ -7,6 +7,7 @@ import { colors } from "../data/constant";
 import FilterButton from "../components/FilterButton";
 import Popup from "../components/Popup";
 import SubButtonIcon from "../components/SubButton/SubButtonIcon";
+import Footer from '../components/Footer'
 // import SubButtonFill from "../components/SubButton/SubButtonFill";
 
 const data: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday"];
@@ -80,6 +81,7 @@ const Home: NextPage = () => {
           data={data}
         />
       </Box>
+      <Footer/>
     </>
   );
 };
