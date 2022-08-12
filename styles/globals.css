@@ -29,6 +29,11 @@ a {
   }
 }
 
+*:focus {
+  box-shadow: none !important;
+  border: none !important;
+}
+
 .css-1ozmk1d {
   min-width: unset !important;
 }
@@ -55,4 +60,8 @@ a {
 }
 .sub-title {
   font-size: 22px;
+}
+/* selector */
+.css-i41727 {
+  padding: 0 10px !important;
 }

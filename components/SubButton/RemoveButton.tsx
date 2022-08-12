@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import styles from "./subButton.module.css";
 
 const RemoveButton: FunctionComponent = () => {
   return (
@@ -16,7 +15,7 @@ const RemoveButton: FunctionComponent = () => {
       />
 
       <foreignObject x="17" y="6" width="90%" height="100%">
-        <p className={styles.btn_text}> Remove</p>
+        <p className="font-semibold text-white"> Remove</p>
       </foreignObject>
     </svg>
   );
