@@ -30,7 +30,7 @@ const GridCard: FunctionComponent<IProps> = ({ color }) => {
           the founding.
         </Text>
         <Box pt={3}>
-          <ArrowButton color={color} />
+          <ArrowButton buttonColor={color} />
         </Box>
       </Box>
     </Box>
