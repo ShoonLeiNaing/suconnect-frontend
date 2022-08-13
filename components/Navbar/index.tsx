@@ -1,17 +1,21 @@
-import { Box, Image, Select, Text } from "@chakra-ui/react";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { Box, Image, Text } from "@chakra-ui/react";
 import { colors } from "../../data/constant";
 import Button from "./Button";
 
 const Navbar = () => {
   return (
     <Box
+      position="sticky"
+      top="0"
       px={20}
+      bgColor="white"
       display="flex"
       alignItems="center"
+      boxShadow="md"
       justifyContent="space-between"
       h="70px"
       w="100%"
+      zIndex={100}
     >
       <Image h="70%" src="/images/logo.png" />
       <Box
@@ -29,21 +33,10 @@ const Navbar = () => {
           Sign in
         </Text>
         <Button />
-        <Select
-          icon={<IoMdArrowDropdown />}
-          w="65px"
-          h="35px"
-          color="white"
-          bgColor={colors.primaryColors.lightblue.lightblue1}
-          borderRadius="12px"
-          size="md"
-          ml={6}
-          fontSize="14px"
-          //   _focus={{ outline: "none" }}
-        >
-          <option>EN</option>
-          <option>MY</option>
-        </Select>
+        <select className="select">
+          <option>Eng</option>
+          <option>မြန်မာ</option>
+        </select>
       </Box>
     </Box>
   );

@@ -1,46 +1,25 @@
 import { Box } from "@chakra-ui/react";
+import { FunctionComponent } from "react";
 import { Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { colors } from "../../data/constant";
-import GridCard from "../GridCard";
+import { Swiper } from "swiper/react";
 
-const CardCarousel = () => {
+interface IProps {
+  children: any;
+}
+
+const CardCarousel: FunctionComponent<IProps> = ({ children }) => {
   return (
-    <Box w="100%" py={4} maxW="1250px">
+    <Box w="100%" py={4} zIndex={10}>
       <Swiper
         pagination={{
           dynamicBullets: true,
           clickable: true,
         }}
         slidesPerView={4}
-        // spaceBetween={30}
         modules={[Pagination, Navigation]}
         navigation
       >
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>{" "}
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>{" "}
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>{" "}
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>{" "}
-        <SwiperSlide>
-          <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-        </SwiperSlide>
+        {children}
       </Swiper>
     </Box>
   );
