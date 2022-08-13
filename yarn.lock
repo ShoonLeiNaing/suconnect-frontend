@@ -349,7 +349,7 @@
     "@chakra-ui/react-utils" "2.0.3"
     "@chakra-ui/utils" "2.0.6"
 
-"@chakra-ui/focus-lock@2.0.7":
+"@chakra-ui/focus-lock@^2.0.7", "@chakra-ui/focus-lock@2.0.7":
   "integrity" "sha512-HQ1IMIDYM4PIHSh19ydU27WLRGnWNUjm6VYRGogDyWlRYG8wkEaQH6njVAG3KeIOAk/Dfj2/q80TJPob+3YYmQ=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/focus-lock/-/focus-lock-2.0.7.tgz"
   "version" "2.0.7"

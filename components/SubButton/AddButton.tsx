@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import styles from "./subButton.module.css";
 
 interface IProps {
   color?: string;
@@ -19,7 +18,7 @@ const AddButton: FunctionComponent<IProps> = ({ color }) => {
         fill={color}
       />
       <foreignObject x="17" y="6" width="90%" height="100%">
-        <p className={styles.btn_text}>Add</p>
+        <p className="font-semibold text-white">Add</p>
       </foreignObject>
     </svg>
   );

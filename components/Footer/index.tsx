@@ -25,11 +25,7 @@ const Footer: FunctionComponent<FooterProps> = ({
         style={{ background: backgroundColor, color: textColor }}
       >
         <div className="flex flex-col">
-          <Image
-            className="w-40"
-            src="https://cdn.logo.com/hotlink-ok/logo-social.png"
-            alt="logo"
-          />
+          <Image className="w-40" src="/images/logo.png" alt="logo" />
           <p className="text-md mt-4 mb-6">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           </p>
