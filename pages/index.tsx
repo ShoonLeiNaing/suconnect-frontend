@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import HorizontalButton from "../components/Button/HorizontalButton";
 import VerticleButton from "../components/Button/VerticleButton";
 import CardCarousel from "../components/CardCarousel";
+import Feature from "../components/Feature";
 
 // import SubButtonFill from "../components/SubButton/SubButtonFill";
 
@@ -114,6 +115,7 @@ const Home: NextPage = () => {
       <Box display="flex" gap={8} m="8" justifyContent="center">
         <CardCarousel />
       </Box>
+      <Feature />
       <Footer />
     </Box>
   );
