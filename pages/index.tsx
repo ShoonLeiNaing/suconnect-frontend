@@ -6,6 +6,7 @@ import Entity from "../components/Entity";
 import Feature from "../components/Feature";
 import HeroParallax from "../components/HeroParallax";
 import Layout from "../components/Layout";
+import UserInnovation from "../components/UserInnovation";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
         <Entity />
         <Feature />
         <Benefit />
+        <UserInnovation />
       </Container>
     </Layout>
   );

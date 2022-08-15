@@ -7,7 +7,7 @@ import Card from "./card";
 
 const Benefit: FunctionComponent = () => {
     return (
-        <Box>
+        <Box marginBottom="4rem">
             <SubTitle
                 title="Benefits"
                 icon
