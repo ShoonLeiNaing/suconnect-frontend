@@ -4,7 +4,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 interface IProps {
   title: string;
-  icon: boolean;
+  icon?: boolean;
   color?: string;
 }
 const SubTitle: FunctionComponent<IProps> = ({ title, icon, color }) => {
