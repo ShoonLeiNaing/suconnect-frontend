@@ -1,0 +1,45 @@
+export const colors = {
+  primaryColors: {
+    lightblue: {
+      lightblue1: "#3B8CF7",
+      lightblue2: "#71ADFB",
+      lightblue3: "#B2D4FF",
+    },
+    pink: {
+      pink1: "#FF7FEB",
+      pink2: "#FFADE8",
+      pink3: "#FFDBF5",
+    },
+    yellow: {
+      yellow1: "#FFD233",
+      yellow2: "#FFE794",
+      yellow3: "#FFF3C9",
+    },
+  },
+  secondaryColors: {
+    green: {
+      green1: "#47F09F",
+      green2: "#AAF9E1",
+    },
+    red: {
+      red1: "#FF5151",
+      red2: "#FFACAC",
+    },
+    orange: {
+      orange1: "#FF7B31",
+      orange2: "#FEBB96",
+    },
+  },
+  black: {
+    black1: "#737373",
+    black2: "#333333",
+  },
+  grey: {
+    grey1: "#BBBBBB",
+    grey2: "#9C9C9C",
+  },
+  white: {
+    white1: "#FFFFFF",
+    white2: "#F6F9FE",
+  },
+};
