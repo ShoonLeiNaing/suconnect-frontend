@@ -1,6 +1,7 @@
 import { Container } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Announcements from "../components/Announcements";
+import Benefit from "../components/Benefits";
 import Entity from "../components/Entity";
 import Feature from "../components/Feature";
 import HeroParallax from "../components/HeroParallax";
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
         <Announcements />
         <Entity />
         <Feature />
+        <Benefit />
       </Container>
     </Layout>
   );
