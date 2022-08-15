@@ -1,4 +1,5 @@
 import { Box, Image, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 import ArrowButton from "../Button/ArrowButton";
@@ -7,6 +8,7 @@ interface IProps {
   color: string;
 }
 const GridCard: FunctionComponent<IProps> = ({ color }) => {
+  const router = useRouter();
   return (
     <Box
       cursor="pointer"
@@ -29,7 +31,7 @@ const GridCard: FunctionComponent<IProps> = ({ color }) => {
           The distribution of algal species has been fairly well studied since
           the founding.
         </Text>
-        <Box pt={3}>
+        <Box pt={3} onClick={() => router.push("/announcements/123")}>
           <ArrowButton buttonColor={color} />
         </Box>
       </Box>
