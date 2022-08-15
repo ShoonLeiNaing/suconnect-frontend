@@ -7,7 +7,7 @@ import Card from "./card";
 
 const UserInnovation: FunctionComponent = () => {
   return (
-    <Box marginBottom="4rem">
+    <Box marginY="4rem">
       <SubTitle
         title="Powering User Innovation"
         icon
