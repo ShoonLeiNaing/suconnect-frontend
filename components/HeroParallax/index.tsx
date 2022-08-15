@@ -65,7 +65,10 @@ const HeroParallax = () => {
           </Text>
 
           <Box mt={4} cursor="pointer">
-            <ArrowButton color={colors.primaryColors.lightblue.lightblue1} />
+            <ArrowButton
+              buttonColor={colors.primaryColors.lightblue.lightblue1}
+              textColor="white"
+            />
           </Box>
         </Box>
       </Box>
