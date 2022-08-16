@@ -1,42 +1,68 @@
 import { Box, Image, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FunctionComponent, useState } from "react";
 import { colors } from "../../data/constant";
 import Button from "./Button";
 
-const Navbar = () => {
+interface IProps {
+  changeLanguage?: boolean;
+}
+const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
+  // const { locale } = useRouter();
+  const router = useRouter();
+  const [language, setLanguage] = useState<string>(router.locale || "en");
+  const changeLanguageHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
+    router.push(router.pathname, router.pathname, {
+      locale: e.target.value,
+    });
+  };
   return (
     <Box
       position="sticky"
       top="0"
-      px={20}
       bgColor="white"
-      display="flex"
-      alignItems="center"
-      boxShadow="md"
-      justifyContent="space-between"
       h="70px"
-      w="100%"
+      // w="100%"
       zIndex={100}
+      boxShadow="md"
     >
-      <Image h="70%" src="/images/logo.png" />
       <Box
-        flex="1"
-        cursor="pointer"
+        maxW="1600px"
+        margin="auto"
+        h="70px"
+        px={20}
         display="flex"
-        justifyContent="flex-end"
         alignItems="center"
+        justifyContent="space-between"
       >
-        <Text
-          fontWeight={600}
-          color={colors.primaryColors.lightblue.lightblue1}
-          mr={6}
+        <Image h="70%" src="/images/logo.png" />
+        <Box
+          flex="1"
+          cursor="pointer"
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="center"
         >
-          Sign in
-        </Text>
-        <Button />
-        <select className="select">
-          <option>Eng</option>
-          <option>မြန်မာ</option>
-        </select>
+          <Text
+            fontWeight={600}
+            color={colors.primaryColors.lightblue.lightblue1}
+            mr={6}
+          >
+            Sign in
+          </Text>
+          <Button />
+          {changeLanguage && (
+            <select
+              className="select"
+              value={language}
+              onChange={changeLanguageHandler}
+            >
+              <option value="en">Eng</option>
+              <option value="my">မြန်မာ</option>
+            </select>
+          )}
+        </Box>
       </Box>
     </Box>
   );
