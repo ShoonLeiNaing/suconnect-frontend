@@ -14,7 +14,7 @@ const EntityCard: FunctionComponent<IProps> = ({
   text,
   color,
   icon,
-}: IProps) => {
+}) => {
   return (
     <Box
       h={{ lg: "220px" }}

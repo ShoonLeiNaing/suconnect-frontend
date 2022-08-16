@@ -7,11 +7,7 @@ interface IProps {
   bgColor: string;
 }
 
-const SmallButton: FunctionComponent<IProps> = ({
-  text,
-  color,
-  bgColor,
-}: IProps) => {
+const SmallButton: FunctionComponent<IProps> = ({ text, color, bgColor }) => {
   return (
     <Box
       color={color}

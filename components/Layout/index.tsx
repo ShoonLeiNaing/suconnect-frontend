@@ -7,7 +7,7 @@ interface IProps {
   children: any;
 }
 
-const Layout: FunctionComponent<IProps> = ({ children }: IProps) => {
+const Layout: FunctionComponent<IProps> = ({ children }) => {
   return (
     <Box>
       <Navbar />
