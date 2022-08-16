@@ -5,16 +5,24 @@ import Navbar from "../Navbar";
 
 interface IProps {
   children: any;
+  changeLanguage?: boolean;
 }
 
-const Layout: FunctionComponent<IProps> = ({ children }: IProps) => {
+const Layout: FunctionComponent<IProps> = ({
+  children,
+  changeLanguage,
+}: IProps) => {
   return (
     <Box>
-      <Navbar />
+      <Navbar changeLanguage={changeLanguage} />
       <Box>{children}</Box>
       <Footer />
     </Box>
   );
+};
+
+Layout.defaultProps = {
+  changeLanguage: false,
 };
 
 export default Layout;

@@ -1,4 +1,5 @@
 import { Box, Icon, Text } from "@chakra-ui/react";
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import { RiMoonClearLine } from "react-icons/ri";
 import { FiSun } from "react-icons/fi";
@@ -9,6 +10,7 @@ import LinkSection from "./LinkSection";
 
 const HeroParallax = () => {
   const [lightMode, setLightMode] = useState(true);
+  const { t } = useTranslation();
   return (
     <>
       <Box
@@ -56,7 +58,7 @@ const HeroParallax = () => {
             />
           </Box>
           <Text fontSize={{ xl: "40px" }} fontWeight={700}>
-            Announcement
+            {t("landing:title")}
           </Text>
           <Text my={4} textAlign="center" maxW="500px">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.

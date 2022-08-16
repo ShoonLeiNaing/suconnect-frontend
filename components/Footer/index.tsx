@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Image, Icon } from "@chakra-ui/react";
+import { Image, Icon, Box } from "@chakra-ui/react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -19,11 +19,8 @@ const Footer: FunctionComponent<FooterProps> = ({
   titleColor,
 }) => {
   return (
-    <div>
-      <div
-        className="flex justify-between items-center py-6 mt-8 px-16"
-        style={{ background: backgroundColor, color: textColor }}
-      >
+    <Box backgroundColor={backgroundColor} color={textColor}>
+      <div className="max-w-screen-2xl flex justify-between items-center py-6 mt-8 px-16 m-auto">
         <div className="flex flex-col">
           <Image className="w-40" src="/images/logo.png" alt="logo" />
           <p className="text-md mt-4 mb-6">
@@ -133,7 +130,7 @@ const Footer: FunctionComponent<FooterProps> = ({
         </div>
       </div>
       <div
-        className="flex justify-between items-center py-8 lg:px-16 border-t border-[#252525]"
+        className="max-w-screen-2xl m-auto flex justify-between items-center py-4 lg:px-16 border-t border-[#252525]"
         style={{ background: backgroundColor, color: textColor }}
       >
         <p className="text-sm text-[#9C9C9C]">
@@ -151,7 +148,7 @@ const Footer: FunctionComponent<FooterProps> = ({
           </a>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 
