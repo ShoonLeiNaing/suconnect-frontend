@@ -1,72 +1,41 @@
-import { Box, Icon, Text } from "@chakra-ui/react";
+// import { Box, Icon, Text } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
-import { RiMoonClearLine } from "react-icons/ri";
-import { FiSun } from "react-icons/fi";
+import { Box, Typography } from "@mui/material";
 import { colors } from "../../data/constant";
 import ArrowButton from "../Button/ArrowButton";
 import SearchInput from "./SearchInput";
 import LinkSection from "./LinkSection";
+import styles from "./heroParallax.module.css";
 
 const HeroParallax = () => {
-  const [lightMode, setLightMode] = useState(true);
   const { t } = useTranslation();
   return (
     <>
-      <Box
-        w="100%"
-        h="65vh"
-        backgroundRepeat="no-repeat"
-        background="url('/images/parallaxBg.png'),linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))"
-        backgroundAttachment={{ lg: "fixed" }}
-        backgroundPosition="50% 0"
-        backgroundSize="cover"
-        backgroundBlendMode="multiply"
-      >
+      <Box className={styles.parallax_bg}>
         <Box
           display="flex"
-          flexDir="column"
+          flexDirection="column"
           alignItems="center"
           justifyContent="center"
           color="white"
-          h="100%"
-          pos="relative"
+          height="100%"
+          sx={{ position: "relative" }}
         >
-          <Box
-            pos="absolute"
-            top="4"
-            right="0"
-            mr={20}
-            color={
-              lightMode
-                ? colors.primaryColors.lightblue.lightblue2
-                : colors.primaryColors.lightblue.lightblue1
-            }
-            backgroundColor={lightMode ? "black" : "white"}
-            h="40px"
-            w="40px"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            borderRadius="8px"
-            cursor="pointer"
-          >
-            <Icon
-              fontSize="24px"
-              onClick={() => setLightMode(!lightMode)}
-              as={lightMode ? RiMoonClearLine : FiSun}
-            />
-          </Box>
-          <Text fontSize={{ xl: "40px" }} fontWeight={700}>
+          <Typography fontSize="40px" fontWeight={700}>
             {t("landing:title")}
-          </Text>
-          <Text my={4} textAlign="center" maxW="500px">
+          </Typography>
+          <Typography
+            fontSize="20px"
+            my={4}
+            textAlign="center"
+            maxWidth="700px"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Pellentesque aliquam volutpat malesuada vel quis vitae ultrices
             porta.
-          </Text>
+          </Typography>
 
-          <Box mt={4} cursor="pointer">
+          <Box mt={4} sx={{ cursor: "pointer" }}>
             <ArrowButton
               buttonColor={colors.primaryColors.lightblue.lightblue1}
               textColor="white"
@@ -74,18 +43,18 @@ const HeroParallax = () => {
           </Box>
         </Box>
       </Box>
-      <Box h="25vh">
+      <Box height="25vh">
         <Box
-          my={8}
+          mt={6}
           display="flex"
-          flexDir="column"
+          flexDirection="column"
           alignItems="center"
           justifyContent="center"
           // margin="auto"
         >
           <SearchInput />
         </Box>
-        <Box my={10} mb={16}>
+        <Box my={6} mb={16}>
           <LinkSection />
         </Box>
       </Box>

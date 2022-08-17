@@ -1,4 +1,5 @@
-import { Box } from "@chakra-ui/react";
+// import { Box } from "@chakra-ui/react";
+import { Box } from "@mui/material";
 import { SwiperSlide } from "swiper/react";
 import { colors } from "../../data/constant";
 import SmallButton from "../Button/SmallButton";
@@ -9,7 +10,7 @@ import Tagline from "../SubTitle/Tagline";
 
 const Announcements = () => {
   return (
-    <Box mb={8}>
+    <Box my={4}>
       <SubTitle
         title="Recent Announcements"
         icon

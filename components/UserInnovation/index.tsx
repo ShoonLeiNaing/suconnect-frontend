@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from "@mui/material";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 import SubTitle from "../SubTitle";

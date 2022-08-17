@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
-import { Image } from "@chakra-ui/react";
+// import { Image } from "@chakra-ui/react";
+// import Image from "next/image";
 import styles from "./feature.module.css";
 import ArrowButton from "../Button/ArrowButton";
 import { colors } from "../../data/constant";
@@ -8,11 +9,7 @@ const Card: FunctionComponent = () => {
   return (
     <>
       <div className={styles.bg_img_one}>
-        <Image
-          className="w-32 mb-6"
-          src="/images/greencardicon.svg"
-          alt="icon"
-        />
+        <img className="w-32 mb-6" src="/images/greencardicon.svg" alt="icon" />
         <div className={styles.card_text_one}>
           <h3 className="text-2xl font-semibold mb-3">Monthly Payroll</h3>
           <p className="text-base mb-6">
@@ -26,11 +23,7 @@ const Card: FunctionComponent = () => {
         </div>
       </div>
       <div className={styles.bg_img_two}>
-        <Image
-          className="w-32 mb-6"
-          src="/images/pinkcardicon.svg"
-          alt="icon"
-        />
+        <img className="w-32 mb-6" src="/images/pinkcardicon.svg" alt="icon" />
         <div className={styles.card_text_two}>
           <h3 className="text-2xl font-semibold mb-3">Calendar Scheduling</h3>
           <p className="text-base mb-6">
@@ -44,7 +37,7 @@ const Card: FunctionComponent = () => {
         </div>
       </div>
       <div className={styles.bg_img_three}>
-        <Image
+        <img
           className="w-32 mb-6"
           src="/images/orangecardicon.svg"
           alt="icon"
@@ -62,7 +55,7 @@ const Card: FunctionComponent = () => {
         </div>
       </div>
       <div className={styles.bg_img_four}>
-        <Image
+        <img
           className={styles.icon_four}
           src="/images/bluecardicon.svg"
           alt="icon"

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from "@mui/material";
 import { FunctionComponent } from "react";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -13,7 +13,7 @@ const Layout: FunctionComponent<IProps> = ({
   changeLanguage,
 }: IProps) => {
   return (
-    <Box>
+    <Box bgcolor="white">
       <Navbar changeLanguage={changeLanguage} />
       <Box>{children}</Box>
       <Footer />

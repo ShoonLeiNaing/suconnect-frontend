@@ -37,7 +37,10 @@ a {
 .css-1ozmk1d {
   min-width: unset !important;
 }
-
+.container {
+  max-width: 1230px;
+  margin: auto;
+}
 /* swiper css */
 .swiper {
   padding: 0 10px !important;

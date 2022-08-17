@@ -1,7 +1,7 @@
-import { Container } from "@chakra-ui/react";
 import type { GetStaticProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Box } from "@mui/material";
 import Announcements from "../components/Announcements";
 import Benefit from "../components/Benefits";
 import Entity from "../components/Entity";
@@ -15,13 +15,21 @@ const Home: NextPage = () => {
   return (
     <Layout changeLanguage>
       <HeroParallax />
-      <Container maxW={{ lg: "1250px" }}>
+
+      <Box color="black" className="container">
         <Announcements />
         <Entity />
         <Feature />
         <Benefit />
         <UserInnovation />
-      </Container>
+      </Box>
+      {/* <Container maxW={{ lg: "1250px" }}>
+        <Announcements />
+        
+        <Feature />
+        <Benefit />
+        <UserInnovation />
+      </Container> */}
     </Layout>
   );
 };

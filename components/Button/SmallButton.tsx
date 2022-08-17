@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 
 interface IProps {
@@ -10,16 +10,17 @@ interface IProps {
 const SmallButton: FunctionComponent<IProps> = ({ text, color, bgColor }) => {
   return (
     <Box
-      color={color}
-      bgColor={bgColor}
-      px={4}
-      py={1}
-      fontSize="14px"
+      px={2}
+      py="4px"
+      sx={{ backgroundColor: bgColor, cursor: "pointer" }}
+      // fontSize="14px"
       borderRadius="10px"
-      fontWeight={500}
-      cursor="pointer"
+      // fontWeight={500}
+      // cursor="pointer"
     >
-      {text}
+      <Typography fontSize="14px" color={color}>
+        {text}
+      </Typography>
     </Box>
   );
 };

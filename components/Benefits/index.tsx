@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from "@mui/material";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 import SubTitle from "../SubTitle";
@@ -14,7 +14,7 @@ const Benefit: FunctionComponent = () => {
         color={colors.primaryColors.yellow.yellow1}
       />
       <Tagline text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac ultrices nunc commodo nunc consequat." />
-      <Box margin="auto" display="flex" gap={6} mt={8}>
+      <Box margin="auto" display="flex" gap={4} mt={4}>
         <Card icon="/images/benefit1.svg" title="Organized" />
         <Card icon="/images/benefit2.svg" title="Self-manage" />
         <Card icon="/images/benefit3.svg" title="Customization" />
