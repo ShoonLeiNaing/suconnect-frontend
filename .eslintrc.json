@@ -16,7 +16,7 @@
   "rules": {
     "import/extensions": ["error", "ignorePackages", { "": "never" }],
     "import/no-unresolved": "off",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",

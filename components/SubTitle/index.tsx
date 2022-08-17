@@ -13,7 +13,7 @@ const SubTitle: FunctionComponent<IProps> = ({ title, icon, color }) => {
       <Typography fontWeight={600} fontSize="24px" color="grey">
         {title}
       </Typography>
-      {icon && <Icon ml={4} fontSize="28px" color={color} as={icon} />}
+      {/* {icon && <Icon ml={4} fontSize="28px" color={color} as={icon} />} */}
     </Box>
   );
 };
