@@ -16,31 +16,31 @@ const Entity = () => {
       <Box margin="auto" display="flex" gap={3} mt={4}>
         <EntityCard
           title="Classes"
-          text="The distribution of algal species has been fairly well studied since the founding"
+          text="The distribution of algal species has been fairly well studied since the"
           color={colors.primaryColors.pink.pink1}
           icon="/images/entity1.svg"
         />
         <EntityCard
           title="Coordinators"
-          text="The distribution of algal species has been fairly well studied since the founding"
+          text="The distribution of algal species has been fairly well studied since the"
           color={colors.primaryColors.yellow.yellow1}
           icon="/images/entity2.svg"
         />
         <EntityCard
           title="Classes"
-          text="The distribution of algal species has been fairly well studied since the founding"
+          text="The distribution of algal species has been fairly well studied since the"
           color={colors.primaryColors.lightblue.lightblue1}
           icon="/images/entity3.svg"
         />
         <EntityCard
           title="Roles"
-          text="The distribution of algal species has been fairly well studied since the founding"
+          text="The distribution of algal species has been fairly well studied since the"
           color={colors.secondaryColors.red.red1}
           icon="/images/entity4.svg"
         />
         <EntityCard
           title="Classes"
-          text="The distribution of algal species has been fairly well studied since the founding"
+          text="The distribution of algal species has been fairly well studied since the"
           color={colors.secondaryColors.orange.orange1}
           icon="/images/entity1.svg"
         />{" "}

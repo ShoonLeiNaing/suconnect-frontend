@@ -14,7 +14,7 @@ const Benefit: FunctionComponent = () => {
         color={colors.primaryColors.yellow.yellow1}
       />
       <Tagline text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac ultrices nunc commodo nunc consequat." />
-      <Box margin="auto" display="flex" gap={4} mt={4}>
+      <Box margin="auto" display="flex" gap={2} mt={4}>
         <Card icon="/images/benefit1.svg" title="Organized" />
         <Card icon="/images/benefit2.svg" title="Self-manage" />
         <Card icon="/images/benefit3.svg" title="Customization" />
