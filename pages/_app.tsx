@@ -4,9 +4,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { appWithTranslation } from "next-i18next";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Poppins", "sans-serif"].join(","),
+    },
+  });
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 export default appWithTranslation(MyApp);

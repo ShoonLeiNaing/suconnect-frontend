@@ -34,7 +34,6 @@ const Benefit: FunctionComponent = () => {
           <Card icon="/images/benefit6.svg" title="Track Easily" />
           <Card icon="/images/benefit7.svg" title="Reduce Time" />
         </Box>
-      </Box>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 // import { Box, Icon, Text } from "@chakra-ui/react";
 import { Box, Typography, Icon } from "@mui/material";
 import { FunctionComponent } from "react";
+import { colors } from "../../data/constant";
 
 interface IProps {
   title: string;
