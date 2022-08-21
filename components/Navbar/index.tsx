@@ -58,7 +58,8 @@ const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
           <Typography
             fontWeight={600}
             color={colors.primaryColors.lightblue.lightblue1}
-            mr={6}
+            mr={4}
+            fontSize="15px"
           >
             Sign in
           </Typography>
@@ -73,7 +74,7 @@ const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
               <option value="my">မြန်မာ</option>
             </select>
           )}
-          <Box
+          {/* <Box
             sx={{
               backgroundColor: lightMode ? "black" : "white",
             }}
@@ -94,7 +95,7 @@ const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
             <Icon fontSize="medium" onClick={() => setLightMode(!lightMode)}>
               {lightMode ? <RiMoonClearLine /> : <FiSun />}
             </Icon>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </Box>
