@@ -8,8 +8,9 @@ import ArrowButton from "../Button/ArrowButton";
 
 interface IProps {
   color: string;
+  bgColor?: string;
 }
-const GridCard: FunctionComponent<IProps> = ({ color }) => {
+const GridCard: FunctionComponent<IProps> = ({ color, bgColor }) => {
   const router = useRouter();
   return (
     <Box
@@ -19,6 +20,7 @@ const GridCard: FunctionComponent<IProps> = ({ color }) => {
       borderRadius="25px"
       boxShadow="0px 6px 20px rgba(0, 0, 0, 0.07)"
       margin="auto"
+      sx={{ backgroundColor: bgColor }}
     >
       <Image
         height={250}
@@ -41,5 +43,9 @@ const GridCard: FunctionComponent<IProps> = ({ color }) => {
     </Box>
   );
 };
+
+GridCard.defaultProps = {
+    bgColor: "#FFFFFF"
+}
 
 export default GridCard;

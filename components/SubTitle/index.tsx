@@ -10,7 +10,12 @@ interface IProps {
 const SubTitle: FunctionComponent<IProps> = ({ title, icon, color }) => {
   return (
     <Box display="flex" alignItems="center">
-      <Typography fontWeight={600} fontSize="24px" color="grey">
+      <Typography
+        fontWeight={600}
+        fontSize="24px"
+        color="grey"
+        sx={{ zIndex: 2 }}
+      >
         {title}
       </Typography>
       {/* {icon && <Icon ml={4} fontSize="28px" color={color} as={icon} />} */}

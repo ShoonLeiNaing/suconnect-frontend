@@ -13,6 +13,11 @@
   width: 100%;
   height: 60vh;
 }
+.bg_element {
+  position: absolute;
+  top: -5rem;
+  z-index: 120;
+}
 .search_input {
   outline: none;
   border-radius: 15px;

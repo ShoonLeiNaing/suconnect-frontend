@@ -3,3 +3,9 @@
   margin: 25px 0;
   height: 550px;
 }
+.bg_element {
+  position: absolute;
+  top: -8rem;
+  right: -4rem;
+  height: 45rem;
+}
