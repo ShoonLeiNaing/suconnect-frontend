@@ -5,13 +5,14 @@ import { colors } from "../../data/constant";
 import SmallButton from "../Button/SmallButton";
 import CardCarousel from "../CardCarousel";
 import GridCard from "../GridCard";
+import PreviousPage from "../PreviousPage";
 import SubTitle from "../SubTitle";
 import styles from "./announcementDetail.module.css";
 
 const AnnouncementDetailComponent = () => {
   return (
     <div className="relative" style={{ width: "100%" }}>
-      <Box style={{ display: "grid" }} px={8}>
+      <Box style={{ display: "grid" }} px={8} className="inner-container">
         <img
           style={{
             position: "absolute",
@@ -22,20 +23,15 @@ const AnnouncementDetailComponent = () => {
           src="../../images/announcementbg1.svg"
           alt=""
         />
+        <PreviousPage />
+
         <img
           style={{ zIndex: 1, borderRadius: "1rem" }}
           className={styles.announcement_img}
           src="/images/background.jpg"
           alt="announcement detail"
         />
-        {/* <Image
-          my={{ lg: 6 }}
-          src="/images/background.jpg"
-          alt="announcement detail"
-          w="100%"
-          h={{ lg: "550px" }}
-          borderRadius="20px"
-        /> */}
+
         <SubTitle title="Announcement Title" />
 
         <Typography
@@ -106,46 +102,48 @@ const AnnouncementDetailComponent = () => {
         />
       </Box>
       <Box sx={{ position: "relative" }} mt={{ lg: 8 }}>
-        <Box
-          my={{ lg: 1 }}
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <SubTitle title="Related Announcements" />
-          <SmallButton
-            text="see all"
-            color={colors.primaryColors.lightblue.lightblue1}
-            bgColor={colors.white.white2}
-          />
+        <Box className="inner-container">
+          <Box
+            my={{ lg: 1 }}
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <SubTitle title="Related Announcements" />
+            <SmallButton
+              text="see all"
+              color={colors.primaryColors.lightblue.lightblue1}
+              bgColor={colors.white.white2}
+            />
+          </Box>
+          <CardCarousel>
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>{" "}
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>{" "}
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>{" "}
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>{" "}
+            <SwiperSlide>
+              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+            </SwiperSlide>
+          </CardCarousel>
         </Box>
-        <CardCarousel>
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>{" "}
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>{" "}
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>{" "}
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>{" "}
-          <SwiperSlide>
-            <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-          </SwiperSlide>
-        </CardCarousel>
-        <img
+        {/* <img
           style={{
             position: "absolute",
             top: "20rem",
@@ -154,7 +152,7 @@ const AnnouncementDetailComponent = () => {
           }}
           src="../../images/announcementbg4.svg"
           alt=""
-        />
+        /> */}
       </Box>
     </div>
   );

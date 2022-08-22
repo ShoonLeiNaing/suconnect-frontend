@@ -7,25 +7,11 @@ import HorizontalButton from "../../components/Button/HorizontalButton";
 
 const AnnouncementDetail: NextPage = () => {
   return (
-    // <Box bgcolor="white">
-    //   <Layout>
-    //     <LocalizationProvider dateAdapter={AdapterDateFns}>
-    //       <DatePicker
-    //         label="Basic example"
-    //         value={value}
-    //         onChange={(newValue) => {
-    //           setValue(newValue);
-    //         }}
-    //         renderInput={(params) => <TextField {...params} />}
-    //       />
-    //     </LocalizationProvider>
-    //   </Layout>
-    // </Box>
     <Layout>
-      <HorizontalButton />
-      <Box color="black" className="container" py={2}>
-        <PreviousPage />
-        <AnnouncementDetailComponent />
+      <Box className="container">
+        <Box color="black" py={2}>
+          <AnnouncementDetailComponent />
+        </Box>
       </Box>
     </Layout>
   );

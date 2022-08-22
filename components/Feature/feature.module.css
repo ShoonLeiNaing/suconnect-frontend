@@ -1,17 +1,17 @@
 .bg_img_one {
-  background-image: url("../../public/images/greencard.svg");
+  background-image: url("/images/greencard.svg");
 }
 
 .bg_img_two {
-  background-image: url("../../public/images/pinkcard.svg");
+  background-image: url("/images/pinkcard.svg");
 }
 
 .bg_img_three {
-  background-image: url("../../public/images/orangecard.svg");
+  background-image: url("/images/orangecard.svg");
 }
 
 .bg_img_four {
-  background-image: url("../../public/images/bluecard.svg");
+  background-image: url("/images/bluecard.svg");
 }
 
 .bg_img_one,
