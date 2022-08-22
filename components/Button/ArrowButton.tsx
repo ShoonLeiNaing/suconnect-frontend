@@ -9,6 +9,7 @@ interface IProps {
 const ArrowButton: FunctionComponent<IProps> = ({ textColor, buttonColor }) => {
   return (
     <svg
+      className={styles.btn_animate}
       width="127"
       height="30"
       viewBox="0 0 127 30"

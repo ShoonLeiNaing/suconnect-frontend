@@ -18,10 +18,7 @@ const Card: FunctionComponent<CardProps> = ({
   return (
     <Box
       width="200px"
-      // color={textColor}
-      sx={{ color: textColor, backgroundColor: bgColor }}
-      // cursor="pointer"
-      // bgColor={bgColor}
+      sx={{ color: textColor, backgroundColor: bgColor, zIndex: 2 }}
       padding="1.5rem 1rem 1.5rem 1.2rem"
       borderRadius="20px"
     >

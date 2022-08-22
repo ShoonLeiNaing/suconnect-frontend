@@ -17,11 +17,13 @@ const Home: NextPage = () => {
       <HeroParallax />
 
       <Box color="black" className="container">
+        {/* <Box className="inner-container"> */}
         <Announcements />
         <Entity />
         <Feature />
         <Benefit />
         <UserInnovation />
+        {/* </Box> */}
       </Box>
       {/* <Container maxW={{ lg: "1250px" }}>
         <Announcements />

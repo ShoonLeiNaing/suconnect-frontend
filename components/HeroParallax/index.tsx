@@ -10,7 +10,8 @@ import styles from "./heroParallax.module.css";
 const HeroParallax = () => {
   const { t } = useTranslation();
   return (
-    <>
+    <div className="relative">
+      {/* <img className={styles.bg_element} src="../../images/bgelement1.svg" alt=""/> */}
       <Box className={styles.parallax_bg}>
         <Box
           display="flex"
@@ -58,7 +59,7 @@ const HeroParallax = () => {
           <LinkSection />
         </Box>
       </Box>
-    </>
+    </div>
   );
 };
 

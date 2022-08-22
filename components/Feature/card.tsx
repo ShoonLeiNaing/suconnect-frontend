@@ -54,7 +54,7 @@ const Card: FunctionComponent = () => {
           />
         </div>
       </div>
-      <div className={styles.bg_img_four}>
+      <div className={styles.bg_img_four} style={{ zIndex: 2 }}>
         <img
           className={styles.icon_four}
           src="/images/bluecardicon.svg"
