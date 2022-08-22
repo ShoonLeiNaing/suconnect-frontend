@@ -6,18 +6,18 @@ import EntityCard from "./EntityCard";
 
 const Entity = () => {
   return (
-    <div className="relative">
-      <Box>
-        <img
-          style={{
-            position: "absolute",
-            top: "-3.5rem",
-            left: "-5rem",
-            width: "19rem",
-          }}
-          src="../../images/bgelement3.svg"
-          alt=""
-        />
+    <Box className="relative" maxWidth="1600px">
+      <img
+        style={{
+          position: "absolute",
+          top: "-3.5rem",
+          left: "-5rem",
+          width: "19rem",
+        }}
+        src="../../images/bgelement3.svg"
+        alt=""
+      />
+      <Box className="inner-container">
         <SubTitle
           title="By Entity"
           icon
@@ -57,7 +57,7 @@ const Entity = () => {
           />{" "}
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 

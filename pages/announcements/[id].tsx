@@ -22,10 +22,12 @@ const AnnouncementDetail: NextPage = () => {
     //   </Layout>
     // </Box>
     <Layout>
-      <HorizontalButton />
-      <Box color="black" className="container" py={2}>
-        <PreviousPage />
-        <AnnouncementDetailComponent />
+      <Box className="inner-container">
+        <HorizontalButton />
+        <Box color="black" className="container" py={2}>
+          <PreviousPage />
+          <AnnouncementDetailComponent />
+        </Box>
       </Box>
     </Layout>
   );

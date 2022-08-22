@@ -39,8 +39,18 @@ a {
   min-width: unset !important;
 }
 .container {
-  max-width: 1230px;
+  max-width: 1600px;
   margin: auto;
+  position: relative;
+  overflow-x: hidden;
+}
+.inner-container {
+  max-width: 1260px;
+  margin: auto;
+  /* overflow-x: hidden; */
+}
+.cursor {
+  cursor: pointer;
 }
 /* swiper css */
 .swiper {

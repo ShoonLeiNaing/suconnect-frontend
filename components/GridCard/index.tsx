@@ -36,7 +36,11 @@ const GridCard: FunctionComponent<IProps> = ({ color, bgColor }) => {
           The distribution of algal species has been fairly well studied since
           the founding.
         </Typography>
-        <Box pt={1} onClick={() => router.push("/announcements/123")}>
+        <Box
+          pt={1}
+          onClick={() => router.push("/announcements/123")}
+          className="cursor"
+        >
           <ArrowButton buttonColor={color} />
         </Box>
       </Box>
@@ -45,7 +49,7 @@ const GridCard: FunctionComponent<IProps> = ({ color, bgColor }) => {
 };
 
 GridCard.defaultProps = {
-    bgColor: "#FFFFFF"
-}
+  bgColor: "#FFFFFF",
+};
 
 export default GridCard;

@@ -18,7 +18,7 @@ const Benefit: FunctionComponent = () => {
         src="../../images/bgelement4.svg"
         alt=""
       />
-      <Box marginY="4rem">
+      <Box marginY="4rem" className="inner-container">
         <SubTitle
           title="Benefits"
           icon
@@ -34,6 +34,7 @@ const Benefit: FunctionComponent = () => {
           <Card icon="/images/benefit6.svg" title="Track Easily" />
           <Card icon="/images/benefit7.svg" title="Reduce Time" />
         </Box>
+      </Box>
     </div>
   );
 };
