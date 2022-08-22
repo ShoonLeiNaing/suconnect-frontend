@@ -34,7 +34,7 @@ const Entity = () => {
           <EntityCard
             title="Coordinators"
             text="The distribution of algal species has been fairly well studied since the founding"
-            color={colors.primaryColors.yellow.yellow1}
+            color={colors.secondaryColors.green.green3}
             icon="/images/entity2.svg"
           />
           <EntityCard

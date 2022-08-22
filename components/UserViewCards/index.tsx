@@ -22,7 +22,8 @@ const UserViewCards: FunctionComponent = () => {
             image="/images/viewcard.svg"
             title="Distribution"
             date="01/02/2022"
-            bgColor={colors.primaryColors.yellow.yellow1}
+            bgColor={colors.primaryColors.yellow.yellow4}
+            // bgColor={colors.primaryColors.yellow.yellow1}
             description="The distribution of algal species has been fairly well studied since the founding of has been fairly well studied since the founding of"
           />
         </Box>
@@ -32,7 +33,7 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             cardHeight="420px"
             date="01/02/2022"
-            bgColor={colors.primaryColors.pink.pink1}
+            bgColor={colors.primaryColors.pink.pink4}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
         </Box>
@@ -42,7 +43,7 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             date="01/02/2022"
             cardHeight="420px"
-            bgColor={colors.secondaryColors.green.green1}
+            bgColor={colors.secondaryColors.green.green3}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
         </Box>
@@ -62,7 +63,7 @@ const UserViewCards: FunctionComponent = () => {
             image="/images/viewcard.svg"
             title="Distribution"
             date="01/02/2022"
-            bgColor={colors.secondaryColors.orange.orange1}
+            bgColor={colors.secondaryColors.orange.orange3}
             description="The distribution of algal species has been fairly well studied since the founding of has been fairly well studied since the founding of"
           />
         </Box>
@@ -74,28 +75,10 @@ const UserViewCards: FunctionComponent = () => {
             image="/images/viewcard.svg"
             title="Distribution"
             date="01/02/2022"
-            bgColor={colors.primaryColors.lightblue.lightblue1}
+            bgColor={colors.primaryColors.lightblue.lightblue4}
             description="The distribution of algal species has been fairly well studied since the founding of has been fairly well studied since the founding of"
           />
         </Box>
-        {/* <SlideCard
-          customWidth="30rem"
-          textColor="white"
-          image="/images/viewcard.svg"
-          title="Distribution"
-          date="01/02/2022"
-          bgColor={colors.secondaryColors.green.green1}
-          description="The distribution of algal species has been fairly well studied since the founding of phytogeography in the mid-19th phytogeography in the mid-19th "
-        />
-        <SlideCard
-          customWidth="30rem"
-          textColor="white"
-          image="/images/viewcard.svg"
-          title="Distribution"
-          date="01/02/2022"
-          bgColor={colors.secondaryColors.red.red1}
-          description="The distribution of algal species has been fairly well studied since the founding of phytogeography in the mid-19th phytogeography in the mid-19th"
-        /> */}
       </Box>
       <Box
         margin="auto"
@@ -111,7 +94,7 @@ const UserViewCards: FunctionComponent = () => {
             date="01/02/2022"
             cardHeight="440px"
             customHeight="260px"
-            bgColor={colors.primaryColors.yellow.yellow1}
+            bgColor={colors.primaryColors.yellow.yellow4}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
         </Box>
@@ -122,7 +105,7 @@ const UserViewCards: FunctionComponent = () => {
             date="01/02/2022"
             cardHeight="440px"
             customHeight="260px"
-            bgColor={colors.primaryColors.pink.pink1}
+            bgColor={colors.primaryColors.pink.pink4}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
         </Box>
@@ -135,7 +118,7 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             date="01/02/2022"
             bgColor={colors.secondaryColors.red.red1}
-            description="The distribution of algal species has been fairly well studied since the founding of phytogeography in the mid-19th"
+            description="The distribution of algal species has been fairly well studied since the founding of phytogeography in the mid-19th "
           />
           <SlideCard
             customWidth="100%"
@@ -144,8 +127,8 @@ const UserViewCards: FunctionComponent = () => {
             image="/images/viewcard.svg"
             title="Distribution"
             date="01/02/2022"
-            bgColor={colors.secondaryColors.red.red1}
-            description="The distribution of algal species has been fairly well studied since the founding of phytogeography in the mid-19th "
+            bgColor={colors.secondaryColors.green.green3}
+            description="The distribution of algal species has been fairly well studied since the founding of phytogeography in the mid-19th"
           />
         </Box>
       </Box>

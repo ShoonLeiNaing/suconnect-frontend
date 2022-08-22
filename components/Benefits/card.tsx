@@ -1,6 +1,7 @@
 // import { Box, Image, Text } from "@chakra-ui/react";
 import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
+import { colors } from "../../data/constant";
 
 interface CardProps {
   icon: string;
@@ -23,7 +24,7 @@ const Card: FunctionComponent<CardProps> = ({
       borderRadius="20px"
     >
       <img src={icon} alt="benefit icon" height="45px" width="45px" />
-      <Typography fontWeight={500} fontSize="18px" marginTop="0.5rem">
+      <Typography fontWeight={500} fontSize="17px" marginTop="0.8rem">
         {title}
       </Typography>
     </Box>
@@ -31,7 +32,7 @@ const Card: FunctionComponent<CardProps> = ({
 };
 
 Card.defaultProps = {
-  bgColor: "#FFD233",
+  bgColor: colors.primaryColors.lightblue.lightblue1,
   textColor: "#FFFFFF",
 };
 

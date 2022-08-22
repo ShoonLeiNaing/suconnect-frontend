@@ -29,7 +29,7 @@ const GridCard: FunctionComponent<IProps> = ({ color, bgColor }) => {
         src="/images/background.jpg"
       />
       <Box p={2}>
-        <Typography fontSize="18px" fontWeight={500} color={color}>
+        <Typography fontSize="18px" fontWeight={600} color={color}>
           Distribution
         </Typography>
         <Typography fontSize="15px" my={1} color={colors.grey.grey2}>

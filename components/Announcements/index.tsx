@@ -23,9 +23,9 @@ const Announcements = () => {
     } else if (index === 2 || index === 8) {
       return colors.primaryColors.pink.pink1;
     } else if (index === 3 || index === 9) {
-      return colors.primaryColors.yellow.yellow1;
+      return colors.primaryColors.yellow.yellow4;
     } else if (index === 4 || index === 10) {
-      return colors.secondaryColors.green.green1;
+      return colors.secondaryColors.green.green3;
     } else if (index === 5 || index === 11) {
       return colors.secondaryColors.red.red1;
     } else {
