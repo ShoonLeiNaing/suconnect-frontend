@@ -21,7 +21,7 @@ const Footer: FunctionComponent<FooterProps> = ({
 }) => {
   return (
     <>
-      <div style={{ backgroundColor, width: "100%" }}>
+      <div style={{ backgroundColor, width: "100%", position: "relative" }}>
         <div className="max-w-screen-2xl flex justify-between items-center py-6 mt-8 px-16 m-auto">
           <div className="flex flex-col">
             <Image
