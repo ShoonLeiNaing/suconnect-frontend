@@ -12,7 +12,7 @@ const Benefit: FunctionComponent = () => {
         style={{
           position: "absolute",
           top: "-10rem",
-          right: "-5rem",
+          right: "-3.7rem",
           width: "22rem",
         }}
         src="../../images/bgelement4.svg"
