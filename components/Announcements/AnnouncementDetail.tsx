@@ -102,7 +102,7 @@ const AnnouncementDetailComponent = () => {
         />
       </Box>
       <Box sx={{ position: "relative" }} mt={{ lg: 8 }}>
-        <Box className="inner-container">
+        <Box className="inner-container px-12">
           <Box
             my={{ lg: 1 }}
             display="flex"

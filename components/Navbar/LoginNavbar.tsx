@@ -13,7 +13,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, FunctionComponent, useState } from "react";
 // import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 
 import { colors } from "../../data/constant";
@@ -64,6 +64,7 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
         alignItems="center"
         justifyContent="space-between"
       >
+        
         <Box display="flex" alignItems="center" gap={3}>
           <FiMenu fontSize="24px" />
           <Image
@@ -194,6 +195,7 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
             </Icon>
           </Box> */}
         </Box>
+        
       </Box>
     </Box>
   );
