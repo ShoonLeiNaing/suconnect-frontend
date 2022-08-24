@@ -1,0 +1,41 @@
+.nametag_image {
+  height: 55px;
+  width: 55px;
+  border-radius: 100%;
+}
+
+.profile_img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+}
+.profile_tagline {
+  color: #bbbbbb;
+  font-size: 14px;
+  margin-top: 2px;
+}
+.edit_btn {
+  display: flex;
+  align-items: center;
+  background-color: #3b8cf7;
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 20px 0;
+  transition: background-color 0.3s;
+}
+.edit_btn:hover {
+  background-color: #71adfb;
+}
+.data_box {
+  text-align: center;
+  padding: 13px;
+  border-radius: 15px;
+  font-size: 13px;
+  color: white;
+}
+.data_box span {
+  font-size: 18px;
+  font-weight: 600;
+}
