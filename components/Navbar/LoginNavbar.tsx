@@ -117,14 +117,7 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
             borderRadius="100%"
             sx={{ backgroundColor: colors.white.white2 }}
           >
-            <IconButton
-              // aria-label="more"
-              // id="long-button"
-              // aria-controls={open ? "long-menu" : undefined}
-              // aria-expanded={open ? "true" : undefined}
-              // aria-haspopup="true"
-              onClick={handleClick}
-            >
+            <IconButton onClick={handleClick}>
               {anchorEl ? (
                 <IoIosArrowUp
                   fontSize="20px"
@@ -138,8 +131,6 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
               )}
             </IconButton>
             <Menu
-              // id="long-menu"
-              // MenuListProps="long-button"
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
@@ -155,7 +146,10 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
               <MenuItem onClick={handleClose} sx={{ fontSize: "14px" }}>
                 Logout
               </MenuItem>
-              <MenuItem onClick={handleClose} sx={{ fontSize: "14px" }}>
+              <MenuItem
+                onClick={() => router.push("/profile")}
+                sx={{ fontSize: "14px" }}
+              >
                 Profile
               </MenuItem>
             </Menu>
