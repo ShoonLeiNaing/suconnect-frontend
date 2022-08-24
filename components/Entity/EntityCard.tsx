@@ -21,10 +21,9 @@ const EntityCard: FunctionComponent<IProps> = ({
       height="250px"
       width="250px"
       color="white"
-      // cursor="pointer"
+      className="cursor"
       sx={{ backgroundColor: color, zIndex: 2 }}
-      py={3}
-      px={2}
+      p={2}
       borderRadius="20px"
     >
       <Image src={icon} height={50} width={50} />

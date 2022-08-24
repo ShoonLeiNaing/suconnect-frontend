@@ -6,11 +6,11 @@ import SlideCard from "./SlideCard";
 
 const UserViewCards: FunctionComponent = () => {
   return (
-    <Box marginY={1} display="flex" flexDirection="column" gap={4}>
+    <Box marginY={1} display="flex" flexDirection="column" gap={3}>
       <Box
         margin="auto"
         display="flex"
-        gap={4}
+        gap={3}
         justifyContent="center"
         alignItems="center"
       >
@@ -33,6 +33,7 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             cardHeight="420px"
             date="01/02/2022"
+            customWidth="100%"
             bgColor={colors.primaryColors.pink.pink4}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
@@ -43,6 +44,7 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             date="01/02/2022"
             cardHeight="420px"
+            customWidth="100%"
             bgColor={colors.secondaryColors.green.green3}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
@@ -51,7 +53,7 @@ const UserViewCards: FunctionComponent = () => {
       <Box
         margin="auto"
         display="flex"
-        gap={4}
+        gap={3}
         justifyContent="center"
         alignItems="center"
       >
@@ -83,7 +85,7 @@ const UserViewCards: FunctionComponent = () => {
       <Box
         margin="auto"
         display="flex"
-        gap={4}
+        gap={3}
         justifyContent="center"
         alignItems="center"
       >
@@ -93,6 +95,7 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             date="01/02/2022"
             cardHeight="440px"
+            customWidth="100%"
             customHeight="260px"
             bgColor={colors.primaryColors.yellow.yellow4}
             description="The distribution of algal species has been fairly well studied since the founding of"
@@ -104,12 +107,13 @@ const UserViewCards: FunctionComponent = () => {
             title="Distribution"
             date="01/02/2022"
             cardHeight="440px"
+            customWidth="100%"
             customHeight="260px"
             bgColor={colors.primaryColors.pink.pink4}
             description="The distribution of algal species has been fairly well studied since the founding of"
           />
         </Box>
-        <Box flex="0.5" display="flex" flexDirection="column" gap={4}>
+        <Box flex="0.5" display="flex" flexDirection="column" gap={3}>
           <SlideCard
             customWidth="100%"
             cardHeight="205px"

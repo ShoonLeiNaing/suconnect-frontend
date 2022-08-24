@@ -24,7 +24,8 @@
   top: 0;
   z-index: 400;
   background-color: white;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  /* margin-left: 5px; */
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); */
 }
 
 .button_text {
@@ -36,4 +37,9 @@
   height: 30px;
   width: 30px;
   border-radius: 100%;
+}
+
+.navbar_logo {
+  margin: 20px 2px;
+  margin-bottom: 30px;
 }

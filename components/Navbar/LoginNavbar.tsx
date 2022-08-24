@@ -1,12 +1,5 @@
 // import { Box, Image, Text } from "@chakra-ui/react";
-import {
-  Box,
-  Icon,
-  IconButton,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import Image from "next/image";
 // import { RiMoonClearLine } from "react-icons/ri";
 // import { FiSun } from "react-icons/fi";
@@ -17,14 +10,17 @@ import { IoIosArrowDown, IoIosArrowUp, IoIosArrowBack } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 
 import { colors } from "../../data/constant";
-import Button from "./Button";
 import styles from "./navbar.module.css";
 import SearchInput from "../HeroParallax/SearchInput";
 
 interface IProps {
   changeLanguage?: boolean;
+  showSideNav: boolean;
 }
-const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
+const LoginNavbar: FunctionComponent<IProps> = ({
+  changeLanguage,
+  showSideNav,
+}) => {
   // const { locale } = useRouter();
   const router = useRouter();
   const [language, setLanguage] = useState<string>(router.locale || "en");
@@ -48,6 +44,7 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
   // console.log({ anchorEl });
   return (
     <Box
+      width="100%"
       height="70px"
       className={styles.login_navbar_container}
       color={colors.primaryColors.lightblue.lightblue1}
@@ -64,18 +61,17 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
         alignItems="center"
         justifyContent="space-between"
       >
-        
         <Box display="flex" alignItems="center" gap={3}>
-          <FiMenu fontSize="24px" />
-          <Image
-            height={50}
-            width={140}
-            // className="w-40"
-            src="/images/logo.png"
-            alt="logo"
-            layout="fixed"
-          />
-          <Box display="flex" ml={4}>
+          {!showSideNav && (
+            <Image
+              height={50}
+              width={140}
+              src="/images/logo.png"
+              alt="logo"
+              layout="fixed"
+            />
+          )}
+          <Box display="flex" ml={2}>
             <Typography>Welcome Thiha! </Typography>
             <img src="/images/celebrate.svg" alt="celebrate" />
           </Box>
@@ -195,7 +191,6 @@ const LoginNavbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
             </Icon>
           </Box> */}
         </Box>
-        
       </Box>
     </Box>
   );

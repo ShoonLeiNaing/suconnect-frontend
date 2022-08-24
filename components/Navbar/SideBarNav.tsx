@@ -3,16 +3,26 @@ import { FunctionComponent, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { colors } from "../../data/constant";
 import SideBarNavItem from "./SideBarNavItem";
+import styles from "./navbar.module.css";
 
 const SideBarNav: FunctionComponent = () => {
   const [slideOpen, setSlideOpen] = useState(false);
 
   return (
-    <div
-      className={` ${
-        slideOpen ? "w-72" : "w-24"
-      } h-fit bg-white shadow-xl rounded-lg relative duration-300 pt-8 px-8 sticky top-12`}
+    <Box
+      minHeight="100vh"
+      // height="fit-content"
+      zIndex={1000}
+      minWidth={slideOpen ? "250px" : "95px"}
+      className="shadow-lg rounded-lg relative duration-550  px-8 sticky"
+      // sx={{ overflowY: "scroll" }}
     >
+      <img
+        alt="logo"
+        className={styles.navbar_logo}
+        style={{ height: slideOpen ? "50px" : "32px" }}
+        src={slideOpen ? "/images/logo.png" : "/images/logosm.png"}
+      />
       <SideBarNavItem
         status={slideOpen}
         title="Dashboard"
@@ -49,29 +59,29 @@ const SideBarNav: FunctionComponent = () => {
         icon="/images/sidebaricon6.svg"
         iconBgColor={colors.secondaryColors.red.red1}
       />
-      <Box className="flex justify-between items-center mt-36 mb-12 cursor-pointer">
+      {/* <Box className="flex justify-between items-center mt-36 cursor-pointer">
         <Typography
           className={`${slideOpen ? "block" : "hidden"} `}
           color={colors.secondaryColors.red.red1}
         >
-          {" "}
-          Log out{" "}
+          Log out
         </Typography>
         &nbsp;
         <img src="/images/logout.svg" alt="logout" />
-      </Box>
+      </Box> */}
 
       <IoIosArrowBack
-        className={`absolute duration-300 ${
+        className={`absolute duration-600 ${
           slideOpen ? "left-[14.5rem]" : "left-20"
         } cursor-pointer bg-white rounded-full w-7 h-7 border-2 top-[28rem] ${
           !slideOpen && "rotate-180"
         }`}
         fontSize="20px"
+        // style={{ zIndex: 3000 }}
         color={colors.black.black1}
         onClick={() => setSlideOpen(!slideOpen)}
       />
-    </div>
+    </Box>
   );
 };
 

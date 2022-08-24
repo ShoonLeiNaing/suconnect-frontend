@@ -13,7 +13,7 @@ const Layout = dynamic(import("../components/Layout"), { ssr: false });
 
 const Home: NextPage = () => {
   return (
-    <Layout changeLanguage>
+    <Layout changeLanguage showSideNav={false}>
       <HeroParallax />
 
       <Box color="black" className="container">

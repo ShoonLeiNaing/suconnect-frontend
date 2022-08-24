@@ -37,13 +37,16 @@ const SideBarNavItem: FunctionComponent<IProps> = ({
           >
             <img className="w-6 h-6" src={icon} alt="sideicons" />
           </Box>
-          <Typography
-            marginLeft="0.5rem"
-            className={`${status ? "block" : "hidden"} `}
-            color={colors.black.black1}
-          >
-            {title}
-          </Typography>
+          {status && (
+            <Typography
+              marginLeft="15px"
+              fontSize="15px"
+              className={`${status ? "block" : "hidden"} `}
+              color={colors.black.black1}
+            >
+              {title}
+            </Typography>
+          )}
         </Box>
         <Box
           padding="3px"

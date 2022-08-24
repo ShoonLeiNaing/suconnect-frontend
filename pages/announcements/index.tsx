@@ -2,15 +2,12 @@ import { NextPage } from "next";
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import Layout from "../../components/Layout";
-import PreviousPage from "../../components/PreviousPage";
-import HorizontalButton from "../../components/Button/HorizontalButton";
 import UserViewCards from "../../components/UserViewCards";
 import DateFilter from "../../components/DateFilter";
 import SearchInput from "../../components/DateFilter/SearchInput";
 import SubTitle from "../../components/SubTitle";
 import { colors } from "../../data/constant";
 import Paginator from "../../components/Paginator";
-import SideBarNav from "../../components/Navbar/SideBarNav";
 
 const AnnouncementUserView: NextPage = () => {
   const [filterText, setFilterText] = useState<string>("");
@@ -18,7 +15,6 @@ const AnnouncementUserView: NextPage = () => {
   return (
     <Layout>
       <Box display="flex">
-        <SideBarNav />
         <Box className="container p-12" color="black">
           <SubTitle title="Feature Announcements" />
 
