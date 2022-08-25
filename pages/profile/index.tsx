@@ -3,7 +3,6 @@ import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
 import ViewProfileForm from "../../components/Profile/ViewProfileForm";
-import { colors } from "../../data/constant";
 
 const breadCrumbsData = [
   {
@@ -14,8 +13,8 @@ const breadCrumbsData = [
 
 const Profile = () => {
   return (
-    <Layout>
-      <Box color="black" className="container" p={4}>
+    <Layout allowToggle={false}>
+      <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="My Profile"
           previousPages={breadCrumbsData}

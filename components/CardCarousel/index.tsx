@@ -6,11 +6,12 @@ import { Swiper } from "swiper/react";
 
 interface IProps {
   children: any;
+  maxWidth?: string;
 }
 
-const CardCarousel: FunctionComponent<IProps> = ({ children }) => {
+const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
   return (
-    <Box width="100%" py={4} zIndex={10}>
+    <Box width="100%" maxWidth={maxWidth} py={4} zIndex={10}>
       <Swiper
         pagination={{
           dynamicBullets: true,
