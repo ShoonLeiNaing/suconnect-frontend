@@ -9,19 +9,21 @@ interface IProps {
   children: any;
   changeLanguage?: boolean;
   showSideNav?: boolean;
+  allowToggle?: boolean;
 }
 
 const Layout: FunctionComponent<IProps> = ({
   children,
   changeLanguage,
   showSideNav,
+  allowToggle,
 }: IProps) => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   return (
     <Box bgcolor="white">
       {isLogin ? (
         <Box display="flex">
-          {showSideNav && <SideBarNav />}
+          {showSideNav && <SideBarNav allowToggle={allowToggle} />}
           <Box width="100%">
             <LoginNavbar
               changeLanguage={changeLanguage}
@@ -44,6 +46,7 @@ const Layout: FunctionComponent<IProps> = ({
 Layout.defaultProps = {
   changeLanguage: false,
   showSideNav: true,
+  allowToggle: true,
 };
 
 export default Layout;

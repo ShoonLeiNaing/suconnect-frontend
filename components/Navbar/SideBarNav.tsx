@@ -5,8 +5,12 @@ import { colors } from "../../data/constant";
 import SideBarNavItem from "./SideBarNavItem";
 import styles from "./navbar.module.css";
 
-const SideBarNav: FunctionComponent = () => {
-  const [slideOpen, setSlideOpen] = useState(false);
+interface IProps {
+  allowToggle?: boolean;
+}
+
+const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
+  const [slideOpen, setSlideOpen] = useState(true);
 
   return (
     <Box
@@ -14,7 +18,10 @@ const SideBarNav: FunctionComponent = () => {
       // height="fit-content"
       zIndex={1000}
       minWidth={slideOpen ? "250px" : "95px"}
-      className="shadow-lg rounded-lg relative duration-550  px-8 sticky"
+      position="sticky"
+      // top={0}
+      // left={0}
+      className="shadow-lg rounded-lg relative duration-550  px-8 "
       // sx={{ overflowY: "scroll" }}
     >
       <img
@@ -70,17 +77,19 @@ const SideBarNav: FunctionComponent = () => {
         <img src="/images/logout.svg" alt="logout" />
       </Box> */}
 
-      <IoIosArrowBack
-        className={`absolute duration-600 ${
-          slideOpen ? "left-[14.5rem]" : "left-20"
-        } cursor-pointer bg-white rounded-full w-7 h-7 border-2 top-[28rem] ${
-          !slideOpen && "rotate-180"
-        }`}
-        fontSize="20px"
-        // style={{ zIndex: 3000 }}
-        color={colors.black.black1}
-        onClick={() => setSlideOpen(!slideOpen)}
-      />
+      {allowToggle && (
+        <IoIosArrowBack
+          className={`absolute duration-600 ${
+            slideOpen ? "left-[14.5rem]" : "left-20"
+          } cursor-pointer bg-white rounded-full w-7 h-7 border-2 top-[28rem] ${
+            !slideOpen && "rotate-180"
+          }`}
+          fontSize="20px"
+          // style={{ zIndex: 3000 }}
+          color={colors.black.black1}
+          onClick={() => setSlideOpen(!slideOpen)}
+        />
+      )}
     </Box>
   );
 };

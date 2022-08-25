@@ -11,7 +11,7 @@ import styles from "./profile.module.css";
 const ViewProfileForm = () => {
   return (
     <Box m={4} display="flex">
-      <Box flex="0.5">
+      <Box flex="0.5" px={2}>
         <Box display="flex" flexDirection="column" alignItems="center">
           <img
             src="/images/profile.jpeg"
@@ -67,7 +67,7 @@ const ViewProfileForm = () => {
           </Box>
         </Box>
       </Box>
-      <Box flex="0.5">
+      <Box flex="0.5" px={2}>
         <Box mb={3}>
           <InputLabel label="Email" />
           <InputComponent isLocked value="ThihaSwanHtet@gmail.com" />

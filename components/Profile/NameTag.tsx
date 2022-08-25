@@ -11,7 +11,7 @@ interface IProps {
 
 const NameTag: FunctionComponent<IProps> = ({ name, currentPage, tag }) => {
   return (
-    <Box display="flex" alignItems="center" mt={4}>
+    <Box display="flex" alignItems="center" mt={2}>
       <img
         className={styles.nametag_image}
         src="/images/profile.jpeg"

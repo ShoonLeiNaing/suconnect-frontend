@@ -15,7 +15,7 @@ import SearchInput from "../HeroParallax/SearchInput";
 
 interface IProps {
   changeLanguage?: boolean;
-  showSideNav: boolean;
+  showSideNav?: boolean;
 }
 const LoginNavbar: FunctionComponent<IProps> = ({
   changeLanguage,
