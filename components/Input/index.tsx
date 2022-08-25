@@ -23,7 +23,7 @@ const InputComponent: FunctionComponent<IProps> = ({
         height="120px"
         borderRadius="15px"
       >
-        <textarea className={styles.textarea} value={value} />
+        <textarea className={styles.textarea} value={value} readOnly />
       </Box>
     );
   }
@@ -37,7 +37,7 @@ const InputComponent: FunctionComponent<IProps> = ({
       paddingX={2}
       borderRadius="15px"
     >
-      <input className={styles.input} value={value} />
+      <input className={styles.input} value={value} readOnly />
     </Box>
   );
 };
