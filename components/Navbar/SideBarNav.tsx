@@ -14,14 +14,10 @@ const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
 
   return (
     <Box
-      minHeight="100vh"
-      // height="fit-content"
-      zIndex={1000}
       minWidth={slideOpen ? "250px" : "95px"}
-      position="sticky"
       // top={0}
       // left={0}
-      className="shadow-lg rounded-lg relative duration-550  px-8 "
+      className="h-screen shadow-lg rounded-lg relative duration-550 px-8 sticky top-0 "
       // sx={{ overflowY: "scroll" }}
     >
       <img
