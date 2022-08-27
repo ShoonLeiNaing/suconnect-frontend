@@ -1,9 +1,12 @@
 import { Box } from "@mui/material";
+import dynamic from "next/dynamic";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
-import UpdateProfileForm from "../../components/Profile/UpdateProfileForm";
-import ViewProfileForm from "../../components/Profile/ViewProfileForm";
+
+const UpdateProfileForm = dynamic(
+  import("../../components/Profile/UpdateProfileForm")
+);
 
 const breadCrumbsData = [
   {

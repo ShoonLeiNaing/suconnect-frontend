@@ -1,8 +1,9 @@
 import { Box, Button, styled, Typography } from "@mui/material";
+import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdModeEdit } from "react-icons/md";
 import { colors } from "../../data/constant";
-import InputComponent from "../Input";
+import StaticInput from "../Input/StaticInput";
 import InputLabel from "../Input/InputLabel";
 import NoInput from "../Input/NoInput";
 import EditButton from "./EditButton";
@@ -32,9 +33,13 @@ const ViewProfileForm = () => {
           >
             <IoLocationSharp fontSize="20px" className="mr-1" /> Yangon, Myanmar
           </Typography>
-          <button className={styles.edit_btn} type="submit">
-            <MdModeEdit className="mr-1" fontSize="20px" /> Edit Profile
-          </button>
+          <Link href="/profile/edit">
+            <a>
+              <button className={styles.edit_btn} type="submit">
+                <MdModeEdit className="mr-1" fontSize="20px" /> Edit Profile
+              </button>
+            </a>
+          </Link>
           <Box display="flex" alignItems="center" mt={2} mb={5} gap={1}>
             <Box
               className={styles.data_box}
@@ -59,7 +64,7 @@ const ViewProfileForm = () => {
 
           <Box mb={3}>
             <InputLabel label="Bio" />
-            <InputComponent
+            <StaticInput
               isLocked
               value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing "
               isTextArea
@@ -70,14 +75,19 @@ const ViewProfileForm = () => {
       <Box flex="0.5" px={4}>
         <Box mb={3}>
           <InputLabel label="Email" />
-          <InputComponent isLocked value="ThihaSwanHtet@gmail.com" />
+          <StaticInput isLocked value="ThihaSwanHtet@gmail.com" />
         </Box>
         <Box mb={3}>
-          <Box display="flex" maxWidth="345px" justifyContent="space-between">
+          <Box
+            display="flex"
+            maxWidth="345px"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <InputLabel label="Address" />
             <EditButton />
           </Box>
-          <InputComponent
+          <StaticInput
             isLocked
             value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing "
             isTextArea
@@ -85,7 +95,7 @@ const ViewProfileForm = () => {
         </Box>
         <Box mb={3}>
           <InputLabel label="Primary Contact" />
-          <InputComponent isLocked value="ThihaSwanHtet@gmail.com" />
+          <StaticInput isLocked value="ThihaSwanHtet@gmail.com" />
         </Box>
         <Box mb={3}>
           <InputLabel label="Secondary Contact" />
@@ -93,7 +103,7 @@ const ViewProfileForm = () => {
         </Box>
         <Box mb={3}>
           <InputLabel label="Date of Birth" />
-          <InputComponent isLocked value="01 / 12 / 2002" />
+          <StaticInput isLocked value="01 / 12 / 2002" />
         </Box>
       </Box>
     </Box>

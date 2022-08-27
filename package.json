@@ -22,9 +22,11 @@
     "framer-motion": "^6.5.1",
     "next": "12.2.4",
     "next-i18next": "^11.3.0",
+    "nextjs-progressbar": "^0.0.14",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "react-phone-number-input": "^3.2.9",
     "swiper": "^8.3.2"
   },
   "devDependencies": {

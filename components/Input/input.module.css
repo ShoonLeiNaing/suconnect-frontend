@@ -12,3 +12,7 @@
   padding: 10px 15px;
   font-size: 15px;
 }
+
+.phone_number_input input {
+  background-color: transparent;
+}

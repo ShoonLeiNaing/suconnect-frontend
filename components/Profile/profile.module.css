@@ -39,3 +39,10 @@
   font-size: 18px;
   font-weight: 600;
 }
+
+.profile_avatar {
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+  margin: auto;
+}
