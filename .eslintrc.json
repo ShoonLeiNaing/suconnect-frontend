@@ -27,6 +27,7 @@
     "react/require-default-props": "off",
     "@next/next/no-img-element": "off",
     "no-else-return": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }

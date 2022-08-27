@@ -4,46 +4,53 @@ import { colors } from "../../data/constant";
 import styles from "./input.module.css";
 
 interface IProps {
-  isLocked?: boolean;
   value: string;
+  setValue: any;
   isTextArea?: boolean;
 }
 
-const InputComponent: FunctionComponent<IProps> = ({
-  isLocked,
+const DynamicInput: FunctionComponent<IProps> = ({
   value,
   isTextArea,
+  setValue,
 }) => {
   if (isTextArea) {
     return (
       <Box
-        sx={{ backgroundColor: colors.white.white2 }}
         color={colors.black.black2}
         maxWidth="350px"
         height="120px"
         borderRadius="15px"
+        border="1px solid grey"
       >
-        <textarea className={styles.textarea} value={value} readOnly />
+        <textarea
+          className={styles.textarea}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
       </Box>
     );
   }
   return (
     <Box
-      sx={{ backgroundColor: colors.white.white2 }}
       color={colors.black.black2}
-      //   sx={{ backgroundColor: "#EAF2FF" }}
       maxWidth="350px"
       height="55px"
       paddingX={2}
       borderRadius="15px"
+      border="1px solid grey"
     >
-      <input className={styles.input} value={value} readOnly />
+      <input
+        className={styles.input}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </Box>
   );
 };
 
-InputComponent.defaultProps = {
+DynamicInput.defaultProps = {
   isTextArea: false,
 };
 
-export default InputComponent;
+export default DynamicInput;
