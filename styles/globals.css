@@ -101,3 +101,13 @@ a {
   color: grey;
   margin-left: 10px;
 }
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.PhoneInput {
+  height: 100% !important;
+}
