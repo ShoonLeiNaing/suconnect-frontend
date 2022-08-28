@@ -7,10 +7,10 @@ import {
   // Select,
   // SelectChangeEvent,
 } from "@mui/material";
-import InputComponent from "../Input";
 import InputLabel from "../Input/InputLabel";
 import { colors } from "../../data/constant";
 import CardStatus from "./CardStatus";
+import StaticInput from "../Input/StaticInput";
 
 interface IProps {
   title: string;
@@ -45,11 +45,11 @@ const BankingInfoCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
         <Box className="bg-white p-4 mb-4 rounded-b-xl">
           <Box mb={3}>
             <InputLabel label="Bank Account Name" />
-            <InputComponent isLocked value="Thiha Swan Htet" />
+            <StaticInput isLocked value="Thiha Swan Htet" />
           </Box>
           <Box mb={3}>
             <InputLabel label="Bank Type" />
-            <InputComponent isLocked value="KBZ" />
+            <StaticInput isLocked value="KBZ" />
           </Box>
           {/* <Box mb={3}>
             <InputLabel label="Bank Type" />
@@ -77,7 +77,7 @@ const BankingInfoCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
           </Box> */}
           <Box mb={3}>
             <InputLabel label="Bank Account Number" />
-            <InputComponent isLocked value="0000 0000 0000 0000" />
+            <StaticInput isLocked value="0000 0000 0000 0000" />
           </Box>
         </Box>
       </Box>
