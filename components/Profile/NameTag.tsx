@@ -10,7 +10,12 @@ interface IProps {
   previousPage?: string;
 }
 
-const NameTag: FunctionComponent<IProps> = ({ name, currentPage, tag, previousPage }) => {
+const NameTag: FunctionComponent<IProps> = ({
+  name,
+  currentPage,
+  tag,
+  previousPage,
+}) => {
   return (
     <Box display="flex" alignItems="center" mt={2}>
       <img
@@ -21,8 +26,15 @@ const NameTag: FunctionComponent<IProps> = ({ name, currentPage, tag, previousPa
       <Box mx={2} className="cursor">
         <Typography fontWeight={600} fontSize="18px">
           {name}{" "}
-          <span style={{ color: colors.grey.grey2, margin: "0 5px" }}> / </span>
-          {previousPage}
+          {previousPage && (
+            <>
+              <span style={{ color: colors.grey.grey2, margin: "0 5px" }}>
+                {" "}
+                /{" "}
+              </span>
+              {previousPage}
+            </>
+          )}
           <span style={{ color: colors.grey.grey2, margin: "0 5px" }}> / </span>
           {currentPage}
         </Typography>

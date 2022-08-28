@@ -1,14 +1,9 @@
 // import { Box, Image, Text } from "@chakra-ui/react";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import Image from "next/image";
-// import { RiMoonClearLine } from "react-icons/ri";
-// import { FiSun } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { ChangeEvent, FunctionComponent, useState } from "react";
-// import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { IoIosArrowDown, IoIosArrowUp, IoIosArrowBack } from "react-icons/io";
-import { FiMenu } from "react-icons/fi";
-
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { colors } from "../../data/constant";
 import styles from "./navbar.module.css";
 import SearchInput from "../HeroParallax/SearchInput";
@@ -45,12 +40,11 @@ const LoginNavbar: FunctionComponent<IProps> = ({
   return (
     <Box
       width="100%"
+      maxWidth="1400px"
+      margin="auto"
       height="70px"
       className={styles.login_navbar_container}
       color={colors.primaryColors.lightblue.lightblue1}
-
-      // sx={{ boxShadow: 3 }}
-      // w="100%"
     >
       <Box
         maxWidth="1600px"
@@ -78,13 +72,7 @@ const LoginNavbar: FunctionComponent<IProps> = ({
         </Box>
 
         <SearchInput />
-        <Box
-          // flex="1"
-          // cursor="pointer"
-          display="flex"
-          justifyContent="flex-end"
-          alignItems="center"
-        >
+        <Box display="flex" justifyContent="flex-end" alignItems="center">
           <Box display="flex" gap={1}>
             <img alt="setting" src="/images/setting.svg" />
             <img alt="help" src="/images/help.svg" />
@@ -134,18 +122,36 @@ const LoginNavbar: FunctionComponent<IProps> = ({
               PaperProps={{
                 style: {
                   marginTop: "10px",
-
-                  // maxHeight: ITEM_HEIGHT * 4.5,
                   width: "130px",
+                  boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.07)",
+                  borderRadius: "10px",
+                  padding: "0 8px",
                 },
               }}
             >
-              <MenuItem onClick={handleClose} sx={{ fontSize: "14px" }}>
+              <MenuItem
+                onClick={handleClose}
+                sx={{
+                  fontSize: "14px",
+                  color: colors.black.black2,
+                  borderRadius: "15px",
+                  "&:hover": {
+                    backgroundColor: colors.white.white2,
+                  },
+                }}
+              >
                 Logout
               </MenuItem>
               <MenuItem
                 onClick={() => router.push("/profile")}
-                sx={{ fontSize: "14px" }}
+                sx={{
+                  fontSize: "14px",
+                  color: colors.black.black2,
+                  borderRadius: "15px",
+                  "&:hover": {
+                    backgroundColor: colors.white.white2,
+                  },
+                }}
               >
                 Profile
               </MenuItem>
