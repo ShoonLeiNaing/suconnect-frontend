@@ -18,10 +18,10 @@ const BreadcrumbsComponent: FunctionComponent<IProps> = ({
 }) => {
   return (
     <Breadcrumbs
-      my={2}
+      // my={2}
       aria-label="breadcrumb"
       color={colors.grey.grey2}
-      sx={{ marginBottom: "20px" }}
+      sx={{ marginY: "20px" }}
     >
       {previousPages?.map((item) => (
         <Link

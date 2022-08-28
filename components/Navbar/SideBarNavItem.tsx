@@ -65,21 +65,21 @@ const SideBarNavItem: FunctionComponent<IProps> = ({
           dropStatus={dropDownOpen}
           title="DropDown 1"
           iconColor={iconBgColor}
-          icon={FaBookReader}
+          icon={<FaBookReader />}
         />
         <SideDropDown
           sideStatus={status}
           dropStatus={dropDownOpen}
           title="DropDown 2"
           iconColor={iconBgColor}
-          icon={FaPoll}
+          icon={<FaPoll />}
         />
         <SideDropDown
           sideStatus={status}
           dropStatus={dropDownOpen}
           title="DropDown 3"
           iconColor={iconBgColor}
-          icon={FaCog}
+          icon={<FaCog />}
         />
       </Box>
     </Box>

@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaTwitter,
   FaLinkedin,
+  FaFacebook,
 } from "react-icons/fa";
 
 export interface FooterProps {
@@ -57,16 +58,20 @@ const Footer: FunctionComponent<FooterProps> = ({
             </div>
             <div className="flex mt-4">
               <a href="#index" className="mr-4">
-                <Icon as={FaFacebookF} color="#FFFFFF" fontSize="23px" />
+                <FaFacebookF size="23px" />
+                {/* <Icon as={FaFacebookF} fontSize="23px" /> */}
               </a>
               <a href="#index" className="mr-4">
-                <Icon as={FaInstagram} color="#FFFFFF" fontSize="24px" />
+                <FaInstagram size="24px" />
+                {/* <Icon as={FaInstagram} fontSize="24px" /> */}
               </a>
               <a href="#index" className="mr-4">
-                <Icon as={FaTwitter} color="#FFFFFF" fontSize="24px" />
+                <FaTwitter size="24px" />
+                {/* <Icon as={FaTwitter} fontSize="24px" /> */}
               </a>
               <a href="#index">
-                <Icon as={FaLinkedin} color="#FFFFFF" fontSize="24px" />
+                <FaLinkedin size="24px" />
+                {/* <Icon as={FaLinkedin} fontSize="24px" /> */}
               </a>
             </div>
           </div>
@@ -121,28 +126,28 @@ const Footer: FunctionComponent<FooterProps> = ({
               className="flex items-center mb-4 mt-[0.3rem]"
               href="emailto:info@example.com"
             >
-              <Icon as={FaFacebookF} color="#FFFFFF" fontSize="18px" />
+              <FaFacebook size="18px" />
               <p className="text-sm ml-2 lg:mt-[-0.1rem]">Facebook</p>
             </a>
             <a
               className="flex mb-4 items-center"
               href="emailto:info@example.com"
             >
-              <Icon as={FaInstagram} color="#FFFFFF" fontSize="20px" />
+              <FaInstagram size="20px" />
               <p className="text-sm ml-2 lg:mt-[-0.1rem]">Instagram</p>
             </a>
             <a
               className="flex mb-4 items-center"
               href="emailto:info@example.com"
             >
-              <Icon as={FaTwitter} color="#FFFFFF" fontSize="20px" />
+              <FaTwitter size="20px" />
               <p className="text-sm ml-2 lg:mt-[-0.1rem]">Twitter</p>
             </a>
             <a
               className="flex mb-4 items-center"
               href="emailto:info@example.com"
             >
-              <Icon as={FaLinkedin} color="#FFFFFF" fontSize="20px" />
+              <FaLinkedin size="20px" />
               <p className="text-sm ml-2 lg:mt-[-0.1rem]">LinkedIn</p>
             </a>
           </div>
