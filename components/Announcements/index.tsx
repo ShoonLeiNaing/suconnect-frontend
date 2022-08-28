@@ -63,7 +63,7 @@ const Announcements = () => {
         <CardCarousel>
           {announcements.map((announcement, index) => (
             <SwiperSlide key={index}>
-              <GridCard color={chooseColor(parseInt(index, 10) + 1)} />
+              <GridCard color={chooseColor(index + 1)} />
             </SwiperSlide>
           ))}
         </CardCarousel>

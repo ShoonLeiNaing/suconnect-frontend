@@ -13,7 +13,7 @@ const breadCrumbsData = [
 
 const Profile = () => {
   return (
-    <Layout allowToggle={false}>
+    <Layout allowToggle={false} hiddenFooter>
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="My Profile"

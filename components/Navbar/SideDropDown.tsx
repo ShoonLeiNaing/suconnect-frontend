@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import { IconType } from "react-icons/lib";
 import { Box, Typography, Icon } from "@mui/material";
 import { colors } from "../../data/constant";
 
@@ -24,9 +23,16 @@ const SideDropDown: FunctionComponent<IProps> = ({
         sideStatus ? "" : "hidden"
       } duration-100 py-4`}
     >
-      <Box display="flex" marginLeft="0.5rem">
-        <Icon as={icon} sx={{ color: iconColor, marginRight: "1rem" }} />
-        <Typography color={colors.black.black1} fontSize="14px">
+      <Box display="flex" marginLeft="0.5rem" color={iconColor} fontSize="20px">
+        {/* {icon} */}
+        {icon}
+        {/* <Icon as={icon} sx={{ color: iconColor, marginRight: "1rem" }} /> */}
+        {/* <Icon sx={{ color: iconColor, marginRight: "1rem" }}>{icon}</Icon> */}
+        <Typography
+          color={colors.black.black1}
+          fontSize="14px"
+          marginLeft="1rem"
+        >
           {title}
         </Typography>
       </Box>
