@@ -12,7 +12,7 @@ const CardStatus: FunctionComponent<IProps> = ({
   updatedTime,
 }) => {
   return (
-    <Box className="mt-4">
+    <Box className="mt-4 mb-12">
       <Typography fontSize="16px" color={colors.grey.grey1}>
         Created on
         <span> {createdTime} </span>

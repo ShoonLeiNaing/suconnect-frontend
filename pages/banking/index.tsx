@@ -18,7 +18,7 @@ const breadCrumbsData = [
 
 const Banking = () => {
   return (
-    <Layout>
+    <Layout hiddenFooter>
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="Banking"

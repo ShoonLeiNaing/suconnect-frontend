@@ -10,6 +10,7 @@ interface IProps {
   changeLanguage?: boolean;
   showSideNav?: boolean;
   allowToggle?: boolean;
+  hiddenFooter?: boolean;
 }
 
 const Layout: FunctionComponent<IProps> = ({
@@ -17,6 +18,7 @@ const Layout: FunctionComponent<IProps> = ({
   changeLanguage,
   showSideNav,
   allowToggle,
+  hiddenFooter,
 }: IProps) => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   return (
@@ -38,7 +40,7 @@ const Layout: FunctionComponent<IProps> = ({
           <Box>{children}</Box>
         </Box>
       )}
-      <Footer />
+      {hiddenFooter ? "" : <Footer />}
     </Box>
   );
 };
@@ -47,6 +49,7 @@ Layout.defaultProps = {
   changeLanguage: false,
   showSideNav: true,
   allowToggle: true,
+  hiddenFooter: false,
 };
 
 export default Layout;

@@ -2,10 +2,10 @@ import { useState, FunctionComponent } from "react";
 import {
   Box,
   Typography,
-  FormControl,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
+  // FormControl,
+  // MenuItem,
+  // Select,
+  // SelectChangeEvent,
 } from "@mui/material";
 import InputComponent from "../Input";
 import InputLabel from "../Input/InputLabel";
@@ -18,11 +18,11 @@ interface IProps {
 }
 
 const BankingInfoCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
-  const [bank, setBank] = useState("KBZ");
+  // const [bank, setBank] = useState("KBZ");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setBank(event.target.value as string);
-  };
+  // const handleChange = (event: SelectChangeEvent) => {
+  //   setBank(event.target.value as string);
+  // };
 
   return (
     <Box>
@@ -49,6 +49,10 @@ const BankingInfoCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
           </Box>
           <Box mb={3}>
             <InputLabel label="Bank Type" />
+            <InputComponent isLocked value="KBZ" />
+          </Box>
+          {/* <Box mb={3}>
+            <InputLabel label="Bank Type" />
             <FormControl
               sx={{
                 backgroundColor: colors.white.white2,
@@ -70,7 +74,7 @@ const BankingInfoCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
                 <MenuItem value="UAB">UAB</MenuItem>
               </Select>
             </FormControl>
-          </Box>
+          </Box> */}
           <Box mb={3}>
             <InputLabel label="Bank Account Number" />
             <InputComponent isLocked value="0000 0000 0000 0000" />
