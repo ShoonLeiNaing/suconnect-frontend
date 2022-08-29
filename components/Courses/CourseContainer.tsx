@@ -5,7 +5,7 @@ const CourseContainer = () => {
   return (
     <Grid container gap={3} columnGap={5} justifyContent="center">
       {[1, 2, 3, 4, 5, 6].map((card, index) => (
-        <Grid item>
+        <Grid item key={card}>
           <CourseCard
             index={index}
             title="Course Name"

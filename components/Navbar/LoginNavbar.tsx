@@ -40,14 +40,14 @@ const LoginNavbar: FunctionComponent<IProps> = ({
   return (
     <Box
       width="100%"
-      maxWidth="1400px"
+      // maxWidth="1400px"
       margin="auto"
       height="70px"
       className={styles.login_navbar_container}
       color={colors.primaryColors.lightblue.lightblue1}
     >
       <Box
-        maxWidth="1600px"
+        // maxWidth="1600px"
         margin="auto"
         height="70px"
         paddingX="40px"
