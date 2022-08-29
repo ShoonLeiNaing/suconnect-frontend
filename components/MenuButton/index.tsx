@@ -24,7 +24,7 @@ const BootstrapButton = styled(Button)({
   lineHeight: 1.5,
   //   backgroundColor: colors.white.white2,
   color: colors.primaryColors.lightblue.lightblue1,
-  backgroundColor: "red",
+  backgroundColor: colors.white.white2,
 
   "&:hover": {
     backgroundColor: colors.white.white2,
@@ -74,6 +74,7 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
       >
         {filterOptions?.map((filterOption) => (
           <MenuItem
+            key={filterOption.text}
             sx={{
               fontSize: "14px",
               color: colors.black.black2,
