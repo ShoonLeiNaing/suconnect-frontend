@@ -1,16 +1,18 @@
-import { Container } from "@chakra-ui/react";
 import { NextPage } from "next";
+import { Box } from "@mui/material";
 import AnnouncementDetailComponent from "../../components/Announcements/AnnouncementDetail";
 import Layout from "../../components/Layout";
-import PreviousPage from "../../components/PreviousPage";
 
 const AnnouncementDetail: NextPage = () => {
   return (
     <Layout>
-      <Container py={{ lg: 8 }} maxW={{ lg: "1250px" }}>
-        <PreviousPage />
+      {/* <Box display="flex">
+        <Box> */}
+      <Box color="black" py={2}>
         <AnnouncementDetailComponent />
-      </Container>
+        {/* </Box>
+        </Box> */}
+      </Box>
     </Layout>
   );
 };

@@ -10,3 +10,37 @@
   padding: 5px;
   /* background-image: url("data:image/svg+xml,<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'><path d='m0,6l12,12l12,-12l-24,0z'/><path fill='none' d='m0,0l24,0l0,24l-24,0l0,-24z'/></svg>"); */
 }
+
+.navbar_container {
+  position: sticky;
+  top: 0;
+  z-index: 400;
+  background-color: white;
+  /* width: 100vw; */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.login_navbar_container {
+  position: sticky;
+  top: 0;
+  z-index: 400;
+  background-color: white;
+  /* margin-left: 5px; */
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); */
+}
+
+.button_text {
+  color: white;
+  font-size: 15px;
+}
+
+.profile_img {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+}
+
+.navbar_logo {
+  margin: 20px 2px;
+  margin-bottom: 30px;
+}

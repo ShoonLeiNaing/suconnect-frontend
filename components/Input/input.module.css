@@ -1,0 +1,18 @@
+.input {
+  width: 350px;
+  height: 55px;
+  background-color: transparent;
+  font-size: 15px;
+}
+
+.textarea {
+  width: 350px;
+  height: 150px;
+  background-color: transparent;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+
+.phone_number_input input {
+  background-color: transparent;
+}

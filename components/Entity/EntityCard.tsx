@@ -1,4 +1,5 @@
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import { FunctionComponent } from "react";
 import SubButtonIcon from "../SubButton/SubButtonIcon";
 
@@ -6,7 +7,7 @@ interface IProps {
   title: string;
   text: string;
   color: string;
-  icon?: string;
+  icon: string;
 }
 
 const EntityCard: FunctionComponent<IProps> = ({
@@ -14,26 +15,25 @@ const EntityCard: FunctionComponent<IProps> = ({
   text,
   color,
   icon,
-}: IProps) => {
+}) => {
   return (
     <Box
-      h={{ lg: "220px" }}
-      w={{ lg: "220px" }}
+      height="250px"
+      width="250px"
       color="white"
-      cursor="pointer"
-      bgColor={color}
-      py={3}
-      px={4}
+      className="cursor"
+      sx={{ backgroundColor: color, zIndex: 2 }}
+      p={2}
       borderRadius="20px"
     >
-      <Image src={icon} h={{ lg: "50px" }} />
-      <Text fontWeight={500} fontSize="18px">
+      <Image src={icon} height={50} width={50} />
+      <Typography fontWeight={500} fontSize="18px">
         {title}
-      </Text>
-      <Text my={2} mb={4} fontSize="15px">
+      </Typography>
+      <Typography my={1} mb={2} fontSize="15px">
         {text}
-      </Text>
-      <Box float="right">
+      </Typography>
+      <Box sx={{ float: "right" }}>
         <SubButtonIcon color={color} fill={false} />
       </Box>
     </Box>

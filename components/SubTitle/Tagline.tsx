@@ -1,15 +1,21 @@
-import { Text } from "@chakra-ui/react";
+import { Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 
 interface IProps {
   text: string;
 }
-const Tagline: FunctionComponent<IProps> = ({ text }: IProps) => {
+const Tagline: FunctionComponent<IProps> = ({ text }) => {
   return (
-    <Text fontSize="15px" my={2} maxW="500px" color={colors.grey.grey2}>
+    <Typography
+      fontSize="15px"
+      my={1}
+      maxWidth="500px"
+      color={colors.grey.grey2}
+      sx={{ zIndex: 2, position: "relative" }}
+    >
       {text}
-    </Text>
+    </Typography>
   );
 };
 

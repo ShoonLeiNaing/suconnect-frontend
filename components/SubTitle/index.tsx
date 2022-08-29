@@ -1,6 +1,6 @@
-import { Box, Icon, Text } from "@chakra-ui/react";
+// import { Box, Icon, Text } from "@chakra-ui/react";
+import { Box, Typography, Icon } from "@mui/material";
 import { FunctionComponent } from "react";
-import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 interface IProps {
   title: string;
@@ -10,17 +10,15 @@ interface IProps {
 const SubTitle: FunctionComponent<IProps> = ({ title, icon, color }) => {
   return (
     <Box display="flex" alignItems="center">
-      <Text fontWeight={600} fontSize="20px">
+      <Typography
+        fontWeight={600}
+        fontSize="24px"
+        color="grey"
+        sx={{ zIndex: 2 }}
+      >
         {title}
-      </Text>
-      {icon && (
-        <Icon
-          ml={4}
-          fontSize="28px"
-          color={color}
-          as={IoIosArrowDropdownCircle}
-        />
-      )}
+      </Typography>
+      {/* {icon && <Icon ml={4} fontSize="28px" color={color} as={icon} />} */}
     </Box>
   );
 };

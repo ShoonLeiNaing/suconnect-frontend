@@ -1,31 +1,48 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
+import { colors } from "../../data/constant";
 
 interface IProps {
   text: string;
-  color: string;
-  bgColor: string;
+  color?: string;
+  bgColor?: string;
+  onClickHandler?: any;
+  customWidth?: string;
+  customHeight?: string;
 }
 
 const SmallButton: FunctionComponent<IProps> = ({
   text,
   color,
   bgColor,
-}: IProps) => {
+  onClickHandler,
+  customWidth,
+  customHeight,
+}) => {
   return (
     <Box
-      color={color}
-      bgColor={bgColor}
-      px={4}
-      py={1}
-      fontSize="14px"
+      px={2}
+      py="4px"
+      zIndex={100}
+      sx={{ backgroundColor: bgColor, cursor: "pointer" }}
+      onClick={onClickHandler}
+      height={customHeight && customHeight}
+      width={customWidth && customWidth}
+      // fontSize="14px"
       borderRadius="10px"
-      fontWeight={500}
-      cursor="pointer"
+      // fontWeight={500}
+      // cursor="pointer"
     >
-      {text}
+      <Typography fontSize="14px" color={color}>
+        {text}
+      </Typography>
     </Box>
   );
+};
+
+SmallButton.defaultProps = {
+  color: "white",
+  bgColor: colors.primaryColors.lightblue.lightblue1,
 };
 
 export default SmallButton;

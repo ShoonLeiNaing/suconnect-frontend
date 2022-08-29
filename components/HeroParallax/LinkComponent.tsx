@@ -6,7 +6,7 @@ interface IProps {
   next?: boolean;
 }
 
-const LinkComponent: FunctionComponent<IProps> = ({ text, next }: IProps) => {
+const LinkComponent: FunctionComponent<IProps> = ({ text, next }) => {
   if (next) {
     return (
       <svg
