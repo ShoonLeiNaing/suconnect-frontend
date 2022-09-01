@@ -1,0 +1,14 @@
+.accordion {
+    border-radius: 1rem;
+}
+.select_box {
+    height: 55px;
+    font-size: 15px;
+    width: 98%;
+}
+
+.form_control {
+    width: 100%;
+    height: 55px;
+    border-radius: 15px;
+}

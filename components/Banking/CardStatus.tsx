@@ -5,17 +5,19 @@ import { colors } from "../../data/constant";
 interface IProps {
   createdTime: string;
   updatedTime: string;
+  customDisplay?: string;
 }
 
 const CardStatus: FunctionComponent<IProps> = ({
   createdTime,
   updatedTime,
+  customDisplay,
 }) => {
   return (
-    <Box className="ml-2 mb-12">
+    <Box className="mt-2 mb-6" sx={{ display: customDisplay }}>
       <Typography fontSize="12px" color={colors.grey.grey1}>
         Created on
-        <span> {createdTime} </span>
+        <span> {createdTime} : &nbsp; </span>
       </Typography>
       <Typography fontSize="12px" color={colors.grey.grey1}>
         Last edited on
@@ -23,6 +25,10 @@ const CardStatus: FunctionComponent<IProps> = ({
       </Typography>
     </Box>
   );
+};
+
+CardStatus.defaultProps = {
+  customDisplay: "block",
 };
 
 export default CardStatus;
