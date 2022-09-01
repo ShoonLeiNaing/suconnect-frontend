@@ -47,6 +47,7 @@ const FaqAccordions: FunctionComponent<IProps> = ({ title, questions }) => {
       <Box my={2} mb={4}>
         {questions?.map((question, index) => (
           <BootstrapAccordion
+            key={index}
             expanded={expanded === `panel${index + 1}`}
             onChange={handleChange(`panel${index + 1}`)}
           >

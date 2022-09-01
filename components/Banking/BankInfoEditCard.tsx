@@ -8,7 +8,6 @@ import {
   MenuItem,
   Select,
   Input,
-  ChangeEvent,
   SelectChangeEvent,
 } from "@mui/material";
 import InputLabel from "../Input/InputLabel";
@@ -37,11 +36,11 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
 
   const [cardTitle, setCardTitle] = useState(title);
 
-  const updateTitle = (event: ChangeEvent<HTMLInputElement>) => {
+  const updateTitle = (event: any) => {
     setCardTitle(event.target.value);
   };
 
-  const formatNumber = (e: ChangeEvent<HTMLInputElement>) => {
+  const formatNumber = (e: any) => {
     const inputValue = e.target.value.replace(/ /g, "");
     let inputNumbersOnly = inputValue.replace(/\D/g, "");
 
