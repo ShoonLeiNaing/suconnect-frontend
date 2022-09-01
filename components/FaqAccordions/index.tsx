@@ -4,10 +4,34 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
+  styled,
+  Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { colors } from "../../data/constant";
 
-const FaqAccordions: FunctionComponent = () => {
+interface Question {
+  question: string;
+  answer: string;
+}
+interface IProps {
+  title: string;
+  questions: Question[];
+}
+
+const FaqAccordions: FunctionComponent<IProps> = ({ title, questions }) => {
+  const BootstrapAccordion = styled(Accordion)({
+    boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.07)",
+    padding: "10px",
+    marginBottom: "12px",
+    "&.MuiAccordion-root:before": {
+      backgroundColor: "white",
+    },
+    "&.MuiAccordion-rounded": {
+      borderRadius: "10px",
+    },
+  });
+
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
@@ -17,81 +41,26 @@ const FaqAccordions: FunctionComponent = () => {
 
   return (
     <>
-      <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-        <Accordion
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="pane1a-content"
-            id="panel1a-header"
+      <Typography fontSize="18px" marginLeft="10px">
+        {title}
+      </Typography>
+      <Box my={2} mb={4}>
+        {questions?.map((question, index) => (
+          <BootstrapAccordion
+            expanded={expanded === `panel${index + 1}`}
+            onChange={handleChange(`panel${index + 1}`)}
           >
-            <Typography sx={{ fontSize: "18px" }}>
-              What is Lorem Ipsum?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien
-              fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
-              vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum
-              auctor ornare leo, non suscipit magna interdum eu.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </div>
-      <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-        <Accordion
-          expanded={expanded === "panel2"}
-          onChange={handleChange("panel2")}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="pane2a-content"
-            id="panel2a-header"
-          >
-            <Typography sx={{ fontSize: "18px" }}>
-              What is Lorem Ipsum?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien
-              fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
-              vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum
-              auctor ornare leo, non suscipit magna interdum eu.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </div>
-      <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-        <Accordion
-          expanded={expanded === "panel3"}
-          onChange={handleChange("panel3")}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3a-content"
-            id="panel3a-header"
-          >
-            <Typography sx={{ fontSize: "18px" }}>
-              What is Lorem Ipsum?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien
-              fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
-              vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum
-              auctor ornare leo, non suscipit magna interdum eu.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </div>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography fontSize="16px">{question.question}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography fontSize="15px" color={colors.grey.grey2}>
+                {question.answer}
+              </Typography>
+            </AccordionDetails>
+          </BootstrapAccordion>
+        ))}
+      </Box>
     </>
   );
 };

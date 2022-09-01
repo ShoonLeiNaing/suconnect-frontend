@@ -53,7 +53,7 @@ const Banking = () => {
             setFilterText={setFilterText}
             setSearchText={setSearchText}
           />
-          <DropDown setFilterText={setFilterText} />
+          <DropDown setFilterText={setFilterText} individual />
         </Box>
         <Box className="flex justify-between items-center">
           <BankingInfoCard

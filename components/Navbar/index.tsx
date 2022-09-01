@@ -32,8 +32,9 @@ const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
       // w="100%"
     >
       <Box
-        maxWidth="1600px"
-        margin="auto"
+        // maxWidth="1600px"
+        width="100%"
+        // margin="auto"
         height="70px"
         paddingX="80px"
         display="flex"

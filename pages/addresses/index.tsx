@@ -40,11 +40,15 @@ const Addresses = () => {
             tag="Lorem Ipsum Dolorum"
           />
           <Box
-            className="flex items-center my-8 py-2 px-4 text-white cursor-pointer rounded-lg"
+            className="flex items-center my-4 py-2 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
             onClick={() => setAdd(!add)}
           >
-            <FaPlus /> <span className="ml-2"> Add new addresses </span>
+            <FaPlus />{" "}
+            <span className="ml-2" style={{ fontSize: "14px" }}>
+              {" "}
+              Add new addresses{" "}
+            </span>
           </Box>
         </Box>
         <Box className="flex justify-between items-center mb-8">
@@ -52,12 +56,25 @@ const Addresses = () => {
             setFilterText={setFilterText}
             setSearchText={setSearchText}
           />
-          <DropDown setFilterText={setFilterText} />
+          <DropDown setFilterText={setFilterText} individual />
         </Box>
         <Box className="mb-4">
-          <AccordionComponent title="My Address 1" orderNo={1} bgColor={colors.primaryColors.pink.pink1} />
-          <AccordionComponent title="My Address 2" orderNo={2} bgColor={colors.secondaryColors.green.green1} />
-          <AccordionComponent title="My Address 3" orderNo={3} bgColor={colors.primaryColors.yellow.yellow1} />
+          <AccordionComponent
+            title="My Address 1"
+            isOpen
+            orderNo={1}
+            bgColor={colors.primaryColors.pink.pink1}
+          />
+          <AccordionComponent
+            title="My Address 2"
+            orderNo={2}
+            bgColor={colors.secondaryColors.green.green1}
+          />
+          <AccordionComponent
+            title="My Address 3"
+            orderNo={3}
+            bgColor={colors.primaryColors.yellow.yellow1}
+          />
         </Box>
       </Box>
     </Layout>

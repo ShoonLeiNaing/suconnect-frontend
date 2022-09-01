@@ -31,7 +31,7 @@ const Layout: FunctionComponent<IProps> = ({
               changeLanguage={changeLanguage}
               showSideNav={showSideNav}
             />
-            <Box>{children}</Box>
+            <Box margin="auto">{children}</Box>
           </Box>
         </Box>
       ) : (
