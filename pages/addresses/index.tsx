@@ -75,6 +75,14 @@ const Addresses = () => {
             orderNo={3}
             bgColor={colors.primaryColors.yellow.yellow1}
           />
+          {add && (
+            <AccordionComponent
+              title="My new address"
+              orderNo={3}
+              bgColor={colors.primaryColors.pink.pink1}
+              isNew
+            />
+          )}
         </Box>
       </Box>
     </Layout>

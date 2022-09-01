@@ -21,7 +21,7 @@ import SmallButton from "../Button/SmallButton";
 interface IProps {
   title: string;
   bgColor: string;
-  edit: boolean;
+  edit?: boolean;
   setEdit?: any;
 }
 

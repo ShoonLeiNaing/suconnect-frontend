@@ -45,7 +45,11 @@ const Banking = () => {
             bgcolor={colors.primaryColors.lightblue.lightblue1}
             onClick={() => setAdd(!add)}
           >
-            <FaPlus /> <span className="ml-2"> Add new account </span>
+            <FaPlus />{" "}
+            <span className="ml-2" style={{ fontSize: "14px" }}>
+              {" "}
+              Add new account{" "}
+            </span>
           </Box>
         </Box>
         <Box className="flex justify-between items-center mb-8">

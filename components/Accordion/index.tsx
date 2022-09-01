@@ -25,6 +25,7 @@ interface IProps {
   bgColor: string;
   orderNo: number;
   isOpen?: boolean;
+  isNew?: boolean;
 }
 
 const AccordionComponent: FunctionComponent<IProps> = ({
@@ -32,6 +33,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
   bgColor,
   orderNo,
   isOpen,
+  isNew,
 }) => {
   const BootstrapAccordion = styled(Accordion)({
     boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.07)",
@@ -79,7 +81,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
           </Box>
         </AccordionSummary>
         <AccordionDetails className="bg-white justify-between px-6 rounded-b-2xl">
-          {!edit ? (
+          {!edit && !isNew ? (
             <>
               <Box className="flex px-6">
                 <Box className="flex flex-col">
