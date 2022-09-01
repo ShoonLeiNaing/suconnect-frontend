@@ -10,12 +10,14 @@ import { colors } from "../../data/constant";
 interface IProps {
   setFilterText: any;
   setSearchText: any;
+  placeholderText?: string;
   showFilter?: boolean;
 }
 
 const SearchInput: FunctionComponent<IProps> = ({
   setFilterText,
   setSearchText,
+  placeholderText,
   showFilter,
 }) => {
   const [filterValue, setFilterValue] = useState("all");
@@ -81,7 +83,7 @@ const SearchInput: FunctionComponent<IProps> = ({
           borderRadius={showFilter ? "0" : "10px 0px 0px 10px"}
         >
           <input
-            placeholder="Search the web"
+            placeholder={placeholderText || "Search the web"}
             // style={{ height: "40px" }}
             className="search_input"
             onChange={(e) => setSearchText(e.target.value)}
@@ -108,6 +110,7 @@ const SearchInput: FunctionComponent<IProps> = ({
 
 SearchInput.defaultProps = {
   showFilter: false,
+  placeholderText: "Search the web",
 };
 
 export default SearchInput;
