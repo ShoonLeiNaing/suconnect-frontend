@@ -10,7 +10,12 @@ const Paginator = () => {
       <Typography color={colors.grey.grey2} fontSize="14px">
         1 - 8 0f 200
       </Typography>
-      <Box display="flex" alignItems="center" gap={1}>
+      <Box
+        display="flex"
+        alignItems="center"
+        gap={1}
+        color={colors.black.black2}
+      >
         <Box display="flex" alignItems="center" fontSize="14px">
           Page
           <Box

@@ -19,7 +19,7 @@ const CardStatus: FunctionComponent<IProps> = ({
         Created on
         <span> {createdTime} : &nbsp; </span>
       </Typography>
-      <Typography fontSize="16px" color={colors.grey.grey1}>
+      <Typography fontSize="12px" color={colors.grey.grey1}>
         Last edited on
         <span> {updatedTime} </span>
       </Typography>

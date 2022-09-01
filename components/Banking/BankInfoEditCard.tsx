@@ -1,4 +1,4 @@
-import { useState, FunctionComponent } from "react";
+import { useState, FunctionComponent, ChangeEvent} from "react";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 
@@ -8,7 +8,6 @@ import {
   MenuItem,
   Select,
   Input,
-  ChangeEvent,
   SelectChangeEvent,
 } from "@mui/material";
 import InputLabel from "../Input/InputLabel";
@@ -21,9 +20,16 @@ import SmallButton from "../Button/SmallButton";
 interface IProps {
   title: string;
   bgColor: string;
+  edit: boolean;
+  setEdit?: any;
 }
 
-const BankingInfoEditCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
+const BankingInfoEditCard: FunctionComponent<IProps> = ({
+  title,
+  bgColor,
+  edit,
+  setEdit,
+}) => {
   const [bank, setBank] = useState("KBZ");
   const [name, setName] = useState("Thiha Swan Htet");
   const [bankAccNo, setBankAccNo] = useState("0000 0000 0000 0000");
@@ -115,6 +121,7 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
               customPaddingY="0.5rem"
               color={colors.black.black1}
               customFontSize="15px"
+              onClickHandler={() => setEdit(!edit)}
             />
             <SmallButton
               text="Save"

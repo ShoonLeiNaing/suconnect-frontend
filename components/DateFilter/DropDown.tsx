@@ -8,11 +8,10 @@ import { colors } from "../../data/constant";
 
 interface IProps {
   setFilterText: any;
+  individual?: boolean;
 }
 
-const DropDown: FunctionComponent<IProps> = ({
-  setFilterText,
-}) => {
+const DropDown: FunctionComponent<IProps> = ({ setFilterText, individual }) => {
   const [filterValue, setFilterValue] = useState("all");
   const handleChange = (event: SelectChangeEvent) => {
     setFilterValue(event.target.value);
@@ -21,7 +20,7 @@ const DropDown: FunctionComponent<IProps> = ({
 
   const BootstrapInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
-      borderRadius: "10px 0px 0px 10px",
+      borderRadius: individual ? "10px" : "10px 0px 0px 10px",
       position: "relative",
       backgroundColor: colors.white.white2,
       fontSize: 14,

@@ -44,7 +44,7 @@ const BankingInfoLockCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
               sx={{ backgroundColor: bgColor }}
               className="flex p-6 rounded-t-xl justify-between items-center text-white py-6"
             >
-              <Typography fontSize="19px" color={colors.black.black2}>
+              <Typography fontSize="17px" color={colors.black.black2}>
                 {title}
               </Typography>
               <Box
@@ -93,7 +93,14 @@ const BankingInfoLockCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
           <CardStatus createdTime="1/10/2022" updatedTime="2/10/2022" />
         </Box>
       )}
-      {edit && <BankingInfoEditCard title={title} bgColor={bgColor} />}
+      {edit && (
+        <BankingInfoEditCard
+          title={title}
+          bgColor={bgColor}
+          edit={edit}
+          setEdit={setEdit}
+        />
+      )}
     </Box>
   );
 };
