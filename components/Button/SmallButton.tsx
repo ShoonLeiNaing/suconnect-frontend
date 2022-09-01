@@ -22,18 +22,21 @@ const SmallButton: FunctionComponent<IProps> = ({
   return (
     <Box
       px={2}
-      py="4px"
+      // py="4px"
       zIndex={100}
       sx={{ backgroundColor: bgColor, cursor: "pointer" }}
       onClick={onClickHandler}
-      height={customHeight && customHeight}
+      height={customHeight || "30px"}
       width={customWidth && customWidth}
+      display="flex"
+      alignItems="center"
+      // margin="auto"
       // fontSize="14px"
       borderRadius="10px"
       // fontWeight={500}
       // cursor="pointer"
     >
-      <Typography fontSize="14px" color={color}>
+      <Typography margin="auto" fontSize="14px" color={color}>
         {text}
       </Typography>
     </Box>

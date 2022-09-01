@@ -52,6 +52,11 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
     setAnchorEl(null);
   };
 
+  const clickMenuButton = (onClickHandler: () => void) => {
+    onClickHandler();
+    handleClose();
+  };
+
   return (
     <Box bgcolor={colors.white.white2} width="fit-content" borderRadius="10px">
       <BootstrapButton onClick={handleClick} variant="contained">
@@ -84,7 +89,7 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
                 backgroundColor: colors.white.white2,
               },
             }}
-            onClick={handleClose}
+            onClick={() => clickMenuButton(filterOption.onClickHandler)}
           >
             {filterOption.text}
           </MenuItem>

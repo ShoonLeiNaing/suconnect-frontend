@@ -6,8 +6,8 @@ import { colors } from "../../data/constant";
 import StaticInput from "../Input/StaticInput";
 import InputLabel from "../Input/InputLabel";
 import NoInput from "../Input/NoInput";
-import EditButton from "./EditButton";
 import styles from "./profile.module.css";
+import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 const ViewProfileForm = () => {
   return (
@@ -85,7 +85,7 @@ const ViewProfileForm = () => {
             justifyContent="space-between"
           >
             <InputLabel label="Address" />
-            <EditButton />
+            <OutlineWhiteButton text="edit" />
           </Box>
           <StaticInput
             isLocked

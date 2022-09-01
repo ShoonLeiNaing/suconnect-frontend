@@ -6,12 +6,12 @@ import StaticInput from "../Input/StaticInput";
 import InputLabel from "../Input/InputLabel";
 import styles from "./profile.module.css";
 import LongButton from "../Button/LongButton";
-import EditButton from "./EditButton";
 import DynamicInput from "../Input/DynamicInput";
 import DateInput from "../Input/DateInput";
 import PhoneNumberInput from "../Input/PhoneNumberInput";
 import WordsCount from "../Input/WordsCount";
 import ReminderAlert from "../ReminderAlert";
+import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 const avatars = [
   {
@@ -192,7 +192,7 @@ const UpdateProfileForm = () => {
               justifyContent="space-between"
             >
               <InputLabel label="Address" />
-              <EditButton />
+              <OutlineWhiteButton text="Edit" />
             </Box>
             <StaticInput
               showLock
