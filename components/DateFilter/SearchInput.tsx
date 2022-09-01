@@ -10,11 +10,13 @@ import { colors } from "../../data/constant";
 interface IProps {
   setFilterText: any;
   setSearchText: any;
+  showFilter?: boolean;
 }
 
 const SearchInput: FunctionComponent<IProps> = ({
   setFilterText,
   setSearchText,
+  showFilter,
 }) => {
   const [filterValue, setFilterValue] = useState("all");
   const handleChange = (event: SelectChangeEvent) => {
@@ -28,51 +30,55 @@ const SearchInput: FunctionComponent<IProps> = ({
       position: "relative",
       backgroundColor: colors.white.white2,
       fontSize: 14,
-      padding: "10px 26px 10px 12px",
+      padding: "12px 26px 9px 12px",
       color: colors.primaryColors.lightblue.lightblue1,
       width: "83px",
+      height: "29px",
     },
   }));
 
   return (
     <Box>
       <Box display="flex">
-        <Select
-          id="demo-simple-select"
-          value={filterValue}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-          inputProps={{ "aria-label": "Without label" }}
-        >
-          <MenuItem sx={{ fontSize: "14px" }} value="all">
-            All Data
-          </MenuItem>
-          <MenuItem sx={{ fontSize: "14px" }} value="today">
-            Today
-          </MenuItem>
-          <MenuItem sx={{ fontSize: "14px" }} value="yesterday">
-            Yesterday
-          </MenuItem>
-          <MenuItem sx={{ fontSize: "14px" }} value="last 7 days">
-            Last 7 days
-          </MenuItem>
-          <MenuItem sx={{ fontSize: "14px" }} value="last 30 days">
-            Last 30 days
-          </MenuItem>
-          <MenuItem sx={{ fontSize: "14px" }} value="this month">
-            This Month
-          </MenuItem>
-          <MenuItem sx={{ fontSize: "14px" }} value="last month">
-            Last Month
-          </MenuItem>
-        </Select>
+        {showFilter && (
+          <Select
+            id="demo-simple-select"
+            value={filterValue}
+            onChange={handleChange}
+            input={<BootstrapInput />}
+            inputProps={{ "aria-label": "Without label" }}
+          >
+            <MenuItem sx={{ fontSize: "14px" }} value="all">
+              All Data
+            </MenuItem>
+            <MenuItem sx={{ fontSize: "14px" }} value="today">
+              Today
+            </MenuItem>
+            <MenuItem sx={{ fontSize: "14px" }} value="yesterday">
+              Yesterday
+            </MenuItem>
+            <MenuItem sx={{ fontSize: "14px" }} value="last 7 days">
+              Last 7 days
+            </MenuItem>
+            <MenuItem sx={{ fontSize: "14px" }} value="last 30 days">
+              Last 30 days
+            </MenuItem>
+            <MenuItem sx={{ fontSize: "14px" }} value="this month">
+              This Month
+            </MenuItem>
+            <MenuItem sx={{ fontSize: "14px" }} value="last month">
+              Last Month
+            </MenuItem>
+          </Select>
+        )}
         <Box
           px={2}
           width="250px"
           display="flex"
           alignItems="center"
           bgcolor="#F5F5F5"
-          height="43px"
+          height="50px"
+          borderRadius={showFilter ? "0" : "10px 0px 0px 10px"}
         >
           <input
             placeholder="Search the web"
@@ -82,10 +88,10 @@ const SearchInput: FunctionComponent<IProps> = ({
           />
         </Box>
         <Box
-          borderRadius="0px 10px 10px 0px"
+          borderRadius="0 10px 10px 0"
           bgcolor={colors.white.white2}
-          width="40px"
-          height="43px"
+          width="50px"
+          height="50px"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -98,6 +104,10 @@ const SearchInput: FunctionComponent<IProps> = ({
       </Box>
     </Box>
   );
+};
+
+SearchInput.defaultProps = {
+  showFilter: false,
 };
 
 export default SearchInput;
