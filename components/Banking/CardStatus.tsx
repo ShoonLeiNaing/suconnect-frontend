@@ -15,11 +15,11 @@ const CardStatus: FunctionComponent<IProps> = ({
 }) => {
   return (
     <Box className="mt-2 mb-6" sx={{ display: customDisplay }}>
-      <Typography fontSize="16px" color={colors.grey.grey1}>
+      <Typography fontSize="14px" color={colors.grey.grey1}>
         Created on
         <span> {createdTime} : &nbsp; </span>
       </Typography>
-      <Typography fontSize="12px" color={colors.grey.grey1}>
+      <Typography fontSize="14px" color={colors.grey.grey1}>
         Last edited on
         <span> {updatedTime} </span>
       </Typography>
@@ -28,7 +28,7 @@ const CardStatus: FunctionComponent<IProps> = ({
 };
 
 CardStatus.defaultProps = {
-  customDisplay: "block"
-}
+  customDisplay: "block",
+};
 
 export default CardStatus;

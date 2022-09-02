@@ -8,6 +8,7 @@ import Entity from "../components/Entity";
 import Feature from "../components/Feature";
 import HeroParallax from "../components/HeroParallax";
 import UserInnovation from "../components/UserInnovation";
+import FaqAccordions from "../components/FaqAccordions";
 
 const Layout = dynamic(import("../components/Layout"), { ssr: false });
 
@@ -15,7 +16,6 @@ const Home: NextPage = () => {
   return (
     <Layout changeLanguage showSideNav={false}>
       <HeroParallax />
-
       <Box color="black" className="container">
         {/* <Box className="inner-container"> */}
         <Announcements />
