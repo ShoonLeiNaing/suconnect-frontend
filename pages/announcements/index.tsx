@@ -25,6 +25,7 @@ const AnnouncementUserView: NextPage = () => {
             justifyContent="space-between"
           >
             <SearchInput
+              showFilter
               setFilterText={setFilterText}
               setSearchText={setSearchText}
             />

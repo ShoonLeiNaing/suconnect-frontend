@@ -1,0 +1,13 @@
+version: "3"
+services:
+  suconnect-frontend-app:
+    image: docker-nextjs-dev
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./pages:/app/pages
+      - ./components:/app/components
+      - ./data:/app/data
+      - ./public:/app/public
+      - ./styles:/app/styles

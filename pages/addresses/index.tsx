@@ -3,12 +3,11 @@ import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
-import BankingInfoCard from "../../components/Banking/BankInfoCard";
 import { colors } from "../../data/constant";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/DateFilter/SearchInput";
 import DropDown from "../../components/DateFilter/DropDown";
-import BankingInfoEditCard from "../../components/Banking/BankInfoEditCard";
+import AccordionComponent from "../../components/Accordion";
 
 const breadCrumbsData = [
   {
@@ -21,7 +20,7 @@ const breadCrumbsData = [
   },
 ];
 
-const Banking = () => {
+const Addresses = () => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
@@ -30,25 +29,25 @@ const Banking = () => {
     <Layout hiddenFooter>
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
-          currentPage="Banking"
+          currentPage="Addresses"
           previousPages={breadCrumbsData}
         />
         <Box className="flex justify-between mb-8 mt-2">
           <NameTag
             name="Thiha Swan Htet"
             previousPage="My Profile"
-            currentPage="Banking"
+            currentPage="Addresses"
             tag="Lorem Ipsum Dolorum"
           />
           <Box
-            className="flex items-center my-8 py-2 px-4 text-white cursor-pointer rounded-lg"
+            className="flex items-center my-4 py-2 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
             onClick={() => setAdd(!add)}
           >
             <FaPlus />{" "}
             <span className="ml-2" style={{ fontSize: "14px" }}>
               {" "}
-              Add new account{" "}
+              Add new addresses{" "}
             </span>
           </Box>
         </Box>
@@ -59,29 +58,35 @@ const Banking = () => {
           />
           <DropDown setFilterText={setFilterText} individual />
         </Box>
-        <Box className="flex justify-between items-center">
-          <BankingInfoCard
-            title="My Account 1"
+        <Box className="mb-4">
+          <AccordionComponent
+            title="My Address 1"
+            isOpen
+            orderNo={1}
             bgColor={colors.primaryColors.pink.pink1}
           />
-          <BankingInfoCard
-            title="My Account 2"
+          <AccordionComponent
+            title="My Address 2"
+            orderNo={2}
             bgColor={colors.secondaryColors.green.green1}
           />
-          <BankingInfoCard
-            title="My Account 3"
+          <AccordionComponent
+            title="My Address 3"
+            orderNo={3}
             bgColor={colors.primaryColors.yellow.yellow1}
           />
+          {add && (
+            <AccordionComponent
+              title="My new address"
+              orderNo={3}
+              bgColor={colors.primaryColors.pink.pink1}
+              isNew
+            />
+          )}
         </Box>
-        {add && (
-          <BankingInfoEditCard
-            title="My Account 4"
-            bgColor={colors.secondaryColors.orange.orange1}
-          />
-        )}
       </Box>
     </Layout>
   );
 };
 
-export default Banking;
+export default Addresses;

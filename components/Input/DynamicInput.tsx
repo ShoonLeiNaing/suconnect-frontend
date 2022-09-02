@@ -7,12 +7,16 @@ interface IProps {
   value: string;
   setValue: any;
   isTextArea?: boolean;
+  maxWidth?: string;
+  customType?:string;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
   value,
   isTextArea,
   setValue,
+  maxWidth,
+  customType,
 }) => {
   if (isTextArea) {
     return (
@@ -34,13 +38,14 @@ const DynamicInput: FunctionComponent<IProps> = ({
   return (
     <Box
       color={colors.black.black2}
-      maxWidth="350px"
+      maxWidth={maxWidth}
       height="55px"
       paddingX={2}
       borderRadius="15px"
       border="1px solid grey"
     >
       <input
+        type={customType}
         className={styles.input}
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -51,6 +56,8 @@ const DynamicInput: FunctionComponent<IProps> = ({
 
 DynamicInput.defaultProps = {
   isTextArea: false,
+  maxWidth: "350px",
+  customType: "text",
 };
 
 export default DynamicInput;
