@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FunctionComponent, useState } from "react";
 import { colors } from "../../data/constant";
+import IconButton from "../IconButton";
 
 interface FilterOption {
   text: string;
@@ -14,6 +15,8 @@ interface FilterOption {
 interface IProps {
   title?: string;
   filterOptions: FilterOption[];
+  isIcon?: boolean;
+  icon: any;
 }
 
 const BootstrapButton = styled(Button)({
@@ -22,7 +25,6 @@ const BootstrapButton = styled(Button)({
   fontSize: 16,
   padding: "10px 15px",
   lineHeight: 1.5,
-  //   backgroundColor: colors.white.white2,
   color: colors.primaryColors.lightblue.lightblue1,
   backgroundColor: colors.white.white2,
 
@@ -42,7 +44,12 @@ const BootstrapButton = styled(Button)({
   },
 });
 
-const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
+const MenuComponent: FunctionComponent<IProps> = ({
+  title,
+  filterOptions,
+  isIcon,
+  icon,
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: any) => {
@@ -58,12 +65,20 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
   };
 
   return (
-    <Box bgcolor={colors.white.white2} width="fit-content" borderRadius="10px">
-      <BootstrapButton onClick={handleClick} variant="contained">
-        {title}
-        <IoMdArrowDropdown style={{ marginLeft: "10px" }} />
-      </BootstrapButton>
-
+    <Box
+      bgcolor={colors.white.white2}
+      width="fit-content"
+      minWidth="45px"
+      borderRadius="10px"
+    >
+      {isIcon ? (
+        <IconButton onClickHandler={handleClick} icon={icon} />
+      ) : (
+        <BootstrapButton onClick={handleClick} variant="contained">
+          {title}
+          <IoMdArrowDropdown style={{ marginLeft: "10px" }} />
+        </BootstrapButton>
+      )}
       <Menu
         anchorEl={anchorEl}
         open={open}
@@ -99,8 +114,9 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
   );
 };
 
-Filter.defaultProps = {
+MenuComponent.defaultProps = {
   title: "Filter",
+  isIcon: false,
 };
 
-export default Filter;
+export default MenuComponent;

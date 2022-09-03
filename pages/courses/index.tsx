@@ -1,10 +1,10 @@
-import { SpaceBar } from "@mui/icons-material";
-import { Box, Chip, Divider, IconButton } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import { useState } from "react";
 import { IoGrid, IoListOutline } from "react-icons/io5";
 import { BiRefresh } from "react-icons/bi";
+import { RiFilterFill } from "react-icons/ri";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Filter from "../../components/MenuButton";
+import MenuComponent from "../../components/MenuButton";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/SearchInput";
@@ -13,6 +13,7 @@ import CourseContainer from "../../components/Courses/CourseContainer";
 import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { byCategory, byDate, byPosition } from "../../data/testData";
+import NumberIcon from "../../components/IconButton/NumberIcon";
 
 const breadCrumbsData = [
   {
@@ -33,27 +34,31 @@ const Courses = () => {
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
     data: [],
+    index: null,
   });
 
   const filterOptions = [
     {
       text: "Category",
+      data: byCategory,
       onClickHandler: () => {
-        setFilterValue({ title: "Category", data: byCategory });
+        setFilterValue({ title: "Category", data: byCategory, index: 0 });
         setShowSideFilter(true);
       },
     },
     {
       text: "Position",
+      data: byPosition,
       onClickHandler: () => {
-        setFilterValue({ title: "Position", data: byPosition });
+        setFilterValue({ title: "Position", data: byPosition, index: 1 });
         setShowSideFilter(true);
       },
     },
     {
       text: "Date",
+      data: byDate,
       onClickHandler: () => {
-        setFilterValue({ title: "Date", data: byDate });
+        setFilterValue({ title: "Date", data: byDate, index: 2 });
         setShowSideFilter(true);
       },
     },
@@ -78,7 +83,11 @@ const Courses = () => {
               searchText={searchText}
               setSearchText={setSearchText}
             />
-            <Filter filterOptions={filterOptions} />
+            <MenuComponent
+              filterOptions={filterOptions}
+              isIcon
+              icon={<RiFilterFill />}
+            />
           </Box>
           <Box display="flex" gap={2}>
             <Box
@@ -130,13 +139,14 @@ const Courses = () => {
           // toggleDrawer={toggleDrawer}
         />
 
-        <Box display="flex" gap={2}>
+        <Box display="flex" alignItems="center" gap={2}>
           <Chip
             sx={{
               color: colors.primaryColors.lightblue.lightblue1,
               backgroundColor: colors.white.white2,
               borderRadius: "10px",
             }}
+            // icon={<NumberIcon />}
             label="by position"
             onDelete={handleDelete}
           />
@@ -158,6 +168,13 @@ const Courses = () => {
             label="by date"
             onDelete={handleDelete}
           />
+          <Typography
+            color={colors.secondaryColors.red.red1}
+            fontSize="14px"
+            className="cursor"
+          >
+            Clear all
+          </Typography>
         </Box>
 
         <Box margin="auto" maxWidth="1200px" my={8}>

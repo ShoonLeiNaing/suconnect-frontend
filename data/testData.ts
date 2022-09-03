@@ -80,7 +80,7 @@ export const byCategory = [
     value: "Elementary 1",
   },
   {
-    value: "Pre-intermediate 1",
+    value: "Pre-intermediate",
   },
   {
     value: "Intermediate 1",
@@ -101,7 +101,7 @@ export const byCategory = [
     value: "Elementary 2",
   },
   {
-    value: "Pre-intermediate 2",
+    value: "Pre-intermediate",
   },
   {
     value: "Intermediate 2",
@@ -122,7 +122,7 @@ export const byCategory = [
     value: "Elementary 3",
   },
   {
-    value: "Pre-intermediate 3",
+    value: "Pre-intermediate",
   },
   {
     value: "Intermediate 3",
