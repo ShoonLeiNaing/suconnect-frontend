@@ -9,6 +9,7 @@ interface IProps {
   value: string;
   isTextArea?: boolean;
   showLock?: boolean;
+  maxWidth?: string;
 }
 
 const StaticInput: FunctionComponent<IProps> = ({
@@ -16,6 +17,7 @@ const StaticInput: FunctionComponent<IProps> = ({
   value,
   isTextArea,
   showLock,
+  maxWidth,
 }) => {
   if (isTextArea) {
     return (
@@ -47,7 +49,7 @@ const StaticInput: FunctionComponent<IProps> = ({
       color={colors.black.black2}
       display="flex"
       //   sx={{ backgroundColor: "#EAF2FF" }}
-      maxWidth="350px"
+      maxWidth={maxWidth}
       height="55px"
       paddingX={2}
       borderRadius="15px"
@@ -64,6 +66,7 @@ const StaticInput: FunctionComponent<IProps> = ({
 StaticInput.defaultProps = {
   isTextArea: false,
   showLock: false,
+  maxWidth: "350px"
 };
 
 export default StaticInput;

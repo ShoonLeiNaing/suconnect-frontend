@@ -9,6 +9,10 @@ interface IProps {
   onClickHandler?: any;
   customWidth?: string;
   customHeight?: string;
+  customPaddingX?: string;
+  customPaddingY?: string;
+  customFontSize?: string;
+  customMarginX?: string;
 }
 
 const SmallButton: FunctionComponent<IProps> = ({
@@ -18,25 +22,27 @@ const SmallButton: FunctionComponent<IProps> = ({
   onClickHandler,
   customWidth,
   customHeight,
+  customPaddingX,
+  customPaddingY,
+  customFontSize,
+  customMarginX,
 }) => {
   return (
     <Box
-      px={2}
-      // py="4px"
+      px={customPaddingX}
+      py={customPaddingY}
       zIndex={100}
       sx={{ backgroundColor: bgColor, cursor: "pointer" }}
       onClick={onClickHandler}
       height={customHeight || "30px"}
       width={customWidth && customWidth}
-      display="flex"
-      alignItems="center"
-      // margin="auto"
+      mx={customMarginX}
       // fontSize="14px"
       borderRadius="10px"
       // fontWeight={500}
       // cursor="pointer"
     >
-      <Typography margin="auto" fontSize="14px" color={color}>
+      <Typography fontSize={customFontSize} color={color}>
         {text}
       </Typography>
     </Box>
@@ -46,6 +52,9 @@ const SmallButton: FunctionComponent<IProps> = ({
 SmallButton.defaultProps = {
   color: "white",
   bgColor: colors.primaryColors.lightblue.lightblue1,
+  customPaddingX: "1rem",
+  customPaddingY: "4px",
+  customFontSize: "14px",
 };
 
 export default SmallButton;
