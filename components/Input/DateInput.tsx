@@ -7,7 +7,7 @@ import { TextField } from "@mui/material";
 interface IProps {
   customWidth?: string;
   customHeight?: string;
-  dateValue?: number | Date;
+  dateValue?: number | Date | string;
   setDateValue?: any;
 }
 
