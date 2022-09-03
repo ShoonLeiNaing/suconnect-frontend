@@ -1,4 +1,4 @@
-import { useState, FunctionComponent, ChangeEvent} from "react";
+import { useState, FunctionComponent, ChangeEvent } from "react";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 
@@ -114,7 +114,7 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
               onChange={formatNumber}
             />
           </Box>
-          <Box className="flex justify-end mt-4 mb-4">
+          <Box className="flex items-center justify-end mt-4">
             <SmallButton
               text="Cancel"
               bgColor="white"
@@ -125,7 +125,7 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
             />
             <SmallButton
               text="Save"
-              customPaddingY="0.5rem"
+              customHeight="40px"
               customFontSize="15px"
             />
           </Box>
