@@ -112,7 +112,7 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
           <SmallButton
             text="Cancel"
             bgColor="white"
-            customPaddingY="0.5rem"
+            customPaddingY="18px"
             color={colors.black.black1}
             customFontSize="15px"
             customMarginX="1rem"
@@ -120,7 +120,7 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
           />
           <SmallButton
             text="Save"
-            customPaddingY="0.5rem"
+            customPaddingY="18px"
             customFontSize="15px"
           />
         </Box>

@@ -15,7 +15,6 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InputLabel from "../Input/InputLabel";
 import StaticInput from "../Input/StaticInput";
-import { colors } from "../../data/constant";
 import CardStatus from "../Banking/CardStatus";
 import AccordionEditComponent from "./edit";
 import SmallButton from "../Button/SmallButton";
@@ -83,7 +82,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
         <AccordionDetails className="bg-white justify-between px-6 rounded-b-2xl">
           {!edit && !isNew ? (
             <>
-              <Box className="flex px-6">
+              <Box className="flex justify-between  px-6">
                 <Box className="flex flex-col">
                   <Box className="mt-4">
                     <InputLabel label="House Number" />
@@ -123,7 +122,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                 <Box className="flex justify-end mt-4 mb-4">
                   <SmallButton
                     text="Edit"
-                    customPaddingY="0.5rem"
+                    customPaddingY="18px"
                     customFontSize="15px"
                     onClickHandler={editAddress}
                   />

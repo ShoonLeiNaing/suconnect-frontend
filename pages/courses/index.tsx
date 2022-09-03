@@ -14,6 +14,7 @@ import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { byCategory, byDate, byPosition } from "../../data/testData";
 import NumberIcon from "../../components/IconButton/NumberIcon";
+import ChipComponent from "../../components/ChipComponent";
 
 const breadCrumbsData = [
   {
@@ -136,38 +137,16 @@ const Courses = () => {
           filterValue={filterValue}
           setFilterValue={setFilterValue}
           filterOptions={filterOptions}
-          // toggleDrawer={toggleDrawer}
         />
 
         <Box display="flex" alignItems="center" gap={2}>
-          <Chip
-            sx={{
-              color: colors.primaryColors.lightblue.lightblue1,
-              backgroundColor: colors.white.white2,
-              borderRadius: "10px",
-            }}
-            // icon={<NumberIcon />}
-            label="by position"
-            onDelete={handleDelete}
-          />
-          <Chip
-            sx={{
-              color: colors.primaryColors.lightblue.lightblue1,
-              backgroundColor: colors.white.white2,
-              borderRadius: "10px",
-            }}
-            label="by category"
-            onDelete={handleDelete}
-          />
-          <Chip
-            sx={{
-              color: colors.primaryColors.lightblue.lightblue1,
-              backgroundColor: colors.white.white2,
-              borderRadius: "10px",
-            }}
-            label="by date"
-            onDelete={handleDelete}
-          />
+          {filterOptions.map((option) => (
+            <ChipComponent
+              key={option.text}
+              label={`by ${option.text.toLowerCase()}`}
+              handleDelete={handleDelete}
+            />
+          ))}
           <Typography
             color={colors.secondaryColors.red.red1}
             fontSize="14px"
