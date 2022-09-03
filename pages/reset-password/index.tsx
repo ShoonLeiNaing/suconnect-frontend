@@ -1,8 +1,14 @@
 import { Box } from "@mui/material";
+import dynamic from "next/dynamic";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
-import ResetPasswordForm from "../../components/ResetPasswordForm";
+// import ResetPasswordForm from "../../components/ResetPasswordForm";
+
+const ResetPasswordForm = dynamic(
+  import("../../components/ResetPasswordForm"),
+  { ssr: false }
+);
 
 const breadCrumbsData = [
   {

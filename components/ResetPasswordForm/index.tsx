@@ -10,8 +10,10 @@ const ResetPasswordForm: FunctionComponent = () => {
   const [save, setSave] = useState(false);
 
   return (
-    <Box className="w-1/2 p-8 mb-8">
-      <Typography className="text-lg font-semibold">Reset Password</Typography>
+    <Box maxWidth="450px" margin="auto" my={6}>
+      <Typography fontSize="20px" fontWeight={600}>
+        Reset Password
+      </Typography>
       <Box className="text-[15px] font-light tracking-wide my-4">
         <Typography className="text-[15px] font-light mb-1">
           In order to{" "}
@@ -30,25 +32,30 @@ const ResetPasswordForm: FunctionComponent = () => {
           <span className="font-semibold">list of common passwords</span>
         </ListItem>
       </Box>
-      <Box className="pb-0 mb-0">
+      <Box>
         <InputLabel label="Current Password" />
+        <PasswordInput />
       </Box>
-      <PasswordInput />
-      <Box className="pb-0 mb-0">
+      <Box>
         <InputLabel label="New Password" />
+        <PasswordInput />
       </Box>
-      <PasswordInput />
 
-      <Box className="pb-0 mb-0">
+      <Box>
         <InputLabel label="Confirm New Password" />
+        <PasswordInput />
       </Box>
-      <PasswordInput />
 
-      <Box className="flex justify-end mt-4 mb-4 mr-10">
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-end"
+        maxWidth="412px"
+        mt={2}
+      >
         <SmallButton
           text="Cancel"
           bgColor="white"
-          customPaddingY="0.5rem"
           customPaddingX="2rem"
           color={colors.black.black1}
           customFontSize="15px"
@@ -56,7 +63,7 @@ const ResetPasswordForm: FunctionComponent = () => {
         />
         <SmallButton
           text="Save Changes"
-          customPaddingY="0.5rem"
+          customHeight="40px"
           customFontSize="15px"
           onClickHandler={() => setSave(!save)}
         />
