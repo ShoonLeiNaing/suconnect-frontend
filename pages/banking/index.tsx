@@ -30,6 +30,12 @@ const Banking = () => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
+
+  const newAccountCard = () => {
+    setAdd(!add);
+    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+  };
+
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
@@ -75,7 +81,7 @@ const Banking = () => {
           <Box
             className="flex items-center my-8 py-2 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
-            onClick={() => setAdd(!add)}
+            onClick={() => newAccountCard()}
           >
             <FaPlus />{" "}
             <span className="ml-2" style={{ fontSize: "14px" }}>
