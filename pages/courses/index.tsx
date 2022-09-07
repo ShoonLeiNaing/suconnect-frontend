@@ -1,4 +1,4 @@
-import { Box, Chip, Typography } from "@mui/material";
+import { Box, Chip } from "@mui/material";
 import { useState } from "react";
 import { IoGrid, IoListOutline } from "react-icons/io5";
 import { BiRefresh } from "react-icons/bi";
@@ -8,13 +8,14 @@ import MenuComponent from "../../components/MenuButton";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/SearchInput";
-import { colors } from "../../data/constant";
 import CourseContainer from "../../components/Courses/CourseContainer";
 import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { byCategory, byDate, byPosition } from "../../data/testData";
-import NumberIcon from "../../components/IconButton/NumberIcon";
-import ChipComponent from "../../components/ChipComponent";
+import IconButton from "../../components/IconButton";
+import FilterValueList from "../../components/Courses/FilterValueList";
+import DataTable from "../../components/DataTable";
+import ActionsMenu from "../../components/DataTable/ActionsMenu";
 
 const breadCrumbsData = [
   {
@@ -29,9 +30,67 @@ const breadCrumbsData = [
 
 const handleDelete = () => {};
 
+const columns = [
+  {
+    field: "no",
+    headerName: "No.",
+    width: 100,
+  },
+  { field: "date", headerName: "Date", flex: 1, minWidth: 200 },
+  { field: "course", headerName: "Course", flex: 1, minWidth: 200 },
+
+  {
+    field: "position",
+    headerName: "Position",
+    flex: 1,
+    minWidth: 200,
+    renderCell: (cellValues: any) => {
+      return (
+        <Chip
+          label={cellValues.value}
+          sx={{ borderRadius: "0", backgroundColor: "pink" }}
+        />
+      );
+    },
+  },
+  {
+    field: "category",
+    headerName: "Category",
+    flex: 1,
+    minWidth: 200,
+  },
+
+  {
+    width: 90,
+    field: "id",
+    headerName: "More",
+    sortable: false,
+    filterable: false,
+
+    renderCell: (cellValues: any) => {
+      return <ActionsMenu />;
+    },
+  },
+
+  // {
+  //   field: "fullName",
+  //   headerName: "Full name",
+  //   description: "This column has a value getter and is not sortable.",
+  //   sortable: false,
+  //   flex: 1,
+  //   valueGetter: (params: any) => {
+  //     return `${params.getValue(params.id, "firstName") || ""} ${
+  //       params.getValue(params.id, "lastName") || ""
+  //     }`;
+  //   },
+  // },
+];
+
 const Courses = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
+  const [isListView, setIsListView] = useState<boolean>(false);
+
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
     data: [],
@@ -47,6 +106,7 @@ const Courses = () => {
         setShowSideFilter(true);
       },
     },
+
     {
       text: "Position",
       data: byPosition,
@@ -65,6 +125,62 @@ const Courses = () => {
     },
   ];
 
+  // const columns = [
+  //   {
+  //     title: "Date",
+  //     onClickHandler: () => {
+  //       setFilterValue({ title: "Date", data: byDate, index: 2 });
+  //       setShowSideFilter(true);
+  //     },
+  //     filterOptions: [
+  //       {
+  //         text: "Date",
+  //         data: byDate,
+  //         onClickHandler: () => {
+  //           setFilterValue({ title: "Date", data: byDate, index: 2 });
+  //           setShowSideFilter(true);
+  //         },
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     title: "Course",
+  //   },
+  //   {
+  //     title: "Position",
+  //     onClickHandler: () => {
+  //       setFilterValue({ title: "Position", data: byPosition, index: 1 });
+  //       setShowSideFilter(true);
+  //     },
+  //     filterOptions: [
+  //       {
+  //         text: "Position",
+  //         data: byPosition,
+  //         onClickHandler: () => {
+  //           setFilterValue({ title: "Position", data: byPosition, index: 1 });
+  //           setShowSideFilter(true);
+  //         },
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     title: "Category",
+  //     onClickHandler: () => {
+  //       setFilterValue({ title: "Position", data: byPosition, index: 1 });
+  //       setShowSideFilter(true);
+  //     },
+  //     filterOptions: [
+  //       {
+  //         text: "Category",
+  //         data: byCategory,
+  //         onClickHandler: () => {
+  //           setFilterValue({ title: "Position", data: byPosition, index: 1 });
+  //           setShowSideFilter(true);
+  //         },
+  //       },
+  //     ],
+  //   },
+  // ];
   return (
     <Layout allowToggle={false} hiddenFooter>
       <Box color="black" className="container" px={6}>
@@ -84,6 +200,7 @@ const Courses = () => {
               searchText={searchText}
               setSearchText={setSearchText}
             />
+
             <MenuComponent
               filterOptions={filterOptions}
               isIcon
@@ -91,43 +208,21 @@ const Courses = () => {
             />
           </Box>
           <Box display="flex" gap={2}>
-            <Box
-              p={1}
-              borderRadius="8px"
-              width="fit-content"
-              bgcolor={colors.white.white2}
-              height="fit-content"
-              // onClick={() => resetDates()}
-            >
-              <IoListOutline
-                color={colors.primaryColors.lightblue.lightblue1}
-                fontSize="26px"
-              />
-            </Box>
-            <Box
-              p={1}
-              borderRadius="8px"
-              width="fit-content"
-              bgcolor={colors.primaryColors.lightblue.lightblue1}
-              height="fit-content"
-              color="white"
-              // onClick={() => resetDates()}
-            >
-              <IoGrid color="white" fontSize="24px" />
-            </Box>
-            <Box
-              p={1}
-              borderRadius="8px"
-              width="fit-content"
-              bgcolor={colors.white.white2}
-              height="fit-content"
-              // onClick={() => resetDates()}
-            >
-              <BiRefresh
-                color={colors.primaryColors.lightblue.lightblue1}
-                fontSize="26px"
-              />
-            </Box>
+            <IconButton
+              onClickHandler={() => setIsListView(false)}
+              isActive={!isListView}
+              icon={<IoGrid fontSize="24px" />}
+            />
+            <IconButton
+              onClickHandler={() => setIsListView(true)}
+              isActive={isListView}
+              icon={<IoListOutline fontSize="24px" />}
+            />
+
+            <IconButton
+              onClickHandler={handleDelete}
+              icon={<BiRefresh fontSize="26px" />}
+            />
           </Box>
         </Box>
 
@@ -139,29 +234,23 @@ const Courses = () => {
           filterOptions={filterOptions}
         />
 
-        <Box display="flex" alignItems="center" gap={2}>
-          {filterOptions.map((option) => (
-            <ChipComponent
-              key={option.text}
-              label={`by ${option.text.toLowerCase()}`}
-              handleDelete={handleDelete}
-            />
-          ))}
-          <Typography
-            color={colors.secondaryColors.red.red1}
-            fontSize="14px"
-            className="cursor"
-          >
-            Clear all
-          </Typography>
-        </Box>
-
-        <Box margin="auto" maxWidth="1200px" my={8}>
-          <CourseContainer />
-          <Box px={12} my={2}>
-            <Paginator />
+        {!isListView ? (
+          <Box>
+            <FilterValueList filterOptions={filterOptions} />
+            <Box margin="auto" maxWidth="1200px" my={8}>
+              <CourseContainer />
+              <Box px={12} my={2}>
+                <Paginator />
+              </Box>
+            </Box>
           </Box>
-        </Box>
+        ) : (
+          // <TableView columns={columns} filterOptions={filterOptions} />
+          <Box>
+            <FilterValueList filterOptions={filterOptions} />
+            <DataTable columns={columns} />
+          </Box>
+        )}
       </Box>
     </Layout>
   );

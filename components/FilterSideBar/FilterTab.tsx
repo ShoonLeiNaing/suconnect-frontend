@@ -9,10 +9,9 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 import { dateRange } from "../../data/testData";
-import DateFilter from "../DateFilter";
 import SearchInput from "../HeroParallax/SearchInput";
 import DateInput from "../Input/DateInput";
 import InputLabel from "../Input/InputLabel";

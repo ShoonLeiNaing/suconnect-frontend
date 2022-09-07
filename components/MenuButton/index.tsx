@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+
 import { Box, styled } from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -6,6 +8,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { FunctionComponent, useState } from "react";
 import { colors } from "../../data/constant";
 import IconButton from "../IconButton";
+import FloatButton from "../IconButton/FloatButton";
 
 interface FilterOption {
   text: string;
@@ -17,6 +20,7 @@ interface IProps {
   filterOptions: FilterOption[];
   isIcon?: boolean;
   icon: any;
+  rounded?: boolean;
 }
 
 const BootstrapButton = styled(Button)({
@@ -49,9 +53,11 @@ const MenuComponent: FunctionComponent<IProps> = ({
   filterOptions,
   isIcon,
   icon,
+  rounded,
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -65,19 +71,30 @@ const MenuComponent: FunctionComponent<IProps> = ({
   };
 
   return (
-    <Box
-      bgcolor={colors.white.white2}
-      width="fit-content"
-      minWidth="45px"
-      borderRadius="10px"
-    >
-      {isIcon ? (
-        <IconButton onClickHandler={handleClick} icon={icon} />
+    <>
+      {rounded ? (
+        <FloatButton icon={icon} onClickHandler={handleClick} />
+      ) : isIcon ? (
+        <Box
+          bgcolor={colors.white.white2}
+          width="fit-content"
+          minWidth="45px"
+          borderRadius="10px"
+        >
+          <IconButton onClickHandler={handleClick} icon={icon} />
+        </Box>
       ) : (
-        <BootstrapButton onClick={handleClick} variant="contained">
-          {title}
-          <IoMdArrowDropdown style={{ marginLeft: "10px" }} />
-        </BootstrapButton>
+        <Box
+          bgcolor={colors.white.white2}
+          width="fit-content"
+          minWidth="45px"
+          borderRadius="10px"
+        >
+          <BootstrapButton onClick={handleClick} variant="contained">
+            {title}
+            <IoMdArrowDropdown style={{ marginLeft: "10px" }} />
+          </BootstrapButton>
+        </Box>
       )}
       <Menu
         anchorEl={anchorEl}
@@ -110,13 +127,14 @@ const MenuComponent: FunctionComponent<IProps> = ({
           </MenuItem>
         ))}
       </Menu>
-    </Box>
+    </>
   );
 };
 
 MenuComponent.defaultProps = {
   title: "Filter",
   isIcon: false,
+  rounded: false,
 };
 
 export default MenuComponent;
