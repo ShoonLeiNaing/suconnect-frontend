@@ -6,7 +6,6 @@ import Layout from "../../components/Layout";
 import { colors } from "../../data/constant";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/DateFilter/SearchInput";
-import AccordionComponent from "../../components/Accordion";
 import { byCalendar, byCategory, byDate } from "../../data/testData";
 import MenuComponent from "../../components/MenuButton";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
@@ -26,7 +25,7 @@ const breadCrumbsData = [
 
 const SearchResults = () => {
   const [filterText, setFilterText] = useState<string>("");
-  const [searchText, setSearchText] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>("sprint");
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
 
   const [filterValue, setFilterValue] = useState<any>({
@@ -102,7 +101,7 @@ const SearchResults = () => {
           </Typography>
         </Box>
         <Box className="mb-4">
-            <SearchResultsComponent />
+          <SearchResultsComponent searchWord={searchText} />
         </Box>
         <FilterSideBar
           open={showSideFilter}

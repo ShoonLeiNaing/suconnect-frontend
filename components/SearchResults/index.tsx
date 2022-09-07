@@ -1,22 +1,25 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { FunctionComponent, useState } from "react";
-import { FaClock } from "react-icons/fa";
-import { Today } from "@mui/icons-material";
-import { colors } from "../../data/constant";
 import EventComponent from "./EventComponent";
 import IndicatorLine from "./IndicatorLine";
-import CalendarStatusBar from "./StatusBar";
+import ViewDetailComponent from "./ViewDetailComponent";
 
-const SearchResultsComponent: FunctionComponent = () => {
+interface IProps {
+  searchWord: any;
+}
+
+const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
   const [select, setSelect] = useState(false);
   const [id, setId] = useState<number | false>();
 
   return (
     <Box>
       <Typography className="my-4 font-semibold text-gray-500 text-lg tracking-wide text-center">
-        Showing results for{" "}
-        <span className="font-semibold text-black">&quot;sprint&quot;</span>
+        Showing results for
+        <span className="font-semibold text-black">
+          &quot;{searchWord}&quot;
+        </span>
       </Typography>
       <Box className={`flex ${id ? " " : "items-center"}`}>
         <Box className="my-6 w-fit px-8 py-8 border rounded-l-xl inline-block">
@@ -27,17 +30,19 @@ const SearchResultsComponent: FunctionComponent = () => {
           <EventComponent
             date="23"
             day="Tue"
+            keyword={searchWord}
             title="sprint meeting for Web Dev Team"
-            detailTime="9:00 AM - 10:30AM"
+            detailTime="9:00 AM - 10:30 AM"
             type="Work Calendar"
             onClickHandler={() => setId(1)}
           />
           <IndicatorLine show />
           <EventComponent
             date="30"
+            keyword={searchWord}
             day="Tue"
             title="sprint meeting for Web Dev Team"
-            detailTime="9:00 AM - 10:30AM"
+            detailTime="9:00 AM - 10:30 AM"
             type="Home Calendar"
             onClickHandler={() => setId(2)}
           />
@@ -47,16 +52,18 @@ const SearchResultsComponent: FunctionComponent = () => {
           <EventComponent
             date="06"
             day="Tue"
+            keyword={searchWord}
             title="sprint meeting for Web Dev Team"
-            detailTime="9:00 AM - 10:30AM"
+            detailTime="9:00 AM - 10:30 AM"
             type="Work Calendar"
             onClickHandler={() => setId(3)}
           />
           <EventComponent
             date="13"
             day="Tue"
+            keyword={searchWord}
             title="sprint meeting for Web Dev Team"
-            detailTime="9:00 AM - 10:30AM"
+            detailTime="9:00 AM - 10:30 AM"
             type="Home Calendar"
             onClickHandler={() => setId(4)}
           />
@@ -72,88 +79,40 @@ const SearchResultsComponent: FunctionComponent = () => {
         ) : (
           <Box className="mx-8 my-6 border px-4 h-fit w-1/2">
             {id === 1 && (
-              <>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b">
-                  <Today fontSize="small" />{" "}
-                  <span className="ml-[0.3rem]">
-                    sprint Meeting for Web Dev Team
-                  </span>
-                </Typography>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b flex items-center">
-                  {" "}
-                  <FaClock fontSize="medium" />{" "}
-                  <span className="ml-3 mr-4">Tuesday 23/08/2022</span> 9:00 AM
-                  - 10:30 AM{" "}
-                </Typography>
-                <CalendarStatusBar
-                  type="Work Calendar"
-                  dotColor="#FFD233"
-                  detailView
-                />
-              </>
+              <ViewDetailComponent
+                date="23/08/2022"
+                day="Tuesday"
+                title="sprint meeting for Web Dev Team"
+                time="9:00 AM - 10:30 AM"
+                type="Work Calendar"
+              />
             )}
             {id === 2 && (
-              <>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b">
-                  <Today fontSize="small" />{" "}
-                  <span className="ml-[0.3rem]">
-                    sprint Meeting for Web Dev Team
-                  </span>
-                </Typography>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b flex items-center">
-                  {" "}
-                  <FaClock fontSize="medium" />{" "}
-                  <span className="ml-3 mr-4">Tuesday 30/08/2022</span> 9:00 AM
-                  - 10:30 AM{" "}
-                </Typography>
-                <CalendarStatusBar
-                  type="Home Calendar"
-                  dotColor="#47F09F"
-                  detailView
-                />
-              </>
+              <ViewDetailComponent
+                date="30/08/2022"
+                day="Tuesday"
+                title="sprint meeting for Web Dev Team"
+                time="9:00 AM - 10:30 AM"
+                type="Home Calendar"
+              />
             )}
             {id === 3 && (
-              <>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b">
-                  <Today fontSize="small" />{" "}
-                  <span className="ml-[0.3rem]">
-                    sprint Meeting for Web Dev Team
-                  </span>
-                </Typography>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b flex items-center">
-                  {" "}
-                  <FaClock fontSize="medium" />{" "}
-                  <span className="ml-3 mr-4">Tuesday 06/09/2022</span> 9:00 AM
-                  - 10:30 AM{" "}
-                </Typography>
-                <CalendarStatusBar
-                  type="Work Calendar"
-                  dotColor="#FFD233"
-                  detailView
-                />
-              </>
+              <ViewDetailComponent
+                date="06/09/2022"
+                day="Tuesday"
+                title="sprint meeting for Web Dev Team"
+                time="9:00 AM - 10:30 AM"
+                type="Work Calendar"
+              />
             )}
             {id === 4 && (
-              <>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b">
-                  <Today fontSize="small" />{" "}
-                  <span className="ml-[0.3rem]">
-                    sprint Meeting for Web Dev Team
-                  </span>
-                </Typography>
-                <Typography className="text-[0.94rem] text-[#333333] py-4 border-b flex items-center">
-                  {" "}
-                  <FaClock fontSize="medium" />{" "}
-                  <span className="ml-3 mr-4">Tuesday 13/09/2022</span> 9:00 AM
-                  - 10:30 AM{" "}
-                </Typography>
-                <CalendarStatusBar
-                  type="Home Calendar"
-                  dotColor="#47F09F"
-                  detailView
-                />
-              </>
+              <ViewDetailComponent
+                date="13/09/2022"
+                day="Tuesday"
+                title="sprint meeting for Web Dev Team"
+                time="9:00 AM - 10:30 AM"
+                type="Home Calendar"
+              />
             )}
           </Box>
         )}

@@ -2,10 +2,12 @@ import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 import CalendarStatusBar from "./StatusBar";
 import { colors } from "../../data/constant";
+import HighlightKeyword from "./Highlight";
 
 interface IProps {
   date: string;
   day: string;
+  keyword: any;
   title: string;
   detailTime: string;
   type: string;
@@ -15,6 +17,7 @@ interface IProps {
 const EventComponent: FunctionComponent<IProps> = ({
   date,
   day,
+  keyword,
   title,
   detailTime,
   type,
@@ -31,7 +34,7 @@ const EventComponent: FunctionComponent<IProps> = ({
       </Box>
       <Box className="flex flex-col mx-8">
         <Typography className="font-light text-[0.94rem] mb-2">
-          {title}
+          <HighlightKeyword title={title} keyword={keyword} />
         </Typography>
         <Typography className="text-sm text-gray-500 mb-2">
           {detailTime}
