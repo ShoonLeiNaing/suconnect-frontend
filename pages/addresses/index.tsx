@@ -30,6 +30,12 @@ const Addresses = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
+
+  const newAddressCard = () => {
+    setAdd(!add);
+    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+  };
+
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
     data: [],
@@ -74,7 +80,7 @@ const Addresses = () => {
           <Box
             className="flex items-center my-4 py-2 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
-            onClick={() => setAdd(!add)}
+            onClick={() => newAddressCard()}
           >
             <FaPlus />{" "}
             <span className="ml-2" style={{ fontSize: "14px" }}>
@@ -134,7 +140,7 @@ const Addresses = () => {
           {add && (
             <AccordionComponent
               title="My new address"
-              orderNo={3}
+              orderNo={4}
               bgColor={colors.primaryColors.pink.pink1}
               isNew
             />
