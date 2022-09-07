@@ -138,6 +138,51 @@ export const byCategory = [
   },
 ];
 
+export const byCalendar = [
+  {
+    value: "Course 1",
+  },
+  {
+    value: "Course 2",
+  },
+  {
+    value: "Course 3",
+  },
+  {
+    value: "Course 4",
+  },
+  {
+    value: "Course 5",
+  },
+  {
+    value: "Course 6",
+  },
+  {
+    value: "Course 7",
+  },
+  {
+    value: "Course 8",
+  },
+  {
+    value: "Course 9",
+  },
+  {
+    value: "Course 10",
+  },
+  {
+    value: "Course 11",
+  },
+  {
+    value: "Course 12",
+  },
+  {
+    value: "Course 13",
+  },
+  {
+    value: "Course 14",
+  },
+];
+
 export const byPosition = [
   {
     value: "HR",
