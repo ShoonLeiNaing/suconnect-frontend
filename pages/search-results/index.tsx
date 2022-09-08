@@ -1,15 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
-import { RiFilterFill } from "react-icons/ri";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
-import { colors } from "../../data/constant";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/DateFilter/SearchInput";
-import { byCalendar, byCategory, byDate } from "../../data/testData";
-import MenuComponent from "../../components/MenuButton";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import ChipComponent from "../../components/ChipComponent";
+import { byCalendar } from "../../data/testData";
 import SearchResultsComponent from "../../components/SearchResults";
 
 const breadCrumbsData = [
@@ -76,40 +71,12 @@ const SearchResults = () => {
               setFilterText={setFilterText}
               setSearchText={setSearchText}
             />
-            <MenuComponent
-              filterOptions={filterOptions}
-              isIcon
-              icon={<RiFilterFill />}
-            />
           </Box>
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mb={4}>
-          {filterOptions.map((option) => (
-            <ChipComponent
-              key={option.text}
-              label={`by ${option.text}`}
-              handleDelete={handleDelete}
-            />
-          ))}
 
-          <Typography
-            color={colors.secondaryColors.red.red1}
-            fontSize="14px"
-            className="cursor"
-          >
-            Clear all
-          </Typography>
-        </Box>
         <Box className="mb-4">
           <SearchResultsComponent searchWord={searchText} />
         </Box>
-        <FilterSideBar
-          open={showSideFilter}
-          setShowSideFilter={setShowSideFilter}
-          filterValue={filterValue}
-          setFilterValue={setFilterValue}
-          filterOptions={filterOptions}
-        />
       </Box>
     </Layout>
   );
