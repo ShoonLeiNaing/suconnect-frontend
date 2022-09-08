@@ -1,9 +1,9 @@
 version: "3"
 services:
   next-js-app:
-    image: docker-nextjs-dev:development
     build: .
-    container_name: frontend-app
+    command: "npm run dev"
+    container_name: development
     ports:
       - 3000:3000
     volumes:
