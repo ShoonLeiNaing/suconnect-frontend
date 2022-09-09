@@ -16,7 +16,7 @@ const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
   return (
     <Box>
       <Typography className="my-4 font-semibold text-gray-500 text-lg tracking-wide text-center">
-        Showing results for
+        Showing results for { }
         <span className="font-semibold text-black">
           &quot;{searchWord}&quot;
         </span>

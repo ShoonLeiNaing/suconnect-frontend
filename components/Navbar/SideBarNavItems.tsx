@@ -56,7 +56,7 @@ const SideBarNavItems: FunctionComponent<IProps> = ({ navTitles, status }) => {
           onChange={handleChange(`panel${index + 1}`)}
         >
           <AccordionSummary
-            className="mt-0"
+            className={`mt-0 ${ expanded && !status ? setExpanded(false) : "" }`}
             expandIcon={
               <Box
                 className={` ${
@@ -87,7 +87,7 @@ const SideBarNavItems: FunctionComponent<IProps> = ({ navTitles, status }) => {
               </Typography>
             </Box>
           </AccordionSummary>
-          <AccordionDetails className="my-0 -mt-2 py-0">
+          <AccordionDetails className={` ${status ? "" : "hidden"} my-0 -mt-2 py-0`}>
             <SideDropDown
               title="DropDown 1"
               iconColor={navTitle.iconBgColor}
