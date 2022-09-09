@@ -90,7 +90,7 @@ const FilterTab: FunctionComponent<IProps> = ({
         setFilterValue={setFilterValue}
         filterOptions={filterOptions}
       />
-      {filterValue.title !== "Date" ? (
+      {!filterValue.title.includes("Date") ? (
         <Box
           display="flex"
           flexDirection="column"

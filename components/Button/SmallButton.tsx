@@ -13,6 +13,7 @@ interface IProps {
   customPaddingY?: string;
   customFontSize?: string;
   customMarginX?: string;
+  icon?: any;
 }
 
 const SmallButton: FunctionComponent<IProps> = ({
@@ -26,6 +27,7 @@ const SmallButton: FunctionComponent<IProps> = ({
   customPaddingY,
   customFontSize,
   customMarginX,
+  icon,
 }) => {
   return (
     <Box
@@ -38,7 +40,7 @@ const SmallButton: FunctionComponent<IProps> = ({
       width={customWidth && customWidth}
       mx={customMarginX}
       display="flex"
-      flexDirection="column"
+      // flexDirection="column"
       alignItems="center"
       justifyContent="center"
       // fontSize="14px"
@@ -46,6 +48,7 @@ const SmallButton: FunctionComponent<IProps> = ({
       // fontWeight={500}
       // cursor="pointer"
     >
+      {icon && icon}
       <Typography fontSize={customFontSize} color={color}>
         {text}
       </Typography>
