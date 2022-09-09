@@ -13,7 +13,7 @@ import IconButton from "../../components/IconButton";
 import SmallButton from "../../components/Button/SmallButton";
 import ActionsMenu from "../../components/DataTable/ActionsMenu";
 import DataTable from "../../components/DataTable";
-import { announcements, casesData } from "../../data/testData";
+import { announcements } from "../../data/testData";
 
 const AnnouncementUserView: NextPage = () => {
   const [filterText, setFilterText] = useState<string>("");
@@ -53,7 +53,7 @@ const AnnouncementUserView: NextPage = () => {
   ];
 
   return (
-    <Layout>
+    <Layout hiddenFooter>
       <Box display="flex">
         <Box className="container p-12" color="black">
           <SubTitle
