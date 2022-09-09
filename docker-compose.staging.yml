@@ -1,0 +1,8 @@
+version: "3"
+services:
+  next-js-app:
+    build: .
+    command: "npm start"
+    container_name: staging
+    ports:
+      - 3001:3001

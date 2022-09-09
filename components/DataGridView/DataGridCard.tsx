@@ -10,14 +10,16 @@ interface IProps {
   position: string;
   date: string;
   index: number;
+  showCategory: boolean;
 }
 
-const CourseCard: FunctionComponent<IProps> = ({
+const DataGridCard: FunctionComponent<IProps> = ({
   image,
   title,
   position,
   date,
   index,
+  showCategory,
 }) => {
   const color =
     index === 0 || index === 3
@@ -42,18 +44,20 @@ const CourseCard: FunctionComponent<IProps> = ({
         image={image}
         alt="green iguana"
       />
-      <Chip
-        sx={{
-          color: colors.grey.grey2,
-          backgroundColor: color,
-          borderRadius: "0",
-          position: "absolute",
-          bottom: "0",
-          marginBottom: "115px",
-          marginLeft: "20px",
-        }}
-        label="course cate"
-      />
+      {showCategory && (
+        <Chip
+          sx={{
+            color: colors.grey.grey2,
+            backgroundColor: color,
+            borderRadius: "0",
+            position: "absolute",
+            bottom: "0",
+            marginBottom: "115px",
+            marginLeft: "20px",
+          }}
+          label="course cate"
+        />
+      )}
       <CardContent
         sx={{
           backgroundColor: colors.white.white2,
@@ -81,4 +85,4 @@ const CourseCard: FunctionComponent<IProps> = ({
   );
 };
 
-export default CourseCard;
+export default DataGridCard;

@@ -7,8 +7,13 @@ COPY package*.json ./
 RUN npm install
 
 COPY next.config.js ./next.config.js
+
 COPY . .
 
-CMD [ "npm", "run", "dev" ]
+RUN npm run build
+
+EXPOSE 3000
+ 
 
 
+ 
