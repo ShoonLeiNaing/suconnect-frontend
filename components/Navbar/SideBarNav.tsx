@@ -61,15 +61,29 @@ const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
       />
 
       <SideBarNavItems navTitles={NavTitles} status={slideOpen} />
-      <Box className="flex justify-between items-center mt-36 cursor-pointer">
-        <Typography
-          className={`${slideOpen ? "block" : "hidden"} `}
-          color={colors.secondaryColors.red.red1}
-        >
-          Log out
-        </Typography>
-        &nbsp;
-        <img src="/images/logout.svg" alt="logout" />
+      <Box
+        position="absolute"
+        display="flex"
+        width="100%"
+        bottom={0}
+        px={slideOpen ? 2 : 0}
+        py={2}
+        justifyContent="space-between"
+      >
+        {slideOpen && (
+          <Typography
+            // className={`${slideOpen ? "block" : "hidden"} `}
+            color={colors.secondaryColors.red.red1}
+          >
+            Log out
+          </Typography>
+        )}
+
+        <img
+          src="/images/logout.svg"
+          alt="logout"
+          style={{ paddingRight: slideOpen ? "50px" : "0" }}
+        />
       </Box>
 
       {allowToggle && (
