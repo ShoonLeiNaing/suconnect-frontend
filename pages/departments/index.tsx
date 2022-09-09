@@ -11,12 +11,7 @@ import SearchInput from "../../components/SearchInput";
 import GridContainer from "../../components/DataGridView/GridContainer";
 import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import {
-  byCategory,
-  byDate,
-  byPosition,
-  courseData,
-} from "../../data/testData";
+import { byCategory, departmentsData, groupData } from "../../data/testData";
 import IconButton from "../../components/IconButton";
 import FilterValueList from "../../components/Courses/FilterValueList";
 import DataTable from "../../components/DataTable";
@@ -41,30 +36,20 @@ const columns = [
     headerName: "No.",
     width: 95,
   },
-  { field: "date", headerName: "Date", flex: 1, minWidth: 200 },
-  { field: "name", headerName: "Course", flex: 1, minWidth: 200 },
+  { field: "date", headerName: "Date", minWidth: 150 },
+  { field: "name", headerName: "Name", minWidth: 170 },
+  {
+    field: "parent",
+    headerName: "Parent Group",
+    minWidth: 170,
+    filterable: false,
+  },
 
   {
-    field: "position",
-    headerName: "Position",
+    field: "description",
+    headerName: "Description",
     flex: 1,
     minWidth: 200,
-    filterable: false,
-    renderCell: (cellValues: any) => {
-      return (
-        <Chip
-          label={cellValues.value}
-          sx={{ borderRadius: "0", backgroundColor: "pink" }}
-        />
-      );
-    },
-  },
-  {
-    field: "category",
-    headerName: "Category",
-    flex: 1,
-    minWidth: 200,
-    filterable: false,
   },
 
   {
@@ -78,22 +63,9 @@ const columns = [
       return <ActionsMenu />;
     },
   },
-
-  // {
-  //   field: "fullName",
-  //   headerName: "Full name",
-  //   description: "This column has a value getter and is not sortable.",
-  //   sortable: false,
-  //   flex: 1,
-  //   valueGetter: (params: any) => {
-  //     return `${params.getValue(params.id, "firstName") || ""} ${
-  //       params.getValue(params.id, "lastName") || ""
-  //     }`;
-  //   },
-  // },
 ];
 
-const Courses = () => {
+const Departments = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
   const [isListView, setIsListView] = useState<boolean>(false);
@@ -106,27 +78,10 @@ const Courses = () => {
 
   const filterOptions = [
     {
-      text: "Category",
+      text: "Parent Group",
       data: byCategory,
       onClickHandler: () => {
-        setFilterValue({ title: "Category", data: byCategory, index: 0 });
-        setShowSideFilter(true);
-      },
-    },
-
-    {
-      text: "Position",
-      data: byPosition,
-      onClickHandler: () => {
-        setFilterValue({ title: "Position", data: byPosition, index: 1 });
-        setShowSideFilter(true);
-      },
-    },
-    {
-      text: "Date",
-      data: byDate,
-      onClickHandler: () => {
-        setFilterValue({ title: "Date", data: byDate, index: 2 });
+        setFilterValue({ title: "Parent Group", data: byCategory, index: 0 });
         setShowSideFilter(true);
       },
     },
@@ -136,10 +91,10 @@ const Courses = () => {
     <Layout allowToggle={false} hiddenFooter>
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
-          currentPage="Courses"
+          currentPage="Departments"
           previousPages={breadCrumbsData}
         />
-        <NameTag name="Thiha Swan Htet" currentPage="Courses" />
+        <NameTag name="Thiha Swan Htet" currentPage="Departments" />
         <Box
           my={4}
           display="flex"
@@ -189,16 +144,17 @@ const Courses = () => {
           <Box>
             <FilterValueList filterOptions={filterOptions} />
             <Box margin="auto" maxWidth="1200px" my={8}>
-              <GridContainer showCategory data={courseData} />
+              <GridContainer data={departmentsData} />
               <Box px={12} my={2}>
                 <Paginator />
               </Box>
             </Box>
           </Box>
         ) : (
+          // <TableView columns={columns} filterOptions={filterOptions} />
           <Box>
             <FilterValueList filterOptions={filterOptions} />
-            <DataTable columns={columns} data={courseData} />
+            <DataTable columns={columns} data={departmentsData} />
           </Box>
         )}
       </Box>
@@ -206,4 +162,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default Departments;
