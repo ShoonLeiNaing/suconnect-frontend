@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable consistent-return, array-callback-return */
 
 import { Grid } from "@mui/material";
 import { FunctionComponent } from "react";
