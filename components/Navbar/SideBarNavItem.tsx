@@ -10,6 +10,7 @@ interface IProps {
   title: string;
   icon: string;
   iconBgColor?: string;
+  dropdown: any;
 }
 
 const SideBarNavItem: FunctionComponent<IProps> = ({
@@ -17,6 +18,7 @@ const SideBarNavItem: FunctionComponent<IProps> = ({
   title,
   icon,
   iconBgColor,
+  dropdown,
 }) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
@@ -60,14 +62,16 @@ const SideBarNavItem: FunctionComponent<IProps> = ({
         </Box>
       </Box>
       <Box className={` ${dropDownOpen ? "mb-4" : ""} `}>
-        <SideDropDown
-          sideStatus={status}
-          dropStatus={dropDownOpen}
-          title="DropDown 1"
-          iconColor={iconBgColor}
-          icon={<FaBookReader />}
-        />
-        <SideDropDown
+        {dropdown.dropdown?.map((item: any) => (
+          <SideDropDown
+            sideStatus={status}
+            dropStatus={dropDownOpen}
+            title={item.text}
+            iconColor={dropdown.color}
+            icon={item.icon}
+          />
+        ))}
+        {/* <SideDropDown
           sideStatus={status}
           dropStatus={dropDownOpen}
           title="DropDown 2"
@@ -80,7 +84,7 @@ const SideBarNavItem: FunctionComponent<IProps> = ({
           title="DropDown 3"
           iconColor={iconBgColor}
           icon={<FaCog />}
-        />
+        /> */}
       </Box>
     </Box>
   );

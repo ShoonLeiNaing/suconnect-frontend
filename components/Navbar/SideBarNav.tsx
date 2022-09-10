@@ -7,9 +7,10 @@ import styles from "./navbar.module.css";
 
 interface IProps {
   allowToggle?: boolean;
+  data: any[];
 }
 
-const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
+const SideBarNav: FunctionComponent<IProps> = ({ allowToggle, data }) => {
   const [slideOpen, setSlideOpen] = useState(true);
 
   return (
@@ -26,19 +27,23 @@ const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
         style={{ height: slideOpen ? "50px" : "32px" }}
         src={slideOpen ? "/images/logo.png" : "/images/logosm.png"}
       />
-      <SideBarNavItem
-        status={slideOpen}
-        title="Dashboard"
-        icon="/images/sidebaricon1.svg"
-        iconBgColor={colors.primaryColors.lightblue.lightblue1}
-      />
-      <SideBarNavItem
+      {data?.map((item) => (
+        <SideBarNavItem
+          key={item.text}
+          status={slideOpen}
+          title={item.text}
+          icon={item.icon}
+          iconBgColor={colors.primaryColors.lightblue.lightblue1}
+          dropdown={item}
+        />
+      ))}
+      {/* <SideBarNavItem
         status={slideOpen}
         title="Schedule"
         icon="/images/sidebaricon2.svg"
         iconBgColor={colors.primaryColors.pink.pink1}
-      />
-      <SideBarNavItem
+      /> */}
+      {/* <SideBarNavItem
         status={slideOpen}
         title="Courses"
         icon="/images/sidebaricon3.svg"
@@ -61,7 +66,7 @@ const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
         title="My Profile"
         icon="/images/sidebaricon6.svg"
         iconBgColor={colors.secondaryColors.red.red1}
-      />
+      /> */}
       {/* <Box className="flex justify-between items-center mt-36 cursor-pointer">
         <Typography
           className={`${slideOpen ? "block" : "hidden"} `}

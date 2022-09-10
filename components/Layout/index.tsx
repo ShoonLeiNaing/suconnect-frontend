@@ -11,6 +11,7 @@ interface IProps {
   showSideNav?: boolean;
   allowToggle?: boolean;
   hiddenFooter?: boolean;
+  data: any[];
 }
 
 const Layout: FunctionComponent<IProps> = ({
@@ -19,13 +20,14 @@ const Layout: FunctionComponent<IProps> = ({
   showSideNav,
   allowToggle,
   hiddenFooter,
+  data,
 }: IProps) => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   return (
     <Box bgcolor="white">
       {isLogin ? (
         <Box display="flex">
-          {showSideNav && <SideBarNav allowToggle={allowToggle} />}
+          {showSideNav && <SideBarNav data={data} allowToggle={allowToggle} />}
           <Box width="100%">
             <LoginNavbar
               changeLanguage={changeLanguage}

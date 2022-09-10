@@ -24,8 +24,8 @@ const SideDropDown: FunctionComponent<IProps> = ({
       } duration-100 py-4`}
     >
       <Box display="flex" marginLeft="0.5rem" color={iconColor} fontSize="20px">
-        {/* {icon} */}
-        {icon}
+        <Icon component={icon} fontSize="small" />
+
         {/* <Icon as={icon} sx={{ color: iconColor, marginRight: "1rem" }} /> */}
         {/* <Icon sx={{ color: iconColor, marginRight: "1rem" }}>{icon}</Icon> */}
         <Typography
