@@ -9,12 +9,13 @@ import Feature from "../components/Feature";
 import HeroParallax from "../components/HeroParallax";
 import UserInnovation from "../components/UserInnovation";
 import FaqAccordions from "../components/FaqAccordions";
+import { navigation } from "../data/navigationData";
 
 const Layout = dynamic(import("../components/Layout"), { ssr: false });
 
 const Home: NextPage = () => {
   return (
-    <Layout changeLanguage showSideNav={false}>
+    <Layout changeLanguage showSideNav={false} data={navigation}>
       <HeroParallax />
       <Box color="black" className="container">
         {/* <Box className="inner-container"> */}

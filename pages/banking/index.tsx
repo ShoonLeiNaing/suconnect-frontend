@@ -14,6 +14,7 @@ import { byCategory, byDate } from "../../data/testData";
 import MenuComponent from "../../components/MenuButton";
 import ChipComponent from "../../components/ChipComponent";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
+import { navigation } from "../../data/navigationData";
 
 const breadCrumbsData = [
   {
@@ -65,7 +66,7 @@ const Banking = () => {
   const handleDelete = () => {};
 
   return (
-    <Layout hiddenFooter>
+    <Layout hiddenFooter data={navigation} panel="panel3">
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="Banking"

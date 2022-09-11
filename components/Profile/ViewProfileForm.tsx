@@ -33,7 +33,7 @@ const ViewProfileForm = () => {
           >
             <IoLocationSharp fontSize="20px" className="mr-1" /> Yangon, Myanmar
           </Typography>
-          <Link href="/profile/edit">
+          <Link href="/update-profile">
             <a>
               <button className={styles.edit_btn} type="submit">
                 <MdModeEdit className="mr-1" fontSize="20px" /> Edit Profile

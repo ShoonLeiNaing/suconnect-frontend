@@ -6,6 +6,7 @@ import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/DateFilter/SearchInput";
 import { byCalendar } from "../../data/testData";
 import SearchResultsComponent from "../../components/SearchResults";
+import { navigation } from "../../data/navigationData";
 
 const breadCrumbsData = [
   {
@@ -51,7 +52,7 @@ const SearchResults = () => {
   const handleDelete = () => {};
 
   return (
-    <Layout hiddenFooter>
+    <Layout hiddenFooter data={navigation}>
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="Schedule"

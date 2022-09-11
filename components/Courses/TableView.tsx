@@ -19,7 +19,7 @@ interface IProps {
 const TableView: FunctionComponent<IProps> = ({ columns }) => {
   return (
     <Box sx={{ width: "100%" }}>
-      <table className="table-view-table-container" style={{ width: "100%" }}>
+      {/* <table className="table-view-table-container" style={{ width: "100%" }}>
         <thead>
           <tr>
             <th className="w-8">
@@ -69,7 +69,7 @@ const TableView: FunctionComponent<IProps> = ({ columns }) => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </Box>
   );
 };
