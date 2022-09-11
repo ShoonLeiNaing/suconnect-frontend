@@ -1,6 +1,7 @@
+/* eslint-disable no-nested-ternary */
+
 import { Box, Chip } from "@mui/material";
 import { useState } from "react";
-import { IoGrid, IoListOutline } from "react-icons/io5";
 import { BiRefresh } from "react-icons/bi";
 import { RiFilterFill } from "react-icons/ri";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
@@ -8,15 +9,8 @@ import MenuComponent from "../../components/MenuButton";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/SearchInput";
-import GridContainer from "../../components/DataGridView/GridContainer";
-import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import {
-  byCategory,
-  byDate,
-  byPosition,
-  courseData,
-} from "../../data/testData";
+import { byCategory, byDate, byPosition, casesData } from "../../data/testData";
 import IconButton from "../../components/IconButton";
 import FilterValueList from "../../components/Courses/FilterValueList";
 import DataTable from "../../components/DataTable";
@@ -42,32 +36,46 @@ const columns = [
     headerName: "No.",
     width: 95,
   },
-  { field: "date", headerName: "Date", flex: 1, minWidth: 200 },
-  { field: "name", headerName: "Course", flex: 1, minWidth: 200 },
+  { field: "date", headerName: "Date", minWidth: 170 },
+  { field: "name", headerName: "Name", minWidth: 170 },
 
   {
-    field: "position",
-    headerName: "Position",
+    field: "status",
+    headerName: "Status",
     flex: 1,
-    minWidth: 200,
+    minWidth: 170,
     filterable: false,
     renderCell: (cellValues: any) => {
       return (
         <Chip
           label={cellValues.value}
-          sx={{ borderRadius: "0", backgroundColor: "pink" }}
+          sx={{
+            borderRadius: "10px",
+            backgroundColor:
+              cellValues.value === "approved"
+                ? "#00D097"
+                : cellValues.value === "declined"
+                ? "#F65160"
+                : "#FFD84C",
+            color: "white",
+          }}
         />
       );
     },
   },
   {
-    field: "category",
-    headerName: "Category",
+    field: "bank",
+    headerName: "Bank",
     flex: 1,
-    minWidth: 200,
+    minWidth: 100,
     filterable: false,
   },
-
+  {
+    field: "amount",
+    headerName: "Amount",
+    flex: 1,
+    minWidth: 200,
+  },
   {
     width: 90,
     field: "id",
@@ -79,25 +87,11 @@ const columns = [
       return <ActionsMenu />;
     },
   },
-
-  // {
-  //   field: "fullName",
-  //   headerName: "Full name",
-  //   description: "This column has a value getter and is not sortable.",
-  //   sortable: false,
-  //   flex: 1,
-  //   valueGetter: (params: any) => {
-  //     return `${params.getValue(params.id, "firstName") || ""} ${
-  //       params.getValue(params.id, "lastName") || ""
-  //     }`;
-  //   },
-  // },
 ];
 
-const Courses = () => {
+const Cases = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
-  const [isListView, setIsListView] = useState<boolean>(false);
 
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
@@ -107,40 +101,45 @@ const Courses = () => {
 
   const filterOptions = [
     {
-      text: "Category",
+      text: "Status",
       data: byCategory,
       onClickHandler: () => {
-        setFilterValue({ title: "Category", data: byCategory, index: 0 });
+        setFilterValue({ title: "Status", data: byCategory, index: 0 });
         setShowSideFilter(true);
       },
     },
 
     {
-      text: "Position",
+      text: "Approval Date",
       data: byPosition,
       onClickHandler: () => {
-        setFilterValue({ title: "Position", data: byPosition, index: 1 });
+        setFilterValue({
+          title: "Approval Date",
+          data: byDate,
+          index: 1,
+          date: true,
+        });
         setShowSideFilter(true);
       },
     },
     {
-      text: "Date",
+      text: "Bank",
       data: byDate,
       onClickHandler: () => {
-        setFilterValue({ title: "Date", data: byDate, index: 2 });
+        setFilterValue({ title: "Bank", data: byDate, index: 2 });
         setShowSideFilter(true);
       },
     },
   ];
 
   return (
-    <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
+    <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel3">
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
-          currentPage="Courses"
+          currentPage="Cases"
           previousPages={breadCrumbsData}
         />
-        <NameTag name="Thiha Swan Htet" currentPage="Courses" />
+        <NameTag name="Thiha Swan Htet" currentPage="Cases" />
         <Box
           my={4}
           display="flex"
@@ -159,23 +158,10 @@ const Courses = () => {
               icon={<RiFilterFill />}
             />
           </Box>
-          <Box display="flex" gap={2}>
-            <IconButton
-              onClickHandler={() => setIsListView(false)}
-              isActive={!isListView}
-              icon={<IoGrid fontSize="24px" />}
-            />
-            <IconButton
-              onClickHandler={() => setIsListView(true)}
-              isActive={isListView}
-              icon={<IoListOutline fontSize="24px" />}
-            />
-
-            <IconButton
-              onClickHandler={handleDelete}
-              icon={<BiRefresh fontSize="26px" />}
-            />
-          </Box>
+          <IconButton
+            onClickHandler={handleDelete}
+            icon={<BiRefresh fontSize="26px" />}
+          />
         </Box>
 
         <FilterSideBar
@@ -186,25 +172,13 @@ const Courses = () => {
           filterOptions={filterOptions}
         />
 
-        {!isListView ? (
-          <Box>
-            <FilterValueList filterOptions={filterOptions} />
-            <Box margin="auto" maxWidth="1200px" my={8}>
-              <GridContainer showCategory data={courseData} />
-              <Box px={12} my={2}>
-                <Paginator />
-              </Box>
-            </Box>
-          </Box>
-        ) : (
-          <Box>
-            <FilterValueList filterOptions={filterOptions} />
-            <DataTable columns={columns} data={courseData} />
-          </Box>
-        )}
+        <Box>
+          <FilterValueList filterOptions={filterOptions} />
+          <DataTable columns={columns} data={casesData} />
+        </Box>
       </Box>
     </Layout>
   );
 };
 
-export default Courses;
+export default Cases;

@@ -33,7 +33,7 @@ const HeroParallax = () => {
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Pellentesque aliquam volutpat malesuada vel quis vitae ultrices
-            porta.
+            porta. hehe
           </Typography>
 
           <Box mt={4} sx={{ cursor: "pointer" }}>

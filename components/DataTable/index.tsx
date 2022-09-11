@@ -33,9 +33,10 @@ const BootstrapDataGrid = styled(DataGrid)({
 
 interface IProps {
   columns: any;
+  data: any;
 }
 
-const DataTable: FunctionComponent<IProps> = ({ columns }) => {
+const DataTable: FunctionComponent<IProps> = ({ columns, data }) => {
   const [pageSize, setPageSize] = useState<number>(8);
 
   return (
@@ -43,7 +44,7 @@ const DataTable: FunctionComponent<IProps> = ({ columns }) => {
       <BootstrapDataGrid
         rowHeight={70}
         headerHeight={70}
-        rows={courseData}
+        rows={data}
         columns={columns}
         pageSize={pageSize}
         checkboxSelection

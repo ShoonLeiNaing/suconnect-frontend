@@ -1,51 +1,82 @@
 export const announcements = [
   {
-    title: "Distribution",
+    id: 1,
+    no: 1,
+    date: "21/08/2022",
+    name: "Distribution",
+    description:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+
+  {
+    id: 2,
+    no: 2,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 3,
+    no: 3,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 4,
+    no: 4,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 5,
+    no: 5,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 6,
+    no: 6,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 7,
+    no: 7,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 8,
+    no: 8,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
+    id: 9,
+    no: 9,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
   {
-    title: "Distribution",
-    description:
-      "The distribution of algal species has been fairly well studied sincethe founding.",
-  },
-  {
-    title: "Distribution",
+    id: 10,
+    no: 10,
+    date: "21/08/2022",
+    name: "Distribution",
     description:
       "The distribution of algal species has been fairly well studied sincethe founding.",
   },
@@ -138,6 +169,51 @@ export const byCategory = [
   },
 ];
 
+export const byCalendar = [
+  {
+    value: "Course 1",
+  },
+  {
+    value: "Course 2",
+  },
+  {
+    value: "Course 3",
+  },
+  {
+    value: "Course 4",
+  },
+  {
+    value: "Course 5",
+  },
+  {
+    value: "Course 6",
+  },
+  {
+    value: "Course 7",
+  },
+  {
+    value: "Course 8",
+  },
+  {
+    value: "Course 9",
+  },
+  {
+    value: "Course 10",
+  },
+  {
+    value: "Course 11",
+  },
+  {
+    value: "Course 12",
+  },
+  {
+    value: "Course 13",
+  },
+  {
+    value: "Course 14",
+  },
+];
+
 export const byPosition = [
   {
     value: "HR",
@@ -188,7 +264,7 @@ export const courseData = [
     id: 1,
     no: 1,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -196,7 +272,7 @@ export const courseData = [
     id: 2,
     no: 2,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -204,7 +280,7 @@ export const courseData = [
     id: 3,
     no: 3,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -212,7 +288,7 @@ export const courseData = [
     id: 4,
     no: 4,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -220,7 +296,7 @@ export const courseData = [
     id: 5,
     no: 5,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -228,7 +304,7 @@ export const courseData = [
     id: 6,
     no: 6,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -236,7 +312,7 @@ export const courseData = [
     id: 7,
     no: 7,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -244,7 +320,7 @@ export const courseData = [
     id: 8,
     no: 8,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -252,7 +328,7 @@ export const courseData = [
     id: 9,
     no: 9,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
   },
@@ -260,8 +336,253 @@ export const courseData = [
     id: 10,
     no: 10,
     date: "21/08/2022",
-    course: "Test Course 1",
+    name: "Test Course 1",
     position: "Assistant Teacher",
     category: "Test category",
+  },
+];
+
+export const groupData = [
+  {
+    id: 1,
+    no: 1,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 2,
+    no: 2,
+    date: "21/08/2022",
+    name: "Group 1",
+    course: "Group 2",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 3,
+    no: 3,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 4,
+    no: 4,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 5,
+    no: 5,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 6,
+    no: 6,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 7,
+    no: 7,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 8,
+    no: 8,
+    date: "21/08/2022",
+    name: "Group 1",
+    position: "Assistant Teacher",
+    parent: "parent group 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+];
+
+export const departmentsData = [
+  {
+    id: 1,
+    no: 1,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 2,
+    no: 2,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 3,
+    no: 3,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 4,
+    no: 4,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 5,
+    no: 5,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 6,
+    no: 6,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 7,
+    no: 7,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+  {
+    id: 8,
+    no: 8,
+    date: "21/08/2022",
+    name: "Department 1",
+    position: "Assistant Teacher",
+    parent: "parent department 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l",
+  },
+];
+
+export const casesData = [
+  {
+    id: 1,
+    no: 1,
+    date: "21/08/2022",
+    name: "Case 1",
+    bank: "KBZ",
+    status: "approved",
+    amount: "30,000 mmk",
+  },
+  {
+    id: 2,
+    no: 2,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "CB",
+    status: "declined",
+    amount: "40,000 mmk",
+  },
+  {
+    id: 3,
+    no: 3,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "CB",
+    status: "declined",
+    amount: "40,000 mmk",
+  },
+  {
+    id: 4,
+    no: 4,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "AYA",
+    status: "processing",
+    amount: "40,000 mmk",
+  },
+  {
+    id: 5,
+    no: 5,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "KBZ",
+    status: "declined",
+    amount: "40,000 mmk",
+  },
+  {
+    id: 6,
+    no: 6,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "CB",
+    status: "approved",
+    amount: "40,000 mmk",
+  },
+  {
+    id: 7,
+    no: 7,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "KBZ",
+    status: "declined",
+    amount: "40,000 mmk",
+  },
+  {
+    id: 8,
+    no: 8,
+    date: "21/08/2022",
+    name: "Case 2",
+    bank: "AYA",
+    status: "declined",
+    amount: "40,000 mmk",
   },
 ];

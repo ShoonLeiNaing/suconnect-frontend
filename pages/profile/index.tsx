@@ -14,7 +14,7 @@ const breadCrumbsData = [
 
 const Profile = () => {
   return (
-    <Layout allowToggle={false} data={navigation} hiddenFooter>
+    <Layout allowToggle={false} data={navigation} hiddenFooter panel="panel1">
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="My Profile"
