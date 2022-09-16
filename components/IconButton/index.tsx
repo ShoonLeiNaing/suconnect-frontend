@@ -1,4 +1,4 @@
-import { Box, Button, styled } from "@mui/material";
+import { Box, Button, styled, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 
@@ -53,14 +53,16 @@ const BootstrapIconButtonActive = styled(Button)({
   },
 });
 interface IProps {
-  icon: any;
+  icon?: any;
   onClickHandler: (e: any) => void;
   isActive?: any;
+  text?: string;
 }
 const IconButton: FunctionComponent<IProps> = ({
   icon,
   onClickHandler,
   isActive,
+  text,
 }) => {
   if (isActive) {
     return (
@@ -69,7 +71,7 @@ const IconButton: FunctionComponent<IProps> = ({
         borderRadius="10px"
       >
         <BootstrapIconButtonActive variant="contained" onClick={onClickHandler}>
-          {icon}
+          {icon} <Typography fontSize="15px"> {text} </Typography>
         </BootstrapIconButtonActive>
       </Box>
     );
@@ -77,7 +79,7 @@ const IconButton: FunctionComponent<IProps> = ({
   return (
     <Box sx={{ backgroundColor: colors.white.white2 }} borderRadius="10px">
       <BootstrapIconButton variant="contained" onClick={onClickHandler}>
-        {icon}
+        {icon} <Typography className={` ${text ? "block" : "hidden" } capitalize py-4 px-2`}> {text} </Typography>
       </BootstrapIconButton>
     </Box>
   );
