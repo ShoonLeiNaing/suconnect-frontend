@@ -33,7 +33,7 @@ const SearchInput: FunctionComponent<IProps> = ({
           <input
             placeholder="Search the web"
             className="search_input"
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => setSearchText(e.target.value.trim())}
           />
         </Box>
         <Box

@@ -36,8 +36,8 @@ const PasswordInput: FunctionComponent = () => {
 
   return (
     <FormControl
-      sx={{ m: 1, width: "90%" }}
-      className="mt-0 mb-4"
+      sx={{ m: 1, width: "100%" }}
+      className="mt-1 mb-4 ml-0"
       variant="outlined"
     >
       <OutlinedInput

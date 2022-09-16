@@ -12,13 +12,14 @@ interface IProps {
 const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
   const [select, setSelect] = useState(false);
   const [id, setId] = useState<number | false>();
+  const typedWord = searchWord.trim();
 
   return (
     <Box>
       <Typography className="my-4 font-semibold text-gray-500 text-lg tracking-wide text-center">
-        Showing results for
+        Showing results for { }
         <span className="font-semibold text-black">
-          &quot;{searchWord}&quot;
+          &quot;{typedWord}&quot;
         </span>
       </Typography>
       <Box className={`flex ${id ? " " : "items-center"}`}>
@@ -30,7 +31,7 @@ const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
           <EventComponent
             date="23"
             day="Tue"
-            keyword={searchWord}
+            keyword={typedWord}
             title="sprint meeting for Web Dev Team"
             detailTime="9:00 AM - 10:30 AM"
             type="Work Calendar"
@@ -39,7 +40,7 @@ const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
           <IndicatorLine show />
           <EventComponent
             date="30"
-            keyword={searchWord}
+            keyword={typedWord}
             day="Tue"
             title="sprint meeting for Web Dev Team"
             detailTime="9:00 AM - 10:30 AM"
@@ -52,7 +53,7 @@ const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
           <EventComponent
             date="06"
             day="Tue"
-            keyword={searchWord}
+            keyword={typedWord}
             title="sprint meeting for Web Dev Team"
             detailTime="9:00 AM - 10:30 AM"
             type="Work Calendar"
@@ -61,7 +62,7 @@ const SearchResultsComponent: FunctionComponent<IProps> = ({ searchWord }) => {
           <EventComponent
             date="13"
             day="Tue"
-            keyword={searchWord}
+            keyword={typedWord}
             title="sprint meeting for Web Dev Team"
             detailTime="9:00 AM - 10:30 AM"
             type="Home Calendar"
