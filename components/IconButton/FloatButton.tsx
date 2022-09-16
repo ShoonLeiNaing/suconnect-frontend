@@ -8,7 +8,7 @@ interface IProps {
   disable?: boolean;
 }
 
-const BootstrapFloatIconButton = styled(Button)({
+const BootstrapFloatIconButton = styled(Fab)({
   boxShadow: "none",
   color: "#3B8CF7",
   height: "100%",
