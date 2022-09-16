@@ -9,21 +9,21 @@ const BootstrapIconButton = styled(Button)({
   padding: "5px",
   minWidth: "50px",
   borderRadius: "10px",
-  color: colors.primaryColors.lightblue.lightblue1,
+  color: "#3B8CF7",
 
   "&:hover": {
-    backgroundColor: colors.white.white2,
+    backgroundColor: "#F6F9FE",
     borderColor: "#0062cc",
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: colors.white.white2,
+    backgroundColor: "#F6F9FE",
     borderColor: "#005cbf",
   },
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    backgroundColor: colors.white.white2,
+    backgroundColor: "#F6F9FE",
   },
 });
 const BootstrapIconButtonActive = styled(Button)({
@@ -33,23 +33,23 @@ const BootstrapIconButtonActive = styled(Button)({
   padding: "5px",
   minWidth: "50px",
   borderRadius: "10px",
-  color: colors.white.white2,
+  color: "#F6F9FE",
 
   // backgroundColor: colors.white.white2,
 
   "&:hover": {
-    backgroundColor: colors.primaryColors.lightblue.lightblue1,
+    backgroundColor: "#3B8CF7",
     borderColor: "#0062cc",
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: colors.primaryColors.lightblue.lightblue1,
+    backgroundColor: "#3B8CF7",
     borderColor: "#005cbf",
   },
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    backgroundColor: colors.primaryColors.lightblue.lightblue1,
+    backgroundColor: "#3B8CF7",
   },
 });
 interface IProps {
@@ -64,10 +64,7 @@ const IconButton: FunctionComponent<IProps> = ({
 }) => {
   if (isActive) {
     return (
-      <Box
-        sx={{ backgroundColor: colors.primaryColors.lightblue.lightblue1 }}
-        borderRadius="10px"
-      >
+      <Box sx={{ backgroundColor: "#3B8CF7" }} borderRadius="10px">
         <BootstrapIconButtonActive variant="contained" onClick={onClickHandler}>
           {icon}
         </BootstrapIconButtonActive>
@@ -75,7 +72,7 @@ const IconButton: FunctionComponent<IProps> = ({
     );
   }
   return (
-    <Box sx={{ backgroundColor: colors.white.white2 }} borderRadius="10px">
+    <Box sx={{ backgroundColor: "#F6F9FE" }} borderRadius="10px">
       <BootstrapIconButton variant="contained" onClick={onClickHandler}>
         {icon}
       </BootstrapIconButton>

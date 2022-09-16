@@ -1,4 +1,4 @@
-import { Box, Fab, styled } from "@mui/material";
+import { Box, Button, Fab, styled } from "@mui/material";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 
@@ -8,22 +8,22 @@ interface IProps {
   disable?: boolean;
 }
 
-const BootstrapFloatIconButton = styled(Fab)({
+const BootstrapFloatIconButton = styled(Button)({
   boxShadow: "none",
   color: "#3B8CF7",
   height: "100%",
   width: "100%",
   backgroundColor: "#F6F9FE",
 
-  // "&:active": {
-  //   boxShadow: "none",
-  //   backgroundColor: colors.white.white2,
-  //   borderColor: "#005cbf",
-  // },
-  // "&:focus": {
-  //   boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-  //   backgroundColor: colors.white.white2,
-  // },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: colors.white.white2,
+    borderColor: "#005cbf",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+    backgroundColor: colors.white.white2,
+  },
 });
 
 const FloatButton: FunctionComponent<IProps> = ({
@@ -41,7 +41,10 @@ const FloatButton: FunctionComponent<IProps> = ({
       borderRadius="100%"
       onClick={onClickHandler}
     >
-      <BootstrapFloatIconButton disabled={disable}>
+      <BootstrapFloatIconButton
+        // sx={{ backgroundColor: "red" }}
+        disabled={disable}
+      >
         {icon}
       </BootstrapFloatIconButton>
     </Box>
