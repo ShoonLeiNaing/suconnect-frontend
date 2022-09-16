@@ -10,14 +10,16 @@ interface IProps {
   position: string;
   date: string;
   index: number;
+  showCategory: boolean;
 }
 
-const CourseCard: FunctionComponent<IProps> = ({
+const DataGridCard: FunctionComponent<IProps> = ({
   image,
   title,
   position,
   date,
   index,
+  showCategory,
 }) => {
   const color =
     index === 0 || index === 3
@@ -31,7 +33,6 @@ const CourseCard: FunctionComponent<IProps> = ({
         width: "280px",
         borderRadius: "25px",
         height: "330px",
-        marginBottom: "15px",
         boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.07)",
         position: "relative",
       }}
@@ -42,18 +43,20 @@ const CourseCard: FunctionComponent<IProps> = ({
         image={image}
         alt="green iguana"
       />
-      <Chip
-        sx={{
-          color: colors.grey.grey2,
-          backgroundColor: color,
-          borderRadius: "0",
-          position: "absolute",
-          bottom: "0",
-          marginBottom: "115px",
-          marginLeft: "20px",
-        }}
-        label="course cate"
-      />
+      {showCategory && (
+        <Chip
+          sx={{
+            color: colors.grey.grey2,
+            backgroundColor: color,
+            borderRadius: "0",
+            position: "absolute",
+            bottom: "0",
+            marginBottom: "115px",
+            marginLeft: "20px",
+          }}
+          label="course cate"
+        />
+      )}
       <CardContent
         sx={{
           backgroundColor: colors.white.white2,
@@ -74,11 +77,11 @@ const CourseCard: FunctionComponent<IProps> = ({
           fontWeight="light"
           color={colors.grey.grey1}
         >
-          Assigned date : {date}
+          {date}
         </Typography>
       </CardContent>
     </Card>
   );
 };
 
-export default CourseCard;
+export default DataGridCard;

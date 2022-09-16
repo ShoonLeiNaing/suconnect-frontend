@@ -5,6 +5,7 @@ import SearchInput from "../../components/DateFilter/SearchInput";
 import FaqAccordions from "../../components/FaqAccordions";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
+import { navigation } from "../../data/navigationData";
 
 const breadCrumbsData = [
   {
@@ -44,7 +45,7 @@ const FrequentlyAskQuestions = () => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   return (
-    <Layout>
+    <Layout data={navigation} panel="panel4">
       <Box color="black" className="container" px={7}>
         <BreadcrumbsComponent
           currentPage="FAQ"

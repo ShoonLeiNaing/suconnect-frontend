@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+
 import { Box, styled } from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -5,6 +7,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FunctionComponent, useState } from "react";
 import { colors } from "../../data/constant";
+import IconButton from "../IconButton";
+import FloatButton from "../IconButton/FloatButton";
 
 interface FilterOption {
   text: string;
@@ -14,6 +18,9 @@ interface FilterOption {
 interface IProps {
   title?: string;
   filterOptions: FilterOption[];
+  isIcon?: boolean;
+  icon: any;
+  rounded?: boolean;
 }
 
 const BootstrapButton = styled(Button)({
@@ -22,7 +29,6 @@ const BootstrapButton = styled(Button)({
   fontSize: 16,
   padding: "10px 15px",
   lineHeight: 1.5,
-  //   backgroundColor: colors.white.white2,
   color: colors.primaryColors.lightblue.lightblue1,
   backgroundColor: colors.white.white2,
 
@@ -42,9 +48,16 @@ const BootstrapButton = styled(Button)({
   },
 });
 
-const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
+const MenuComponent: FunctionComponent<IProps> = ({
+  title,
+  filterOptions,
+  isIcon,
+  icon,
+  rounded,
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -52,13 +65,37 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
     setAnchorEl(null);
   };
 
-  return (
-    <Box bgcolor={colors.white.white2} width="fit-content" borderRadius="10px">
-      <BootstrapButton onClick={handleClick} variant="contained">
-        {title}
-        <IoMdArrowDropdown style={{ marginLeft: "10px" }} />
-      </BootstrapButton>
+  const clickMenuButton = (onClickHandler: () => void) => {
+    onClickHandler();
+    handleClose();
+  };
 
+  return (
+    <>
+      {rounded ? (
+        <FloatButton icon={icon} onClickHandler={handleClick} />
+      ) : isIcon ? (
+        <Box
+          bgcolor={colors.white.white2}
+          width="fit-content"
+          minWidth="45px"
+          borderRadius="10px"
+        >
+          <IconButton onClickHandler={handleClick} icon={icon} />
+        </Box>
+      ) : (
+        <Box
+          bgcolor={colors.white.white2}
+          width="fit-content"
+          minWidth="45px"
+          borderRadius="10px"
+        >
+          <BootstrapButton onClick={handleClick} variant="contained">
+            {title}
+            <IoMdArrowDropdown style={{ marginLeft: "10px" }} />
+          </BootstrapButton>
+        </Box>
+      )}
       <Menu
         anchorEl={anchorEl}
         open={open}
@@ -84,18 +121,20 @@ const Filter: FunctionComponent<IProps> = ({ title, filterOptions }) => {
                 backgroundColor: colors.white.white2,
               },
             }}
-            onClick={handleClose}
+            onClick={() => clickMenuButton(filterOption.onClickHandler)}
           >
             {filterOption.text}
           </MenuItem>
         ))}
       </Menu>
-    </Box>
+    </>
   );
 };
 
-Filter.defaultProps = {
+MenuComponent.defaultProps = {
   title: "Filter",
+  isIcon: false,
+  rounded: false,
 };
 
-export default Filter;
+export default MenuComponent;

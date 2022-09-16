@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n,
+  env: {
+    backend: "https://api-dev.teachersucenter.com",
+  },
 };
 
 module.exports = nextConfig;

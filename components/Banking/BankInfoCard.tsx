@@ -15,6 +15,7 @@ import CardStatus from "./CardStatus";
 import StaticInput from "../Input/StaticInput";
 import styles from "./banking.module.css";
 import BankingInfoEditCard from "./BankInfoEditCard";
+import SmallButton from "../Button/SmallButton";
 
 interface IProps {
   title: string;
@@ -47,16 +48,6 @@ const BankingInfoLockCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
               <Typography fontSize="17px" color={colors.black.black2}>
                 {title}
               </Typography>
-              <Box
-                className="px-3 py-1 rounded-md text-sm cursor-pointer"
-                sx={{
-                  backgroundColor: colors.primaryColors.lightblue.lightblue1,
-                  color: colors.white.white1,
-                }}
-                onClick={() => setEdit(!edit)}
-              >
-                Edit
-              </Box>
             </Box>
             <Box className="bg-white p-4 mb-4 rounded-b-xl">
               <Box mb={3}>
@@ -87,6 +78,15 @@ const BankingInfoLockCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
               <Box mb={3}>
                 <InputLabel label="Bank Account Number" />
                 <StaticInput isLocked value="0000 0000 0000 0000" />
+              </Box>
+
+              <Box className="flex justify-end mt-4">
+                <SmallButton
+                  text="Edit"
+                  customHeight="40px"
+                  customFontSize="15px"
+                  onClickHandler={() => setEdit(!edit)}
+                />
               </Box>
             </Box>
           </Box>

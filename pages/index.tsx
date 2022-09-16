@@ -9,29 +9,22 @@ import Feature from "../components/Feature";
 import HeroParallax from "../components/HeroParallax";
 import UserInnovation from "../components/UserInnovation";
 import FaqAccordions from "../components/FaqAccordions";
+import { navigation } from "../data/navigationData";
+import { axiosInstance } from "../api/axios";
 
 const Layout = dynamic(import("../components/Layout"), { ssr: false });
 
 const Home: NextPage = () => {
   return (
-    <Layout changeLanguage showSideNav={false}>
+    <Layout changeLanguage showSideNav={false} data={navigation}>
       <HeroParallax />
       <Box color="black" className="container">
-        {/* <Box className="inner-container"> */}
         <Announcements />
         <Entity />
         <Feature />
         <Benefit />
         <UserInnovation />
-        {/* </Box> */}
       </Box>
-      {/* <Container maxW={{ lg: "1250px" }}>
-        <Announcements />
-        
-        <Feature />
-        <Benefit />
-        <UserInnovation />
-      </Container> */}
     </Layout>
   );
 };

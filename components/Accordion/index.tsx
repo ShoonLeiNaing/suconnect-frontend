@@ -11,14 +11,16 @@ import {
   AccordionDetails,
   Typography,
   styled,
+  FormControl,
+  Input,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InputLabel from "../Input/InputLabel";
 import StaticInput from "../Input/StaticInput";
-import { colors } from "../../data/constant";
 import CardStatus from "../Banking/CardStatus";
 import AccordionEditComponent from "./edit";
 import SmallButton from "../Button/SmallButton";
+import styles from "./accordion.module.css";
 
 interface IProps {
   title: string;
@@ -45,11 +47,18 @@ const AccordionComponent: FunctionComponent<IProps> = ({
       borderRadius: "13px",
     },
   });
-  const [expanded, setExpanded] = useState<string | false>(
-    isOpen ? `panel${orderNo}` : ""
-  );
 
   const [edit, setEdit] = useState(false);
+
+  const [expanded, setExpanded] = useState<string | false>(
+    isOpen || isNew ? `panel${orderNo}` : ""
+  );
+
+  const [cardTitle, setCardTitle] = useState(title);
+
+  const updateTitle = (event: any) => {
+    setCardTitle(event.target.value);
+  };
 
   const handleChange =
     (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
@@ -72,18 +81,28 @@ const AccordionComponent: FunctionComponent<IProps> = ({
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          className="px-8"
+          className={` px-12 ${edit || isNew ? "py-2" : ""}`}
         >
           <Box className="w-full flex justify-between items-center">
-            <Typography className="py-3" fontSize="16px">
-              {title}
-            </Typography>
+            {!edit && !isNew ? (
+              <Typography className="py-3" fontSize="16px">
+                {cardTitle}
+              </Typography>
+            ) : (
+              <FormControl variant="standard">
+                <Input
+                  className={styles.card_title}
+                  value={cardTitle}
+                  onChange={updateTitle}
+                />
+              </FormControl>
+            )}
           </Box>
         </AccordionSummary>
         <AccordionDetails className="bg-white justify-between px-6 rounded-b-2xl">
           {!edit && !isNew ? (
             <>
-              <Box className="flex px-6">
+              <Box className="flex justify-between  px-6">
                 <Box className="flex flex-col">
                   <Box className="mt-4">
                     <InputLabel label="House Number" />
@@ -123,7 +142,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                 <Box className="flex justify-end mt-4 mb-4">
                   <SmallButton
                     text="Edit"
-                    customPaddingY="0.5rem"
+                    customPaddingY="18px"
                     customFontSize="15px"
                     onClickHandler={editAddress}
                   />
@@ -152,5 +171,6 @@ const AccordionComponent: FunctionComponent<IProps> = ({
 
 AccordionComponent.defaultProps = {
   isOpen: false,
+  isNew: false,
 };
 export default AccordionComponent;

@@ -1,8 +1,9 @@
 version: "3"
 services:
-  suconnect-frontend-app:
-    image: docker-nextjs-dev
+  next-js-app:
     build: .
+    command: "npm run dev"
+    container_name: development
     ports:
       - 3000:3000
     volumes:
@@ -11,3 +12,4 @@ services:
       - ./data:/app/data
       - ./public:/app/public
       - ./styles:/app/styles
+      - ./node_modules:/app/node_modules

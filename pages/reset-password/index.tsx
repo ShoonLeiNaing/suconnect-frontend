@@ -3,9 +3,12 @@ import dynamic from "next/dynamic";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
+import { navigation } from "../../data/navigationData";
+// import ResetPasswordForm from "../../components/ResetPasswordForm";
 
-const UpdateProfileForm = dynamic(
-  import("../../components/Profile/UpdateProfileForm")
+const ResetPasswordForm = dynamic(
+  import("../../components/ResetPasswordForm"),
+  { ssr: false }
 );
 
 const breadCrumbsData = [
@@ -19,19 +22,23 @@ const breadCrumbsData = [
   },
 ];
 
-const EditProfile = () => {
+const ResetPassword = () => {
   return (
-    <Layout allowToggle={false}>
+    <Layout data={navigation} panel="panel5">
       <Box color="black" className="container" px={7}>
         <BreadcrumbsComponent
-          currentPage="Edit Profile"
+          currentPage="Reset Password"
           previousPages={breadCrumbsData}
         />
-        <NameTag name="Thiha Swan Htet" currentPage="Update Profile" />
-        <UpdateProfileForm />
+        <NameTag
+          name="Thiha Swan Htet"
+          currentPage="Reset Password"
+          tag="Lorem Ipsum Dorum"
+        />
+        <ResetPasswordForm />
       </Box>
     </Layout>
   );
 };
 
-export default EditProfile;
+export default ResetPassword;
