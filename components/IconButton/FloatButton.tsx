@@ -15,15 +15,15 @@ const BootstrapFloatIconButton = styled(Fab)({
   width: "100%",
   backgroundColor: colors.white.white2,
 
-  "&:active": {
-    boxShadow: "none",
-    backgroundColor: colors.white.white2,
-    borderColor: "#005cbf",
-  },
-  "&:focus": {
-    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    backgroundColor: colors.white.white2,
-  },
+  // "&:active": {
+  //   boxShadow: "none",
+  //   backgroundColor: colors.white.white2,
+  //   borderColor: "#005cbf",
+  // },
+  // "&:focus": {
+  //   boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+  //   backgroundColor: colors.white.white2,
+  // },
 });
 
 const FloatButton: FunctionComponent<IProps> = ({
@@ -34,6 +34,7 @@ const FloatButton: FunctionComponent<IProps> = ({
   return (
     <Box
       sx={{ backgroundColor: colors.white.white2 }}
+      color={colors.primaryColors.lightblue.lightblue1}
       bgcolor={colors.white.white2}
       height="35px"
       width="35px"
