@@ -10,10 +10,10 @@ interface IProps {
 
 const BootstrapFloatIconButton = styled(Fab)({
   boxShadow: "none",
-  color: colors.primaryColors.lightblue.lightblue1,
+  color: "#3B8CF7",
   height: "100%",
   width: "100%",
-  backgroundColor: colors.white.white2,
+  backgroundColor: "#F6F9FE",
 
   // "&:active": {
   //   boxShadow: "none",
@@ -33,9 +33,9 @@ const FloatButton: FunctionComponent<IProps> = ({
 }) => {
   return (
     <Box
-      sx={{ backgroundColor: colors.white.white2 }}
-      color={colors.primaryColors.lightblue.lightblue1}
-      bgcolor={colors.white.white2}
+      sx={{ backgroundColor: "#F6F9FE" }}
+      color="#3B8CF7"
+      bgcolor="#F6F9FE"
       height="35px"
       width="35px"
       borderRadius="100%"
