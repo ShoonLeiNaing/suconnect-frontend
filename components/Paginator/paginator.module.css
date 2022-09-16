@@ -1,6 +1,13 @@
 .input {
   background-color: white;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
+  width: 100%;
+}
+
+.select {
+  background-color: white;
+  font-size: 12px;
+  /* text-align: center; */
   width: 100%;
 }

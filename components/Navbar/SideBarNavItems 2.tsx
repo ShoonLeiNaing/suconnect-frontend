@@ -109,11 +109,7 @@ const SideBarNavItems: FunctionComponent<IProps> = ({
           </AccordionSummary>
           <AccordionDetails className="my-0 -mt-2 py-0">
             {navTitle.dropdown?.map((item: any) => (
-              <SideDropDown
-                data={item}
-                color={navTitle.color}
-                key={item.text}
-              />
+              <SideDropDown data={item} color={navTitle.color} />
             ))}
           </AccordionDetails>
         </BootstrapAccordion>

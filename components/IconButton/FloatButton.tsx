@@ -5,6 +5,7 @@ import { colors } from "../../data/constant";
 interface IProps {
   icon: any;
   onClickHandler: (e: any) => void;
+  disable?: boolean;
 }
 
 const BootstrapFloatIconButton = styled(Fab)({
@@ -12,6 +13,7 @@ const BootstrapFloatIconButton = styled(Fab)({
   color: colors.primaryColors.lightblue.lightblue1,
   height: "100%",
   width: "100%",
+  backgroundColor: colors.white.white2,
 
   "&:active": {
     boxShadow: "none",
@@ -24,18 +26,28 @@ const BootstrapFloatIconButton = styled(Fab)({
   },
 });
 
-const FloatButton: FunctionComponent<IProps> = ({ icon, onClickHandler }) => {
+const FloatButton: FunctionComponent<IProps> = ({
+  icon,
+  onClickHandler,
+  disable,
+}) => {
   return (
     <Box
       sx={{ backgroundColor: colors.white.white2 }}
+      bgcolor={colors.white.white2}
       height="35px"
       width="35px"
       borderRadius="100%"
       onClick={onClickHandler}
     >
-      <BootstrapFloatIconButton>{icon}</BootstrapFloatIconButton>
+      <BootstrapFloatIconButton disabled={disable}>
+        {icon}
+      </BootstrapFloatIconButton>
     </Box>
   );
 };
 
+FloatButton.defaultProps = {
+  disable: false,
+};
 export default FloatButton;

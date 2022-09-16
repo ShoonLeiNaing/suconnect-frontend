@@ -1,9 +1,10 @@
 // import { createStyles, makeStyles } from "@mui/material";
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { FunctionComponent, useState } from "react";
 import { colors } from "../../data/constant";
 import { courseData } from "../../data/testData";
+import Paginator from "../Paginator";
 
 const handleCellClick = (param: any, event: any) => {
   console.log(param);
@@ -34,26 +35,47 @@ const BootstrapDataGrid = styled(DataGrid)({
 interface IProps {
   columns: any;
   data: any;
+  page: number;
+  setPage: any;
+  totalPages: number;
+  size: number;
+  setSize: any;
 }
 
-const DataTable: FunctionComponent<IProps> = ({ columns, data }) => {
-  const [pageSize, setPageSize] = useState<number>(8);
+const DataTable: FunctionComponent<IProps> = ({
+  columns,
+  data,
+  page,
+  setPage,
+  totalPages,
+  size,
+  setSize,
+}) => {
+  // const [pageSize, setPageSize] = useState<number>(9);
+  // console.log({ page });
 
   return (
-    <div style={{ height: "685px", width: "100%", margin: "30px 0" }}>
-      <BootstrapDataGrid
-        rowHeight={70}
-        headerHeight={70}
-        rows={data}
-        columns={columns}
-        pageSize={pageSize}
-        checkboxSelection
-        onCellClick={handleCellClick}
-        onRowClick={handleRowClick}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[8, 10, 20]}
-        pagination
-      />
+    <div style={{ height: "545px", width: "100%", margin: "30px 0" }}>
+      {data ? (
+        <BootstrapDataGrid
+          rowHeight={70}
+          headerHeight={70}
+          rows={data}
+          columns={columns}
+          pageSize={size}
+          checkboxSelection
+          onCellClick={handleCellClick}
+          onRowClick={handleRowClick}
+          hideFooterPagination
+        />
+      ) : (
+        <p style={{ textAlign: "center" }}>no data</p>
+      )}
+      <Box marginTop={data && "-42px"} px={4}>
+        <Paginator
+          {...{ page, setPage, totalPages, item: "rows", size, setSize }}
+        />
+      </Box>
     </div>
   );
 };

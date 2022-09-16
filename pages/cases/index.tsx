@@ -12,7 +12,7 @@ import SearchInput from "../../components/SearchInput";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { byCategory, byDate, byPosition, casesData } from "../../data/testData";
 import IconButton from "../../components/IconButton";
-import FilterValueList from "../../components/Courses/FilterValueList";
+import FilterValueList from "../../components/FilterSideBar/FilterValueList";
 import DataTable from "../../components/DataTable";
 import ActionsMenu from "../../components/DataTable/ActionsMenu";
 import { navigation } from "../../data/navigationData";
@@ -172,10 +172,10 @@ const Cases = () => {
           filterOptions={filterOptions}
         />
 
-        <Box>
+        {/* <Box>
           <FilterValueList filterOptions={filterOptions} />
           <DataTable columns={columns} data={casesData} />
-        </Box>
+        </Box> */}
       </Box>
     </Layout>
   );
