@@ -55,7 +55,7 @@ const Paginator: FunctionComponent<IProps> = ({
         <Box display="flex" alignItems="center" fontSize="12px">
           Show {item} :
           <Box
-            width="50px"
+            width="40px"
             border="1px solid #BBBBBB"
             borderRadius="10px"
             p="3px 5px"
