@@ -14,6 +14,7 @@ interface IProps {
   setData: any;
   setTotalPages: any;
   size: number;
+  filterFunction: any;
 }
 
 const FilterValueList: FunctionComponent<IProps> = ({
@@ -24,14 +25,14 @@ const FilterValueList: FunctionComponent<IProps> = ({
   setData,
   setTotalPages,
   size,
+  filterFunction,
 }) => {
   const handleDelete = async (val: string) => {
     setPage(1);
     const newOptions = removeFromObject(filterData, val);
     setFilterData(newOptions);
     const params = getFilterParams(newOptions);
-    const res = await filterCourses(size, 1, params);
-
+    const res = await filterFunction(size, 1, params);
     setData(res?.data);
     setTotalPages(res?.total_pages);
   };

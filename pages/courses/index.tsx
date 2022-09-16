@@ -259,6 +259,7 @@ const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
             setData,
             setTotalPages,
             size,
+            filterFunction: filterCourses,
           }}
         />
         {!isListView ? (
