@@ -1,5 +1,5 @@
-import { Box, Chip } from "@mui/material";
-import { useState } from "react";
+import { Box, Chip, Typography } from "@mui/material";
+import { FunctionComponent, useEffect, useMemo, useState } from "react";
 import { IoGrid, IoListOutline } from "react-icons/io5";
 import { BiRefresh } from "react-icons/bi";
 import { RiFilterFill } from "react-icons/ri";
@@ -11,17 +11,15 @@ import SearchInput from "../../components/SearchInput";
 import GridContainer from "../../components/DataGridView/GridContainer";
 import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import {
-  byCategory,
-  byDate,
-  byPosition,
-  courseData,
-} from "../../data/testData";
 import IconButton from "../../components/IconButton";
-import FilterValueList from "../../components/Courses/FilterValueList";
+import FilterValueList from "../../components/FilterSideBar/FilterValueList";
 import DataTable from "../../components/DataTable";
 import ActionsMenu from "../../components/DataTable/ActionsMenu";
 import { navigation } from "../../data/navigationData";
+import { getAllCourses } from "../../api/courses/list";
+import { getAllCategories } from "../../api/categories/list";
+import { filterCourses } from "../../api/courses/filter";
+import { getFilterParams } from "../../utils/common/getFilterParams";
 
 const breadCrumbsData = [
   {
@@ -37,37 +35,56 @@ const breadCrumbsData = [
 const handleDelete = () => {};
 
 const columns = [
-  {
-    field: "no",
-    headerName: "No.",
-    width: 95,
-  },
-  { field: "date", headerName: "Date", flex: 1, minWidth: 200 },
-  { field: "name", headerName: "Course", flex: 1, minWidth: 200 },
+  // {
+  //   field: "no",
+  //   headerName: "No.",
+  //   width: 95,
+  // },
+  { field: "name", headerName: "Name", flex: 1, minWidth: 180 },
 
+  { field: "start_date", headerName: "Start Date", flex: 1, minWidth: 150 },
+  { field: "end_date", headerName: "End Date", flex: 1, minWidth: 150 },
+  { field: "code", headerName: "Code", flex: 1, minWidth: 100 },
   {
-    field: "position",
-    headerName: "Position",
+    field: "monthly_fee",
+    headerName: "Fee",
     flex: 1,
-    minWidth: 200,
+    minWidth: 150,
     filterable: false,
     renderCell: (cellValues: any) => {
-      return (
-        <Chip
-          label={cellValues.value}
-          sx={{ borderRadius: "0", backgroundColor: "pink" }}
-        />
-      );
+      return <Typography fontSize="14px">{cellValues.value} mmk</Typography>;
     },
   },
+
+  // {
+  //   field: "position",
+  //   headerName: "Position",
+  //   flex: 1,
+  //   minWidth: 200,
+  //   filterable: false,
+  //   renderCell: (cellValues: any) => {
+  //     return (
+  //       <Chip
+  //         label={cellValues.value}
+  //         sx={{ borderRadius: "0", backgroundColor: "pink" }}
+  //       />
+  //     );
+  //   },
+  // },
   {
     field: "category",
     headerName: "Category",
     flex: 1,
-    minWidth: 200,
+    minWidth: 150,
     filterable: false,
   },
-
+  {
+    field: "description",
+    headerName: "Description",
+    flex: 1,
+    minWidth: 150,
+    filterable: false,
+  },
   {
     width: 90,
     field: "id",
@@ -79,59 +96,92 @@ const columns = [
       return <ActionsMenu />;
     },
   },
-
-  // {
-  //   field: "fullName",
-  //   headerName: "Full name",
-  //   description: "This column has a value getter and is not sortable.",
-  //   sortable: false,
-  //   flex: 1,
-  //   valueGetter: (params: any) => {
-  //     return `${params.getValue(params.id, "firstName") || ""} ${
-  //       params.getValue(params.id, "lastName") || ""
-  //     }`;
-  //   },
-  // },
 ];
+interface IProps {
+  courses?: any;
+  categories?: any;
+}
 
-const Courses = () => {
+const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
   const [searchText, setSearchText] = useState<string>("");
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
+  const [filterData, setFilterData] = useState<any>({});
   const [isListView, setIsListView] = useState<boolean>(false);
+  const [data, setData] = useState<any>(courses.data);
+  const [page, setPage] = useState<number>(1);
+  const [size, setSize] = useState<number>(6);
+  const [isFiltering, setIsFiltering] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(courses.total_pages);
+  const [loading, setLoading] = useState(false);
+  const [categoryFilterData, setCategoryFilterData] = useState<any>(
+    categories?.data
+  );
 
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
     data: [],
     index: null,
+    filterParam: "",
   });
 
   const filterOptions = [
     {
       text: "Category",
-      data: byCategory,
+      data: categoryFilterData,
+      filterParam: "category",
       onClickHandler: () => {
-        setFilterValue({ title: "Category", data: byCategory, index: 0 });
-        setShowSideFilter(true);
-      },
-    },
-
-    {
-      text: "Position",
-      data: byPosition,
-      onClickHandler: () => {
-        setFilterValue({ title: "Position", data: byPosition, index: 1 });
+        setFilterValue({
+          title: "Category",
+          data: categoryFilterData,
+          index: 0,
+          filterParam: "category",
+        });
         setShowSideFilter(true);
       },
     },
     {
-      text: "Date",
-      data: byDate,
+      text: "Start Date",
+      filterParam: "start_date",
       onClickHandler: () => {
-        setFilterValue({ title: "Date", data: byDate, index: 2 });
+        setFilterValue({
+          title: "Start Date",
+          index: 2,
+          filterParam: "start_date",
+        });
+        setShowSideFilter(true);
+      },
+    },
+    {
+      text: "End Date",
+      filterParam: "end_date",
+      onClickHandler: () => {
+        setFilterValue({
+          title: "End Date",
+          index: 1,
+          filterParam: "end_date",
+        });
         setShowSideFilter(true);
       },
     },
   ];
+
+  const paginationHandler = async () => {
+    setLoading(true);
+    let res: any;
+    if (isFiltering) {
+      const params = getFilterParams(filterData);
+      res = await filterCourses(size, page, params);
+    } else {
+      res = await getAllCourses(size, page);
+    }
+    setData(res?.data);
+    setTotalPages(res?.total_pages);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    paginationHandler();
+  }, [page, size, isFiltering]);
 
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
@@ -142,7 +192,7 @@ const Courses = () => {
         />
         <NameTag name="Thiha Swan Htet" currentPage="Courses" />
         <Box
-          my={4}
+          my={2}
           display="flex"
           justifyContent="space-between"
           alignItems="center"
@@ -179,32 +229,68 @@ const Courses = () => {
         </Box>
 
         <FilterSideBar
-          open={showSideFilter}
-          setShowSideFilter={setShowSideFilter}
-          filterValue={filterValue}
-          setFilterValue={setFilterValue}
-          filterOptions={filterOptions}
+          {...{
+            open: showSideFilter,
+            setShowSideFilter,
+            filterValue,
+            setFilterValue,
+            filterOptions,
+            filterData,
+            setFilterData,
+            setIsFiltering,
+            setData,
+            setTotalPages,
+            setPage,
+          }}
         />
-
+        <FilterValueList
+          {...{
+            filterData,
+            setFilterData,
+            setIsFiltering,
+            setPage,
+            setData,
+            setTotalPages,
+          }}
+        />
         {!isListView ? (
-          <Box>
-            <FilterValueList filterOptions={filterOptions} />
-            <Box margin="auto" maxWidth="1200px" my={8}>
-              <GridContainer showCategory data={courseData} />
-              <Box px={12} my={2}>
-                <Paginator />
-              </Box>
+          <Box margin="auto" maxWidth="1200px" mt={2} mb={8}>
+            <GridContainer
+              showCategory
+              data={data}
+              type="course"
+              loading={loading}
+            />
+            <Box px={12} my={2}>
+              <Paginator
+                {...{ page, setPage, totalPages, item: "item", size, setSize }}
+              />
             </Box>
           </Box>
         ) : (
-          <Box>
-            <FilterValueList filterOptions={filterOptions} />
-            <DataTable columns={columns} data={courseData} />
-          </Box>
+          <DataTable
+            {...{ columns, data, page, setPage, totalPages, size, setSize }}
+          />
         )}
       </Box>
     </Layout>
   );
 };
+// columns = { columns };
+// data = { data };
+// page = { page };
+// setPage = { setPage };
+// totalPages = { totalPages };
+
+export async function getServerSideProps() {
+  const courses = await getAllCourses(6, 1);
+  const categories = await getAllCategories(-1, 1);
+  return {
+    props: {
+      courses,
+      categories,
+    },
+  };
+}
 
 export default Courses;

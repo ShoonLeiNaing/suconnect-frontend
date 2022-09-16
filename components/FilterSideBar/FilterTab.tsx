@@ -9,9 +9,10 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { colors } from "../../data/constant";
 import { dateRange } from "../../data/testData";
+import { returnDateRange } from "../../utils/common/returnDateRange";
 import SearchInput from "../HeroParallax/SearchInput";
 import DateInput from "../Input/DateInput";
 import InputLabel from "../Input/InputLabel";
@@ -23,12 +24,9 @@ interface IProps {
   filterValue: any;
   setFilterValue?: any;
   filterOptions?: any;
-  selectedRange?: any;
-  setSelectedRange?: any;
-  startDate?: any;
-  setStartDate?: any;
-  endDate?: any;
-  setEndDate?: any;
+  searchValue?: string;
+  setSearchValue?: any;
+  searchHandler?: any;
 }
 
 const FilterTab: FunctionComponent<IProps> = ({
@@ -37,60 +35,105 @@ const FilterTab: FunctionComponent<IProps> = ({
   filterValue,
   setFilterValue,
   filterOptions,
-  selectedRange,
-  setSelectedRange,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate,
+  searchValue,
+  setSearchValue,
+  searchHandler,
 }) => {
   const BootstrapFormLabel = styled(FormControlLabel)(() => ({
     "& .MuiTypography-root": {
       fontSize: "14px",
     },
   }));
+
+  const [selectedRange, setSelectedRange] = useState<string>(" ");
+  // const [startDate, setStartDate] = useState<any>(
+  //   moment(Date.now()).format("YYYY-MM-DD")
+  // );
+  // const [endDate, setEndDate] = useState<any>(
+  //   moment(Date.now()).format("YYYY-MM-DD")
+  // );
+  const [startDate, setStartDate] = useState<any>(null);
+  const [endDate, setEndDate] = useState<any>(null);
+
   const clickCheckboxHandler = (e: any) => {
     if (e.target.checked) {
-      if (!filterData[filterValue.title]) {
-        const temp = { ...filterData, [filterValue.title]: [e.target.value] };
+      if (!filterData[filterValue.filterParam]) {
+        const temp = {
+          ...filterData,
+          [filterValue.filterParam]: [JSON.parse(e.target.value)],
+        };
         setFilterData(temp);
       } else {
         const temp = {
           ...filterData,
-          [filterValue.title]: [
-            ...filterData[filterValue.title],
-            e.target.value,
+          [filterValue.filterParam]: [
+            ...filterData[filterValue.filterParam],
+            JSON.parse(e.target.value),
           ],
         };
         setFilterData(temp);
       }
     } else {
-      const newArray = filterData[filterValue.title].filter(
-        (item: any) => item !== e.target.value
+      const newArray = filterData[filterValue.filterParam].filter(
+        (item: any) => item.id !== JSON.parse(e.target.value).id
       );
       setFilterData({
         ...filterData,
-        [filterValue.title]: newArray,
+        [filterValue.filterParam]: newArray,
       });
     }
   };
+  const selectDateRangeHandler = (e: any) => {
+    setSelectedRange(e.target.value);
+
+    if (e.target.value !== "custom") {
+      const dateFilterRange = returnDateRange(e.target.value);
+      const temp = {
+        ...filterData,
+        [filterValue.filterParam]: dateFilterRange,
+      };
+      setFilterData(temp);
+    }
+  };
   const handleDelete = (check: any) => {
-    const newArray = filterData[filterValue.title].filter(
+    const newArray = filterData[filterValue.filterParam].filter(
       (item: any) => item !== check
     );
-    // console.log({ newArray });
-    setFilterData({ ...filterData, [filterValue.title]: newArray });
+    setFilterData({ ...filterData, [filterValue.filterParam]: newArray });
   };
 
+  const updateCustomDate = () => {
+    const dateFilterRange = {
+      range: true,
+      value: "custom",
+      startDate,
+      endDate,
+    };
+    const temp = {
+      ...filterData,
+      [filterValue.filterParam]: dateFilterRange,
+    };
+    setFilterData(temp);
+  };
+  useEffect(() => {
+    setSelectedRange(filterData[filterValue.filterParam]?.value || " ");
+  }, [filterValue]);
+  useEffect(() => {
+    if (startDate !== null && endDate !== null) {
+      updateCustomDate();
+    }
+  }, [startDate, endDate]);
   return (
     <Box>
       <FilterTitle
-        title={filterValue.title}
-        filterValue={filterValue}
-        setFilterValue={setFilterValue}
-        filterOptions={filterOptions}
+        {...{
+          title: filterValue.title,
+          filterValue,
+          setFilterValue,
+          filterOptions,
+        }}
       />
-      {!filterValue.title.includes("Date") ? (
+      {!filterValue.title?.includes("Date") ? (
         <Box
           display="flex"
           flexDirection="column"
@@ -99,10 +142,63 @@ const FilterTab: FunctionComponent<IProps> = ({
           my={2}
           mt={3}
         >
-          <SearchInput
+          {/* <SearchInput
             outline
-            placeholderText={`Search ${filterValue.title}`}
-          />
+            {...{
+              searchValue,
+              setSearchValue,
+              placeholderText: `Search ${filterValue.title}`,
+              searchHandler,
+            }}
+          /> */}
+          <Box mx={2}>
+            <Grid container maxHeight="310px" overflow="scroll" my={3}>
+              {filterValue?.data.map((item: any, index: number) => (
+                <Grid
+                  item
+                  xs={6}
+                  display="flex"
+                  alignItems="center"
+                  key={index}
+                >
+                  <BootstrapFormLabel
+                    control={
+                      <Checkbox
+                        value={`{ "name": "${item.name}", "id": "${item.id}" }`}
+                        size="small"
+                        onChange={clickCheckboxHandler}
+                        checked={filterData[filterValue.filterParam]?.some(
+                          (val: any) => val.name === item.name
+                        )}
+                      />
+                    }
+                    label={item.name}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+            {filterData[filterValue.filterParam]?.length > 0 && (
+              <Box>
+                <Typography fontSize="14px">Filtered :</Typography>
+                <Box gap={1} display="flex" flexWrap="wrap" mb={2} mt={1}>
+                  {filterData[filterValue.filterParam]?.map(
+                    (item: any, index: number) => (
+                      <Chip
+                        key={index}
+                        sx={{
+                          color: colors.primaryColors.lightblue.lightblue1,
+                          backgroundColor: colors.white.white2,
+                          borderRadius: "10px",
+                        }}
+                        label={item.name}
+                        onDelete={() => handleDelete(item)}
+                      />
+                    )
+                  )}
+                </Box>
+              </Box>
+            )}
+          </Box>
         </Box>
       ) : (
         <Box mx="10px">
@@ -111,14 +207,14 @@ const FilterTab: FunctionComponent<IProps> = ({
           </Typography>
           <RadioGroup
             sx={{ marginY: "15px" }}
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
-            onChange={(e) => setSelectedRange(e.target.value)}
+            value={
+              filterData[filterValue.filterParam]?.value || selectedRange || " "
+            }
+            onChange={(e) => selectDateRangeHandler(e)}
           >
             <Grid container>
-              {dateRange?.map((range) => (
-                <Grid item xs={6}>
+              {dateRange?.map((range, index) => (
+                <Grid item xs={6} key={index}>
                   <BootstrapFormLabel
                     value={range.value}
                     control={<Radio />}
@@ -136,7 +232,7 @@ const FilterTab: FunctionComponent<IProps> = ({
             </Grid>
           </RadioGroup>
           {selectedRange === "custom" && (
-            <Box display="flex" gap={1}>
+            <Box display="flex" gap={1} mb={4}>
               <Box>
                 <InputLabel label="Start Date" />
                 <DateInput dateValue={startDate} setDateValue={setStartDate} />
@@ -149,46 +245,6 @@ const FilterTab: FunctionComponent<IProps> = ({
           )}
         </Box>
       )}
-      <Box mx={2}>
-        <Grid container maxHeight="310px" overflow="scroll" my={3}>
-          {filterValue?.data.map((item: any) => (
-            <Grid item xs={6} display="flex" alignItems="center">
-              <BootstrapFormLabel
-                control={
-                  <Checkbox
-                    value={item.value}
-                    size="small"
-                    onChange={clickCheckboxHandler}
-                    checked={filterData[filterValue.title]?.includes(
-                      item.value
-                    )}
-                  />
-                }
-                label={item.value}
-              />
-            </Grid>
-          ))}
-        </Grid>
-        {filterData[filterValue.title]?.length > 0 && (
-          <Box>
-            <Typography fontSize="14px">Filtered :</Typography>
-            <Box gap={1} display="flex" flexWrap="wrap" mb={2} mt={1}>
-              {filterData[filterValue.title]?.map((item: any) => (
-                <Chip
-                  key={item}
-                  sx={{
-                    color: colors.primaryColors.lightblue.lightblue1,
-                    backgroundColor: colors.white.white2,
-                    borderRadius: "10px",
-                  }}
-                  label={item}
-                  onDelete={() => handleDelete(item)}
-                />
-              ))}
-            </Box>
-          </Box>
-        )}
-      </Box>
     </Box>
   );
 };

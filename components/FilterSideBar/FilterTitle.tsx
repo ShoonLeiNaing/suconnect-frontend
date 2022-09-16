@@ -23,6 +23,7 @@ const FilterTitle: FunctionComponent<IProps> = ({
         title: filterOptions[0].text,
         data: filterOptions[0].data,
         index: 0,
+        filterParam: filterOptions[0].filterParam,
       });
       setCurrentIndex(0);
     } else {
@@ -30,6 +31,7 @@ const FilterTitle: FunctionComponent<IProps> = ({
         title: filterOptions[filterValue.index + 1].text,
         data: filterOptions[filterValue.index + 1].data,
         index: filterValue.index + 1,
+        filterParam: filterOptions[filterValue.index + 1].filterParam,
       });
       setCurrentIndex(filterValue.index + 1);
     }
@@ -40,6 +42,7 @@ const FilterTitle: FunctionComponent<IProps> = ({
         title: filterOptions[filterOptions.length - 1].text,
         data: filterOptions[filterOptions.length - 1].data,
         index: filterOptions.length - 1,
+        filterParam: filterOptions[filterOptions.length - 1].filterParam,
       });
       setCurrentIndex(filterOptions.length - 1);
     } else {
@@ -47,6 +50,7 @@ const FilterTitle: FunctionComponent<IProps> = ({
         title: filterOptions[filterValue.index - 1].text,
         data: filterOptions[filterValue.index - 1].data,
         index: filterValue.index - 1,
+        filterParam: filterOptions[filterValue.index - 1].filterParam,
       });
       setCurrentIndex(filterValue.index - 1);
     }

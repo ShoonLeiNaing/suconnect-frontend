@@ -46,9 +46,6 @@ const SideBarNavItems: FunctionComponent<IProps> = ({
       transitionDuration: "300s",
       marginLeft: "-1rem",
     },
-    "&.MuiAccordionSummary-content.Mui-expanded" : {
-      margin: "0px",
-    }
   });
 
   const router = useRouter();
@@ -73,13 +70,13 @@ const SideBarNavItems: FunctionComponent<IProps> = ({
     <Box>
       {data?.map((navTitle, index) => (
         <BootstrapAccordion
-          className={` ${ expanded && !status && "!m-auto" } ${status ? "w-56" : "w-8 ml-0"} `}
+          className={` ${status ? "w-56 -ml-4" : "w-8 ml-0"} `}
           key={index}
           expanded={expanded === `panel${index + 1}`}
           onChange={handleChange(`panel${index + 1}`)}
         >
           <AccordionSummary
-            className={`mt-0  ${ expanded && !status ? "": "!my-0" }`}
+            className="mt-0"
             expandIcon={
               <Box
                 className={` ${
@@ -112,11 +109,7 @@ const SideBarNavItems: FunctionComponent<IProps> = ({
           </AccordionSummary>
           <AccordionDetails className="my-0 -mt-2 py-0">
             {navTitle.dropdown?.map((item: any) => (
-              <SideDropDown
-                data={item}
-                color={navTitle.color}
-                key={item.text}
-              />
+              <SideDropDown data={item} color={navTitle.color} />
             ))}
           </AccordionDetails>
         </BootstrapAccordion>
