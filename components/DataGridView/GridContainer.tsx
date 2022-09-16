@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return, array-callback-return, no-nested-ternary */
 
 import { Grid, Skeleton } from "@mui/material";
+import moment from "moment";
 import { FunctionComponent } from "react";
 import DataGridCard from "./DataGridCard";
 
@@ -26,9 +27,19 @@ const GridContainer: FunctionComponent<IProps> = ({
               showCategory={showCategory || false}
               index={index}
               title={card.name}
-              position={type === "course" ? `Code - ${card.code}` : "jeje"}
+              position={
+                type === "course"
+                  ? `Code - ${card.code}`
+                  : card.parent_id
+                  ? `Parent - ${card.parent_id}`
+                  : "parent group"
+              }
               date={
-                type === "course" ? `Start Date - ${card.start_date}` : "jeje"
+                type === "course"
+                  ? `Start Date - ${card.start_date}`
+                  : `created at - ${moment(card.created_at).format(
+                      "YYYY-MM-DD"
+                    )}`
               }
               image="/images/viewcard.svg"
             />
