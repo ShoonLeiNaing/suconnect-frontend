@@ -13,7 +13,7 @@ import Paginator from "../../components/Paginator";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { byCategory, departmentsData, groupData } from "../../data/testData";
 import IconButton from "../../components/IconButton";
-import FilterValueList from "../../components/Courses/FilterValueList";
+import FilterValueList from "../../components/FilterSideBar/FilterValueList";
 import DataTable from "../../components/DataTable";
 import ActionsMenu from "../../components/DataTable/ActionsMenu";
 import { navigation } from "../../data/navigationData";
@@ -141,7 +141,7 @@ const Departments = () => {
           filterOptions={filterOptions}
         />
 
-        {!isListView ? (
+        {/* {!isListView ? (
           <Box>
             <FilterValueList filterOptions={filterOptions} />
             <Box margin="auto" maxWidth="1200px" my={8}>
@@ -157,7 +157,7 @@ const Departments = () => {
             <FilterValueList filterOptions={filterOptions} />
             <DataTable columns={columns} data={departmentsData} />
           </Box>
-        )}
+        )} */}
       </Box>
     </Layout>
   );

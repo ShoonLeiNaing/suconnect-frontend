@@ -55,7 +55,7 @@ const StaticInput: FunctionComponent<IProps> = ({
       borderRadius="15px"
       alignItems="center"
     >
-      <input className={styles.input} value={value} readOnly />
+      <input className={styles.input} defaultValue={value} readOnly />
       {showLock && (
         <RiLock2Fill style={{ color: colors.grey.grey1 }} fontSize="24px" />
       )}
@@ -66,7 +66,7 @@ const StaticInput: FunctionComponent<IProps> = ({
 StaticInput.defaultProps = {
   isTextArea: false,
   showLock: false,
-  maxWidth: "350px"
+  maxWidth: "350px",
 };
 
 export default StaticInput;

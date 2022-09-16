@@ -33,7 +33,6 @@ const DataGridCard: FunctionComponent<IProps> = ({
         width: "280px",
         borderRadius: "25px",
         height: "330px",
-        marginBottom: "15px",
         boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.07)",
         position: "relative",
       }}
@@ -78,7 +77,7 @@ const DataGridCard: FunctionComponent<IProps> = ({
           fontWeight="light"
           color={colors.grey.grey1}
         >
-          Assigned date : {date}
+          {date}
         </Typography>
       </CardContent>
     </Card>
