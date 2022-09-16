@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
+import { navigation } from "../../data/navigationData";
 // import ResetPasswordForm from "../../components/ResetPasswordForm";
 
 const ResetPasswordForm = dynamic(
@@ -23,7 +24,7 @@ const breadCrumbsData = [
 
 const ResetPassword = () => {
   return (
-    <Layout>
+    <Layout data={navigation} panel="panel5">
       <Box color="black" className="container" px={7}>
         <BreadcrumbsComponent
           currentPage="Reset Password"

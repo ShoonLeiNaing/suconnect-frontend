@@ -14,6 +14,7 @@ import SmallButton from "../../components/Button/SmallButton";
 import ActionsMenu from "../../components/DataTable/ActionsMenu";
 import DataTable from "../../components/DataTable";
 import { announcements } from "../../data/testData";
+import { navigation } from "../../data/navigationData";
 
 const AnnouncementUserView: NextPage = () => {
   const [filterText, setFilterText] = useState<string>("");
@@ -53,7 +54,7 @@ const AnnouncementUserView: NextPage = () => {
   ];
 
   return (
-    <Layout hiddenFooter>
+    <Layout hiddenFooter data={navigation}>
       <Box display="flex">
         <Box className="container p-12" color="black">
           <SubTitle

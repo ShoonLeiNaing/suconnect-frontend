@@ -21,6 +21,7 @@ import IconButton from "../../components/IconButton";
 import FilterValueList from "../../components/Courses/FilterValueList";
 import DataTable from "../../components/DataTable";
 import ActionsMenu from "../../components/DataTable/ActionsMenu";
+import { navigation } from "../../data/navigationData";
 
 const breadCrumbsData = [
   {
@@ -133,7 +134,7 @@ const Courses = () => {
   ];
 
   return (
-    <Layout allowToggle={false} hiddenFooter>
+    <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
       <Box color="black" className="container" px={6}>
         <BreadcrumbsComponent
           currentPage="Courses"

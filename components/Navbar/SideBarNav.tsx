@@ -7,51 +7,21 @@ import styles from "./navbar.module.css";
 
 interface IProps {
   allowToggle?: boolean;
+  data: any[];
+  panel?: string;
 }
 
-const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
+const SideBarNav: FunctionComponent<IProps> = ({
+  allowToggle,
+  data,
+  panel,
+}) => {
   const [slideOpen, setSlideOpen] = useState(true);
-
-  const NavTitles = [
-    {
-      navTitle: "Dashboard",
-      iconBgColor: colors.primaryColors.lightblue.lightblue1,
-      icon: "/images/sidebaricon1.svg",
-    },
-    {
-      navTitle: "Schedule",
-      iconBgColor: colors.primaryColors.pink.pink1,
-      icon: "/images/sidebaricon2.svg",
-    },
-    {
-      navTitle: "Courses",
-      iconBgColor: colors.primaryColors.yellow.yellow1,
-      icon: "/images/sidebaricon3.svg",
-    },
-    {
-      navTitle: "Payroll",
-      icon: "/images/sidebaricon4.svg",
-      iconBgColor: colors.secondaryColors.green.green1,
-    },
-    {
-      navTitle: "User Table",
-      icon: "/images/sidebaricon5.svg",
-      iconBgColor: colors.secondaryColors.orange.orange1,
-    },
-    {
-      navTitle: "My Profile",
-      icon: "/images/sidebaricon6.svg",
-      iconBgColor: colors.secondaryColors.red.red1,
-    },
-  ];
 
   return (
     <Box
       minWidth={slideOpen ? "250px" : "95px"}
-      // top={0}
-      // left={0}
-      className="h-screen shadow-lg rounded-lg relative duration-550 px-8 sticky top-0 "
-      // sx={{ overflowY: "scroll" }}
+      className="h-screen shadow-lg rounded-lg relative duration-550 px-6 sticky top-0 "
     >
       <img
         alt="logo"
@@ -60,7 +30,7 @@ const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
         src={slideOpen ? "/images/logo.png" : "/images/logosm.png"}
       />
 
-      <SideBarNavItems navTitles={NavTitles} status={slideOpen} />
+      <SideBarNavItems data={data} status={slideOpen} panel={panel} />
       <Box
         position="absolute"
         display="flex"
@@ -103,4 +73,7 @@ const SideBarNav: FunctionComponent<IProps> = ({ allowToggle }) => {
   );
 };
 
+SideBarNav.defaultProps = {
+  allowToggle: false,
+};
 export default SideBarNav;

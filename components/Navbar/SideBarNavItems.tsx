@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+
 import { useState, SyntheticEvent, FunctionComponent } from "react";
 import {
   Accordion,
@@ -6,9 +8,10 @@ import {
   Typography,
   styled,
   Box,
+  Icon,
 } from "@mui/material";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaPoll, FaCog, FaBookReader } from "react-icons/fa";
+import { useRouter } from "next/router";
 import { colors } from "../../data/constant";
 import SideDropDown from "./SideDropDown";
 
@@ -16,18 +19,24 @@ interface NavTitle {
   navTitle: string;
   iconBgColor: string;
   icon: string;
+  panel?: string;
 }
 interface IProps {
-  navTitles: NavTitle[];
+  data: any[];
   status: boolean;
+  panel?: any;
 }
 
-const SideBarNavItems: FunctionComponent<IProps> = ({ navTitles, status }) => {
+const SideBarNavItems: FunctionComponent<IProps> = ({
+  data,
+  status,
+  panel,
+}) => {
   const BootstrapAccordion = styled(Accordion)({
     boxShadow: "0px 0px 0px",
-    padding: "1px 0",
     marginBottom: "0px",
     marginLeft: "-1rem",
+
     "&.MuiAccordion-root:before": {
       backgroundColor: "white",
     },
@@ -42,16 +51,27 @@ const SideBarNavItems: FunctionComponent<IProps> = ({ navTitles, status }) => {
     }
   });
 
-  const [expanded, setExpanded] = useState<string | false>(false);
+  const router = useRouter();
+
+  // let currentPage;
+  // data.map((navTitle, index) => {
+  //   navTitle.dropdown.map((item: any) => {
+  //     if (router.pathname === item.link) {
+  //       currentPage = `panel${index + 1}`;
+  //     }
+  //   });
+  // });
+
+  const [expanded, setExpanded] = useState<string | false>(panel);
 
   const handleChange =
-    (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
+    (newpanel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? newpanel : false);
     };
 
   return (
     <Box>
-      {navTitles?.map((navTitle, index) => (
+      {data?.map((navTitle, index) => (
         <BootstrapAccordion
           className={` ${ expanded && !status && "!m-auto" } ${status ? "w-56" : "w-8 ml-0"} `}
           key={index}
@@ -65,7 +85,7 @@ const SideBarNavItems: FunctionComponent<IProps> = ({ navTitles, status }) => {
                 className={` ${
                   status ? "flex" : "hidden"
                 } cursor-pointer rounded-full p-[0.15rem]`}
-                sx={{ backgroundColor: navTitle.iconBgColor }}
+                sx={{ backgroundColor: navTitle.color }}
               >
                 <IoIosArrowDown fontSize="14px" color="white" />{" "}
               </Box>
@@ -76,36 +96,24 @@ const SideBarNavItems: FunctionComponent<IProps> = ({ navTitles, status }) => {
                 width="2.5rem"
                 padding="0.5rem"
                 borderRadius="9px"
-                sx={{ backgroundColor: navTitle.iconBgColor }}
+                sx={{ backgroundColor: navTitle.color }}
               >
-                <img className="w-6 h-6" src={navTitle.icon} alt="sideicons" />
+                <Icon component={navTitle.icon} sx={{ color: "white" }} />
               </Box>
               <Typography
                 className={`${status ? "flex" : "hidden"}`}
-                fontSize="16px"
+                fontSize="15px"
                 marginLeft="0.7rem"
                 color={colors.black.black1}
               >
-                {navTitle.navTitle}
+                {navTitle.text}
               </Typography>
             </Box>
           </AccordionSummary>
-          <AccordionDetails className={` ${status ? "" : "hidden"} my-0 -mt-2 py-0`}>
-            <SideDropDown
-              title="DropDown 1"
-              iconColor={navTitle.iconBgColor}
-              icon={<FaBookReader />}
-            />
-            <SideDropDown
-              title="DropDown 2"
-              iconColor={navTitle.iconBgColor}
-              icon={<FaPoll />}
-            />
-            <SideDropDown
-              title="DropDown 3"
-              iconColor={navTitle.iconBgColor}
-              icon={<FaCog />}
-            />
+          <AccordionDetails className="my-0 -mt-2 py-0">
+            {navTitle.dropdown?.map((item: any) => (
+              <SideDropDown data={item} color={navTitle.color} />
+            ))}
           </AccordionDetails>
         </BootstrapAccordion>
       ))}
