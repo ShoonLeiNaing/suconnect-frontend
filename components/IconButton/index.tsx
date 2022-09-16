@@ -67,17 +67,47 @@ const IconButton: FunctionComponent<IProps> = ({
   if (isActive) {
     return (
       <Box sx={{ backgroundColor: "#3B8CF7" }} borderRadius="10px">
-        <BootstrapIconButtonActive variant="contained" onClick={onClickHandler}>
+        <Box
+          height="45px"
+          minWidth="50px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          color={colors.white.white2}
+          onClick={onClickHandler}
+          fontSize="20px"
+        >
           {icon} <Typography fontSize="15px"> {text} </Typography>
-        </BootstrapIconButtonActive>
+        </Box>
+        {/* <BootstrapIconButtonActive variant="contained" onClick={onClickHandler}>
+          {icon} <Typography fontSize="15px"> {text} </Typography>
+        </BootstrapIconButtonActive> */}
       </Box>
     );
   }
   return (
     <Box sx={{ backgroundColor: "#F6F9FE" }} borderRadius="10px">
-      <BootstrapIconButton variant="contained" onClick={onClickHandler}>
+      <Box
+        height="45px"
+        minWidth="50px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        color={colors.primaryColors.lightblue.lightblue1}
+        onClick={onClickHandler}
+        fontSize="20px"
+      >
+        {icon}{" "}
+        <Typography
+          className={` ${text ? "block" : "hidden"} capitalize py-4 px-2`}
+        >
+          {" "}
+          {text}{" "}
+        </Typography>
+      </Box>
+      {/* <BootstrapIconButton variant="contained" onClick={onClickHandler}>
         {icon} <Typography className={` ${text ? "block" : "hidden" } capitalize py-4 px-2`}> {text} </Typography>
-      </BootstrapIconButton>
+      </BootstrapIconButton> */}
     </Box>
   );
 };

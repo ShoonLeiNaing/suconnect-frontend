@@ -19,6 +19,7 @@ const SideDropDown: FunctionComponent<IProps> = ({ data, color }) => {
       sx={{
         backgroundColor:
           router.pathname === data.link ? colors.white.white2 : "none",
+        borderRadius: router.pathname === data.link ? "10px" : "none",
         "&:hover": {
           backgroundColor: colors.white.white2,
           borderRadius: "10px",
