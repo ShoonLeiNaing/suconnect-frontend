@@ -9,12 +9,11 @@ import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/SearchInput";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { byCategory, byDate, byPosition, casesData } from "../../data/testData";
-import FilterValueList from "../../components/Courses/FilterValueList";
 import { colors } from "../../data/constant";
 import DateFilter from "../../components/Calendar/DateFilter";
-import FullDayTime from "./FullDayTime";
+// import FullDayTime from "./FullDayTime";
 import Event from "./Event";
-
+import FilterValueList from "../../components/FilterSideBar/FilterValueList";
 
 const breadCrumbsData = [
   {
@@ -61,73 +60,74 @@ const Cases = () => {
         });
         setShowSideFilter(true);
       },
-    }
+    },
   ];
 
-  
-
-    const date = new Date();
-    const longMonth = date.toLocaleString('en-us', { month: 'long' });
-    const month = date.toLocaleString('en-us', { month: 'short' });
-    const longWeekDay = date.toLocaleString('en-us', { weekday: 'long' });
-    const weekday = date.toLocaleString('en-us', { weekday: 'short' });
-    const day = date.toLocaleString('en-us', { day: 'numeric' });
-
-  
-
+  const date = new Date();
+  const longMonth = date.toLocaleString("en-us", { month: "long" });
+  const month = date.toLocaleString("en-us", { month: "short" });
+  const longWeekDay = date.toLocaleString("en-us", { weekday: "long" });
+  const weekday = date.toLocaleString("en-us", { weekday: "short" });
+  const day = date.toLocaleString("en-us", { day: "numeric" });
 
   return (
-    <Layout hiddenFooter>
-      <Box color="black" className="container" px={6}>
-        <BreadcrumbsComponent
-          currentPage="Schedule"
-          previousPages={breadCrumbsData}
-        />
-        <NameTag name="Thiha Swan Htet" currentPage="Schedule" />
-        <Box
-          my={4}
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Box display="flex" gap={2}>
-            <SearchInput
-              searchText={searchText}
-              setSearchText={setSearchText}
-            />
+    // <Layout hiddenFooter data={navigation}>
+    //   <Box color="black" className="container" px={6}>
+    //     <BreadcrumbsComponent
+    //       currentPage="Schedule"
+    //       previousPages={breadCrumbsData}
+    //     />
+    //     <NameTag name="Thiha Swan Htet" currentPage="Schedule" />
+    //     <Box
+    //       my={4}
+    //       display="flex"
+    //       justifyContent="space-between"
+    //       alignItems="center"
+    //     >
+    //       <Box display="flex" gap={2}>
+    //         <SearchInput
+    //           searchText={searchText}
+    //           setSearchText={setSearchText}
+    //         />
 
-            <MenuComponent
-              filterOptions={filterOptions}
-              isIcon
-              icon={<RiFilterFill />}
-            />
-          </Box>
-        </Box>
-        <Box className="pb-6">
-            <DateFilter />
-          </Box>
+    //         <MenuComponent
+    //           filterOptions={filterOptions}
+    //           isIcon
+    //           icon={<RiFilterFill />}
+    //         />
+    //       </Box>
+    //     </Box>
+    //     <Box className="pb-6">
+    //       <DateFilter />
+    //     </Box>
 
-        <FilterSideBar
-          open={showSideFilter}
-          setShowSideFilter={setShowSideFilter}
-          filterValue={filterValue}
-          setFilterValue={setFilterValue}
-          filterOptions={filterOptions}
-        />
+    //     <FilterSideBar
+    //       open={showSideFilter}
+    //       setShowSideFilter={setShowSideFilter}
+    //       filterValue={filterValue}
+    //       setFilterValue={setFilterValue}
+    //       filterOptions={filterOptions}
+    //     />
 
-        <Box className="mb-6">
-          <FilterValueList filterOptions={filterOptions} />
+    //     <Box className="mb-6">
+    //       {/* <FilterValueList filterOptions={filterOptions} /> */}
 
-          <Box className="mt-6 p-5 rounded-lg" boxShadow="0 5px 15px rgb(0 0 0 / 0.1)">
-            <Typography color={colors.black.black2}>{weekday}</Typography>
-            <Typography color={colors.primaryColors.lightblue.lightblue1}>{month} {day} </Typography>
-          </Box>
-      
-          <Event />
-          {/* <FullDayTime /> */}
-        </Box>          
-      </Box>
-    </Layout>
+    //       <Box
+    //         className="mt-6 p-5 rounded-lg"
+    //         boxShadow="0 5px 15px rgb(0 0 0 / 0.1)"
+    //       >
+    //         <Typography color={colors.black.black2}>{weekday}</Typography>
+    //         <Typography color={colors.primaryColors.lightblue.lightblue1}>
+    //           {month} {day}{" "}
+    //         </Typography>
+    //       </Box>
+
+    //       <Event />
+    //       {/* <FullDayTime /> */}
+    //     </Box>
+    //   </Box>
+    // </Layout>
+    <p>hello</p>
   );
 };
 
