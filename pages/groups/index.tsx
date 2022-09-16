@@ -149,6 +149,7 @@ const Groups: FunctionComponent<IProps> = ({ groups, parents }) => {
   useEffect(() => {
     paginationHandler();
   }, [page, size, isFiltering]);
+
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
       <Box color="black" className="container" px={6}>
@@ -215,6 +216,7 @@ const Groups: FunctionComponent<IProps> = ({ groups, parents }) => {
             setData,
             setTotalPages,
             size,
+            filterFunction: filterGroups,
           }}
         />
         {!isListView ? (
