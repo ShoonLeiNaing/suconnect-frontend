@@ -152,7 +152,7 @@ const FilterTab: FunctionComponent<IProps> = ({
             }}
           /> */}
           <Box mx={2}>
-            <Grid container maxHeight="310px" overflow="scroll" my={3}>
+            <Grid container maxHeight="310px" overflow="scroll" my={1}>
               {filterValue?.data.map((item: any, index: number) => (
                 <Grid
                   item
@@ -202,11 +202,11 @@ const FilterTab: FunctionComponent<IProps> = ({
         </Box>
       ) : (
         <Box mx="10px">
-          <Typography fontSize="14px" color={colors.grey.grey2}>
+          {/* <Typography fontSize="14px" color={colors.grey.grey2} my={2}>
             Date Range
-          </Typography>
+          </Typography> */}
           <RadioGroup
-            sx={{ marginY: "15px" }}
+            sx={{ marginY: "25px" }}
             value={
               filterData[filterValue.filterParam]?.value || selectedRange || " "
             }

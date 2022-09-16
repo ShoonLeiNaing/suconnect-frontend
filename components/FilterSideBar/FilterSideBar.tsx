@@ -17,10 +17,7 @@ interface IProps {
   setFilterValue: any;
   filterData?: any;
   setFilterData?: any;
-  setIsFiltering?: any;
-  setData?: any;
-  setTotalPages?: any;
-  setPage?: any;
+  filterConfirmHandler?: any;
   //   toggleDrawer: any;
 }
 
@@ -32,23 +29,10 @@ const FilterSideBar: FunctionComponent<IProps> = ({
   setFilterValue,
   filterData,
   setFilterData,
-  setIsFiltering,
-  setData,
-  setTotalPages,
-  setPage,
+  filterConfirmHandler,
   //   toggleDrawer,
 }) => {
   const [searchValue, setSearchValue] = useState<string>("");
-  const filterConfirmHandler = async () => {
-    setPage(1);
-    setIsFiltering(true);
-    setShowSideFilter(false);
-
-    const params = getFilterParams(filterData);
-    const res = await filterCourses(6, 1, params);
-    setData(res?.data);
-    setTotalPages(res?.total_pages);
-  };
 
   const deleteHandler = () => {
     const newOption = removeFromObject(filterData, filterValue.filterParam);
@@ -89,7 +73,7 @@ const FilterSideBar: FunctionComponent<IProps> = ({
             text="Confirm"
             customHeight="40px"
             customWidth="95px"
-            onClickHandler={filterConfirmHandler}
+            onClickHandler={() => filterConfirmHandler()}
           />
         </Box>
       </Box>
