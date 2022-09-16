@@ -63,18 +63,18 @@ const FilterTitle: FunctionComponent<IProps> = ({
       justifyContent="center"
       color={colors.black.black2}
       pt={4}
-      mb={2}
+      // mb={2}
     >
-      <MdKeyboardArrowLeft
-        size="20px"
-        // style={{ color: currentIndex === 0 && colors.grey.grey1 }}
-        onClick={clickPrev}
-      />
+      {filterOptions?.length > 1 && (
+        <MdKeyboardArrowLeft size="20px" onClick={clickPrev} />
+      )}
       <Typography mx={3} minWidth="110px" textAlign="center">
         By {title}
       </Typography>
 
-      <MdKeyboardArrowRight size="20px" onClick={clickNext} />
+      {filterOptions?.length > 1 && (
+        <MdKeyboardArrowRight size="20px" onClick={clickNext} />
+      )}
     </Box>
   );
 };

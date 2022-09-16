@@ -1,5 +1,5 @@
-import { Box, Chip, Typography } from "@mui/material";
-import { FunctionComponent, useEffect, useMemo, useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { FunctionComponent, useEffect, useState } from "react";
 import { IoGrid, IoListOutline } from "react-icons/io5";
 import { BiRefresh } from "react-icons/bi";
 import { RiFilterFill } from "react-icons/ri";
@@ -165,6 +165,16 @@ const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
     },
   ];
 
+  const filterConfirmHandler = async () => {
+    setPage(1);
+    setIsFiltering(true);
+    setShowSideFilter(false);
+    const params = getFilterParams(filterData);
+    const res = await filterCourses(size, 1, params);
+    setData(res?.data);
+    setTotalPages(res?.total_pages);
+  };
+
   const paginationHandler = async () => {
     setLoading(true);
     let res: any;
@@ -237,10 +247,7 @@ const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
             filterOptions,
             filterData,
             setFilterData,
-            setIsFiltering,
-            setData,
-            setTotalPages,
-            setPage,
+            filterConfirmHandler,
           }}
         />
         <FilterValueList
@@ -251,6 +258,8 @@ const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
             setPage,
             setData,
             setTotalPages,
+            size,
+            filterFunction: filterCourses,
           }}
         />
         {!isListView ? (
