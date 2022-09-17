@@ -19,7 +19,7 @@ const Login: FunctionComponent = () => {
   return (
     <Box className="h-screen flex items-center">
       <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/LoginScreen.svg" height={600} width={600} />
+        <Image src="/images/login.svg" height={450} width={450} />
       </Box>
       <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
         <Box className="w-full mb-12">
