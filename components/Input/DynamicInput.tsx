@@ -9,6 +9,7 @@ interface IProps {
   isTextArea?: boolean;
   maxWidth?: string;
   customType?:string;
+  placeholder?:string;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
@@ -17,6 +18,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
   setValue,
   maxWidth,
   customType,
+  placeholder
 }) => {
   if (isTextArea) {
     return (
@@ -47,6 +49,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
       <input
         type={customType}
         className={styles.input}
+        placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />

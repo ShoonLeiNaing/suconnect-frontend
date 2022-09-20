@@ -6,15 +6,17 @@ interface IProps {
   label: string;
   isRequired?: boolean;
   isOptional?: boolean;
+  fontSize?: string;
 }
 
 const InputLabel: FunctionComponent<IProps> = ({
   label,
   isRequired,
   isOptional,
+  fontSize
 }) => {
   return (
-    <Typography ml={1} mb="2px" fontSize="15px" color={colors.grey.grey2}>
+    <Typography ml={1} mb="2px" fontSize={fontSize} color={colors.grey.grey2}>
       {label} {isRequired && <span style={{ color: "red" }}>*</span>}
       {isOptional && (
         <span style={{ color: colors.grey.grey1 }}>(optional)</span>
@@ -25,6 +27,7 @@ const InputLabel: FunctionComponent<IProps> = ({
 
 InputLabel.defaultProps = {
   isRequired: false,
+  fontSize: "15px"
 };
 
 export default InputLabel;
