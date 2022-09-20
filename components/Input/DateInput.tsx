@@ -28,9 +28,11 @@ const DateInput: FunctionComponent<IProps> = ({
         renderInput={(params) => (
           <TextField
             sx={{
+            
+                width: customWidth && customWidth,
+            
               "& .MuiInputBase-input": {
                 height: customHeight || "10px",
-                width: customWidth && customWidth,
               },
               "& fieldset": {
                 borderRadius: "13px",

@@ -16,7 +16,7 @@ const StepOne: FunctionComponent = () => {
       </Box>
       <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
-          Let&lsquo;s get started registration...
+          Let&lsquo;s get started registeration...
         </Typography>
         <Box className="w-full flex flex-col border py-8 px-10 rounded-xl">
           <Box className="mb-6">
@@ -24,7 +24,7 @@ const StepOne: FunctionComponent = () => {
             <DynamicInput
               value={mail}
               setValue={setMail}
-              maxWidth="500px"
+              maxiWidth="500px"
               placeholder="example@gmail.com"
             />
           </Box>

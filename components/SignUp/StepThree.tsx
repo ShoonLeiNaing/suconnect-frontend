@@ -25,7 +25,7 @@ const StepThree: FunctionComponent = () => {
             <DynamicInput
               value={mail}
               setValue={setMail}
-              maxWidth="500px"
+              maxiWidth="500px"
               placeholder="example@gmail.com"
             />
           </Box>

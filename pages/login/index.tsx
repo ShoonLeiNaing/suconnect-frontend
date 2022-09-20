@@ -38,7 +38,7 @@ const Login: FunctionComponent = () => {
             <Typography className="text-[#737373] text-[0.9rem] mb-1 font-semibold">
               Mail
             </Typography>
-            <DynamicInput value={mail} setValue={setMail} maxWidth="500px" />
+            <DynamicInput value={mail} setValue={setMail} maxiWidth="500px" />
           </Box>
           <Box className="flex justify-between">
             <Typography className="text-[#737373] text-[0.9rem]">

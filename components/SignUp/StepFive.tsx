@@ -69,7 +69,7 @@ const StepFive: FunctionComponent = () => {
               value={name}
               setValue={setName}
               placeholder="eg. Thiha Swan Htet"
-              maxWidth="500px"
+              maxiWidth="500px"
             />
           </Box>
           <Box>
@@ -78,7 +78,7 @@ const StepFive: FunctionComponent = () => {
               value={bankAccNo}
               setValue={setBankAccNo}
               placeholder="xxxx-xxxx-xxxx-xxxx"
-              maxWidth="500px"
+              maxiWidth="500px"
             />
           </Box>
         </Box>
