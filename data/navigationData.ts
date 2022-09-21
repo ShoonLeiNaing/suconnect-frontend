@@ -131,16 +131,3 @@ export const navigation = [
     ],
   },
 ];
-
-// {
-//   data?.map((item) => (
-//     <SideBarNavItem
-//       key={item.text}
-//       status={slideOpen}
-//       title={item.text}
-//       icon={item.icon}
-//       iconBgColor={colors.primaryColors.lightblue.lightblue1}
-//       dropdown={item}
-//     />
-//   ));
-// }

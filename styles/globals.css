@@ -155,3 +155,30 @@ a {
 .css-17dea8a {
   background-color: none !important;
 }
+
+/* calendar */
+.css-1ps6pg7-MuiPaper-root {
+  border-radius: none !important;
+  box-shadow: none;
+}
+.css-4j3kvp-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  /* background-color: #3b8cf7;
+  border-color: #3b8cf7; */
+  border-width: 0;
+  /* text-transform: unset; */
+
+  /* color: white; */
+}
+
+.css-d2dnvh-MuiButtonBase-root-MuiButton-root.TodayButton-button {
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #f6f9fe;
+  margin-right: 10px;
+  border-width: 0;
+  padding: 10px 20px;
+  text-transform: unset;
+}

@@ -41,7 +41,6 @@ const columns = [
   //   width: 95,
   // },
   { field: "name", headerName: "Name", flex: 1, minWidth: 180 },
-
   { field: "start_date", headerName: "Start Date", flex: 1, minWidth: 150 },
   { field: "end_date", headerName: "End Date", flex: 1, minWidth: 150 },
   { field: "code", headerName: "Code", flex: 1, minWidth: 100 },
