@@ -1,47 +1,60 @@
 import { FunctionComponent } from "react";
-import { Box } from "@mui/material";
+import { Box, InputBase, MenuItem, Select, styled } from "@mui/material";
 import styles from "./input.module.css";
 import { colors } from "../../data/constant";
 
 interface SelectInputProps {
-    value: string
-    setValue: any
-    maxWidth?: string
-    options?: string[]
+  value: string;
+  setValue: any;
+  maxWidth?: string;
+  options?: any;
+  onChange?: any;
 }
 
-const svg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%237ab84e'><polygon points='0,0 100,0 50,50'/></svg>"
+const BootstrapInput = styled(InputBase)(() => ({
+  "& .MuiInputBase-input": {
+    paddingLeft: "16px",
+  },
+}));
 
 const SelectInput: FunctionComponent<SelectInputProps> = ({
-    value,
-    setValue,
-    maxWidth,
-    options
+  value,
+  setValue,
+  maxWidth,
+  options,
+  onChange,
 }) => {
-    return ( 
-        <Box
-        color={colors.grey.grey2}
-        maxWidth={maxWidth}
-        height="55px"
-        paddingX={2}
-        borderRadius="15px"
-        border="none"
-        className={styles.select_box} 
-        >
-            <select 
-            name="countries" 
-            id="countries"  
-            >
-                <option>Myanmar</option>
-                <option>Singapore</option>
-                <option>Indonesia</option>
-            </select>
-        </Box>
-     );
-}
+  return (
+    <Box
+      color={colors.grey.grey2}
+      maxWidth={maxWidth}
+      height="55px"
+      borderRadius="15px"
+      border="none"
+      //   className={styles.select_box}
+    >
+      <Select
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        input={<BootstrapInput />}
+        className={styles.select_box}
+      >
+        {options?.map((opt: any) => (
+          <MenuItem value={opt}>{opt}</MenuItem>
+        ))}
+      </Select>
+
+      {/* <select name="countries" id="countries">
+        <option>Myanmar</option>
+        <option>Singapore</option>
+        <option>Indonesia</option>
+      </select> */}
+    </Box>
+  );
+};
 
 SelectInput.defaultProps = {
-    maxWidth: "350px",
-  };
- 
+  maxWidth: "350px",
+};
+
 export default SelectInput;

@@ -24,7 +24,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "framer-motion": "^6.5.1",
-    "loadash": "^1.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "next": "12.2.4",

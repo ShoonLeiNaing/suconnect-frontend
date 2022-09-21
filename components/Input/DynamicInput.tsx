@@ -8,8 +8,8 @@ interface IProps {
   setValue: any;
   isTextArea?: boolean;
   maxWidth?: string;
-  customType?:string;
-  placeholder?:string;
+  customType?: string;
+  placeholder?: string;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
@@ -18,13 +18,13 @@ const DynamicInput: FunctionComponent<IProps> = ({
   setValue,
   maxWidth,
   customType,
-  placeholder
+  placeholder,
 }) => {
   if (isTextArea) {
     return (
       <Box
         color={colors.black.black2}
-        maxWidth="350px"
+        maxWidth={maxWidth || "350px"}
         height="120px"
         borderRadius="15px"
         border="1px solid grey"
