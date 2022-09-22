@@ -15,6 +15,12 @@ import InputLabel from "../Input/InputLabel";
 
 const StepFour: FunctionComponent = () => {
   const [mail, setMail] = useState("");
+  const [houseNo, setHouseNo] = useState("");
+  const [blockNo, setBlockNo] = useState("");
+  const [streetName, setStreetName] = useState("");
+  const [township, setTownship] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("Myanmar");
   const handleChange = (event: SelectChangeEvent) => {
     setCountry(event.target.value as string);
@@ -39,8 +45,8 @@ const StepFour: FunctionComponent = () => {
           <Box className="mb-6">
             <InputLabel label="House number" />
             <DynamicInput
-              value={mail}
-              setValue={setMail}
+              value={houseNo}
+              setValue={setHouseNo}
               maxiWidth="500px"
               placeholder="Type number..."
             />
@@ -48,8 +54,8 @@ const StepFour: FunctionComponent = () => {
           <Box className="mb-6">
             <InputLabel label="Block number" />
             <DynamicInput
-              value={mail}
-              setValue={setMail}
+              value={blockNo}
+              setValue={setBlockNo}
               maxiWidth="500px"
               placeholder="Type here..."
             />
@@ -57,8 +63,8 @@ const StepFour: FunctionComponent = () => {
           <Box className="mb-6">
             <InputLabel label="Street name" />
             <DynamicInput
-              value={mail}
-              setValue={setMail}
+              value={streetName}
+              setValue={setStreetName}
               maxiWidth="500px"
               placeholder="eg. Min Ye Kyaw Swar Street"
             />
@@ -66,8 +72,8 @@ const StepFour: FunctionComponent = () => {
           <Box className="mb-6">
             <InputLabel label="Township" />
             <DynamicInput
-              value={mail}
-              setValue={setMail}
+              value={township}
+              setValue={setTownship}
               maxiWidth="500px"
               placeholder="eg. Insein"
             />
@@ -75,8 +81,8 @@ const StepFour: FunctionComponent = () => {
           <Box className="mb-6">
             <InputLabel label="City" />
             <DynamicInput
-              value={mail}
-              setValue={setMail}
+              value={city}
+              setValue={setCity}
               maxiWidth="500px"
               placeholder="eg. Yangon"
             />
@@ -110,8 +116,8 @@ const StepFour: FunctionComponent = () => {
           <Box>
             <InputLabel label="Postal code" />
             <DynamicInput
-              value={mail}
-              setValue={setMail}
+              value={postalCode}
+              setValue={setPostalCode}
               maxiWidth="500px"
               placeholder="eg. 11361"
             />

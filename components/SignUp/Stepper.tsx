@@ -7,6 +7,7 @@ import StepFour from "./StepFour";
 import StepFive from "./StepFive";
 import StepSix from "./StepSix";
 import SmallButton from "../Button/SmallButton";
+import DialogComponent from "./DialogComponent";
 
 const steps = [
   "Register",
@@ -19,11 +20,13 @@ const steps = [
 
 const StepperComponent: FunctionComponent = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [popUp, setPopUp] = useState(false);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) =>
       activeStep < 5 ? prevActiveStep + 1 : prevActiveStep
     );
+    if (activeStep === steps.length - 1) setPopUp(true);
   };
 
   const handleBack = () => {
@@ -84,6 +87,9 @@ const StepperComponent: FunctionComponent = () => {
       ) : (
         <Box className="w-[40%] absolute top-8 left-16">{stepperStatus()}</Box>
       )}
+
+      {popUp && <DialogComponent />}
+
       <Box className="w-full ">
         <>
           {activeStep === 0 && <StepOne />}
