@@ -1,15 +1,24 @@
-import { Box, Typography, FormControl, RadioGroup, Select, FormControlLabel, Radio, SelectChangeEvent, styled, InputBase, MenuItem } from "@mui/material";
+import {
+  Box,
+  Typography,
+  FormControl,
+  RadioGroup,
+  Select,
+  FormControlLabel,
+  Radio,
+  SelectChangeEvent,
+  styled,
+  InputBase,
+  MenuItem,
+} from "@mui/material";
 import Image from "next/image";
 import { FunctionComponent, useState } from "react";
 import { BsCameraFill } from "react-icons/bs";
-import SmallButton from "../Button/SmallButton";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import PhoneNumberInput from "../Input/PhoneNumberInput";
 import WordsCount from "../Input/WordsCount";
 import PasswordInput from "../ResetPasswordForm/PasswordInput";
-
-
 
 const StepSix: FunctionComponent = () => {
   const [mail, setMail] = useState("");
@@ -55,45 +64,58 @@ const StepSix: FunctionComponent = () => {
           <Box>
             <InputLabel label="Upload profile" />
             <Box mb={3}>
-                <Box
-                  height="75px"
-                  width="75px"
-                  position="relative"
-                  sx={{
-                    backgroundColor: "#F6F9FE",
-                  }}
-                  className="flex-row"
-                  color="white"
-                  borderRadius="100%"
-                >
-                  <input
-                    // onChange={selectProfileImage}
-                    style={{ opacity: "0", position: "absolute", top: "0" }}
-                    type="file"
-                    accept="image/jpg, image/jpeg, image/png"
-                  />
-                  <BsCameraFill size="35px" color="#71ADFB" />
-                </Box>
+              <Box
+                height="75px"
+                width="75px"
+                position="relative"
+                sx={{
+                  backgroundColor: "#F6F9FE",
+                }}
+                className="flex-row"
+                color="white"
+                borderRadius="100%"
+              >
+                <input
+                  // onChange={selectProfileImage}
+                  style={{ opacity: "0", position: "absolute", top: "0" }}
+                  type="file"
+                  accept="image/jpg, image/jpeg, image/png"
+                />
+                <BsCameraFill size="35px" color="#71ADFB" />
               </Box>
+            </Box>
           </Box>
           <Box mb={3}>
             <InputLabel label="Gender" isRequired />
             <FormControl className="ml-2 text-[#737373]">
-            <RadioGroup
-              row
-              name="radio-buttons-group"
-            >
-              <FormControlLabel value="male" control={<Radio className="text-[#3B8CF7]" />} label="Male" />
-              <FormControlLabel value="female" control={<Radio className="text-[#3B8CF7]" />} label="Female" />
-            </RadioGroup>
+              <RadioGroup row name="radio-buttons-group">
+                <FormControlLabel
+                  value="male"
+                  control={<Radio className="text-[#3B8CF7]" />}
+                  label="Male"
+                />
+                <FormControlLabel
+                  value="female"
+                  control={<Radio className="text-[#3B8CF7]" />}
+                  label="Female"
+                />
+              </RadioGroup>
             </FormControl>
           </Box>
           <Box>
-              <InputLabel label="Describe yourself" />
-              <DynamicInput value={bio} setValue={setBio} customWidth="100%" maxiWidth="500px" maxiHeight="70px" isTextArea placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing" />
-              <WordsCount maxCount="250" currentCount={bio.length} />
-            </Box>
-            <Box className="mb-6">
+            <InputLabel label="Describe yourself" />
+            <DynamicInput
+              value={bio}
+              setValue={setBio}
+              customWidth="100%"
+              maxiWidth="500px"
+              maxiHeight="70px"
+              isTextArea
+              placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing"
+            />
+            <WordsCount maxCount="250" currentCount={bio.length} />
+          </Box>
+          <Box className="mb-6">
             <InputLabel label="Secondary Mail" />
             <DynamicInput
               value={mail}
@@ -235,21 +257,9 @@ const StepSix: FunctionComponent = () => {
             />
           </Box>
         </Box>
-        {/* <Box className="w-full flex justify-end items-center mt-8">
-          <SmallButton
-            text="Back"
-            customHeight="40px"
-            bgColor="white"
-            color="#737373"
-            customMarginX="1rem"
-            customFontSize="15px"
-            customBorder="1px solid #BBBBBB"
-          />
-          <SmallButton text="Next" customHeight="40px" customFontSize="15px" />
-        </Box> */}
       </Box>
       <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/LoginScreen.svg" height={500} width={500} />
+        <Image src="/images/Step6.svg" height={500} width={500} />
       </Box>
     </Box>
   );
