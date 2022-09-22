@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { FunctionComponent } from "react";
 
 interface IProps {
