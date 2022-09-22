@@ -1,13 +1,12 @@
-import Layout from "../../components/Layout";
 import { Box } from "@mui/material";
+import { RiFilterFill } from "react-icons/ri";
+import { FunctionComponent, useEffect, useState } from "react";
+import Layout from "../../components/Layout";
 import NameTag from "../../components/Profile/NameTag";
 import { navigation } from "../../data/navigationData";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import SearchInput from "../../components/DateFilter/SearchInput";
 import MenuComponent from "../../components/MenuButton";
-import IconButton from "../../components/IconButton";
-import { RiFilterFill } from "react-icons/ri";
-import { FunctionComponent, useEffect, useState } from "react";
 import { getAllEvents } from "../../api/events/list";
 import EventSchedular from "../../components/EventSchedular";
 import { getAllCourses } from "../../api/courses/list";

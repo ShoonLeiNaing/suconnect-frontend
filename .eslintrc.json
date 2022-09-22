@@ -29,8 +29,8 @@
     "no-else-return": "off",
     "react/no-array-index-key": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "react/no-unstable-nested-components": "off",
-    "react/prop-types": "off",
-    "import/order": "off"
+    "react/no-unstable-nested-components": "off"
+    // "react/prop-types": "off",
+    // "import/order": "off"
   }
 }

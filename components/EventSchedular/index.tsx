@@ -13,8 +13,7 @@ import {
   AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import moment from "moment";
-import { Box, Grid, IconButton } from "@mui/material";
-// import { appointments } from "../../data/date";
+import { Box } from "@mui/material";
 import { FunctionComponent } from "react";
 import { FaGraduationCap } from "react-icons/fa";
 
@@ -32,8 +31,7 @@ const EventSchedular: FunctionComponent<IProps> = ({ events }) => {
       classification: event.classification,
       course: event.course,
       title: `${event.course} - ${event.classification}`,
-      //   startDate: new Date(2022, 8, 18, 14, 10),
-      //   endDate: new Date(2022, 8, 18, 15, 30),
+      color: "pink",
       startDate: new Date(
         date[0],
         date[1],
@@ -53,45 +51,40 @@ const EventSchedular: FunctionComponent<IProps> = ({ events }) => {
     };
   });
 
-  const Header = ({ children, appointmentData, ...restProps }) => (
-    <AppointmentTooltip.Header {...restProps} appointmentData={appointmentData}>
-      <IconButton
-        /* eslint-disable-next-line no-alert */
-        onClick={() => alert(JSON.stringify(appointmentData))}
-        // className={classes.commandButton}
-        size="large"
-      >
-        hehe
-      </IconButton>
-    </AppointmentTooltip.Header>
-  );
-
-  const Content = ({ children, appointmentData, ...restProps }) => (
-    <AppointmentTooltip.Content
+  const Header = ({ children, appointmentData, ...restProps }: any) => (
+    <AppointmentTooltip.Header
       {...restProps}
       appointmentData={appointmentData}
-    >
-      {console.log({ appointmentData })}
-      <Grid container alignItems="center" backgroundColor="red">
-        {appointmentData.title}
-
-        {/* <StyledGrid item xs={2} className={classes.textCenter}>
-          <StyledRoom className={classes.icon} />
-        </StyledGrid>
-        <Grid item xs={10}>
-          <span>{appointmentData.location}</span>
-        </Grid> */}
-      </Grid>
-    </AppointmentTooltip.Content>
+      style={{
+        backgroundColor: "#333333",
+        color: "white",
+        paddingTop: "20px",
+      }}
+    />
   );
 
-  const Appointment = ({ children, style, data, ...restProps }) => (
+  const Content = ({ children, appointmentData, ...restProps }: any) => (
+    <AppointmentTooltip.Content
+      {...restProps}
+      style={{
+        backgroundColor: "#333333",
+        color: "white",
+        paddingBottom: "20px",
+      }}
+      appointmentData={appointmentData}
+    />
+  );
+
+  const Appointment = ({ children, ...restProps }: any) => (
     <Appointments.Appointment
       {...restProps}
       style={{
-        ...style,
-        backgroundColor: data.color,
-        paddingLeft: "18px",
+        color: "black",
+        backgroundColor: "#F6F9FE",
+        paddingLeft: "20px",
+        borderRadius: "10px",
+        border: "1px solid rgba(187, 187, 187, 1)",
+        borderLeft: `10px solid ${children[1].props.data.color}`,
       }}
     >
       <Box position="absolute" left={0} margin="4px">
@@ -99,6 +92,15 @@ const EventSchedular: FunctionComponent<IProps> = ({ events }) => {
       </Box>
       {children}
     </Appointments.Appointment>
+  );
+
+  const AppointmentContent = ({ ...restProps }: any) => (
+    <Appointments.AppointmentContent
+      style={{
+        color: "black",
+      }}
+      {...restProps}
+    />
   );
 
   return (
@@ -118,13 +120,13 @@ const EventSchedular: FunctionComponent<IProps> = ({ events }) => {
           <TodayButton />
 
           <ViewSwitcher />
-          <Appointments appointmentComponent={Appointment} />
+          <Appointments
+            appointmentComponent={Appointment}
+            appointmentContentComponent={AppointmentContent}
+          />
           <AppointmentTooltip
             headerComponent={Header}
             contentComponent={Content}
-
-            // commandButtonComponent={CommandButton}
-            // showCloseButton
           />
         </Scheduler>
       </Paper>
