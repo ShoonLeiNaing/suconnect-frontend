@@ -22,6 +22,7 @@ import PhoneNumberInput from "../Input/PhoneNumberInput";
 import WordsCount from "../Input/WordsCount";
 import PasswordInput from "../ResetPasswordForm/PasswordInput";
 
+
 const StepTwo: FunctionComponent = () => {
   const [bank, setBank] = useState("KBZ");
   const [name, setName] = useState("");
@@ -117,7 +118,7 @@ const StepTwo: FunctionComponent = () => {
               <WordsCount maxCount="250" currentCount={bio.length} />
             </Box>
         </Box>
-        <Box className="w-full flex justify-end items-center mt-8">
+        {/* <Box className="w-full flex justify-end items-center mt-8">
           <SmallButton
             text="Back"
             customHeight="40px"
@@ -128,7 +129,7 @@ const StepTwo: FunctionComponent = () => {
             customBorder="1px solid #BBBBBB"
           />
           <SmallButton text="Next" customHeight="40px" customFontSize="15px" />
-        </Box>
+        </Box> */}
       </Box>
       <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
         <Image src="/images/LoginScreen.svg" height={500} width={500} />

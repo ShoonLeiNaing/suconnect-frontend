@@ -34,7 +34,7 @@ const StepSix: FunctionComponent = () => {
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Review your information...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[32rem] overflow-y-auto">
+        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[28rem] overflow-y-auto">
           <Box className="mb-6">
             <InputLabel label="Mail" isRequired />
             <DynamicInput
@@ -235,7 +235,7 @@ const StepSix: FunctionComponent = () => {
             />
           </Box>
         </Box>
-        <Box className="w-full flex justify-end items-center mt-8">
+        {/* <Box className="w-full flex justify-end items-center mt-8">
           <SmallButton
             text="Back"
             customHeight="40px"
@@ -246,7 +246,7 @@ const StepSix: FunctionComponent = () => {
             customBorder="1px solid #BBBBBB"
           />
           <SmallButton text="Next" customHeight="40px" customFontSize="15px" />
-        </Box>
+        </Box> */}
       </Box>
       <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
         <Image src="/images/LoginScreen.svg" height={500} width={500} />

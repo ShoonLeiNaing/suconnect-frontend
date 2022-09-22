@@ -29,7 +29,7 @@ const StepFour: FunctionComponent = () => {
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Let&lsquo;s us know where you live...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[32rem] overflow-y-auto">
+        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[24rem] overflow-y-auto">
           <Box className="mb-6">
             <InputLabel label="House number" />
             <DynamicInput
@@ -111,7 +111,7 @@ const StepFour: FunctionComponent = () => {
             />
           </Box>
         </Box>
-        <Box className="w-full flex justify-end items-center mt-8">
+        {/* <Box className="w-full flex justify-end items-center mt-8">
           <SmallButton
             text="Back"
             customHeight="40px"
@@ -122,7 +122,7 @@ const StepFour: FunctionComponent = () => {
             customBorder="1px solid #BBBBBB"
           />
           <SmallButton text="Next" customHeight="40px" customFontSize="15px" />
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

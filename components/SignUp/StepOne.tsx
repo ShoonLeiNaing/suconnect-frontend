@@ -37,7 +37,7 @@ const StepOne: FunctionComponent = () => {
             <PasswordInput />
           </Box>
         </Box>
-        <Box className="w-full flex justify-end items-center mt-8">
+        {/* <Box className="w-full flex justify-end items-center mt-8">
           <SmallButton
             text="Back"
             customHeight="40px"
@@ -48,7 +48,7 @@ const StepOne: FunctionComponent = () => {
             customBorder="1px solid #BBBBBB"
           />
           <SmallButton text="Next" customHeight="40px" customFontSize="15px" />
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
