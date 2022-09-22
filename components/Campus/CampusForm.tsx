@@ -1,13 +1,9 @@
 import { useState, FunctionComponent } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import SelectInput from "../Input/SelectInput";
-import NumberInput from "../Input/NumberInput";
-import AMPMInput from "../Input/AMPMInput";
 import TimeRangePicker from "../TimeRangePicker";
-import { colors } from "../../data/constant";
 
 interface CampusFormProps {}
 
