@@ -1,6 +1,6 @@
 import VenueForm from "../../components/Venue/VenueForm";
 
-const CreateCampus = () => {
+const CreateVenue = () => {
   return (
     <>
       <h1>Venue Form</h1>
@@ -9,4 +9,4 @@ const CreateCampus = () => {
   );
 };
 
-export default CreateCampus;
+export default CreateVenue;
