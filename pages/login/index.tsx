@@ -2,8 +2,8 @@ import { FunctionComponent, useState } from "react";
 import { Box, Typography, FormControlLabel, Checkbox } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
-import PasswordInput from "../../components/ResetPasswordForm/PasswordInput";
+import Link from "next/link";
+import PasswordInput from "../../components/Input/PasswordInput";
 import InputLabel from "../../components/Input/InputLabel";
 import DynamicInput from "../../components/Input/DynamicInput";
 import SmallButton from "../../components/Button/SmallButton";
@@ -19,7 +19,7 @@ const Login: FunctionComponent = () => {
   return (
     <Box className="h-screen flex items-center">
       <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/LoginScreen.svg" height={600} width={600} />
+        <Image src="/images/login.svg" height={450} width={450} />
       </Box>
       <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
         <Box className="w-full mb-12">
@@ -38,7 +38,7 @@ const Login: FunctionComponent = () => {
             <Typography className="text-[#737373] text-[0.9rem] mb-1 font-semibold">
               Mail
             </Typography>
-            <DynamicInput value={mail} setValue={setMail} maxWidth="500px" />
+            <DynamicInput value={mail} setValue={setMail} maxiWidth="500px" />
           </Box>
           <Box className="flex justify-between">
             <Typography className="text-[#737373] text-[0.9rem]">
@@ -59,9 +59,11 @@ const Login: FunctionComponent = () => {
         <Box className="w-full flex justify-between items-center mt-8">
           <Typography className="text-[#737373]">
             If you have no account,{" "}
-            <a href="#" className="text-[#3B8CF7]">
-              sign up here.
-            </a>
+            <Link href="/signup">
+              <a href="/signup" className="text-[#3B8CF7]">
+                sign up here.
+              </a>
+            </Link>
           </Typography>
           <SmallButton
             text="Login"
