@@ -3,7 +3,7 @@ import { useState, FunctionComponent } from "react";
 import InputLabel from "../Input/InputLabel";
 import SmallButton from "../Button/SmallButton";
 import { colors } from "../../data/constant";
-import PasswordInput from "./PasswordInput";
+import PasswordInput from "../Input/PasswordInput";
 
 const ResetPasswordForm: FunctionComponent = () => {
   const [edit, setEdit] = useState(true);

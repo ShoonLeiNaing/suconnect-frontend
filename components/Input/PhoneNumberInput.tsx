@@ -12,7 +12,7 @@ const PhoneNumberInput: FunctionComponent<IProps> = ({ width }) => {
   return (
     <Box
       //   color={colors.black.black2}
-      maxWidth={width}
+      maxWidth={width || "350px"}
       height="55px"
       paddingX={2}
       borderRadius="15px"

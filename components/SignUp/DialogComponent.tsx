@@ -11,6 +11,12 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 
+interface IProps {
+  text: string;
+  open: boolean;
+  setOpen: any;
+}
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -51,11 +57,13 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
   );
 };
 
-const DialogComponent: FunctionComponent = () => {
-  const [open, setOpen] = useState(true);
-
+const DialogComponent: FunctionComponent<IProps> = ({
+  text,
+  open,
+  setOpen,
+}) => {
   const handleClose = () => {
-    setOpen(false);
+    setOpen(!open);
   };
 
   return (
@@ -71,9 +79,7 @@ const DialogComponent: FunctionComponent = () => {
         />
         <DialogContent className="w-full">
           <Image src="/images/successful.gif" width={300} height={300} />
-          <Typography className="text-center pb-12 text-lg">
-            Successfully sign up !
-          </Typography>
+          <Typography className="text-center pb-12 text-lg">{text}</Typography>
         </DialogContent>
       </BootstrapDialog>
     </Box>

@@ -10,6 +10,7 @@ import {
   styled,
   InputBase,
   MenuItem,
+  Button,
 } from "@mui/material";
 import Image from "next/image";
 import { FunctionComponent, useState } from "react";
@@ -18,9 +19,15 @@ import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import PhoneNumberInput from "../Input/PhoneNumberInput";
 import WordsCount from "../Input/WordsCount";
-import PasswordInput from "../ResetPasswordForm/PasswordInput";
+import PasswordInput from "../Input/PasswordInput";
+import SmallButton from "../Button/SmallButton";
 
-const StepSix: FunctionComponent = () => {
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
+
+const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [mail, setMail] = useState("");
   const [houseNo, setHouseNo] = useState("");
   const [blockNo, setBlockNo] = useState("");
@@ -44,12 +51,18 @@ const StepSix: FunctionComponent = () => {
   }));
 
   return (
-    <Box className="h-screen flex items-center">
-      <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+    >
+      <Box>
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Review your information...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[28rem] overflow-y-auto">
+        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[32rem] overflow-y-auto">
           <Box className="mb-6">
             <InputLabel label="Mail" isRequired />
             <DynamicInput
@@ -263,9 +276,27 @@ const StepSix: FunctionComponent = () => {
             />
           </Box>
         </Box>
-      </Box>
-      <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/Step6.svg" height={500} width={500} />
+        <Box className="flex justify-end items-center mt-6">
+          <Button
+            onClick={handleBack}
+            className="mx-4 text-[#737373] bg-white capitalize"
+            sx={{
+              fontSize: "15px",
+              border: "1px solid #BBBBBB",
+              height: "40px",
+              borderRadius: "10px",
+            }}
+          >
+            Back
+          </Button>
+
+          <SmallButton
+            onClickHandler={handleNext}
+            text="Next"
+            customHeight="40px"
+            customFontSize="15px"
+          />
+        </Box>
       </Box>
     </Box>
   );

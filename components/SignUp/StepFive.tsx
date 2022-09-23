@@ -7,13 +7,19 @@ import {
   styled,
   InputBase,
   SelectChangeEvent,
+  Button,
 } from "@mui/material";
-import Image from "next/image";
 import { FunctionComponent, useState } from "react";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
+import SmallButton from "../Button/SmallButton";
 
-const StepFive: FunctionComponent = () => {
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
+
+const StepFive: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [bank, setBank] = useState("KBZ");
   const [name, setName] = useState("");
   const [bankAccNo, setBankAccNo] = useState("");
@@ -28,8 +34,14 @@ const StepFive: FunctionComponent = () => {
   }));
 
   return (
-    <Box className="h-screen flex items-center">
-      <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+    >
+      <Box>
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Provide your bank information...
         </Typography>
@@ -79,9 +91,27 @@ const StepFive: FunctionComponent = () => {
             />
           </Box>
         </Box>
-      </Box>
-      <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/Step5.svg" height={500} width={500} />
+        <Box className="flex justify-end items-center mt-6">
+          <Button
+            onClick={handleBack}
+            className="mx-4 text-[#737373] bg-white capitalize"
+            sx={{
+              fontSize: "15px",
+              border: "1px solid #BBBBBB",
+              height: "40px",
+              borderRadius: "10px",
+            }}
+          >
+            Back
+          </Button>
+
+          <SmallButton
+            onClickHandler={handleNext}
+            text="Next"
+            customHeight="40px"
+            customFontSize="15px"
+          />
+        </Box>
       </Box>
     </Box>
   );

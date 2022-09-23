@@ -7,12 +7,12 @@ interface IProps {
   value: string;
   setValue: any;
   isTextArea?: boolean;
-  customWidth?:string;
-  customHeight?:string;
+  customWidth?: string;
+  customHeight?: string;
   maxiWidth?: string;
-  maxiHeight?:string;
-  customType?:string;
-  placeholder?:string;
+  maxiHeight?: string;
+  customType?: string;
+  placeholder?: string;
   customBorderRadius?: string;
 }
 
@@ -41,7 +41,11 @@ const DynamicInput: FunctionComponent<IProps> = ({
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder={placeholder}
-          style={{ height: maxiHeight, width: customWidth, maxWidth: maxiWidth}}
+          style={{
+            height: maxiHeight,
+            width: customWidth,
+            maxWidth: maxiWidth,
+          }}
           className="bg-transparent py-[10px] px-[15px] text-[15px]"
         />
       </Box>
@@ -62,7 +66,10 @@ const DynamicInput: FunctionComponent<IProps> = ({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        style={{ height: customHeight, width: customWidth }}
+        style={{
+          height: customHeight,
+          width: customWidth || maxiWidth || "350px",
+        }}
       />
     </Box>
   );
@@ -75,7 +82,6 @@ DynamicInput.defaultProps = {
   maxiHeight: "120px",
   customBorderRadius: "15px",
   customHeight: "55px",
-
 };
 
 export default DynamicInput;

@@ -7,13 +7,19 @@ import {
   SelectChangeEvent,
   styled,
   InputBase,
+  Button,
 } from "@mui/material";
-import Image from "next/image";
 import { FunctionComponent, useState } from "react";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
+import SmallButton from "../Button/SmallButton";
 
-const StepFour: FunctionComponent = () => {
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
+
+const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [mail, setMail] = useState("");
   const [houseNo, setHouseNo] = useState("");
   const [blockNo, setBlockNo] = useState("");
@@ -33,15 +39,18 @@ const StepFour: FunctionComponent = () => {
   }));
 
   return (
-    <Box className="h-screen flex items-center">
-      <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/Step4.svg" height={500} width={500} />
-      </Box>
-      <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+    >
+      <Box maxWidth="500px">
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Let&lsquo;s us know where you live...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[24rem] overflow-y-auto">
+        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[32rem] overflow-y-auto">
           <Box className="mb-6">
             <InputLabel label="House number" />
             <DynamicInput
@@ -122,6 +131,27 @@ const StepFour: FunctionComponent = () => {
               placeholder="eg. 11361"
             />
           </Box>
+        </Box>
+        <Box className="flex justify-end items-center mt-6">
+          <Button
+            onClick={handleBack}
+            className="mx-4 text-[#737373] bg-white capitalize"
+            sx={{
+              fontSize: "15px",
+              border: "1px solid #BBBBBB",
+              height: "40px",
+              borderRadius: "10px",
+            }}
+          >
+            Back
+          </Button>
+
+          <SmallButton
+            onClickHandler={handleNext}
+            text="Next"
+            customHeight="40px"
+            customFontSize="15px"
+          />
         </Box>
       </Box>
     </Box>

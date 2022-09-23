@@ -2,8 +2,8 @@ import { FunctionComponent, useState } from "react";
 import { Box, Typography, FormControlLabel, Checkbox } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
-import PasswordInput from "../../components/ResetPasswordForm/PasswordInput";
+import Link from "next/link";
+import PasswordInput from "../../components/Input/PasswordInput";
 import InputLabel from "../../components/Input/InputLabel";
 import DynamicInput from "../../components/Input/DynamicInput";
 import SmallButton from "../../components/Button/SmallButton";
@@ -59,9 +59,11 @@ const Login: FunctionComponent = () => {
         <Box className="w-full flex justify-between items-center mt-8">
           <Typography className="text-[#737373]">
             If you have no account,{" "}
-            <a href="#" className="text-[#3B8CF7]">
-              sign up here.
-            </a>
+            <Link href="/signup">
+              <a href="/signup" className="text-[#3B8CF7]">
+                sign up here.
+              </a>
+            </Link>
           </Typography>
           <SmallButton
             text="Login"
