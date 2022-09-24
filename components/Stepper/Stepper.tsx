@@ -20,7 +20,8 @@ interface IProps {
   steps: StepperSteps[];
   activeStep?: any;
   setActiveStep?: any;
-  width: any;
+  width?: string;
+  marginY?: string;
 }
 
 const StepperComponent: FunctionComponent<IProps> = ({
@@ -28,6 +29,7 @@ const StepperComponent: FunctionComponent<IProps> = ({
   activeStep,
   setActiveStep,
   width,
+  marginY,
 }) => {
   // const [activeStep, setActiveStep] = useState(0);
 
@@ -59,7 +61,7 @@ const StepperComponent: FunctionComponent<IProps> = ({
       ) : (
         <Box className="w-[40%] absolute top-8 left-16">{stepperStatus()}</Box>
       )} */}
-      <Box width={width} margin="auto" my={8}>
+      <Box width={width} margin="auto" my={marginY}>
         {stepperStatus()}
       </Box>
 

@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import NextNProgress from "nextjs-progressbar";
+// import NextNProgress from "nextjs-progressbar"
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -16,13 +16,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
   return (
     <ThemeProvider theme={theme}>
-      <NextNProgress
+      {/* <NextNProgress
         color="#3B8CF7"
         startPosition={0.5}
         stopDelayMs={200}
         height={4}
         showOnShallow
-      />
+      /> */}
       <Component {...pageProps} />
     </ThemeProvider>
   );

@@ -16,3 +16,35 @@
 .phone_number_input input {
   background-color: transparent;
 }
+
+.select_box {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  background-color: #f6f9fe;
+  height: 55px;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+.select_box:after {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  /* border-top: 6px solid #3B8CF7; */
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  content: "";
+  z-index: 98;
+}
+
+.select_box select {
+  width: 355px;
+  border: 0;
+  position: relative;
+  z-index: 99;
+  background: none;
+  appearance: none;
+}
