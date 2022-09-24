@@ -45,6 +45,7 @@ const PasswordInput: FunctionComponent = () => {
         value={values.password}
         onChange={handleChange("password")}
         className="rounded-xl"
+        sx={{ maxWidth: "500px", outline: "none" }}
         endAdornment={
           <InputAdornment position="end" className="p-2">
             <IconButton

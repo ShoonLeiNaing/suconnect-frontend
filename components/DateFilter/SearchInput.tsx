@@ -8,10 +8,11 @@ import InputBase from "@mui/material/InputBase";
 import { colors } from "../../data/constant";
 
 interface IProps {
-  setFilterText: any;
+  setFilterText?: any;
   setSearchText: any;
   placeholderText?: string;
   showFilter?: boolean;
+  searchText?: string;
 }
 
 const SearchInput: FunctionComponent<IProps> = ({
@@ -19,6 +20,7 @@ const SearchInput: FunctionComponent<IProps> = ({
   setSearchText,
   placeholderText,
   showFilter,
+  searchText,
 }) => {
   const [filterValue, setFilterValue] = useState("all");
   const handleChange = (event: SelectChangeEvent) => {

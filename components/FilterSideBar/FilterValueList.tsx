@@ -10,11 +10,12 @@ interface IProps {
   filterData: any;
   setFilterData: any;
   setIsFiltering: any;
-  setPage: any;
+  setPage?: any;
   setData: any;
-  setTotalPages: any;
-  size: number;
+  setTotalPages?: any;
+  size?: number;
   filterFunction: any;
+  isCalendar?: boolean;
 }
 
 const FilterValueList: FunctionComponent<IProps> = ({
@@ -26,18 +27,26 @@ const FilterValueList: FunctionComponent<IProps> = ({
   setTotalPages,
   size,
   filterFunction,
+  isCalendar,
 }) => {
   const handleDelete = async (val: string) => {
-    setPage(1);
     const newOptions = removeFromObject(filterData, val);
     setFilterData(newOptions);
     const params = getFilterParams(newOptions);
-    const res = await filterFunction(size, 1, params);
-    setData(res?.data);
-    setTotalPages(res?.total_pages);
+    if (isCalendar) {
+      const res = await filterFunction(params);
+      setData(res?.data);
+    } else {
+      setPage(1);
+      const res = await filterFunction(size, 1, params);
+      setData(res?.data);
+      setTotalPages(res?.total_pages);
+    }
   };
   const clearAllHandler = async () => {
-    setPage(1);
+    if (!isCalendar) {
+      setPage(1);
+    }
     setFilterData([]);
     setIsFiltering(false);
   };

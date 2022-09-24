@@ -1,19 +1,24 @@
 import PhoneInput from "react-phone-number-input";
-import { useState } from "react";
+import { useState, FunctionComponent } from "react";
 import { Box } from "@mui/material";
 import styles from "./input.module.css";
 
-const PhoneNumberInput = () => {
+interface IProps {
+  width?: string;
+}
+
+const PhoneNumberInput: FunctionComponent<IProps> = ({ width }) => {
   const [value, setValue] = useState<any>();
   return (
     <Box
       //   color={colors.black.black2}
-      maxWidth="350px"
+      maxWidth={width || "350px"}
       height="55px"
       paddingX={2}
       borderRadius="15px"
       border="1px solid grey"
       className={styles.phone_number_input}
+      sx={{ color: "#333333" }}
     >
       <PhoneInput
         international
@@ -24,6 +29,10 @@ const PhoneNumberInput = () => {
       />
     </Box>
   );
+};
+
+PhoneNumberInput.defaultProps = {
+  width: "350px",
 };
 
 export default PhoneNumberInput;

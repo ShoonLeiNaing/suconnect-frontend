@@ -5,7 +5,7 @@ import { colors } from "../../data/constant";
 const BootstrapIconButton = styled(Button)({
   boxShadow: "none",
   fontSize: "22px",
-  height: "45px",
+  height: "40px",
   padding: "5px",
   minWidth: "50px",
   borderRadius: "10px",

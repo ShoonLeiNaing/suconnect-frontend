@@ -7,32 +7,46 @@ interface IProps {
   value: string;
   setValue: any;
   isTextArea?: boolean;
-  maxWidth?: string;
+  customWidth?: string;
+  customHeight?: string;
+  maxiWidth?: string;
+  maxiHeight?: string;
   customType?: string;
   placeholder?: string;
+  customBorderRadius?: string;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
   value,
   isTextArea,
   setValue,
-  maxWidth,
+  maxiWidth,
+  maxiHeight,
   customType,
+  customWidth,
+  customHeight,
   placeholder,
+  customBorderRadius,
 }) => {
   if (isTextArea) {
     return (
       <Box
         color={colors.black.black2}
-        maxWidth={maxWidth || "350px"}
-        height="120px"
-        borderRadius="15px"
+        maxWidth={maxiWidth}
+        height={maxiHeight}
+        borderRadius={customBorderRadius}
         border="1px solid grey"
       >
         <textarea
-          className={styles.textarea}
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          placeholder={placeholder}
+          style={{
+            height: maxiHeight,
+            width: customWidth,
+            maxWidth: maxiWidth,
+          }}
+          className="bg-transparent py-[10px] px-[15px] text-[15px]"
         />
       </Box>
     );
@@ -40,10 +54,10 @@ const DynamicInput: FunctionComponent<IProps> = ({
   return (
     <Box
       color={colors.black.black2}
-      maxWidth={maxWidth}
-      height="55px"
+      maxWidth={maxiWidth}
+      height={customHeight}
       paddingX={2}
-      borderRadius="15px"
+      borderRadius={customBorderRadius}
       border="1px solid grey"
     >
       <input
@@ -52,6 +66,10 @@ const DynamicInput: FunctionComponent<IProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        style={{
+          height: customHeight,
+          width: customWidth || maxiWidth || "350px",
+        }}
       />
     </Box>
   );
@@ -59,8 +77,11 @@ const DynamicInput: FunctionComponent<IProps> = ({
 
 DynamicInput.defaultProps = {
   isTextArea: false,
-  maxWidth: "350px",
+  customWidth: "350px",
   customType: "text",
+  maxiHeight: "120px",
+  customBorderRadius: "15px",
+  customHeight: "55px",
 };
 
 export default DynamicInput;
