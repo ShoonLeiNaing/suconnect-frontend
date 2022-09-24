@@ -5,20 +5,33 @@ import {
   Radio,
   RadioGroup,
   FormControlLabel,
+  Button,
 } from "@mui/material";
-import Image from "next/image";
 import { FunctionComponent, useState } from "react";
 import DateInput from "../Input/DateInput";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import WordsCount from "../Input/WordsCount";
+import SmallButton from "../Button/SmallButton";
 
-const StepTwo: FunctionComponent = () => {
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
+
+const StepTwo: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [bio, setBio] = useState("");
 
   return (
-    <Box className="h-screen flex items-center">
-      <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+    >
+      {/* <Box className="flex flex-col justify-center items-center bg-white px-24"> */}
+      <Box width="500px">
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Build a profile to tell who you are...
         </Typography>
@@ -85,10 +98,29 @@ const StepTwo: FunctionComponent = () => {
             <WordsCount maxCount="250" currentCount={bio.length} />
           </Box>
         </Box>
+        <Box className="flex justify-end items-center mt-6">
+          <Button
+            onClick={handleBack}
+            className="mx-4 text-[#737373] bg-white capitalize"
+            sx={{
+              fontSize: "15px",
+              border: "1px solid #BBBBBB",
+              height: "40px",
+              borderRadius: "10px",
+            }}
+          >
+            Back
+          </Button>
+
+          <SmallButton
+            onClickHandler={handleNext}
+            text="Next"
+            customHeight="40px"
+            customFontSize="15px"
+          />
+        </Box>
       </Box>
-      <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/Step2.svg" height={500} width={500} />
-      </Box>
+      {/* </Box> */}
     </Box>
   );
 };

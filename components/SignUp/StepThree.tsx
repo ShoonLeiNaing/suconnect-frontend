@@ -1,19 +1,28 @@
-import { Box, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Typography, Button } from "@mui/material";
 import { FunctionComponent, useState } from "react";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import PhoneNumberInput from "../Input/PhoneNumberInput";
+import SmallButton from "../Button/SmallButton";
 
-const StepThree: FunctionComponent = () => {
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
+
+const StepThree: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [mail, setMail] = useState("");
 
   return (
-    <Box className="h-screen flex items-center">
-      <Box className="flex justify-center items-center bg-[#F6F9FE] h-screen w-1/2">
-        <Image src="/images/Step3.svg" height={500} width={500} />
-      </Box>
-      <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+    >
+      {" "}
+      <Box maxWidth="500px">
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           How can we reach you...?
         </Typography>
@@ -29,12 +38,34 @@ const StepThree: FunctionComponent = () => {
           </Box>
           <Box mb={3}>
             <InputLabel label="Primary Contact" isRequired />
-            <PhoneNumberInput width="100%" />
+            <PhoneNumberInput width="500px" />
           </Box>
           <Box>
             <InputLabel label="Secondary Contact" isOptional />
-            <PhoneNumberInput width="100%" />
+            <PhoneNumberInput width="500px" />
           </Box>
+        </Box>
+        <Box className="flex justify-end items-center mt-6">
+          <Button
+            onClick={handleBack}
+            // disabled={activeStep === 0}
+            className="mx-4 text-[#737373] bg-white capitalize"
+            sx={{
+              fontSize: "15px",
+              border: "1px solid #BBBBBB",
+              height: "40px",
+              borderRadius: "10px",
+            }}
+          >
+            Back
+          </Button>
+
+          <SmallButton
+            onClickHandler={handleNext}
+            text="Next"
+            customHeight="40px"
+            customFontSize="15px"
+          />
         </Box>
       </Box>
     </Box>
