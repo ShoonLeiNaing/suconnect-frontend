@@ -4,10 +4,14 @@ import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import SelectInput from "../Input/SelectInput";
 import TimeRangePicker from "../TimeRangePicker";
+import PaginationButton from "../Stepper/PaginationButton";
 
-interface CampusFormProps {}
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
 
-const CampusForm: FunctionComponent<CampusFormProps> = () => {
+const CampusForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const countries = ["Myanmar", "Singapore"];
 
   const [name, setName] = useState<string>("");
@@ -24,78 +28,93 @@ const CampusForm: FunctionComponent<CampusFormProps> = () => {
   const [endMin, setEndMin] = useState<number>(0);
 
   return (
-    <Box ml={2} className="flex flex-col gap-8">
-      <Box>
-        <InputLabel label="Campus name" />
-        <DynamicInput
-          value={name}
-          setValue={setName}
-          placeholder="Type campus name here..."
-        />
+    <>
+      <Box
+        className="mx-8 border py-6 px-8 rounded-xl"
+        maxHeight="77vh"
+        overflow="scroll"
+      >
+        <Box className="flex flex-col gap-8" maxWidth="400px">
+          <Box>
+            <InputLabel label="Campus name" />
+            <DynamicInput
+              value={name}
+              setValue={setName}
+              placeholder="Type campus name here..."
+            />
+          </Box>
+          <TimeRangePicker
+            startHour={startHour}
+            endHour={endHour}
+            startMin={startMin}
+            endMin={endMin}
+            setStartHour={setStartHour}
+            setEndHour={setEndHour}
+            setStartMin={setStartMin}
+            setEndMin={setEndMin}
+          />
+          <Box>
+            <InputLabel label="House number" />
+            <DynamicInput
+              value={houseNo}
+              setValue={setHouseNo}
+              placeholder="Type number..."
+            />
+          </Box>
+          <Box>
+            <InputLabel label="Block number" />
+            <DynamicInput
+              value={blockNo}
+              setValue={setBlockNo}
+              placeholder="Type here"
+            />
+          </Box>
+          <Box>
+            <InputLabel label="Street name" />
+            <DynamicInput
+              value={streetName}
+              setValue={setStreetName}
+              placeholder="eg.Min Ye Kyaw Swar street"
+            />
+          </Box>
+          <Box>
+            <InputLabel label="Township" />
+            <DynamicInput
+              value={township}
+              setValue={setTownShip}
+              placeholder="eg.Insein"
+            />
+          </Box>
+          <Box>
+            <InputLabel label="City" />
+            <DynamicInput
+              value={city}
+              setValue={setCity}
+              placeholder="eg.Yangon"
+            />
+          </Box>
+          <Box>
+            <InputLabel label="Country" />
+            <SelectInput
+              value={country}
+              setValue={setCountry}
+              options={countries}
+            />
+          </Box>
+          <Box>
+            <InputLabel label="Postal code" />
+            <DynamicInput
+              value={postalCode}
+              setValue={setPostalCode}
+              placeholder="eg.11011"
+            />
+          </Box>
+        </Box>
       </Box>
-      <TimeRangePicker
-        startHour={startHour}
-        endHour={endHour}
-        startMin={startMin}
-        endMin={endMin}
-        setStartHour={setStartHour}
-        setEndHour={setEndHour}
-        setStartMin={setStartMin}
-        setEndMin={setEndMin}
-      />
-      <Box>
-        <InputLabel label="House number" />
-        <DynamicInput
-          value={houseNo}
-          setValue={setHouseNo}
-          placeholder="Type number..."
-        />
+      <Box className="mx-8 my-3 flex justify-end">
+        <PaginationButton {...{ handleNext, showPrevious: false }} />
       </Box>
-      <Box>
-        <InputLabel label="Block number" />
-        <DynamicInput
-          value={blockNo}
-          setValue={setBlockNo}
-          placeholder="Type here"
-        />
-      </Box>
-      <Box>
-        <InputLabel label="Street name" />
-        <DynamicInput
-          value={streetName}
-          setValue={setStreetName}
-          placeholder="eg.Min Ye Kyaw Swar street"
-        />
-      </Box>
-      <Box>
-        <InputLabel label="Township" />
-        <DynamicInput
-          value={township}
-          setValue={setTownShip}
-          placeholder="eg.Insein"
-        />
-      </Box>
-      <Box>
-        <InputLabel label="City" />
-        <DynamicInput value={city} setValue={setCity} placeholder="eg.Yangon" />
-      </Box>
-      <Box>
-        <InputLabel label="Country" />
-        <SelectInput
-          value={country}
-          setValue={setCountry}
-          options={countries}
-        />
-      </Box>
-      <Box>
-        <InputLabel label="Postal code" />
-        <DynamicInput
-          value={postalCode}
-          setValue={setPostalCode}
-          placeholder="eg.11011"
-        />
-      </Box>
-    </Box>
+    </>
   );
 };
 

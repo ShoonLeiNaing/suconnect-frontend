@@ -54,7 +54,7 @@ const SelectInput: FunctionComponent<SelectInputProps> = ({
 };
 
 SelectInput.defaultProps = {
-  maxWidth: "350px",
+  maxWidth: "100%",
 };
 
 export default SelectInput;

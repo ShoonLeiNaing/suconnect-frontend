@@ -163,7 +163,13 @@ const SignUp: FunctionComponent = () => {
           // justifyContent="center"
         >
           <StepperComponent
-            {...{ steps, activeStep, setActiveStep, width: "600px" }}
+            {...{
+              steps,
+              activeStep,
+              setActiveStep,
+              width: "600px",
+              marginY: "70px",
+            }}
           />
         </Box>
       )}
