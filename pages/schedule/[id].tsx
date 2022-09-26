@@ -88,13 +88,13 @@ const CreateCourseForm = () => {
             currentPage="Schedule"
             previousPages={breadCrumbsData}
           />
-          <Box className="flex items-center justify-center " sx={{ flex: 1 }}>
+          <Box className="flex items-center">
             <StepperComponent
               {...{
                 steps,
                 activeStep,
                 setActiveStep,
-                width: "100%",
+                width: "700px",
                 divided: true,
                 showStatus: true,
               }}

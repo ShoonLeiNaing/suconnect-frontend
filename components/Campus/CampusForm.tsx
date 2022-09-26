@@ -30,9 +30,8 @@ const CampusForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   return (
     <>
       <Box
-        className="mx-8 border py-6 px-8 rounded-xl"
+        className="border py-6 px-8 rounded-xl overflow-y-auto"
         maxHeight="77vh"
-        overflow="scroll"
       >
         <Box className="flex flex-col gap-8" maxWidth="400px">
           <Box>
