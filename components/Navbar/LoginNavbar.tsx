@@ -60,12 +60,12 @@ const LoginNavbar: FunctionComponent<IProps> = ({
             <Image
               height={50}
               width={140}
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               layout="fixed"
             />
           )}
-          <Box display="flex" ml={2}>
+          <Box display="flex" ml={2} pt="0.45rem">
             <Typography>Welcome Thiha! </Typography>
             <img src="/images/celebrate.svg" alt="celebrate" />
           </Box>

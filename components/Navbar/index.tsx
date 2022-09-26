@@ -45,7 +45,7 @@ const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
           height={50}
           width={140}
           // className="w-40"
-          src="/images/logo.png"
+          src="/images/logo.svg"
           alt="logo"
           layout="fixed"
         />{" "}

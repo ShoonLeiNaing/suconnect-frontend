@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 
 const sevenDays = [
   {
@@ -23,14 +23,27 @@ const sevenDays = [
     word: "Thursday",
   },
   {
+    prefix: "F",
+    word: "Friday",
+  },
+  {
     prefix: "S",
     word: "Saturday",
   },
 ];
 
 const ChooseDaysComponent: FunctionComponent = () => {
-  const selectedDays = (e: any) => {
+  const [selectedDots, setSelectedDots] = useState([""]);
+
+  const selectedDays = (e: any, data: any) => {
     e.target.style.backgroundColor = "#3B8CF7";
+    setSelectedDots((oldDatas) => [...oldDatas, data.word]);
+    selectedDots.map((clicked) => {
+      if (data.word === clicked) {
+        e.target.style.backgroundColor = "#BBBBBB";
+      }
+      return "hello";
+    });
   };
 
   return (
@@ -39,7 +52,7 @@ const ChooseDaysComponent: FunctionComponent = () => {
         <Box
           key={index}
           className="w-10 h-10 flex justify-center mr-4 items-center bg-[#BBBBBB] rounded-full"
-          onClick={selectedDays}
+          onClick={(e) => selectedDays(e, data)}
         >
           <Typography className="text-white font-bold">
             {data.prefix}

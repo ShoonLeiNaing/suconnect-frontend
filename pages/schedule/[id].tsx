@@ -21,10 +21,26 @@ const breadCrumbsData = [
 const CreateCourseForm = () => {
   const [activeStep, setActiveStep] = useState(0);
 
+  const handleNext = () => {
+    if (activeStep < 2) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   const steps = [
     {
-      title: "Step 1: Create course",
-      component: "",
+      title: "Create course",
+      component: (
+        <StepperOne
+          {...{
+            handleNext,
+          }}
+        />
+      ),
     },
     {
       title: "Step 2: Assign lecture",
@@ -61,30 +77,40 @@ const CreateCourseForm = () => {
     {
       title: "Step 10:",
       component: "",
-    }
-  ]
+    },
+  ];
 
   return (
-    <Layout showSideNav={false} data={navigation}>
-      <Box color="black" className="container" px={7}>
-        <Box className="flex justify-between mb-8 mt-4">
+    <Layout showSideNav={false} hiddenFooter data={navigation}>
+      <Box className="mx-12">
+        <Box className="flex justify-between my-2">
           <BreadcrumbsComponent
             currentPage="Schedule"
             previousPages={breadCrumbsData}
           />
-          <Box className="flex items-center">
-          <StepperComponent
-            {...{ steps, activeStep, setActiveStep, width: "100%" }}
-          />
+          <Box className="flex items-center justify-center " sx={{ flex: 1 }}>
+            <StepperComponent
+              {...{
+                steps,
+                activeStep,
+                setActiveStep,
+                width: "100%",
+                divided: true,
+                showStatus: true,
+              }}
+            />
           </Box>
           <Box
-            className="flex items-center my-3 py-2 px-4 text-white cursor-pointer rounded-lg"
+            className="flex  items-center my-4 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
           >
             <Typography style={{ fontSize: "16px" }}>Save as draft</Typography>
           </Box>
         </Box>
-        <StepperOne />
+
+        <StepperComponent
+          {...{ steps, activeStep, setActiveStep, divided: true, showContent: true}}
+        />
       </Box>
     </Layout>
   );

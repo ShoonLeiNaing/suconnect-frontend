@@ -16,16 +16,32 @@ import { FunctionComponent, useState } from "react";
 import DateInput from "../Input/DateInput";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
+import PaginationButton from "../Stepper/PaginationButton";
+import TimeRangePicker from "../TimeRangePicker";
 import ChooseDaysComponent from "./ChooseDaysComponent";
 
-const StepperOne: FunctionComponent = () => {
+interface IProps {
+  handleNext?: any;
+  handleBack?: any;
+}
+
+const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [courseName, setCourseName] = useState("");
   const [courseCode, setCourseCode] = useState("");
+  const [courseFee, setCourseFee] = useState("");
+  const [startHour, setStartHour] = useState<number>(0);
+  const [startMin, setStartMin] = useState<number>(0);
+  const [endHour, setEndHour] = useState<number>(0);
+  const [endMin, setEndMin] = useState<number>(0);
   const [courseCategory, setCourseCategory] = useState(
     "Select course category"
   );
+  const [selectCampus, setSelectCampus] = useState("Select campus");
   const handleChange = (event: SelectChangeEvent) => {
     setCourseCategory(event.target.value as string);
+  };
+  const campusHandleChange = (event: SelectChangeEvent) => {
+    setSelectCampus(event.target.value as string);
   };
 
   const BootstrapInput = styled(InputBase)(() => ({
@@ -35,20 +51,22 @@ const StepperOne: FunctionComponent = () => {
   }));
 
   return (
-    <Box className="h-screen flex items-center">
-      <Box className="flex flex-col justify-center items-center bg-white">
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl">
-          <Box className="mb-6">
+    <Box className="w-full flex flex-col flex-start">
+      <Box
+        className="flex flex-start border py-6 px-8 rounded-xl overflow-y-auto"
+        maxHeight="72vh"
+      >
+        <Box className="flex flex-col gap-8" maxWidth="400px">
+          <Box>
             <InputLabel label="Course name" />
             <DynamicInput
               value={courseName}
               setValue={setCourseName}
-              maxiWidth="500px"
               placeholder="Type course name here..."
             />
           </Box>
-          <Box className="mb-6">
-            <InputLabel label="Course Category" />
+          <Box>
+            <InputLabel label="Course category" />
             <FormControl
               sx={{
                 border: "1px solid grey",
@@ -78,17 +96,16 @@ const StepperOne: FunctionComponent = () => {
               </Select>
             </FormControl>
           </Box>
-          <Box className="mb-6">
-            <InputLabel label="Course Code" />
+          <Box>
+            <InputLabel label="Course code" />
             <DynamicInput
               value={courseCode}
               setValue={setCourseCode}
-              maxiWidth="500px"
               placeholder="eg. L6A-IELTS"
             />
           </Box>
-          <Box className="mb-6">
-            <InputLabel label="Course Duration" />
+          <Box>
+            <InputLabel label="Course duration" />
             <Box className="flex px-1 my-2">
               <Box className="flex flex-col mr-4">
                 <Typography className="text-sm ml-1 text-[#BBBBBB]">
@@ -104,25 +121,39 @@ const StepperOne: FunctionComponent = () => {
               </Box>
             </Box>
           </Box>
-          <Box className="mb-6">
-            <InputLabel label="Choose Course Days" />
+          <Box>
+            <InputLabel label="Choose course days" />
             <ChooseDaysComponent />
           </Box>
-          <Box className="mb-6">
+          <Box>
+            <TimeRangePicker
+              labelText="Choose course time"
+              startHour={startHour}
+              endHour={endHour}
+              startMin={startMin}
+              endMin={endMin}
+              setStartHour={setStartHour}
+              setEndHour={setEndHour}
+              setStartMin={setStartMin}
+              setEndMin={setEndMin}
+            />
+          </Box>
+          <Box>
             <Checkbox className="text-[#3B8CF7]" />
             <Typography className="inline-block text-[0.95rem] text-[#737373]">
               Choose separately
             </Typography>
+            {}
           </Box>
-          <Box className="mb-6">
-            <InputLabel label="Repeat On" />
+          <Box>
+            <InputLabel label="Repeat on" />
             <Checkbox defaultChecked className="text-[#3B8CF7]" />
             <Typography className="inline-block text-[0.95rem] text-[#737373]">
               Every two weeks
             </Typography>
           </Box>
-          <Box className="mb-6">
-            <InputLabel label="Class Type" />
+          <Box>
+            <InputLabel label="Class type" />
             <FormControl className="ml-2 text-[#737373]">
               <RadioGroup row name="radio-buttons-group">
                 <FormControlLabel
@@ -137,8 +168,53 @@ const StepperOne: FunctionComponent = () => {
                 />
               </RadioGroup>
             </FormControl>
+            <FormControl
+              sx={{
+                border: "1px solid grey",
+                height: "55px",
+                borderRadius: "15px",
+              }}
+              className="w-full mt-3"
+            >
+              <Select
+                value={selectCampus}
+                onChange={campusHandleChange}
+                input={<BootstrapInput />}
+                placeholder="Select campus"
+                sx={{
+                  width: "98%",
+                  height: "55px",
+                  fontSize: "16px",
+                  color: "#737373",
+                }}
+              >
+                <MenuItem className="hidden" value="Select campus">
+                  Select campus
+                </MenuItem>
+                <MenuItem value="Yangon">Yangon</MenuItem>
+                <MenuItem value="Nay Pyi Taw">Nay Pyi Taw</MenuItem>
+                <MenuItem value="Mandalay">Mandalay</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <Box>
+            <InputLabel label="Course fee per month" />
+            <Box className="flex items-center mb-8">
+              <DynamicInput
+                value={courseFee}
+                setValue={setCourseFee}
+                placeholder="Type here..."
+              />
+              <Typography className="inline-block text-[#737373] ml-4">
+                {" "}
+                MMK{" "}
+              </Typography>
+            </Box>
           </Box>
         </Box>
+      </Box>
+      <Box className="mx-8 my-6 flex justify-end">
+        <PaginationButton {...{ handleNext, showPrevious: false }} />
       </Box>
     </Box>
   );

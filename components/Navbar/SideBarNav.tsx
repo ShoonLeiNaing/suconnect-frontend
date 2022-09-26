@@ -27,7 +27,7 @@ const SideBarNav: FunctionComponent<IProps> = ({
         alt="logo"
         className={styles.navbar_logo}
         style={{ height: slideOpen ? "50px" : "32px" }}
-        src={slideOpen ? "/images/logo.png" : "/images/logosm.png"}
+        src={slideOpen ? "/images/logo.svg" : "/images/logosm.png"}
       />
 
       <SideBarNavItems data={data} status={slideOpen} panel={panel} />

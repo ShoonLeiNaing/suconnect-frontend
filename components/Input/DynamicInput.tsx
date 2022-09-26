@@ -63,9 +63,9 @@ const DynamicInput: FunctionComponent<IProps> = ({
       <input
         type={customType}
         className={styles.input}
+        placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder={placeholder}
         style={{
           height: customHeight,
           width: customWidth || maxiWidth || "350px",

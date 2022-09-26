@@ -2,7 +2,6 @@ import { useState, ReactNode, FunctionComponent } from "react";
 import { Box, Stepper, Step, StepLabel, Button } from "@mui/material";
 import SmallButton from "../Button/SmallButton";
 import DialogComponent from "../SignUp/DialogComponent";
-
 // const steps = [
 //   "Register",
 //   "Profile",
@@ -20,7 +19,11 @@ interface IProps {
   steps: StepperSteps[];
   activeStep?: any;
   setActiveStep?: any;
-  width: any;
+  width?: string;
+  marginY?: string;
+  showStatus?: boolean;
+  showContent?: boolean;
+  divided?: boolean;
 }
 
 const StepperComponent: FunctionComponent<IProps> = ({
@@ -28,6 +31,10 @@ const StepperComponent: FunctionComponent<IProps> = ({
   activeStep,
   setActiveStep,
   width,
+  marginY,
+  showStatus,
+  divided,
+  showContent,
 }) => {
   // const [activeStep, setActiveStep] = useState(0);
 
@@ -59,14 +66,35 @@ const StepperComponent: FunctionComponent<IProps> = ({
       ) : (
         <Box className="w-[40%] absolute top-8 left-16">{stepperStatus()}</Box>
       )} */}
-      <Box width={width} margin="auto" my={8}>
-        {stepperStatus()}
-      </Box>
 
+      { divided ? (
+        <>
+        {
+        showStatus && (
+            <Box width={width} margin="auto" my={marginY}>
+              {stepperStatus()}
+            </Box>
+        )}
+        {
+        showContent && (
+          <Box width="100%" height="100%">
+            {steps[activeStep]?.component}
+          </Box>
+        )}
+        </>
+        ):(
+      <>
+        <Box width={width} margin="auto" my={marginY}>
+      {stepperStatus()}
+      </Box>
       <Box width="100%" height="100%">
         {steps[activeStep]?.component}
       </Box>
+      </>
+    )
+    }
     </Box>
+      
   );
 };
 
