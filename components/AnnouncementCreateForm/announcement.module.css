@@ -1,0 +1,10 @@
+.image_upload_avatar {
+  height: 45px;
+  margin: 10px 5px;
+}
+
+.cropped_img {
+  width: 320px;
+  height: 180px;
+  /* margin-bottom: 30px; */
+}
