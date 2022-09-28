@@ -65,7 +65,7 @@ const SelectAccountsForm: FunctionComponent<IProps> = ({
     <>
       <Box
         className="mx-8 border py-6 px-8 rounded-xl"
-        maxHeight="77vh"
+        height="77vh"
         overflow="scroll"
       >
         <Box>
@@ -76,7 +76,7 @@ const SelectAccountsForm: FunctionComponent<IProps> = ({
             </Box>
           </Box>
 
-          <Box className="my-4 border p-4 rounded-xl" height="35vh">
+          <Box className="my-4 border p-4 rounded-xl" minHeight="35vh">
             <TabContext value={userValue}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList
@@ -142,7 +142,7 @@ const SelectAccountsForm: FunctionComponent<IProps> = ({
               <SmallButton customHeight="40px" text="Select Collections" />
             </Box>
           </Box>
-          <Box className="my-4 border p-4 rounded-xl" height="35vh">
+          <Box className="my-4 border p-4 rounded-xl" minHeight="35vh">
             <TabContext value={collectionValue}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList

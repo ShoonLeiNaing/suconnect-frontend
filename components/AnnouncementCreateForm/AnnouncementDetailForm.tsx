@@ -63,7 +63,7 @@ const AnnouncementDetailForm: FunctionComponent<IProps> = ({
     <>
       <Box
         className="mx-8 border py-6 px-8 rounded-xl"
-        minHeight="77vh"
+        height="77vh"
         overflow="scroll"
       >
         <Box className="flex">
