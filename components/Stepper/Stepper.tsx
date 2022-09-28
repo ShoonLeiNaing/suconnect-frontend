@@ -65,7 +65,7 @@ const StepperComponent: FunctionComponent<IProps> = ({
         {stepperStatus()}
       </Box>
 
-      <Box width="100%" height="100%">
+      <Box width="100%" height="100%" color="black">
         {steps[activeStep]?.component}
       </Box>
     </Box>

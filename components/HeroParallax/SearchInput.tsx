@@ -11,6 +11,8 @@ interface IProps {
   searchValue?: string;
   setSearchValue?: any;
   searchHandler?: any;
+  customWidth?: string;
+  customHeight?: string;
 }
 
 const SearchInput: FunctionComponent<IProps> = ({
@@ -19,6 +21,8 @@ const SearchInput: FunctionComponent<IProps> = ({
   searchValue,
   setSearchValue,
   searchHandler,
+  customWidth,
+  customHeight,
 }) => {
   const changeInputHandler = (e: any) => {
     setSearchValue(e.target.value);
@@ -29,8 +33,9 @@ const SearchInput: FunctionComponent<IProps> = ({
   return (
     <Box
       px={2}
-      width="300px"
+      width={customWidth || "300px"}
       display="flex"
+      height={customHeight && customHeight}
       alignItems="center"
       bgcolor={outline ? "transparent" : "#f6f9fe"}
       sx={{

@@ -28,7 +28,7 @@ const VenueForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
     <>
       <Box
         className="mx-8 border py-6 px-8 rounded-xl"
-        maxHeight="77vh"
+        minHeight="77vh"
         overflow="scroll"
       >
         <Box className="flex flex-col gap-8" maxWidth="400px">

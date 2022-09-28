@@ -15,6 +15,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap"
             rel="stylesheet"
           />
+          <meta charSet="utf-8" />
         </Head>
         <body>
           <Main />
