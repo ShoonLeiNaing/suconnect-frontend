@@ -20,6 +20,7 @@
     "@emotion/styled": "^11.10.0",
     "@grammarly/editor-sdk-react": "^2.0.2",
     "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.101",
     "@mui/material": "^5.10.1",
     "@mui/x-data-grid": "^5.17.1",
     "@mui/x-date-pickers": "^5.0.0-beta.5",

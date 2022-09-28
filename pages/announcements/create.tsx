@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
 import { navigation } from "../../data/navigationData";
-import TextEditor from "../../components/TextEditor";
+import SelectAccountsForm from "../../components/AnnouncementCreateForm/SelectAccountsForm";
 
 const AnnouncementDetailForm = dynamic(
   import("../../components/AnnouncementCreateForm/AnnouncementDetailForm"),
@@ -37,9 +37,10 @@ const AnnouncementCreate = () => {
     {
       title: "Select Accounts",
       component: (
-        <AnnouncementDetailForm
+        <SelectAccountsForm
           {...{
             handleNext,
+            handleBack,
           }}
         />
       ),

@@ -8,3 +8,8 @@
   height: 180px;
   /* margin-bottom: 30px; */
 }
+.tab {
+  text-transform: unset;
+  margin-right: 60px;
+  font-size: 15px;
+}
