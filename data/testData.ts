@@ -586,3 +586,20 @@ export const casesData = [
     amount: "40,000 mmk",
   },
 ];
+
+export const users = [
+  "Laura",
+  "Mandy",
+  "Harry",
+  "Susan",
+  "Christopher",
+  "Brian",
+  "Chole",
+  "James",
+  "Rose",
+  "Christopher",
+  "Brian",
+  "Chole",
+  "James",
+  "Rose",
+];

@@ -67,34 +67,30 @@ const StepperComponent: FunctionComponent<IProps> = ({
         <Box className="w-[40%] absolute top-8 left-16">{stepperStatus()}</Box>
       )} */}
 
-      { divided ? (
+      {divided ? (
         <>
-        {
-        showStatus && (
+          {showStatus && (
             <Box width={width} margin="auto" my={marginY}>
               {stepperStatus()}
             </Box>
-        )}
-        {
-        showContent && (
+          )}
+          {showContent && (
+            <Box width="100%" height="100%">
+              {steps[activeStep]?.component}
+            </Box>
+          )}
+        </>
+      ) : (
+        <>
+          <Box width={width} margin="auto" my={marginY}>
+            {stepperStatus()}
+          </Box>
           <Box width="100%" height="100%">
             {steps[activeStep]?.component}
           </Box>
-        )}
         </>
-        ):(
-      <>
-        <Box width={width} margin="auto" my={marginY}>
-      {stepperStatus()}
-      </Box>
-      <Box width="100%" height="100%">
-        {steps[activeStep]?.component}
-      </Box>
-      </>
-    )
-    }
+      )}
     </Box>
-      
   );
 };
 
