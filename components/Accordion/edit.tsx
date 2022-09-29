@@ -50,12 +50,12 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
             <DynamicInput
               value={houseNo}
               setValue={setHouseNo}
-              maxWidth="300px"
+              maxiWidth="300px"
             />
           </Box>
           <Box className="my-4">
             <InputLabel label="City" />
-            <DynamicInput value={city} setValue={setCity} maxWidth="300px" />
+            <DynamicInput value={city} setValue={setCity} maxiWidth="300px" />
           </Box>
         </Box>
         <Box className="flex flex-col mx-12">
@@ -64,7 +64,7 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
             <DynamicInput
               value={street}
               setValue={setStreet}
-              maxWidth="300px"
+              maxiWidth="300px"
             />
           </Box>
           <Box className="my-4">
@@ -94,7 +94,7 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
             <DynamicInput
               value={township}
               setValue={setTownship}
-              maxWidth="300px"
+              maxiWidth="300px"
             />
           </Box>
           <Box className="my-4">
@@ -102,7 +102,7 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
             <DynamicInput
               value={postalCode}
               setValue={setPostalCode}
-              maxWidth="300px"
+              maxiWidth="300px"
             />
           </Box>
         </Box>

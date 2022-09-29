@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import StepperOne from "../../components/CreateCourseForm/StepperOne";
+import AddLectureForm from "../../components/CreateCourseForm/AddLectureForm";
+import StepperOne from "../../components/CreateCourseForm/CreateCourseForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
 import { colors } from "../../data/constant";
@@ -43,8 +44,15 @@ const CreateCourseForm = () => {
       ),
     },
     {
-      title: "Step 2: Assign lecture",
-      component: "",
+      title: "Assign lecture",
+      component: (
+        <AddLectureForm
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 3:",
@@ -82,7 +90,7 @@ const CreateCourseForm = () => {
 
   return (
     <Layout showSideNav={false} hiddenFooter data={navigation}>
-      <Box className="mx-12">
+      <Box className="mx-8">
         <Box className="flex justify-between my-2">
           <BreadcrumbsComponent
             currentPage="Schedule"
@@ -109,7 +117,13 @@ const CreateCourseForm = () => {
         </Box>
 
         <StepperComponent
-          {...{ steps, activeStep, setActiveStep, divided: true, showContent: true}}
+          {...{
+            steps,
+            activeStep,
+            setActiveStep,
+            divided: true,
+            showContent: true,
+          }}
         />
       </Box>
     </Layout>

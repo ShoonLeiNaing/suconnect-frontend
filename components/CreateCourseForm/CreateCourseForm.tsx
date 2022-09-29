@@ -51,10 +51,10 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   }));
 
   return (
-    <Box className="w-full flex flex-col flex-start">
+    <>
       <Box
-        className="flex flex-start border py-6 px-8 rounded-xl overflow-y-auto"
-        maxHeight="72vh"
+        className="border py-6 px-8 rounded-xl overflow-y-auto"
+        height="77vh"
       >
         <Box className="flex flex-col gap-8" maxWidth="400px">
           <Box>
@@ -174,7 +174,7 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                 height: "55px",
                 borderRadius: "15px",
               }}
-              className="w-full mt-3"
+              className="w-[385px] mt-3"
             >
               <Select
                 value={selectCampus}
@@ -199,7 +199,21 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
           </Box>
           <Box>
             <InputLabel label="Course fee per month" />
-            <Box className="flex items-center mb-8">
+            <Box className="flex w-full items-center mb-8">
+              <DynamicInput
+                value={courseName}
+                setValue={setCourseName}
+                placeholder="Type here..."
+              />
+              <Typography className="inline-block text-[#737373] ml-4">
+                {" "}
+                MMK{" "}
+              </Typography>
+            </Box>
+          </Box>
+          {/* <Box>
+            <InputLabel label="Course fee per month" />
+            <Box className="flex w-full items-center mb-8">
               <DynamicInput
                 value={courseFee}
                 setValue={setCourseFee}
@@ -210,13 +224,13 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                 MMK{" "}
               </Typography>
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
-      <Box className="mx-8 my-6 flex justify-end">
+      <Box className=" my-3 flex justify-end">
         <PaginationButton {...{ handleNext, showPrevious: false }} />
       </Box>
-    </Box>
+    </>
   );
 };
 
