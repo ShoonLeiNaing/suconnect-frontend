@@ -23,6 +23,14 @@ const StepThree: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
     >
       {" "}
       <Box maxWidth="500px">
+      <Box className="w-full mb-8">
+            <img
+              alt="logo"
+              className="-ml-4"
+              style={{ height: "50px" }}
+              src="/images/logo.svg"
+            />
+          </Box>
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           How can we reach you...?
         </Typography>

@@ -21,6 +21,7 @@ const AnnouncementDetailForm: FunctionComponent<IProps> = ({
   handleNext,
   handleBack,
 }) => {
+  const [value, setValue] = useState<string>("");
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState<any>();
   const [croppedPixels, setCroppedPixels] = useState<Area>();
@@ -71,8 +72,8 @@ const AnnouncementDetailForm: FunctionComponent<IProps> = ({
             <Box>
               <InputLabel label="Announcement Title" />
               <DynamicInput
-                //   value={code}
-                //   setValue={setCode}
+                value={value}
+                setValue={setValue}
                 placeholder="Type title here"
               />
             </Box>

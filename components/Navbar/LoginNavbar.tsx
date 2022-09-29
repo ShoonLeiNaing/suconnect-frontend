@@ -60,12 +60,12 @@ const LoginNavbar: FunctionComponent<IProps> = ({
             <Image
               height={50}
               width={140}
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               layout="fixed"
             />
           )}
-          <Box display="flex" ml={2}>
+          <Box display="flex" ml={2} pt="0.45rem">
             <Typography>Welcome Thiha! </Typography>
             <img src="/images/celebrate.svg" alt="celebrate" />
           </Box>
@@ -88,13 +88,16 @@ const LoginNavbar: FunctionComponent<IProps> = ({
             color={colors.primaryColors.lightblue.lightblue1}
             gap={1}
             alignItems="center"
+            onClick={() => router.push("/profile")}
           >
             <img
               className={styles.profile_img}
               alt="profile"
               src="/images/profile.jpeg"
             />
-            <Typography fontSize="13px">Loreum Ipsm</Typography>
+            <Typography fontSize="13px" className="cursor">
+              Loreum Ipsm
+            </Typography>
           </Box>
 
           <Box

@@ -12,18 +12,20 @@ import { colors } from "../../data/constant";
 interface IProps {
   searchText: string;
   setSearchText: any;
+  customWidth?: string;
 }
 
 const SearchInput: FunctionComponent<IProps> = ({
   searchText,
   setSearchText,
+  customWidth,
 }) => {
   return (
     <Box>
       <Box display="flex">
         <Box
           px={2}
-          width="250px"
+          width={customWidth || "250px"}
           display="flex"
           alignItems="center"
           bgcolor="#F5F5F5"

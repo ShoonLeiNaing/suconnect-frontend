@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { Box, Typography } from "@mui/material";
-import CampusForm from "../../components/Campus/CampusForm";
-import VenueForm from "../../components/Campus/VenueForm";
+import { useState } from "react";
+import BreadcrumbsComponent from "../../components/Breadcrumbs";
+import AddLectureForm from "../../components/CreateCourseForm/AddLectureForm";
+import StepperOne from "../../components/CreateCourseForm/CreateCourseForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
-import { navigation } from "../../data/navigationData";
 import { colors } from "../../data/constant";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
+import { navigation } from "../../data/navigationData";
 
 const breadCrumbsData = [
   {
@@ -19,7 +19,7 @@ const breadCrumbsData = [
   },
 ];
 
-const CreateCampus = () => {
+const CreateCourseForm = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -32,13 +32,11 @@ const CreateCampus = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const createCampusHandler = () => {};
-
   const steps = [
     {
-      title: "Create Campus",
+      title: "Create course",
       component: (
-        <CampusForm
+        <StepperOne
           {...{
             handleNext,
           }}
@@ -46,24 +44,56 @@ const CreateCampus = () => {
       ),
     },
     {
-      title: "Create Venue",
+      title: "Assign lecture",
       component: (
-        <VenueForm
+        <AddLectureForm
           {...{
+            handleNext,
             handleBack,
-            handleNext: createCampusHandler,
           }}
         />
       ),
+    },
+    {
+      title: "Step 3:",
+      component: "",
+    },
+    {
+      title: "Step 4:",
+      component: "",
+    },
+    {
+      title: "Step 5:",
+      component: "",
+    },
+    {
+      title: "Step 6:",
+      component: "",
+    },
+    {
+      title: "Step 7:",
+      component: "",
+    },
+    {
+      title: "Step 8:",
+      component: "",
+    },
+    {
+      title: "Step 9:",
+      component: "",
+    },
+    {
+      title: "Step 10:",
+      component: "",
     },
   ];
 
   return (
     <Layout showSideNav={false} hiddenFooter data={navigation}>
-      <Box className="mx-12">
+      <Box className="mx-8">
         <Box className="flex justify-between my-2">
           <BreadcrumbsComponent
-            currentPage="Url 3"
+            currentPage="Schedule"
             previousPages={breadCrumbsData}
           />
           <Box className="flex items-center">
@@ -72,10 +102,9 @@ const CreateCampus = () => {
                 steps,
                 activeStep,
                 setActiveStep,
-                width: "250px",
+                width: "700px",
                 divided: true,
                 showStatus: true,
-                marginY: "20px",
               }}
             />
           </Box>
@@ -83,16 +112,22 @@ const CreateCampus = () => {
             className="flex  items-center my-4 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
           >
-            <Typography style={{ fontSize: "16px" }}>Save as campus</Typography>
+            <Typography style={{ fontSize: "16px" }}>Save as draft</Typography>
           </Box>
         </Box>
 
         <StepperComponent
-          {...{ steps, activeStep, setActiveStep, divided: true, showContent: true}}
+          {...{
+            steps,
+            activeStep,
+            setActiveStep,
+            divided: true,
+            showContent: true,
+          }}
         />
       </Box>
     </Layout>
   );
 };
 
-export default CreateCampus;
+export default CreateCourseForm;
