@@ -1,12 +1,13 @@
 import Paper from "@mui/material/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
-import { FunctionComponent } from "react";
 import {
   Scheduler,
   Appointments,
   Toolbar,
   DateNavigator,
+  TodayButton,
   MonthView,
+  ViewSwitcher,
   AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import moment from "moment";
@@ -16,13 +17,7 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 import { appointments } from "../../data/date";
 
-interface IProps {
-  setShowEditEvent?: any;
-}
-
-const DynamicEventSchedular: FunctionComponent<IProps> = ({
-  setShowEditEvent,
-}) => {
+const DynamicEventSchedular = () => {
   const Header = ({ children, appointmentData, ...restProps }: any) => (
     <AppointmentTooltip.Header
       {...restProps}
@@ -50,10 +45,7 @@ const DynamicEventSchedular: FunctionComponent<IProps> = ({
         paddingY="15px"
         paddingX="20px"
       >
-        <Box
-          className="flex items-center gap-2"
-          onClick={() => setShowEditEvent(true)}
-        >
+        <Box className="flex items-center gap-2">
           <AiFillEdit fontSize="18px" />
           Edit
         </Box>

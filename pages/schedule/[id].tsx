@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
+import SmallButton from "../../components/Button/SmallButton";
 import AddLectureForm from "../../components/CreateCourseForm/AddLecture/AddLectureForm";
-import StepperOne from "../../components/CreateCourseForm/CreateCourseForm";
+import AssignInstructorForm from "../../components/CreateCourseForm/AssignInstructorForm/AssignInstructorForm";
+import StepperOne from "../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
-import { colors } from "../../data/constant";
 import { navigation } from "../../data/navigationData";
 
 const breadCrumbsData = [
@@ -55,20 +56,41 @@ const CreateCourseForm = () => {
       ),
     },
     {
-      title: "Step 3:",
-      component: "",
+      title: "Assign lecturer",
+      component: (
+        <AssignInstructorForm
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 4:",
-      component: "",
+      component: {},
     },
     {
       title: "Step 5:",
-      component: "",
+      component: (
+        <StepperOne
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 6:",
-      component: "",
+      component: (
+        <AssignInstructorForm
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 7:",
@@ -91,10 +113,11 @@ const CreateCourseForm = () => {
   return (
     <Layout showSideNav={false} hiddenFooter data={navigation}>
       <Box className="mx-8">
-        <Box className="flex justify-between my-2">
+        <Box className="flex justify-between py-4">
           <BreadcrumbsComponent
             currentPage="Schedule"
             previousPages={breadCrumbsData}
+            customMarginY="0px"
           />
           <Box className="flex items-center">
             <StepperComponent
@@ -108,12 +131,13 @@ const CreateCourseForm = () => {
               }}
             />
           </Box>
-          <Box
+          {/* <Box
             className="flex  items-center my-4 px-4 text-white cursor-pointer rounded-lg"
             bgcolor={colors.primaryColors.lightblue.lightblue1}
           >
-            <Typography style={{ fontSize: "16px" }}>Save as draft</Typography>
-          </Box>
+            <Typography style={{ fontSize: "16px" }}></Typography>
+          </Box> */}
+          <SmallButton text="Save as draft" />
         </Box>
 
         <StepperComponent

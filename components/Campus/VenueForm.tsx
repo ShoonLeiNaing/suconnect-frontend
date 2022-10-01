@@ -13,11 +13,12 @@ interface IProps {
 
 const VenueForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const types = ["venue 1", "venue 2"];
-  const [type, setType] = useState<string>("Select Venue");
+
   const [code, setCode] = useState<string>("");
   const [number, setNumber] = useState<string>("");
   const [order, setOrder] = useState<string>("");
   const [floor, setFloor] = useState<string>("");
+  const [type, setType] = useState<string>("venue 1");
   const [startHour, setStartHour] = useState<number>(0);
   const [startMin, setStartMin] = useState<number>(0);
   const [endHour, setEndHour] = useState<number>(0);

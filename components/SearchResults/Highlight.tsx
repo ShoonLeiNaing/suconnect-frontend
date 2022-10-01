@@ -3,11 +3,11 @@ import { FunctionComponent } from "react";
 
 interface IProps {
   title: string;
-  keyword?: string;
+  keyword: string;
 }
 
 const HighlightKeyword: FunctionComponent<IProps> = ({ title, keyword }) => {
-  if (keyword && !keyword.trim()) {
+  if (!keyword.trim()) {
     return <span>{title}</span>;
   }
   const regex = new RegExp(`(${keyword})`, "gi");
