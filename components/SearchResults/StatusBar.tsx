@@ -2,8 +2,8 @@ import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 
 interface IProps {
-  type: string;
-  dotColor: string;
+  type?: string;
+  dotColor?: string;
   detailView?: boolean;
 }
 
