@@ -51,7 +51,7 @@ const ChooseDaysComponent: FunctionComponent = () => {
       {sevenDays.map((data, index) => (
         <Box
           key={index}
-          className="w-10 h-10 flex justify-center mr-4 items-center bg-[#BBBBBB] rounded-full"
+          className="w-10 cursor h-10 flex justify-center mr-4 items-center bg-[#BBBBBB] rounded-full"
           onClick={(e) => selectedDays(e, data)}
         >
           <Typography className="text-white font-bold">

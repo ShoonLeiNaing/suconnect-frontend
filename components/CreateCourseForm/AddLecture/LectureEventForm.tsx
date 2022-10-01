@@ -39,7 +39,7 @@ const LectureEventForm: FunctionComponent<IProps> = ({
     <>
       <Box
         className="border py-6 px-8 rounded-xl"
-        height="74vh"
+        height="77vh"
         overflow="scroll"
         color={colors.black.black2}
       >

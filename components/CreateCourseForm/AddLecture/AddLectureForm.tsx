@@ -63,7 +63,9 @@ const AddLectureForm: FunctionComponent<IProps> = ({
             />
           </Box>
         ) : (
-          <DynamicEventSchedular {...{ setShowEditEvent }} />
+          <Box paddingLeft={3}>
+            <DynamicEventSchedular {...{ setShowEditEvent }} />
+          </Box>
         )}
       </Box>
       <Box className=" my-3 flex justify-end">
