@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import AddLectureForm from "../../components/CreateCourseForm/AddLectureForm";
+import AddLectureForm from "../../components/CreateCourseForm/AddLecture/AddLectureForm";
 import StepperOne from "../../components/CreateCourseForm/CreateCourseForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";

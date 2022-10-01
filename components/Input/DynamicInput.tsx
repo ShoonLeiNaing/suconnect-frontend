@@ -32,7 +32,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
     return (
       <Box
         color={colors.black.black2}
-        maxWidth={maxiWidth}
+        maxWidth={customWidth}
         height={maxiHeight}
         borderRadius={customBorderRadius}
         border="1px solid grey"

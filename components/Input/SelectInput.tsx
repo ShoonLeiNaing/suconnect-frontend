@@ -31,24 +31,41 @@ const SelectInput: FunctionComponent<SelectInputProps> = ({
       height="55px"
       borderRadius="15px"
       border="none"
+      sx={{ backgroundColor: colors.white.white2 }}
       //   className={styles.select_box}
     >
-      <Select
+      {/* <Select
         value={value}
         onChange={(e) => setValue(e.target.value)}
         input={<BootstrapInput />}
         className={styles.select_box}
+        label="hehe"
       >
         {options?.map((opt: any) => (
           <MenuItem value={opt}>{opt}</MenuItem>
         ))}
-      </Select>
+      </Select> */}
 
-      {/* <select name="countries" id="countries">
-        <option>Myanmar</option>
-        <option>Singapore</option>
-        <option>Indonesia</option>
-      </select> */}
+      <Select
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        input={<BootstrapInput />}
+        sx={{
+          width: "98%",
+          height: "55px",
+          fontSize: "16px",
+          color: "#737373",
+        }}
+      >
+        <MenuItem className="hidden" value={value}>
+          {value}
+        </MenuItem>
+        {options?.map((opt: any) => (
+          <MenuItem sx={{ fontSize: "15px" }} value={opt}>
+            {opt}
+          </MenuItem>
+        ))}
+      </Select>
     </Box>
   );
 };
