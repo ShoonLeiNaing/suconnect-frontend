@@ -10,18 +10,20 @@ interface Links {
 interface IProps {
   currentPage: string;
   previousPages: Links[];
+  customMarginY?: string;
 }
 
 const BreadcrumbsComponent: FunctionComponent<IProps> = ({
   currentPage,
   previousPages,
+  customMarginY,
 }) => {
   return (
     <Breadcrumbs
       // my={2}
       aria-label="breadcrumb"
       color={colors.grey.grey2}
-      sx={{ marginY: "20px" }}
+      sx={{ marginY: customMarginY || "20px" }}
     >
       {previousPages?.map((item) => (
         <Link

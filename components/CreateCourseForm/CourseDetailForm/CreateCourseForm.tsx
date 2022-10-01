@@ -13,11 +13,11 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { FunctionComponent, useState } from "react";
-import DateInput from "../Input/DateInput";
-import DynamicInput from "../Input/DynamicInput";
-import InputLabel from "../Input/InputLabel";
-import PaginationButton from "../Stepper/PaginationButton";
-import TimeRangePicker from "../TimeRangePicker";
+import DateInput from "../../Input/DateInput";
+import DynamicInput from "../../Input/DynamicInput";
+import InputLabel from "../../Input/InputLabel";
+import PaginationButton from "../../Stepper/PaginationButton";
+import TimeRangePicker from "../../TimeRangePicker";
 import ChooseDaysComponent from "./ChooseDaysComponent";
 
 interface IProps {

@@ -1,7 +1,7 @@
 import { Box, Typography, FormControl, Input } from "@mui/material";
 import { FunctionComponent, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import PaginationButton from "../Stepper/PaginationButton";
+import PaginationButton from "../../Stepper/PaginationButton";
 import InstructorComponent from "./InstructorComponent";
 import SearchInstructorComponent from "./SearchInstructorComponent";
 
@@ -76,7 +76,7 @@ const AssignInstructorForm: FunctionComponent<IProps> = ({
     <Box className="w-full flex flex-col flex-start">
       <Box
         className="flex flex-start border py-0 pl-10 pr-0 rounded-xl overflow-y-auto"
-        height="72vh"
+        height="77vh"
       >
         <Box className="w-3/4">
           <Typography className="text-[#737373] font-semibold text-lg my-4 pt-6">
@@ -118,7 +118,7 @@ const AssignInstructorForm: FunctionComponent<IProps> = ({
           <InstructorComponent datas={instructors} />
         </Box>
       </Box>
-      <Box className="mx-8 my-6 flex justify-end">
+      <Box className="my-3 flex justify-end">
         <PaginationButton {...{ handleNext, showPrevious: true, handleBack }} />
       </Box>
     </Box>
