@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import StepperOne from "../../components/CreateCourseForm/StepperOne";
+import StepperSix from "../../components/CreateCourseForm/StepperSix";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
 import { colors } from "../../data/constant";
@@ -44,7 +45,14 @@ const CreateCourseForm = () => {
     },
     {
       title: "Step 2: Assign lecture",
-      component: "",
+      component: (
+        <StepperSix
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 3:",
@@ -60,7 +68,13 @@ const CreateCourseForm = () => {
     },
     {
       title: "Step 6:",
-      component: "",
+      component: (
+        <StepperOne
+          {...{
+            handleNext,
+          }}
+        />
+      ),
     },
     {
       title: "Step 7:",
