@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import StepperOne from "../../components/CreateCourseForm/StepperOne";
-import StepperSix from "../../components/CreateCourseForm/StepperSix";
+import AddLectureForm from "../../components/CreateCourseForm/AddLectureForm";
+import StepperOne from "../../components/CreateCourseForm/CreateCourseForm";
+import AssignInstructorForm from "../../components/CreateCourseForm/AssignInstructorForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
 import { colors } from "../../data/constant";
@@ -44,9 +45,9 @@ const CreateCourseForm = () => {
       ),
     },
     {
-      title: "Step 2: Assign lecture",
+      title: "Assign lecture",
       component: (
-        <StepperSix
+        <AddLectureForm
           {...{
             handleNext,
             handleBack,
@@ -56,22 +57,37 @@ const CreateCourseForm = () => {
     },
     {
       title: "Step 3:",
-      component: "",
+      component: (
+        <AssignInstructorForm
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 4:",
-      component: "",
+      component: {},
     },
     {
       title: "Step 5:",
-      component: "",
-    },
-    {
-      title: "Step 6:",
       component: (
         <StepperOne
           {...{
             handleNext,
+            handleBack,
+          }}
+        />
+      ),
+    },
+    {
+      title: "Step 6:",
+      component: (
+        <AssignInstructorForm
+          {...{
+            handleNext,
+            handleBack,
           }}
         />
       ),
@@ -96,7 +112,7 @@ const CreateCourseForm = () => {
 
   return (
     <Layout showSideNav={false} hiddenFooter data={navigation}>
-      <Box className="mx-12">
+      <Box className="mx-8">
         <Box className="flex justify-between my-2">
           <BreadcrumbsComponent
             currentPage="Schedule"
@@ -123,7 +139,13 @@ const CreateCourseForm = () => {
         </Box>
 
         <StepperComponent
-          {...{ steps, activeStep, setActiveStep, divided: true, showContent: true}}
+          {...{
+            steps,
+            activeStep,
+            setActiveStep,
+            divided: true,
+            showContent: true,
+          }}
         />
       </Box>
     </Layout>

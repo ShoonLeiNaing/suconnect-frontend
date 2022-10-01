@@ -88,13 +88,16 @@ const LoginNavbar: FunctionComponent<IProps> = ({
             color={colors.primaryColors.lightblue.lightblue1}
             gap={1}
             alignItems="center"
+            onClick={() => router.push("/profile")}
           >
             <img
               className={styles.profile_img}
               alt="profile"
               src="/images/profile.jpeg"
             />
-            <Typography fontSize="13px">Loreum Ipsm</Typography>
+            <Typography fontSize="13px" className="cursor">
+              Loreum Ipsm
+            </Typography>
           </Box>
 
           <Box

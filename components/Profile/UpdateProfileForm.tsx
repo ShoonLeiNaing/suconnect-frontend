@@ -158,7 +158,7 @@ const UpdateProfileForm = () => {
         <Box flex="0.5">
           <Box mb={3}>
             <InputLabel label="Name" isRequired />
-            <DynamicInput value={name} setValue={setName} />
+            <DynamicInput value={name} setValue={setName} maxiWidth="350px" />
           </Box>
           <Box mb={3}>
             <InputLabel label="Email" isRequired />
@@ -177,7 +177,7 @@ const UpdateProfileForm = () => {
           <Box mb={3}>
             <InputLabel label="Date of Birth" />
             <DateInput
-              customWidth="285px"
+              customWidth="350px"
               customHeight="18px"
               dateValue={birthDate}
               setDateValue={setBirthDate}

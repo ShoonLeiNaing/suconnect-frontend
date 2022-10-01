@@ -1,27 +1,7 @@
-import {
-  Box,
-  Typography,
-  MenuItem,
-  FormControl,
-  FormControlLabel,
-  Select,
-  SelectChangeEvent,
-  styled,
-  Input,
-  InputBase,
-  Checkbox,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
+import { Box, Typography, FormControl, Input } from "@mui/material";
 import { FunctionComponent, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-
-import DateInput from "../Input/DateInput";
-import DynamicInput from "../Input/DynamicInput";
-import InputLabel from "../Input/InputLabel";
 import PaginationButton from "../Stepper/PaginationButton";
-import TimeRangePicker from "../TimeRangePicker";
-import ChooseDaysComponent from "./ChooseDaysComponent";
 import InstructorComponent from "./InstructorComponent";
 import SearchInstructorComponent from "./SearchInstructorComponent";
 
@@ -86,33 +66,11 @@ const instructors: {
   },
 ];
 
-const StepperSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
-  const [courseName, setCourseName] = useState("");
-  const [courseCode, setCourseCode] = useState("");
-  const [courseFee, setCourseFee] = useState("");
-  const [startHour, setStartHour] = useState<number>(0);
-  const [startMin, setStartMin] = useState<number>(0);
-  const [endHour, setEndHour] = useState<number>(0);
-  const [endMin, setEndMin] = useState<number>(0);
-  const [courseCategory, setCourseCategory] = useState(
-    "Select course category"
-  );
-  const [selectCampus, setSelectCampus] = useState("Select campus");
-  const handleChange = (event: SelectChangeEvent) => {
-    setCourseCategory(event.target.value as string);
-  };
-
+const AssignInstructorForm: FunctionComponent<IProps> = ({
+  handleNext,
+  handleBack,
+}) => {
   const [searchText, setSearchText] = useState("Thon");
-
-  // const onChangeData = (event: SelectChangeEvent) => {
-  //   setSearchText(event.target.value);
-  // };
-
-  const BootstrapInput = styled(InputBase)(() => ({
-    "& .MuiInputBase-input": {
-      paddingLeft: "16px",
-    },
-  }));
 
   return (
     <Box className="w-full flex flex-col flex-start">
@@ -167,4 +125,4 @@ const StepperSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   );
 };
 
-export default StepperSix;
+export default AssignInstructorForm;

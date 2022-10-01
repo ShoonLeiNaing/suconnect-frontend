@@ -47,14 +47,14 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       width="100%"
     >
       <Box maxWidth="500px">
-      <Box className="w-full mb-2 -mt-4">
-            <img
-              alt="logo"
-              className="-ml-4"
-              style={{ height: "50px" }}
-              src="/images/logo.svg"
-            />
-          </Box>
+        <Box className="w-full mb-2 -mt-4">
+          <img
+            alt="logo"
+            className="-ml-4"
+            style={{ height: "50px" }}
+            src="/images/logo.svg"
+          />
+        </Box>
         <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
           Let&lsquo;s us know where you live...
         </Typography>
