@@ -24,7 +24,7 @@ const StaticInput: FunctionComponent<IProps> = ({
       <Box
         sx={{ backgroundColor: colors.white.white2 }}
         color={colors.black.black2}
-        maxWidth="350px"
+        maxWidth={maxWidth || "350px"}
         height="140px"
         borderRadius="15px"
         display="flex"

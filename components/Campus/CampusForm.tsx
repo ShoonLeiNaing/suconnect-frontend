@@ -20,7 +20,7 @@ const CampusForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [streetName, setStreetName] = useState<string>("");
   const [township, setTownShip] = useState<string>("");
   const [city, setCity] = useState<string>("");
-  const [country, setCountry] = useState<string>(countries[0]);
+  const [country, setCountry] = useState<string>("Select Country");
   const [postalCode, setPostalCode] = useState<string>("");
   const [startHour, setStartHour] = useState<number>(0);
   const [startMin, setStartMin] = useState<number>(0);
