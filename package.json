@@ -41,6 +41,7 @@
     "react-image-crop": "^10.0.7",
     "react-phone-number-input": "^3.2.9",
     "react-quill": "^2.0.0",
+    "react-select": "^5.4.0",
     "swiper": "^8.3.2"
   },
   "devDependencies": {
