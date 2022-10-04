@@ -32,7 +32,7 @@ const EventComponent: FunctionComponent<IProps> = ({
         <Typography>{date}</Typography>
         <Typography>{day}</Typography>
       </Box>
-      <Box className="flex flex-col mx-8">
+      <Box className="flex flex-col ml-8">
         <Typography className="font-light text-[0.94rem] mb-2">
           <HighlightKeyword title={title} keyword={keyword} />
         </Typography>
