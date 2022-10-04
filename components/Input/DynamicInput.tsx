@@ -4,8 +4,11 @@ import { colors } from "../../data/constant";
 import styles from "./input.module.css";
 
 interface IProps {
+  id?: string;
+  name?: string;
   value: string;
-  setValue: any;
+  setValue?: any;
+  onChangeHandler?: any;
   isTextArea?: boolean;
   customWidth?: string;
   customHeight?: string;
@@ -17,6 +20,8 @@ interface IProps {
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
+  id,
+  name,
   value,
   isTextArea,
   setValue,
@@ -27,6 +32,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
   customHeight,
   placeholder,
   customBorderRadius,
+  onChangeHandler,
 }) => {
   if (isTextArea) {
     return (
@@ -65,11 +71,14 @@ const DynamicInput: FunctionComponent<IProps> = ({
         className={styles.input}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={() => onChangeHandler()}
+        // onChange={(e) => setValue(e.target.value)}
         style={{
           height: customHeight,
           width: customWidth || maxiWidth || "350px",
         }}
+        id={id}
+        name={name}
       />
     </Box>
   );

@@ -1,9 +1,6 @@
-import {
-  FunctionComponent,
-  useState,
-  SyntheticEvent,
-  useCallback,
-} from "react";
+/* eslint-disable camelcase */
+
+import { FunctionComponent, useState, SyntheticEvent } from "react";
 import {
   Box,
   Accordion,
@@ -14,6 +11,7 @@ import {
   FormControl,
   Input,
 } from "@mui/material";
+import { Formik, FormikProvider, useFormik } from "formik";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InputLabel from "../Input/InputLabel";
 import StaticInput from "../Input/StaticInput";
@@ -23,19 +21,34 @@ import SmallButton from "../Button/SmallButton";
 import styles from "./accordion.module.css";
 
 interface IProps {
-  title: string;
+  data?: any;
   bgColor: string;
   orderNo: number;
   isOpen?: boolean;
   isNew?: boolean;
+  setAdd?: any;
+}
+
+interface Address {
+  house_number: string;
+  block_number?: string;
+  street_name: string;
+  township: string;
+  city: string;
+  country: string;
+  postal_code: number | null;
+  save_name?: string;
+  is_primary?: boolean;
+  account?: number;
 }
 
 const AccordionComponent: FunctionComponent<IProps> = ({
-  title,
+  data,
   bgColor,
   orderNo,
   isOpen,
   isNew,
+  setAdd,
 }) => {
   const BootstrapAccordion = styled(Accordion)({
     boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.07)",
@@ -49,32 +62,51 @@ const AccordionComponent: FunctionComponent<IProps> = ({
   });
 
   const [edit, setEdit] = useState(false);
-
   const [expanded, setExpanded] = useState<string | false>(
     isOpen || isNew ? `panel${orderNo}` : ""
   );
-
-  const [cardTitle, setCardTitle] = useState(title);
-
+  const [cardTitle, setCardTitle] = useState(data?.save_name);
   const updateTitle = (event: any) => {
     setCardTitle(event.target.value);
   };
 
-  const handleChange =
+  const handleChangeAccordionPanel =
     (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
 
   const editAddress = () => {
     setEdit(!edit);
-    handleChange(`panel${orderNo}`);
+    handleChangeAccordionPanel(`panel${orderNo}`);
   };
 
+  const initialValues: Address = {
+    house_number: "" || data?.house_number,
+    block_number: "" || data?.block_number,
+    street_name: "" || data?.street_name,
+    township: "" || data?.township,
+    city: "" || data?.city,
+    country: "" || data?.country,
+    postal_code: null || data?.postal_code,
+    save_name: "" || data?.save_name || data?.save_name,
+    is_primary: false || data?.is_primary,
+    account: 1 || data?.account,
+  };
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit: () => {},
+  });
+
+  const { errors, touched, values, handleChange, handleSubmit, setFieldValue } =
+    formik;
+  console.log({ values });
+
   return (
-    <>
+    <FormikProvider value={formik}>
       <BootstrapAccordion
         expanded={expanded === `panel${orderNo}`}
-        onChange={handleChange(`panel${orderNo}`)}
+        onChange={handleChangeAccordionPanel(`panel${orderNo}`)}
         sx={{ backgroundColor: bgColor, borderRadius: "1rem!important" }}
       >
         <AccordionSummary
@@ -86,10 +118,13 @@ const AccordionComponent: FunctionComponent<IProps> = ({
           <Box className="w-full flex justify-between items-center">
             {!edit && !isNew ? (
               <Typography className="py-3" fontSize="16px">
-                {cardTitle}
+                {values?.save_name}
               </Typography>
             ) : (
-              <FormControl variant="standard">
+              <FormControl
+                variant="standard"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <Input
                   className={styles.card_title}
                   value={cardTitle}
@@ -106,11 +141,19 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                 <Box className="flex flex-col">
                   <Box className="mt-4">
                     <InputLabel label="House Number" />
-                    <StaticInput isLocked value="12" maxWidth="300px" />
+                    <StaticInput
+                      isLocked
+                      value={values?.house_number}
+                      maxWidth="300px"
+                    />
                   </Box>
                   <Box className="my-4">
                     <InputLabel label="City" />
-                    <StaticInput isLocked value="Yangon" maxWidth="300px" />
+                    <StaticInput
+                      isLocked
+                      value={values?.city}
+                      maxWidth="300px"
+                    />
                   </Box>
                 </Box>
                 <Box className="flex flex-col mx-12">
@@ -118,23 +161,35 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                     <InputLabel label="Street Name" />
                     <StaticInput
                       isLocked
-                      value="Buddha Street"
+                      value={values?.street_name}
                       maxWidth="300px"
                     />
                   </Box>
                   <Box className="my-4">
                     <InputLabel label="Country" />
-                    <StaticInput isLocked value="Myanmar" maxWidth="300px" />
+                    <StaticInput
+                      isLocked
+                      value={values?.country}
+                      maxWidth="300px"
+                    />
                   </Box>
                 </Box>
                 <Box className="flex flex-col">
                   <Box className="mt-4">
                     <InputLabel label="Township" />
-                    <StaticInput isLocked value="Bahan" maxWidth="300px" />
+                    <StaticInput
+                      isLocked
+                      value={values?.township}
+                      maxWidth="300px"
+                    />
                   </Box>
                   <Box className="my-4">
                     <InputLabel label="Postal Code" />
-                    <StaticInput isLocked value="15011" maxWidth="300px" />
+                    <StaticInput
+                      isLocked
+                      value={values?.postal_code}
+                      maxWidth="300px"
+                    />
                   </Box>
                 </Box>
               </Box>
@@ -150,7 +205,9 @@ const AccordionComponent: FunctionComponent<IProps> = ({
               </Box>
             </>
           ) : (
-            <AccordionEditComponent edit={edit} setEdit={setEdit} />
+            <AccordionEditComponent
+              {...{ setAdd, edit, setEdit, values, handleChange }}
+            />
           )}
         </AccordionDetails>
 
@@ -158,14 +215,8 @@ const AccordionComponent: FunctionComponent<IProps> = ({
 
         {/* {edit && <AccordionEditComponent orderNo={orderNo} />} */}
       </BootstrapAccordion>
-      {expanded && (
-        <CardStatus
-          createdTime="1/10/2022"
-          updatedTime="2/10/2022"
-          customDisplay="flex"
-        />
-      )}
-    </>
+      {expanded && !isNew && <CardStatus data={data} customDisplay="flex" />}
+    </FormikProvider>
   );
 };
 

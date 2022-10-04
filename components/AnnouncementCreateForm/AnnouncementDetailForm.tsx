@@ -4,7 +4,7 @@ import Cropper from "react-easy-crop";
 import { Point, Area } from "react-easy-crop/types";
 import { MdCancel } from "react-icons/md";
 import { colors } from "../../data/constant";
-import getCroppedImg from "../../utils/getCroppedImage";
+import getCroppedImg from "../../utils/common/getCroppedImage";
 import SmallButton from "../Button/SmallButton";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";

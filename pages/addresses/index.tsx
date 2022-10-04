@@ -8,12 +8,14 @@ import { colors } from "../../data/constant";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/DateFilter/SearchInput";
 import DropDown from "../../components/DateFilter/DropDown";
-import AccordionComponent from "../../components/Accordion";
+import AccordionComponent from "../../components/AddressAccordion";
 import { byCategory, byDate } from "../../data/testData";
 import MenuComponent from "../../components/MenuButton";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import ChipComponent from "../../components/ChipComponent";
 import { navigation } from "../../data/navigationData";
+import { getAddressesOfUser } from "../../api/address/getAddressesOfUser";
+import { generateColor } from "../../utils/common/generateColor";
 
 const breadCrumbsData = [
   {
@@ -26,15 +28,17 @@ const breadCrumbsData = [
   },
 ];
 
-const Addresses = () => {
+const Addresses = ({ addresses }: any) => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
 
   const newAddressCard = () => {
-    setAdd(!add);
-    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    if (!add) {
+      setAdd(true);
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    }
   };
 
   const [filterValue, setFilterValue] = useState<any>({
@@ -122,27 +126,19 @@ const Addresses = () => {
           </Typography>
         </Box>
         <Box className="mb-4">
-          <AccordionComponent
-            title="My Address 1"
-            isOpen
-            orderNo={1}
-            bgColor={colors.primaryColors.pink.pink1}
-          />
-          <AccordionComponent
-            title="My Address 2"
-            orderNo={2}
-            bgColor={colors.secondaryColors.green.green1}
-          />
-          <AccordionComponent
-            title="My Address 3"
-            orderNo={3}
-            bgColor={colors.primaryColors.yellow.yellow1}
-          />
+          {addresses?.map((address: any, index: number) => (
+            <AccordionComponent
+              data={address}
+              isOpen={index === 0}
+              orderNo={index + 1}
+              bgColor={generateColor(index + 1)}
+            />
+          ))}
           {add && (
             <AccordionComponent
-              title="My new address"
-              orderNo={4}
-              bgColor={colors.primaryColors.pink.pink1}
+              orderNo={addresses.length + 1}
+              bgColor={generateColor(addresses.length + 1)}
+              setAdd={setAdd}
               isNew
             />
           )}
@@ -158,5 +154,14 @@ const Addresses = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps() {
+  const addresses = await getAddressesOfUser(1);
+  return {
+    props: {
+      addresses: addresses?.data?.address_set,
+    },
+  };
+}
 
 export default Addresses;

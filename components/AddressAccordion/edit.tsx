@@ -16,13 +16,19 @@ import DynamicInput from "../Input/DynamicInput";
 import SmallButton from "../Button/SmallButton";
 
 interface IProps {
+  values: any;
   edit: boolean;
   setEdit: any;
+  setAdd: any;
+  handleChange: any;
 }
 
 const AccordionEditComponent: FunctionComponent<IProps> = ({
+  values,
   edit,
   setEdit,
+  setAdd,
+  handleChange,
 }) => {
   const [houseNo, setHouseNo] = useState("12");
   const [city, setCity] = useState("Yangon");
@@ -31,9 +37,9 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
   const [township, setTownship] = useState("Bahan");
   const [postalCode, setPostalCode] = useState("15011");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setCountry(event.target.value as string);
-  };
+  // const handleChange = (event: SelectChangeEvent) => {
+  //   setCountry(event.target.value as string);
+  // };
 
   const BootstrapInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
@@ -48,23 +54,33 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
           <Box className="mt-4">
             <InputLabel label="House Number" />
             <DynamicInput
-              value={houseNo}
-              setValue={setHouseNo}
+              value={values.house_number}
+              onChangeHandler={handleChange}
               maxiWidth="300px"
+              id="house_number"
+              name="house_number"
             />
           </Box>
           <Box className="my-4">
             <InputLabel label="City" />
-            <DynamicInput value={city} setValue={setCity} maxiWidth="300px" />
+            <DynamicInput
+              value={values.city}
+              setValue={setCity}
+              maxiWidth="300px"
+              id="city"
+              name="city"
+            />
           </Box>
         </Box>
         <Box className="flex flex-col mx-12">
           <Box className="mt-4">
             <InputLabel label="Street Name" />
             <DynamicInput
-              value={street}
+              value={values.street}
               setValue={setStreet}
               maxiWidth="300px"
+              id="street"
+              name="street"
             />
           </Box>
           <Box className="my-4">
@@ -76,8 +92,8 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               className={styles.form_control}
             >
               <Select
-                value={country}
-                onChange={handleChange}
+                value={values.country}
+                // onChange={handleChange}
                 input={<BootstrapInput />}
                 className={styles.select_box}
               >
@@ -92,17 +108,21 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
           <Box className="mt-4">
             <InputLabel label="Township" />
             <DynamicInput
-              value={township}
+              value={values.township}
               setValue={setTownship}
               maxiWidth="300px"
+              id="township"
+              name="township"
             />
           </Box>
           <Box className="my-4">
             <InputLabel label="Postal Code" />
             <DynamicInput
-              value={postalCode}
+              value={values.postal_code}
               setValue={setPostalCode}
               maxiWidth="300px"
+              id="postal_code"
+              name="postal_code"
             />
           </Box>
         </Box>
@@ -116,7 +136,10 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
             color={colors.black.black1}
             customFontSize="15px"
             customMarginX="1rem"
-            onClickHandler={() => setEdit(!edit)}
+            onClickHandler={() => {
+              setEdit(!edit);
+              setAdd(false);
+            }}
           />
           <SmallButton
             text="Save"
