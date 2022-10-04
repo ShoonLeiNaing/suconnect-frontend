@@ -22,12 +22,12 @@ const Login: FunctionComponent = () => {
         <Image src="/images/login.svg" height={450} width={450} />
       </Box>
       <Box className="flex flex-col justify-center items-center bg-white w-1/2 px-24">
-        <Box className="w-full mb-12">
+        <Box className="w-full mb-8 mt-4">
           <img
             alt="logo"
-            className="ml-0"
+            className="-ml-4"
             style={{ height: "50px" }}
-            src="/images/logo.png"
+            src="/images/logo.svg"
           />
         </Box>
         <Typography className="my-6 text-[1.3rem] text-[#737373] font-semibold w-full">

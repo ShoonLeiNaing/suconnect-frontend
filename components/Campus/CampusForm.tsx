@@ -30,9 +30,8 @@ const CampusForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   return (
     <>
       <Box
-        className="mx-8 border py-6 px-8 rounded-xl"
-        maxHeight="77vh"
-        overflow="scroll"
+        className="mx-8 border py-6 px-8 rounded-xl overflow-y-auto"
+        minHeight="77vh"
       >
         <Box className="flex flex-col gap-8" maxWidth="400px">
           <Box>
@@ -44,6 +43,7 @@ const CampusForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             />
           </Box>
           <TimeRangePicker
+            labelText="Available hours"
             startHour={startHour}
             endHour={endHour}
             startMin={startMin}

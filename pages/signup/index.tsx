@@ -102,12 +102,12 @@ const SignUp: FunctionComponent = () => {
           className="flex flex-col justify-center items-center bg-white  px-24"
           flex={1}
         >
-          <Box className="w-full mb-12">
+          <Box className="w-full mb-8">
             <img
               alt="logo"
-              className="ml-0"
+              className="-ml-4"
               style={{ height: "50px" }}
-              src="/images/logo.png"
+              src="/images/logo.svg"
             />
           </Box>
           <Typography className="my-6 text-[1.3rem] text-[#737373] font-semibold w-full">
@@ -154,7 +154,7 @@ const SignUp: FunctionComponent = () => {
         </Box>
       ) : (
         <Box
-          className="bg-white  px-24"
+          className="bg-white"
           flex={1}
           height="100%"
           // display="flex"
@@ -168,7 +168,7 @@ const SignUp: FunctionComponent = () => {
               activeStep,
               setActiveStep,
               width: "600px",
-              marginY: "70px",
+              marginY: "50px",
             }}
           />
         </Box>

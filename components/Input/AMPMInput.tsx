@@ -12,7 +12,7 @@ const AMPMInput = () => {
 
   return (
     <Box className="w-10 flex items-center text-[#737373]">
-      <Typography mr="4px" fontSize="12px">
+      <Typography mr="6px" fontSize="12px">
         {meridiem ? "AM" : "PM"}
       </Typography>
       <Box>
