@@ -24,6 +24,7 @@ const EventsItem: FunctionComponent<IProps> = ({
             August 2022
           </Typography>
           <EventComponent
+            keyword=""
             date="23"
             day="Tue"
             title="meeting for Web Dev Team"
@@ -42,6 +43,7 @@ const EventsItem: FunctionComponent<IProps> = ({
             September 2022
           </Typography>
           <EventComponent
+            keyword=""
             date="23"
             day="Tue"
             title="meeting for Web Dev Team"
@@ -55,6 +57,7 @@ const EventsItem: FunctionComponent<IProps> = ({
             }}
           />
           <EventComponent
+            keyword=""
             date="23"
             day="Tue"
             title="meeting for Web Dev Team"

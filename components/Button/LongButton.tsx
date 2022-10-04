@@ -6,9 +6,14 @@ import styles from "./button.module.css";
 interface IProps {
   color?: string;
   text: string;
+  onClickHandler?: any;
 }
 
-const LongButton: FunctionComponent<IProps> = ({ color, text }) => {
+const LongButton: FunctionComponent<IProps> = ({
+  color,
+  text,
+  onClickHandler,
+}) => {
   return (
     <Box
       width="260px"
@@ -16,6 +21,7 @@ const LongButton: FunctionComponent<IProps> = ({ color, text }) => {
       borderRadius="15px"
       sx={{ backgroundColor: color }}
       color="white"
+      onClick={() => onClickHandler()}
     >
       <button type="submit" className={styles.long_button}>
         {text}
