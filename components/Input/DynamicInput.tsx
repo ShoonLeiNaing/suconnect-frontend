@@ -14,6 +14,7 @@ interface IProps {
   customType?: string;
   placeholder?: string;
   customBorderRadius?: string;
+  bgColor?: string;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
@@ -27,6 +28,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
   customHeight,
   placeholder,
   customBorderRadius,
+  bgColor,
 }) => {
   if (isTextArea) {
     return (
@@ -34,8 +36,8 @@ const DynamicInput: FunctionComponent<IProps> = ({
         color={colors.black.black2}
         maxWidth={maxiWidth}
         height={maxiHeight}
-        borderRadius={customBorderRadius}
-        border="1px solid grey"
+        // borderRadius={customBorderRadius}
+        // border="1px solid grey"
       >
         <textarea
           value={value}
@@ -45,6 +47,9 @@ const DynamicInput: FunctionComponent<IProps> = ({
             height: maxiHeight,
             width: customWidth,
             maxWidth: maxiWidth,
+            border: "1px solid grey",
+            borderRadius: customBorderRadius,
+            backgroundColor: bgColor
           }}
           className="bg-transparent py-[10px] px-[15px] text-[15px]"
         />
