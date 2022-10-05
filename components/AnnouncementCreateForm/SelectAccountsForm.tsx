@@ -9,7 +9,6 @@ import styles from "./announcement.module.css";
 import SearchInput from "../HeroParallax/SearchInput";
 import { byPosition, users } from "../../data/testData";
 import { colors } from "../../data/constant";
-import generateRandomColor from "../../utils/common/generateRandomColor";
 
 interface IProps {
   handleNext?: any;
