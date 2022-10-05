@@ -42,7 +42,8 @@
     "react-image-crop": "^10.0.7",
     "react-phone-number-input": "^3.2.9",
     "react-quill": "^2.0.0",
-    "swiper": "^8.3.2"
+    "swiper": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.185",

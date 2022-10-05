@@ -8,10 +8,10 @@ import {
   AccordionDetails,
   Typography,
   styled,
-  FormControl,
   Input,
 } from "@mui/material";
-import { Formik, FormikProvider, useFormik } from "formik";
+import { Formik } from "formik";
+import * as Yup from "yup";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InputLabel from "../Input/InputLabel";
 import StaticInput from "../Input/StaticInput";
@@ -19,6 +19,16 @@ import CardStatus from "../Banking/CardStatus";
 import AccordionEditComponent from "./edit";
 import SmallButton from "../Button/SmallButton";
 import styles from "./accordion.module.css";
+import OutlineWhiteButton from "../Button/OutlineWhiteButton";
+
+const AddressSchema = Yup.object().shape({
+  house_number: Yup.string().required("House number is required"),
+  street_name: Yup.string().required("Street name is required"),
+  township: Yup.string().required("Township is required"),
+  city: Yup.string().required("City is required"),
+  // country: Yup.string().required("Country is required"),
+  postal_code: Yup.string().required("Postal code is required"),
+});
 
 interface IProps {
   data?: any;
@@ -36,7 +46,7 @@ interface Address {
   township: string;
   city: string;
   country: string;
-  postal_code: number | null;
+  postal_code: string;
   save_name?: string;
   is_primary?: boolean;
   account?: number;
@@ -62,6 +72,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
   });
 
   const [edit, setEdit] = useState(false);
+
   const [expanded, setExpanded] = useState<string | false>(
     isOpen || isNew ? `panel${orderNo}` : ""
   );
@@ -76,7 +87,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
     };
 
   const editAddress = () => {
-    setEdit(!edit);
+    setEdit(true);
     handleChangeAccordionPanel(`panel${orderNo}`);
   };
 
@@ -88,135 +99,156 @@ const AccordionComponent: FunctionComponent<IProps> = ({
     city: "" || data?.city,
     country: "" || data?.country,
     postal_code: null || data?.postal_code,
-    save_name: "" || data?.save_name || data?.save_name,
+    save_name: "" || data?.save_name,
     is_primary: false || data?.is_primary,
     account: 1 || data?.account,
   };
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit: () => {},
-  });
-
-  const { errors, touched, values, handleChange, handleSubmit, setFieldValue } =
-    formik;
-  console.log({ values });
-
   return (
-    <FormikProvider value={formik}>
-      <BootstrapAccordion
-        expanded={expanded === `panel${orderNo}`}
-        onChange={handleChangeAccordionPanel(`panel${orderNo}`)}
-        sx={{ backgroundColor: bgColor, borderRadius: "1rem!important" }}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          className={` px-12 ${edit || isNew ? "py-2" : ""}`}
-        >
-          <Box className="w-full flex justify-between items-center">
-            {!edit && !isNew ? (
-              <Typography className="py-3" fontSize="16px">
-                {values?.save_name}
-              </Typography>
-            ) : (
-              <FormControl
-                variant="standard"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Input
-                  className={styles.card_title}
-                  value={cardTitle}
-                  onChange={updateTitle}
-                />
-              </FormControl>
-            )}
-          </Box>
-        </AccordionSummary>
-        <AccordionDetails className="bg-white justify-between px-6 rounded-b-2xl">
-          {!edit && !isNew ? (
-            <>
-              <Box className="flex justify-between  px-6">
-                <Box className="flex flex-col">
-                  <Box className="mt-4">
-                    <InputLabel label="House Number" />
-                    <StaticInput
-                      isLocked
-                      value={values?.house_number}
-                      maxWidth="300px"
-                    />
-                  </Box>
-                  <Box className="my-4">
-                    <InputLabel label="City" />
-                    <StaticInput
-                      isLocked
-                      value={values?.city}
-                      maxWidth="300px"
-                    />
-                  </Box>
-                </Box>
-                <Box className="flex flex-col mx-12">
-                  <Box className="mt-4">
-                    <InputLabel label="Street Name" />
-                    <StaticInput
-                      isLocked
-                      value={values?.street_name}
-                      maxWidth="300px"
-                    />
-                  </Box>
-                  <Box className="my-4">
-                    <InputLabel label="Country" />
-                    <StaticInput
-                      isLocked
-                      value={values?.country}
-                      maxWidth="300px"
-                    />
-                  </Box>
-                </Box>
-                <Box className="flex flex-col">
-                  <Box className="mt-4">
-                    <InputLabel label="Township" />
-                    <StaticInput
-                      isLocked
-                      value={values?.township}
-                      maxWidth="300px"
-                    />
-                  </Box>
-                  <Box className="my-4">
-                    <InputLabel label="Postal Code" />
-                    <StaticInput
-                      isLocked
-                      value={values?.postal_code}
-                      maxWidth="300px"
-                    />
-                  </Box>
-                </Box>
-              </Box>
-              <Box className="flex-col px-6">
-                <Box className="flex justify-end mt-4 mb-4">
-                  <SmallButton
-                    text="Edit"
-                    customPaddingY="18px"
-                    customFontSize="15px"
-                    onClickHandler={editAddress}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={AddressSchema}
+      onSubmit={(values, actions) => {
+        console.log({ values, actions });
+      }}
+    >
+      {({ handleSubmit, values, handleChange, errors, touched }) => (
+        <form onSubmit={handleSubmit}>
+          <BootstrapAccordion
+            expanded={expanded === `panel${orderNo}`}
+            onChange={handleChangeAccordionPanel(`panel${orderNo}`)}
+            sx={{ backgroundColor: bgColor, borderRadius: "1rem!important" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              className={` px-12 ${edit || isNew ? "py-2" : ""}`}
+            >
+              <Box className="w-full flex justify-between items-center">
+                {!edit && !isNew ? (
+                  <Typography className="py-3" fontSize="16px">
+                    {initialValues?.save_name}
+                  </Typography>
+                ) : (
+                  <Input
+                    onClick={(e) => e.stopPropagation()}
+                    id="save_name"
+                    name="save_name"
+                    className={styles.card_title}
+                    value={values.save_name}
+                    onChange={handleChange}
                   />
+                )}
+              </Box>
+            </AccordionSummary>
+            <AccordionDetails className="bg-white justify-between px-6 rounded-b-2xl">
+              {!edit && !isNew ? (
+                <Box className="flex justify-between  px-6">
+                  <Box className="flex flex-col">
+                    <Box className="mt-4">
+                      <InputLabel label="House Number" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.house_number}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                    <Box className="my-4">
+                      <InputLabel label="City" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.city}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                  </Box>
+                  <Box className="flex flex-col mx-12">
+                    <Box className="mt-4">
+                      <InputLabel label="Street Name" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.street_name}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                    <Box className="my-4">
+                      <InputLabel label="Country" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.country}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                  </Box>
+                  <Box className="flex flex-col">
+                    <Box className="mt-4">
+                      <InputLabel label="Township" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.township}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                    <Box className="my-4">
+                      <InputLabel label="Postal Code" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.postal_code}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+              ) : (
+                <AccordionEditComponent
+                  {...{
+                    setAdd,
+                    edit,
+                    setEdit,
+                    values,
+                    handleChange,
+                    errors,
+                    touched,
+                  }}
+                />
+              )}
+
+              <Box className="flex-col px-6">
+                <Box className="flex justify-end mt-4 mb-4 gap-4">
+                  {!edit && isNew && (
+                    <OutlineWhiteButton
+                      text="Cancel"
+                      customWidth="80px"
+                      onClickHandler={() => {
+                        setEdit(!edit);
+                        setAdd(false);
+                      }}
+                    />
+                  )}
+                  {!edit && isNew ? (
+                    <SmallButton
+                      text="Create"
+                      customHeight="40px"
+                      type="submit"
+                    />
+                  ) : (
+                    <SmallButton
+                      text="Edit"
+                      customHeight="40px"
+                      onClickHandler={editAddress}
+                    />
+                  )}
                 </Box>
               </Box>
-            </>
-          ) : (
-            <AccordionEditComponent
-              {...{ setAdd, edit, setEdit, values, handleChange }}
-            />
+            </AccordionDetails>
+          </BootstrapAccordion>
+          {expanded && !isNew && (
+            <CardStatus data={data} customDisplay="flex" />
           )}
-        </AccordionDetails>
-
-        {/* {edit && <p>hehe</p>} */}
-
-        {/* {edit && <AccordionEditComponent orderNo={orderNo} />} */}
-      </BootstrapAccordion>
-      {expanded && !isNew && <CardStatus data={data} customDisplay="flex" />}
-    </FormikProvider>
+        </form>
+      )}
+    </Formik>
   );
 };
 

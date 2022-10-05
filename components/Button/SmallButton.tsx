@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button, styled } from "@mui/material";
 import { FunctionComponent } from "react";
+import { AiFillAccountBook } from "react-icons/ai";
 import { colors } from "../../data/constant";
 
 interface IProps {
@@ -15,7 +16,33 @@ interface IProps {
   customMarginX?: string;
   customBorder?: string;
   icon?: any;
+  type?: any;
 }
+
+const BootstrapSmallButton = styled(Button)({
+  "&.MuiButtonBase-root": {
+    backgroundColor: colors.primaryColors.lightblue.lightblue1,
+  },
+  boxShadow: "none",
+  textTransform: "none",
+  fontSize: "14px",
+  lineHeight: 1.5,
+  borderRadius: "10px",
+  // padding: "10px 20px",
+
+  "&:hover": {
+    backgroundColor: colors.primaryColors.lightblue.lightblue1,
+    borderColor: "#0062cc",
+    boxShadow: "none",
+  },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: colors.primaryColors.lightblue.lightblue1,
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+  },
+});
 
 const SmallButton: FunctionComponent<IProps> = ({
   text,
@@ -30,32 +57,31 @@ const SmallButton: FunctionComponent<IProps> = ({
   customMarginX,
   customBorder,
   icon,
+  type,
 }) => {
   return (
-    <Box
-      px={customPaddingX}
-      py={customPaddingY}
-      zIndex={100}
-      sx={{ backgroundColor: bgColor, cursor: "pointer" }}
-      onClick={onClickHandler}
-      height={customHeight || "30px"}
-      width={customWidth && customWidth}
-      mx={customMarginX}
-      border={customBorder}
-      display="flex"
-      // flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      // fontSize="14px"
-      borderRadius="10px"
-      // fontWeight={500}
-      // cursor="pointer"
+    <BootstrapSmallButton
+      type={type || "button"}
+      variant="contained"
+      disableRipple
+      sx={{
+        height: customHeight && customHeight,
+        width: customWidth && customWidth,
+        marginX: customMarginX,
+      }}
+      startIcon={icon}
     >
-      {icon && icon}
-      <Typography fontSize={customFontSize} color={color}>
+      {icon && icon}{" "}
+      <Typography
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        fontSize={customFontSize}
+        color={color}
+      >
         {text}
       </Typography>
-    </Box>
+    </BootstrapSmallButton>
   );
 };
 
@@ -65,6 +91,7 @@ SmallButton.defaultProps = {
   customPaddingX: "1rem",
   customPaddingY: "4px",
   customFontSize: "14px",
+  type: "button",
 };
 
 export default SmallButton;

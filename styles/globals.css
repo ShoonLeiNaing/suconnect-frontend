@@ -9,7 +9,13 @@ body {
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
-
+button,
+[type="submit"],
+[type="button"] {
+  -webkit-appearance: button;
+  /* background-color: #3b8cf7; */
+  background-image: none;
+}
 ::-webkit-scrollbar {
   display: none;
 }

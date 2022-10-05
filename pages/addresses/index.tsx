@@ -128,6 +128,7 @@ const Addresses = ({ addresses }: any) => {
         <Box className="mb-4">
           {addresses?.map((address: any, index: number) => (
             <AccordionComponent
+              key={index}
               data={address}
               isOpen={index === 0}
               orderNo={index + 1}
