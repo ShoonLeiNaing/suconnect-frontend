@@ -22,10 +22,10 @@ interface DepartmentDetailProps {}
 
 const tabList = [
   {
-    title: "Departments",
+    title: "Groups",
   },
   {
-    title: "Sub Departments",
+    title: "Sub groups",
   },
 ];
 
@@ -37,7 +37,7 @@ const memberColumns = [
   { field: "column2", headerName: "Column2", width: 200 },
 ];
 
-const departmentColumns = [
+const groupColumns = [
   { field: "date", headerName: "Date", width: 200 },
   { field: "name", headerName: "Name", width: 200 },
   { field: "description", headerName: "Description", width: 200 },
@@ -320,20 +320,19 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
     },
   ];
 
-
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
       <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
         <BreadcrumbsComponent
-          currentPage="Department Detail"
+          currentPage="Group"
           previousPages={breadCrumbsData}
         />
         <Box maxWidth="400px">
-          <InputLabel label="Department name" />
+          <InputLabel label="Group name" />
           <DynamicInput value={name} setValue={setName} />
         </Box>
         <Box maxWidth="400px">
-          <InputLabel label="Department code" />
+          <InputLabel label="Group code" />
           <DynamicInput value={code} setValue={setCode} />
         </Box>
         <Box maxWidth="400px">
@@ -448,7 +447,7 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
               <Box>
                 <DataTable
                   {...{
-                    columns: departmentColumns,
+                    columns: groupColumns,
                     data: departmentData,
                     page,
                     setPage,
