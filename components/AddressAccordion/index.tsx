@@ -26,7 +26,7 @@ const AddressSchema = Yup.object().shape({
   street_name: Yup.string().required("Street name is required"),
   township: Yup.string().required("Township is required"),
   city: Yup.string().required("City is required"),
-  // country: Yup.string().required("Country is required"),
+  country: Yup.string().required("Country is required"),
   postal_code: Yup.string().required("Postal code is required"),
 });
 

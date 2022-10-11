@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import {
   Box,
   InputBase,
@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import InputLabel from "../Input/InputLabel";
 import DynamicInput from "../Input/DynamicInput";
+import styles from "./accordion.module.css";
+import { getAllCountries } from "../../api/countries/list";
 
 interface IProps {
   values: any;
@@ -34,12 +36,23 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
   // const handleChange = (event: SelectChangeEvent) => {
   //   setCountry(event.target.value as string);
   // };
+  const [countries, setCountries] = useState([]);
 
   const BootstrapInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
       paddingLeft: "16px",
     },
   }));
+
+  const fetchCountires = async () => {
+    const res = await getAllCountries();
+    setCountries(res?.data?.countries);
+  };
+  useEffect(() => {
+    fetchCountires();
+  }, []);
+
+  console.log({ countries });
 
   return (
     <Box>
@@ -77,7 +90,7 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               name="street_name"
             />
           </Box>
-          {/* <Box className="my-4">
+          <Box className="my-4">
             <InputLabel label="Country" />
             <FormControl
               sx={{
@@ -87,16 +100,18 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
             >
               <Select
                 value={values.country}
-                // onChange={handleChange}
+                onChange={handleChange}
                 input={<BootstrapInput />}
                 className={styles.select_box}
+                id="country"
+                name="country"
               >
-                <MenuItem value="Myanmar">Myanmar</MenuItem>
-                <MenuItem value="Singapore">Singapore</MenuItem>
-                <MenuItem value="Thailand">Thailand</MenuItem>
+                {countries?.map((country) => (
+                  <MenuItem value={country[1]}>{country[1]}</MenuItem>
+                ))}
               </Select>
             </FormControl>
-          </Box> */}
+          </Box>
         </Box>
         <Box className="flex flex-col">
           <Box className="mt-4">
