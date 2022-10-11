@@ -320,12 +320,11 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
     },
   ];
 
-
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
       <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
         <BreadcrumbsComponent
-          currentPage="Tech Team Department"
+          currentPage="Group"
           previousPages={breadCrumbsData}
         />
         <Box maxWidth="400px">
