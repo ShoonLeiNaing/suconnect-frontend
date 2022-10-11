@@ -4,6 +4,7 @@ import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import SmallButton from "../../components/Button/SmallButton";
 import AddLectureForm from "../../components/CreateCourseForm/AddLecture/AddLectureForm";
 import AssignInstructorForm from "../../components/CreateCourseForm/AssignInstructorForm/AssignInstructorForm";
+import AssignStaffForm from "../../components/CreateCourseForm/AssignStaff/AssignStaffForm";
 import AssignStudentForm from "../../components/CreateCourseForm/AssignStudent/AssignStudentForm";
 import StepperOne from "../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm";
 import Layout from "../../components/Layout";
@@ -79,8 +80,15 @@ const CreateCourseForm = () => {
       ),
     },
     {
-      title: "Step 5:",
-      component: "",
+      title: "Assign staff",
+      component:  (
+        <AssignStaffForm
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
       title: "Step 6:",
