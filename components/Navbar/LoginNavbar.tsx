@@ -1,5 +1,7 @@
 // import { Box, Image, Text } from "@chakra-ui/react";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, FunctionComponent, useState } from "react";
@@ -7,6 +9,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { colors } from "../../data/constant";
 import styles from "./navbar.module.css";
 import SearchInput from "../HeroParallax/SearchInput";
+
 
 interface IProps {
   changeLanguage?: boolean;
@@ -55,7 +58,7 @@ const LoginNavbar: FunctionComponent<IProps> = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        <Box display="flex" alignItems="center" gap={3}>
+        <Box sx={{ display: {xs: 'none', sm: 'flex'} }} alignItems="center" gap={3}>
           {!showSideNav && (
             <Image
               height={50}
@@ -65,26 +68,40 @@ const LoginNavbar: FunctionComponent<IProps> = ({
               layout="fixed"
             />
           )}
-          <Box display="flex" ml={2} pt="0.45rem">
+          <Box sx={{ display: {xs: 'none', sm: 'flex'} }} ml={2} pt="0.45rem">
             <Typography>Welcome Thiha! </Typography>
             <img src="/images/celebrate.svg" alt="celebrate" />
           </Box>
         </Box>
 
         <SearchInput />
+
+        {/* Mobile View Start */}
+        <Box
+            sx={{ display: {xs: 'flex', sm: 'none'} }}
+            className="items-center"
+          >
+            <MenuIcon sx={{ fontSize: '40px' }}/>
+            <img alt="logo" src="/images/nn-logo.svg" width="100px"/>
+        </Box>
+        {/* Mobile View End */}
+
         <Box display="flex" justifyContent="flex-end" alignItems="center">
-          <Box display="flex" gap={1}>
+          <Box sx={{ display: {xs: 'none', sm: 'flex'} }} gap={1}>
             <img alt="setting" src="/images/setting.svg" />
             <img alt="help" src="/images/help.svg" />
             <img alt="noti" src="/images/noti.svg" />
           </Box>
+
           <Box
             borderRadius="30px"
             py={1}
             px={3}
             ml={2}
-            display="flex"
-            sx={{ backgroundColor: colors.white.white2 }}
+            // display="flex"
+            sx={{ backgroundColor: colors.white.white2,
+                  display: {xs: 'none', sm: 'flex'}
+            }}
             color={colors.primaryColors.lightblue.lightblue1}
             gap={1}
             alignItems="center"
@@ -99,6 +116,30 @@ const LoginNavbar: FunctionComponent<IProps> = ({
               Loreum Ipsm
             </Typography>
           </Box>
+          
+          {/* Mobile View Start */}
+          <Box
+            sx={{ display: {xs: 'flex', sm: 'none'}, gap: 1 }}
+            className="items-center"
+          > 
+            <Box
+            sx={{ backgroundColor: colors.white.white2,
+                  p: 0.5,
+                  borderRadius: "100%"
+               }}
+            >
+              <SearchIcon 
+                color={colors.primaryColors.lightblue.lightblue1}
+              />
+            </Box>
+            <img alt="noti" src="/images/noti.svg" />
+            <img
+                className={styles.profile_img}
+                alt="profile"
+                src="/images/profile.jpeg"
+            />
+          </Box>
+          {/* Mobile View End */}
 
           <Box
             ml={1}

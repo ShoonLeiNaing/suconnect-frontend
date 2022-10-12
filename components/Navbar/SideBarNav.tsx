@@ -22,6 +22,7 @@ const SideBarNav: FunctionComponent<IProps> = ({
     <Box
       minWidth={slideOpen ? "250px" : "95px"}
       className="h-screen shadow-lg rounded-lg relative duration-550 px-6 sticky top-0 "
+      sx={{ display: {xs: 'none', sm: 'block'} }}
     >
       <img
         alt="logo"

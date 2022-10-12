@@ -11,23 +11,13 @@ import styles from "./announcementDetail.module.css";
 
 const AnnouncementDetailComponent = () => {
   return (
-    <div>
+    <Box>
       <Box style={{ display: "grid" }} px={6}>
-        {/* <img
-          style={{
-            position: "absolute",
-            top: "-10rem",
-            right: "-3.7rem",
-            width: "22rem",
-          }}
-          src="../../images/announcementbg1.svg"
-          alt=""
-        /> */}
         <PreviousPage />
 
         <img
           style={{ zIndex: 1, borderRadius: "1rem" }}
-          className={styles.announcement_img}
+          className="max-w-full my-4 max-h-full"
           src="/images/background.jpg"
           alt="announcement detail"
         />
@@ -41,16 +31,7 @@ const AnnouncementDetailComponent = () => {
         >
           01/01/2022
         </Typography>
-        {/* <img
-          style={{
-            position: "absolute",
-            top: "10rem",
-            left: "-5rem",
-            width: "22rem",
-          }}
-          src="../../images/announcementbg2.svg"
-          alt=""
-        /> */}
+
         <Typography sx={{ zIndex: 1 }} my={2} color={colors.black.black1}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
           mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
@@ -90,16 +71,7 @@ const AnnouncementDetailComponent = () => {
           ut diam condimentum, vel euismod erat placerat. In iaculis arcu eros,
           eget tempus orci facilisis id.
         </Typography>
-        {/* <img
-          style={{
-            position: "absolute",
-            top: "55rem",
-            right: "-3.7rem",
-            width: "30rem",
-          }}
-          src="../../images/announcementbg3.svg"
-          alt=""
-        /> */}
+
       </Box>
       <Box
         sx={{ position: "relative" }}
@@ -108,11 +80,16 @@ const AnnouncementDetailComponent = () => {
         alignItems="center"
         mt={{ lg: 8 }}
       >
-        <Box>
+        <Box
+          sx={{ display: "flex",
+                flexDirection: "column",
+             }}
+        >
           <Box
             my={{ lg: 1 }}
             mx={4}
             display="flex"
+            flexDirection={{ xs: "column", sm: "row" }}
             alignItems="center"
             justifyContent="space-between"
           >
@@ -150,18 +127,9 @@ const AnnouncementDetailComponent = () => {
             </SwiperSlide>
           </CardCarousel>
         </Box>
-        {/* <img
-          style={{
-            position: "absolute",
-            top: "20rem",
-            left: "-5rem",
-            height: "30rem",
-          }}
-          src="../../images/announcementbg4.svg"
-          alt=""
-        /> */}
+
       </Box>
-    </div>
+    </Box>
   );
 };
 
