@@ -60,9 +60,10 @@ const ConfirmationDialog: FunctionComponent<IProps> = ({
         />
 
         <SmallButton
-          customHeight="40px"
-          customWidth="75px"
+          customHeight="28px"
+          customWidth="45px"
           text={btnLabel || "Save"}
+          type="submit"
         />
       </DialogActions>
     </Dialog>

@@ -48,3 +48,8 @@ export const colors = {
     white2: "#F6F9FE",
   },
 };
+
+export const hotToast = {
+  position: "top-right",
+  className: "hot-toast",
+};

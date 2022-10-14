@@ -30,7 +30,7 @@ const ReminderAlert: FunctionComponent<IProps> = ({ reminderText, color }) => {
       >
         cancel
       </Typography>
-      <SmallButton text="Save" customHeight="30px" />
+      <SmallButton type="submit" text="Save" />
     </Box>
   );
 };

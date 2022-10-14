@@ -292,6 +292,8 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
   const [isListView, setIsListView] = useState<boolean>(false);
   const [filterData, setFilterData] = useState<any>({});
+  const [addMember, setAddMember] = useState(false);
+  const [addDepartment, setAddDepartment] = useState(false);
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
     data: [],
@@ -304,9 +306,6 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
   const tabHandleChange = (event: any, newValue: string) => {
     setTabValue(newValue);
   };
-
-  const [addMember, setAddMember] = useState(false);
-  const [addDepartment, setAddDepartment] = useState(false);
 
   const filterOptions = [
     {

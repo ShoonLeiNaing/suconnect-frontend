@@ -6,7 +6,7 @@ import styles from "./input.module.css";
 
 interface IProps {
   isLocked?: boolean;
-  value: string;
+  value: string | number | null;
   isTextArea?: boolean;
   showLock?: boolean;
   maxWidth?: string;

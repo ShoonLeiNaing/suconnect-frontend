@@ -71,8 +71,8 @@ const FilterSideBar: FunctionComponent<IProps> = ({
           />
           <SmallButton
             text="Confirm"
-            customHeight="40px"
-            customWidth="95px"
+            type="submit"
+            customWidth="65px"
             onClickHandler={() => filterConfirmHandler()}
           />
         </Box>

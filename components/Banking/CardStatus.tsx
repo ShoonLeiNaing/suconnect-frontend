@@ -1,27 +1,23 @@
 import { Box, Typography } from "@mui/material";
+import moment from "moment";
 import { FunctionComponent } from "react";
 import { colors } from "../../data/constant";
 
 interface IProps {
-  createdTime: string;
-  updatedTime: string;
+  data: any;
   customDisplay?: string;
 }
 
-const CardStatus: FunctionComponent<IProps> = ({
-  createdTime,
-  updatedTime,
-  customDisplay,
-}) => {
+const CardStatus: FunctionComponent<IProps> = ({ data, customDisplay }) => {
   return (
-    <Box className="mt-2 mb-6" sx={{ display: customDisplay }}>
+    <Box className="ml-3 mb-4" sx={{ display: customDisplay }}>
       <Typography fontSize="14px" color={colors.grey.grey1}>
         Created on
-        <span> {createdTime} : &nbsp; </span>
+        <span> {moment(data?.created_at).format("YYYY-MM-DD")} : &nbsp; </span>
       </Typography>
       <Typography fontSize="14px" color={colors.grey.grey1}>
         Last edited on
-        <span> {updatedTime} </span>
+        <span> {moment(data?.updated_at).format("YYYY-MM-DD")} </span>
       </Typography>
     </Box>
   );
