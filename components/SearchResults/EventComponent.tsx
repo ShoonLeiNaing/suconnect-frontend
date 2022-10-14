@@ -34,7 +34,11 @@ const EventComponent: FunctionComponent<IProps> = ({
       </Box>
       <Box className="flex flex-col ml-8">
         <Typography className="font-light text-[0.94rem] mb-2">
-          <HighlightKeyword title={title} keyword={keyword} />
+          {keyword ? (
+            <HighlightKeyword title={title} keyword={keyword} />
+          ) : (
+            title
+          )}
         </Typography>
         <Typography className="text-sm text-gray-500 mb-2">
           {detailTime}

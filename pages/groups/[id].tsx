@@ -17,12 +17,14 @@ import { navigation } from "../../data/navigationData";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import { colors } from "../../data/constant";
 import SmallButton from "../../components/Button/SmallButton";
+import AddMembers from "../../components/Department/AddData/add-member";
+import AddMemberGroupScreen from "./schedule";
 
-interface DepartmentDetailProps {}
+interface GroupDetailProps {}
 
 const tabList = [
   {
-    title: "Groups",
+    title: "Members",
   },
   {
     title: "Sub groups",
@@ -84,8 +86,8 @@ const memberData = [
   {
     id: 1,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Mg Mg",
+    position: "DevOps",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -94,8 +96,8 @@ const memberData = [
   {
     id: 2,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Su Su",
+    position: "Backend",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -104,8 +106,8 @@ const memberData = [
   {
     id: 3,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Hla Hla",
+    position: "Frontend",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -114,8 +116,8 @@ const memberData = [
   {
     id: 4,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Mya Mya",
+    position: "Cloud Engineer",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -124,8 +126,8 @@ const memberData = [
   {
     id: 5,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Myo Myo",
+    position: "Team Leader",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -134,8 +136,8 @@ const memberData = [
   {
     id: 6,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Moe Moe",
+    position: "DevOps",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -144,8 +146,8 @@ const memberData = [
   {
     id: 7,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Mee Mee",
+    position: "Moblie Dev",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -154,8 +156,8 @@ const memberData = [
   {
     id: 8,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Aung Thu",
+    position: "Software Engineer",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -164,8 +166,8 @@ const memberData = [
   {
     id: 9,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Tun Tun",
+    position: "Backend",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -174,8 +176,8 @@ const memberData = [
   {
     id: 10,
     date: "01/02/2022",
-    name: "Guru",
-    position: "God's Father",
+    name: "Kyi Kyi",
+    position: "Project Manger",
     column1: "lorem",
     column2: "lorem",
     column3: "lorem",
@@ -183,7 +185,7 @@ const memberData = [
   },
 ];
 
-const departmentData = [
+const groupData = [
   {
     id: 1,
     date: "01/02/2022",
@@ -276,13 +278,14 @@ const departmentData = [
   },
 ];
 
-const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
+const GroupDetail: FunctionComponent<GroupDetailProps> = () => {
   const [tabValue, setTabValue] = useState("1");
 
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [description, setDescription] = useState("");
   const [choice, setChoice] = useState("member");
+  const [data, setData] = useState<any>(memberData);
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(6);
   const [totalPages, setTotalPages] = useState<number>(10);
@@ -297,21 +300,24 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
     filterParam: "",
   });
   const [loading, setLoading] = useState(false);
-  const [departmentsFilterData, setDepartmentsFilterData] = useState<any>("");
+  const [groupsFilterData, setGroupsFilterData] = useState<any>("");
 
   const tabHandleChange = (event: any, newValue: string) => {
     setTabValue(newValue);
   };
 
+  const [addMember, setAddMember] = useState(false);
+  const [addGroup, setAddGroup] = useState(false);
+
   const filterOptions = [
     {
-      text: "Parent Department",
+      text: "Parent Group",
       filterParam: "parent_id",
-      data: departmentsFilterData,
+      data: groupsFilterData,
       onClickHandler: () => {
         setFilterValue({
           title: "Parent Department",
-          data: departmentsFilterData,
+          data: groupsFilterData,
           index: 0,
           filterParam: "parent_id",
         });
@@ -320,149 +326,173 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
     },
   ];
 
+  const handleMemberClick = () => {
+    setChoice("member");
+    setData(memberData);
+  };
+
+  const handleDepartmentClick = () => {
+    setChoice("group");
+    setData(groupData);
+  };
+
+  const getBtnClasses = () => {
+    const classes = "bg-[#F6F9FE] text-[#3B8CF7]";
+    return classes;
+  };
+
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
-      <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
-        <BreadcrumbsComponent
-          currentPage="Group"
-          previousPages={breadCrumbsData}
+      {addMember || addGroup ? (
+        <AddMemberGroupScreen
+          addMember={addMember}
+          addGroup={addGroup}
         />
-        <Box maxWidth="400px">
-          <InputLabel label="Group name" />
-          <DynamicInput value={name} setValue={setName} />
-        </Box>
-        <Box maxWidth="400px">
-          <InputLabel label="Group code" />
-          <DynamicInput value={code} setValue={setCode} />
-        </Box>
-        <Box maxWidth="400px">
-          <InputLabel label="Description" />
-          <DynamicInput
-            value={description}
-            setValue={setDescription}
-            bgColor="#F6F9FE"
-            customWidth="400px"
-            isTextArea
+      ) : (
+        <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
+          <BreadcrumbsComponent
+            currentPage="Tech Team Department"
+            previousPages={breadCrumbsData}
           />
-        </Box>
+          <Box maxWidth="400px">
+            <InputLabel label="Group name" />
+            <DynamicInput value={name} setValue={setName} />
+          </Box>
+          <Box maxWidth="400px">
+            <InputLabel label="Group code" />
+            <DynamicInput value={code} setValue={setCode} />
+          </Box>
+          <Box maxWidth="400px">
+            <InputLabel label="Description" />
+            <DynamicInput
+              value={description}
+              setValue={setDescription}
+              bgColor="#F6F9FE"
+              customWidth="400px"
+              isTextArea
+            />
+          </Box>
 
-        <Box>
-          <TabContext value={tabValue}>
-            <Box
-              marginTop="10px"
-              sx={{ borderBottom: 1, borderColor: "divider" }}
-            >
-              <TabList
-                onChange={tabHandleChange}
-                aria-label="lab API tabs example"
+          <Box>
+            <TabContext value={tabValue}>
+              <Box
+                marginTop="10px"
+                sx={{ borderBottom: 1, borderColor: "divider" }}
               >
-                {tabList?.map((tab, index) => (
-                  <Tab
-                    key={tab.title}
-                    // className={styles.tab}
-                    label={tab.title}
-                    value={(index + 1).toString()}
-                    sx={{
-                      textTransform: "none",
-                      fontSize: "16px",
-                      paddingX: "50px",
+                <TabList
+                  onChange={tabHandleChange}
+                  aria-label="lab API tabs example"
+                >
+                  {tabList?.map((tab, index) => (
+                    <Tab
+                      key={tab.title}
+                      // className={styles.tab}
+                      label={tab.title}
+                      value={(index + 1).toString()}
+                      sx={{
+                        textTransform: "none",
+                        fontSize: "16px",
+                        paddingX: "50px",
+                      }}
+                    />
+                  ))}
+                </TabList>
+              </Box>
+              <TabPanel value="1">
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Box display="flex" gap={2} mb={2}>
+                    <SearchInput
+                      searchText={searchText}
+                      setSearchText={setSearchText}
+                    />
+
+                    <MenuComponent
+                      filterOptions={filterOptions}
+                      isIcon
+                      icon={<RiFilterFill />}
+                    />
+                  </Box>
+                </Box>
+                <Box className="flex justify-between items-center">
+                  <Box>
+                    <p className="text-black">filter value list here</p>
+                  </Box>
+                  <SmallButton
+                    text="Add member"
+                    customHeight="40px"
+                    onClickHandler={() => setAddMember(!addMember)}
+                    icon={<FaPlus style={{ marginRight: "10px" }} />}
+                  />
+                </Box>
+                <Box>
+                  <DataTable
+                    {...{
+                      columns: memberColumns,
+                      data,
+                      page,
+                      setPage,
+                      totalPages,
+                      size,
+                      setSize,
                     }}
                   />
-                ))}
-              </TabList>
-            </Box>
-            <TabPanel value="1">
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <Box display="flex" gap={2} mb={2}>
-                  <SearchInput
-                    searchText={searchText}
-                    setSearchText={setSearchText}
-                  />
+                </Box>
+              </TabPanel>
+              <TabPanel value="2">
+                {" "}
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Box display="flex" gap={2} mb={2}>
+                    <SearchInput
+                      searchText={searchText}
+                      setSearchText={setSearchText}
+                    />
 
-                  <MenuComponent
-                    filterOptions={filterOptions}
-                    isIcon
-                    icon={<RiFilterFill />}
+                    <MenuComponent
+                      filterOptions={filterOptions}
+                      isIcon
+                      icon={<RiFilterFill />}
+                    />
+                  </Box>
+                </Box>
+                <Box className="flex justify-between items-center">
+                  <Box>
+                    <p className="text-black">filter value list here</p>
+                  </Box>
+                  <SmallButton
+                    text="Add existing group"
+                    customHeight="40px"
+                    onClickHandler={() => setAddGroup(!addGroup)}
+                    icon={<FaPlus style={{ marginRight: "10px" }} />}
                   />
                 </Box>
-              </Box>
-              <Box className="flex justify-between items-center">
                 <Box>
-                  <p className="text-black">filter value list here</p>
-                </Box>
-                <SmallButton
-                  text="Add Member"
-                  customHeight="40px"
-                  icon={<FaPlus style={{ marginRight: "10px" }} />}
-                />
-              </Box>
-              <Box>
-                <DataTable
-                  {...{
-                    columns: memberColumns,
-                    data: memberData,
-                    page,
-                    setPage,
-                    totalPages,
-                    size,
-                    setSize,
-                  }}
-                />
-              </Box>
-            </TabPanel>
-            <TabPanel value="2">
-              {" "}
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <Box display="flex" gap={2} mb={2}>
-                  <SearchInput
-                    searchText={searchText}
-                    setSearchText={setSearchText}
-                  />
-
-                  <MenuComponent
-                    filterOptions={filterOptions}
-                    isIcon
-                    icon={<RiFilterFill />}
+                  <DataTable
+                    {...{
+                      columns: groupColumns,
+                      data,
+                      page,
+                      setPage,
+                      totalPages,
+                      size,
+                      setSize,
+                    }}
                   />
                 </Box>
-              </Box>
-              <Box className="flex justify-between items-center">
-                <Box>
-                  <p className="text-black">filter value list here</p>
-                </Box>
-                <SmallButton
-                  text="Add Sub Department"
-                  customHeight="40px"
-                  icon={<FaPlus style={{ marginRight: "10px" }} />}
-                />
-              </Box>
-              <Box>
-                <DataTable
-                  {...{
-                    columns: groupColumns,
-                    data: departmentData,
-                    page,
-                    setPage,
-                    totalPages,
-                    size,
-                    setSize,
-                  }}
-                />
-              </Box>
-            </TabPanel>
-          </TabContext>
+              </TabPanel>
+            </TabContext>
+          </Box>
         </Box>
-      </Box>
+      )}
     </Layout>
   );
 };
 
-export default DepartmentDetail;
+export default GroupDetail;
