@@ -4,6 +4,8 @@ import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import SmallButton from "../../components/Button/SmallButton";
 import AddLectureForm from "../../components/CreateCourseForm/AddLecture/AddLectureForm";
 import AssignInstructorForm from "../../components/CreateCourseForm/AssignInstructorForm/AssignInstructorForm";
+import AssignStaffForm from "../../components/CreateCourseForm/AssignStaff/AssignStaffForm";
+import AssignStudentForm from "../../components/CreateCourseForm/AssignStudent/AssignStudentForm";
 import StepperOne from "../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
@@ -24,7 +26,7 @@ const CreateCourseForm = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
-    if (activeStep < 2) {
+    if (activeStep < 10) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
   };
@@ -67,13 +69,20 @@ const CreateCourseForm = () => {
       ),
     },
     {
-      title: "Step 4:",
-      component: {},
+      title: "Assign students",
+      component:  (
+        <AssignStudentForm
+          {...{
+            handleNext,
+            handleBack,
+          }}
+        />
+      ),
     },
     {
-      title: "Step 5:",
-      component: (
-        <StepperOne
+      title: "Assign staff",
+      component:  (
+        <AssignStaffForm
           {...{
             handleNext,
             handleBack,
@@ -83,14 +92,7 @@ const CreateCourseForm = () => {
     },
     {
       title: "Step 6:",
-      component: (
-        <AssignInstructorForm
-          {...{
-            handleNext,
-            handleBack,
-          }}
-        />
-      ),
+      component: "",
     },
     {
       title: "Step 7:",

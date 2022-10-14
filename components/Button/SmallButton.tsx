@@ -13,9 +13,11 @@ interface IProps {
   customPaddingX?: string;
   customPaddingY?: string;
   customMarginX?: string;
+  customFontSize?: string;
   icon?: any;
   type?: any;
   loading?: boolean;
+  bgColor?: string;
 }
 
 const BootstrapSmallButton = styled(LoadingButton)({
@@ -52,9 +54,11 @@ const SmallButton: FunctionComponent<IProps> = ({
   customPaddingX,
   customPaddingY,
   customMarginX,
+  customFontSize,
   icon,
   type,
   loading,
+  bgColor,
 }) => {
   return (
     <BootstrapSmallButton
@@ -65,6 +69,8 @@ const SmallButton: FunctionComponent<IProps> = ({
         height: customHeight && customHeight,
         width: customWidth && customWidth,
         marginX: customMarginX,
+        backgroundColor: bgColor,
+        fontSize: customFontSize,
       }}
       startIcon={icon}
       loading={loading}
@@ -94,6 +100,7 @@ SmallButton.defaultProps = {
   customPaddingX: "1rem",
   customPaddingY: "4px",
   type: "button",
+  bgColor: colors.primaryColors.lightblue.lightblue1,
 };
 
 export default SmallButton;

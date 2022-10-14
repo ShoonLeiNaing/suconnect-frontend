@@ -119,7 +119,7 @@ const AssignInstructorForm: FunctionComponent<IProps> = ({
         </Box>
       </Box>
       <Box className="my-3 flex justify-end">
-        <PaginationButton {...{ handleNext, showPrevious: true, handleBack }} />
+        <PaginationButton {...{ handleNext, handleBack }} />
       </Box>
     </Box>
   );

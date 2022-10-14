@@ -17,17 +17,15 @@ import { navigation } from "../../data/navigationData";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import { colors } from "../../data/constant";
 import SmallButton from "../../components/Button/SmallButton";
-import AddMembers from "../../components/Department/AddData/add-member";
-import AddMemberDepartmentScreen from "./schedule";
 
 interface DepartmentDetailProps {}
 
 const tabList = [
   {
-    title: "Departments",
+    title: "Groups",
   },
   {
-    title: "Sub Departments",
+    title: "Sub groups",
   },
 ];
 
@@ -39,7 +37,7 @@ const memberColumns = [
   { field: "column2", headerName: "Column2", width: 200 },
 ];
 
-const departmentColumns = [
+const groupColumns = [
   { field: "date", headerName: "Date", width: 200 },
   { field: "name", headerName: "Name", width: 200 },
   { field: "description", headerName: "Description", width: 200 },
@@ -292,8 +290,6 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
   const [isListView, setIsListView] = useState<boolean>(false);
   const [filterData, setFilterData] = useState<any>({});
-  const [addMember, setAddMember] = useState(false);
-  const [addDepartment, setAddDepartment] = useState(false);
   const [filterValue, setFilterValue] = useState<any>({
     filterTite: "",
     data: [],
@@ -326,154 +322,145 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
 
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
-      {addMember || addDepartment ? (
-        <AddMemberDepartmentScreen
-          addMember={addMember}
-          addDepartment={addDepartment}
+      <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
+        <BreadcrumbsComponent
+          currentPage="Group"
+          previousPages={breadCrumbsData}
         />
-      ) : (
-        <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
-          <BreadcrumbsComponent
-            currentPage="Department Detail"
-            previousPages={breadCrumbsData}
-          />
-          <Box maxWidth="400px">
-            <InputLabel label="Department name" />
-            <DynamicInput value={name} setValue={setName} />
-          </Box>
-          <Box maxWidth="400px">
-            <InputLabel label="Department code" />
-            <DynamicInput value={code} setValue={setCode} />
-          </Box>
-          <Box maxWidth="400px">
-            <InputLabel label="Description" />
-            <DynamicInput
-              value={description}
-              setValue={setDescription}
-              bgColor="#F6F9FE"
-              customWidth="400px"
-              isTextArea
-            />
-          </Box>
-
-          <Box>
-            <TabContext value={tabValue}>
-              <Box
-                marginTop="10px"
-                sx={{ borderBottom: 1, borderColor: "divider" }}
-              >
-                <TabList
-                  onChange={tabHandleChange}
-                  aria-label="lab API tabs example"
-                >
-                  {tabList?.map((tab, index) => (
-                    <Tab
-                      key={tab.title}
-                      // className={styles.tab}
-                      label={tab.title}
-                      value={(index + 1).toString()}
-                      sx={{
-                        textTransform: "none",
-                        fontSize: "16px",
-                        paddingX: "50px",
-                      }}
-                    />
-                  ))}
-                </TabList>
-              </Box>
-              <TabPanel value="1">
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Box display="flex" gap={2} mb={2}>
-                    <SearchInput
-                      searchText={searchText}
-                      setSearchText={setSearchText}
-                    />
-
-                    <MenuComponent
-                      filterOptions={filterOptions}
-                      isIcon
-                      icon={<RiFilterFill />}
-                    />
-                  </Box>
-                </Box>
-                <Box className="flex justify-between items-center">
-                  <Box>
-                    <p className="text-black">filter value list here</p>
-                  </Box>
-                  <SmallButton
-                    text="Add member"
-                    customHeight="40px"
-                    onClickHandler={() => setAddMember(!addMember)}
-                    icon={<FaPlus style={{ marginRight: "10px" }} />}
-                  />
-                </Box>
-                <Box>
-                  <DataTable
-                    {...{
-                      columns: memberColumns,
-                      data: memberData,
-                      page,
-                      setPage,
-                      totalPages,
-                      size,
-                      setSize,
-                    }}
-                  />
-                </Box>
-              </TabPanel>
-              <TabPanel value="2">
-                {" "}
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Box display="flex" gap={2} mb={2}>
-                    <SearchInput
-                      searchText={searchText}
-                      setSearchText={setSearchText}
-                    />
-
-                    <MenuComponent
-                      filterOptions={filterOptions}
-                      isIcon
-                      icon={<RiFilterFill />}
-                    />
-                  </Box>
-                </Box>
-                <Box className="flex justify-between items-center">
-                  <Box>
-                    <p className="text-black">filter value list here</p>
-                  </Box>
-                  <SmallButton
-                    text="Add existing department"
-                    customHeight="40px"
-                    onClickHandler={() => setAddDepartment(!addDepartment)}
-                    icon={<FaPlus style={{ marginRight: "10px" }} />}
-                  />
-                </Box>
-                <Box>
-                  <DataTable
-                    {...{
-                      columns: departmentColumns,
-                      data: departmentData,
-                      page,
-                      setPage,
-                      totalPages,
-                      size,
-                      setSize,
-                    }}
-                  />
-                </Box>
-              </TabPanel>
-            </TabContext>
-          </Box>
+        <Box maxWidth="400px">
+          <InputLabel label="Group name" />
+          <DynamicInput value={name} setValue={setName} />
         </Box>
-      )}
+        <Box maxWidth="400px">
+          <InputLabel label="Group code" />
+          <DynamicInput value={code} setValue={setCode} />
+        </Box>
+        <Box maxWidth="400px">
+          <InputLabel label="Description" />
+          <DynamicInput
+            value={description}
+            setValue={setDescription}
+            bgColor="#F6F9FE"
+            customWidth="400px"
+            isTextArea
+          />
+        </Box>
+
+        <Box>
+          <TabContext value={tabValue}>
+            <Box
+              marginTop="10px"
+              sx={{ borderBottom: 1, borderColor: "divider" }}
+            >
+              <TabList
+                onChange={tabHandleChange}
+                aria-label="lab API tabs example"
+              >
+                {tabList?.map((tab, index) => (
+                  <Tab
+                    key={tab.title}
+                    // className={styles.tab}
+                    label={tab.title}
+                    value={(index + 1).toString()}
+                    sx={{
+                      textTransform: "none",
+                      fontSize: "16px",
+                      paddingX: "50px",
+                    }}
+                  />
+                ))}
+              </TabList>
+            </Box>
+            <TabPanel value="1">
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box display="flex" gap={2} mb={2}>
+                  <SearchInput
+                    searchText={searchText}
+                    setSearchText={setSearchText}
+                  />
+
+                  <MenuComponent
+                    filterOptions={filterOptions}
+                    isIcon
+                    icon={<RiFilterFill />}
+                  />
+                </Box>
+              </Box>
+              <Box className="flex justify-between items-center">
+                <Box>
+                  <p className="text-black">filter value list here</p>
+                </Box>
+                <SmallButton
+                  text="Add Member"
+                  customHeight="40px"
+                  icon={<FaPlus style={{ marginRight: "10px" }} />}
+                />
+              </Box>
+              <Box>
+                <DataTable
+                  {...{
+                    columns: memberColumns,
+                    data: memberData,
+                    page,
+                    setPage,
+                    totalPages,
+                    size,
+                    setSize,
+                  }}
+                />
+              </Box>
+            </TabPanel>
+            <TabPanel value="2">
+              {" "}
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box display="flex" gap={2} mb={2}>
+                  <SearchInput
+                    searchText={searchText}
+                    setSearchText={setSearchText}
+                  />
+
+                  <MenuComponent
+                    filterOptions={filterOptions}
+                    isIcon
+                    icon={<RiFilterFill />}
+                  />
+                </Box>
+              </Box>
+              <Box className="flex justify-between items-center">
+                <Box>
+                  <p className="text-black">filter value list here</p>
+                </Box>
+                <SmallButton
+                  text="Add Sub Department"
+                  customHeight="40px"
+                  icon={<FaPlus style={{ marginRight: "10px" }} />}
+                />
+              </Box>
+              <Box>
+                <DataTable
+                  {...{
+                    columns: groupColumns,
+                    data: departmentData,
+                    page,
+                    setPage,
+                    totalPages,
+                    size,
+                    setSize,
+                  }}
+                />
+              </Box>
+            </TabPanel>
+          </TabContext>
+        </Box>
+      </Box>
     </Layout>
   );
 };

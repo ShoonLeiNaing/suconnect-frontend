@@ -90,7 +90,7 @@ const BankingInfoLockCard: FunctionComponent<IProps> = ({ title, bgColor }) => {
               </Box>
             </Box>
           </Box>
-          <CardStatus createdTime="1/10/2022" updatedTime="2/10/2022" />
+          {/* <CardStatus createdTime="1/10/2022" updatedTime="2/10/2022" /> */}
         </Box>
       )}
       {edit && (
