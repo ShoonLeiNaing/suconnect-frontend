@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab";
 import { Box, Typography, Button, styled } from "@mui/material";
 import { FunctionComponent } from "react";
 import { AiFillAccountBook } from "react-icons/ai";
@@ -6,20 +7,18 @@ import { colors } from "../../data/constant";
 interface IProps {
   text: string;
   color?: string;
-  bgColor?: string;
   onClickHandler?: any;
   customWidth?: string;
   customHeight?: string;
   customPaddingX?: string;
   customPaddingY?: string;
-  customFontSize?: string;
   customMarginX?: string;
-  customBorder?: string;
   icon?: any;
   type?: any;
+  loading?: boolean;
 }
 
-const BootstrapSmallButton = styled(Button)({
+const BootstrapSmallButton = styled(LoadingButton)({
   "&.MuiButtonBase-root": {
     backgroundColor: colors.primaryColors.lightblue.lightblue1,
   },
@@ -47,17 +46,15 @@ const BootstrapSmallButton = styled(Button)({
 const SmallButton: FunctionComponent<IProps> = ({
   text,
   color,
-  bgColor,
   onClickHandler,
   customWidth,
   customHeight,
   customPaddingX,
   customPaddingY,
-  customFontSize,
   customMarginX,
-  customBorder,
   icon,
   type,
+  loading,
 }) => {
   return (
     <BootstrapSmallButton
@@ -70,27 +67,32 @@ const SmallButton: FunctionComponent<IProps> = ({
         marginX: customMarginX,
       }}
       startIcon={icon}
+      loading={loading}
     >
-      {icon && icon}{" "}
-      <Typography
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        fontSize={customFontSize}
-        color={color}
-      >
-        {text}
-      </Typography>
+      {text}
+
+      {/* {!loading && (
+        <>
+          {icon && icon}
+          <Typography
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            fontSize={customFontSize}
+            color={color}
+          >
+            {text}
+          </Typography>
+        </>
+      )} */}
     </BootstrapSmallButton>
   );
 };
 
 SmallButton.defaultProps = {
   color: "white",
-  bgColor: colors.primaryColors.lightblue.lightblue1,
   customPaddingX: "1rem",
   customPaddingY: "4px",
-  customFontSize: "14px",
   type: "button",
 };
 

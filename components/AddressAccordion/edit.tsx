@@ -8,6 +8,7 @@ import {
   FormControl,
   Select,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import InputLabel from "../Input/InputLabel";
 import DynamicInput from "../Input/DynamicInput";
@@ -52,13 +53,11 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
     fetchCountires();
   }, []);
 
-  console.log({ countries });
-
   return (
     <Box>
       <Box className="flex justify-between px-6">
         <Box className="flex flex-col">
-          <Box className="mt-4">
+          <Box className="my-4">
             <InputLabel label="House Number" />
             <DynamicInput
               value={values.house_number}
@@ -67,6 +66,11 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               id="house_number"
               name="house_number"
             />
+            {errors.house_number && touched.house_number && (
+              <Typography className="error-message" position="absolute">
+                {errors.house_number}
+              </Typography>
+            )}
           </Box>
           <Box className="my-4">
             <InputLabel label="City" />
@@ -77,10 +81,15 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               id="city"
               name="city"
             />
+            {errors.city && touched.city && (
+              <Typography className="error-message" position="absolute">
+                {errors.city}
+              </Typography>
+            )}
           </Box>
         </Box>
         <Box className="flex flex-col mx-12">
-          <Box className="mt-4">
+          <Box className="my-4">
             <InputLabel label="Street Name" />
             <DynamicInput
               value={values.street_name}
@@ -89,6 +98,11 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               id="street_name"
               name="street_name"
             />
+            {errors.street_name && touched.street_name && (
+              <Typography className="error-message" position="absolute">
+                {errors.street_name}
+              </Typography>
+            )}
           </Box>
           <Box className="my-4">
             <InputLabel label="Country" />
@@ -107,14 +121,19 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
                 name="country"
               >
                 {countries?.map((country) => (
-                  <MenuItem value={country[1]}>{country[1]}</MenuItem>
+                  <MenuItem value={country[0]}>{country[1]}</MenuItem>
                 ))}
               </Select>
             </FormControl>
+            {errors.country && touched.country && (
+              <Typography className="error-message" position="absolute">
+                {errors.country}
+              </Typography>
+            )}
           </Box>
         </Box>
         <Box className="flex flex-col">
-          <Box className="mt-4">
+          <Box className="my-4">
             <InputLabel label="Township" />
             <DynamicInput
               value={values.township}
@@ -123,6 +142,11 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               id="township"
               name="township"
             />
+            {errors.township && touched.township && (
+              <Typography className="error-message" position="absolute">
+                {errors.township}
+              </Typography>
+            )}
           </Box>
           <Box className="my-4">
             <InputLabel label="Postal Code" />
@@ -133,6 +157,11 @@ const AccordionEditComponent: FunctionComponent<IProps> = ({
               id="postal_code"
               name="postal_code"
             />
+            {errors.postal_code && touched.postal_code && (
+              <Typography className="error-message" position="absolute">
+                {errors.postal_code}
+              </Typography>
+            )}
           </Box>
         </Box>
       </Box>

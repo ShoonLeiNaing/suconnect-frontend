@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiFilterFill } from "react-icons/ri";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
@@ -33,11 +33,15 @@ const Addresses = ({ addresses }: any) => {
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
+  const [stateUpdate, setStateUpdate] = useState(false);
+  const [data, setData] = useState<any>(addresses);
 
   const newAddressCard = () => {
     if (!add) {
       setAdd(true);
       setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    } else {
+      setAdd(false);
     }
   };
 
@@ -65,6 +69,17 @@ const Addresses = ({ addresses }: any) => {
       },
     },
   ];
+
+  const fetchAddresses = async () => {
+    console.log("hehe");
+
+    const res = await getAddressesOfUser(1);
+    setData(res.data?.address_set);
+  };
+
+  useEffect(() => {
+    fetchAddresses();
+  }, [stateUpdate]);
 
   const handleDelete = () => {};
 
@@ -100,15 +115,15 @@ const Addresses = ({ addresses }: any) => {
               setFilterText={setFilterText}
               setSearchText={setSearchText}
             />
-            <MenuComponent
+            {/* <MenuComponent
               filterOptions={filterOptions}
               isIcon
               icon={<RiFilterFill />}
-            />
+            /> */}
           </Box>
-          <DropDown setFilterText={setFilterText} individual />
+          {/* <DropDown setFilterText={setFilterText} individual /> */}
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mb={4}>
+        {/* <Box display="flex" alignItems="center" gap={2} mb={4}>
           {filterOptions.map((option) => (
             <ChipComponent
               key={option.text}
@@ -124,9 +139,9 @@ const Addresses = ({ addresses }: any) => {
           >
             Clear all
           </Typography>
-        </Box>
+        </Box> */}
         <Box className="mb-4">
-          {addresses?.map((address: any, index: number) => (
+          {data?.map((address: any, index: number) => (
             <AccordionComponent
               key={index}
               data={address}
@@ -137,20 +152,21 @@ const Addresses = ({ addresses }: any) => {
           ))}
           {add && (
             <AccordionComponent
-              orderNo={addresses.length + 1}
-              bgColor={generateColor(addresses.length + 1)}
+              orderNo={data.length + 1}
+              bgColor={generateColor(data.length + 1)}
               setAdd={setAdd}
               isNew
+              {...{ stateUpdate, setStateUpdate }}
             />
           )}
         </Box>
-        <FilterSideBar
+        {/* <FilterSideBar
           open={showSideFilter}
           setShowSideFilter={setShowSideFilter}
           filterValue={filterValue}
           setFilterValue={setFilterValue}
           filterOptions={filterOptions}
-        />
+        /> */}
       </Box>
     </Layout>
   );
