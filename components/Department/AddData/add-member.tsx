@@ -96,7 +96,7 @@ const AddMembers: FunctionComponent = () => {
     <Box className="w-full flex flex-col">
       <Box
         className="flex border py-0 pl-10 pr-0 rounded-xl overflow-y-auto"
-        height="77vh"
+        height="75vh"
       >
         <Box className="w-full py-6">
           <Box className="flex items-center my-4">
@@ -158,9 +158,14 @@ const AddMembers: FunctionComponent = () => {
           </Box>
         </Box>
       </Box>
-      <Box className="flex my-3 justify-end">
-        <SmallButton text="Clear" bgColor="white" color="#737373" />
-        <SmallButton text="Confirm" customMarginX="1rem" />
+      <Box className="flex my-3 justify-end gap-4">
+        <SmallButton
+          text="Clear"
+          bgColor="white"
+          color="#737373"
+          customHeight="35px"
+        />
+        <SmallButton text="Confirm" customHeight="35px" />
       </Box>
     </Box>
   );

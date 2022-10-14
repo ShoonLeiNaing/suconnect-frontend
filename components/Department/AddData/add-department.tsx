@@ -95,7 +95,7 @@ const AddDepartments: FunctionComponent = () => {
     <Box className="w-full flex flex-col flex-start">
       <Box
         className="flex flex-start border py-0 pl-10 pr-0 rounded-xl overflow-y-auto"
-        height="77vh"
+        height="75vh"
       >
         <Box className="w-3/4">
           <Typography className="flex items-center text-[#737373] font-semibold text-lg mt-4 mb-8 pt-6">
@@ -113,9 +113,14 @@ const AddDepartments: FunctionComponent = () => {
           />
         </Box>
       </Box>
-      <Box className="flex my-3 justify-end">
-        <SmallButton text="Clear" bgColor="white" color="#737373" />
-        <SmallButton text="Confirm" customMarginX="1rem" />
+      <Box className="flex my-3 justify-end gap-4">
+        <SmallButton
+          text="Clear"
+          customHeight="35px"
+          bgColor="white"
+          color="#737373"
+        />
+        <SmallButton text="Confirm" customHeight="35px" />
       </Box>
     </Box>
   );
