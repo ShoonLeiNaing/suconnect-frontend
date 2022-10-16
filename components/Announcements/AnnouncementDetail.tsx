@@ -11,8 +11,8 @@ import styles from "./announcementDetail.module.css";
 
 const AnnouncementDetailComponent = () => {
   return (
-    <Box>
-      <Box style={{ display: "grid" }} px={6}>
+    <Box maxWidth="1400px" margin="auto">
+      <Box style={{ display: "grid" }} px={{ lg: 6, sm: 4, xs: 2 }}>
         <PreviousPage />
 
         <img
@@ -32,7 +32,12 @@ const AnnouncementDetailComponent = () => {
           01/01/2022
         </Typography>
 
-        <Typography sx={{ zIndex: 1 }} my={2} color={colors.black.black1}>
+        <Typography
+          sx={{ zIndex: 1 }}
+          my={2}
+          color={colors.black.black1}
+          fontSize={{ lg: "16px", xs: "14px" }}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
           mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
           mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
@@ -71,25 +76,20 @@ const AnnouncementDetailComponent = () => {
           ut diam condimentum, vel euismod erat placerat. In iaculis arcu eros,
           eget tempus orci facilisis id.
         </Typography>
-
       </Box>
       <Box
         sx={{ position: "relative" }}
         display="flex"
         flexDirection="column"
         alignItems="center"
-        mt={{ lg: 8 }}
+        mt={{ xl: 6, lg: 2 }}
       >
-        <Box
-          sx={{ display: "flex",
-                flexDirection: "column",
-             }}
-        >
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Box
-            my={{ lg: 1 }}
-            mx={4}
+            my={1}
+            mx={{ sm: 4, xs: "none" }}
             display="flex"
-            flexDirection={{ xs: "column", sm: "row" }}
+            flexDirection="row"
             alignItems="center"
             justifyContent="space-between"
           >
@@ -100,34 +100,35 @@ const AnnouncementDetailComponent = () => {
               bgColor={colors.white.white2}
             />
           </Box>
-          <CardCarousel maxWidth="1180px">
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>{" "}
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>{" "}
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>{" "}
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>{" "}
-            <SwiperSlide>
-              <GridCard color={colors.primaryColors.lightblue.lightblue1} />
-            </SwiperSlide>
-          </CardCarousel>
+          <Box className={styles.carousel_container}>
+            <CardCarousel maxWidth="100%">
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>{" "}
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>{" "}
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>{" "}
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>{" "}
+              <SwiperSlide>
+                <GridCard color={colors.primaryColors.lightblue.lightblue1} />
+              </SwiperSlide>
+            </CardCarousel>
+          </Box>
         </Box>
-
       </Box>
     </Box>
   );

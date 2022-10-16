@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { FunctionComponent, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import { colors } from "../../data/constant";
 import SideBarNavItems from "./SideBarNavItems";
-import styles from "./navbar.module.css";
+import styles from "../navbar.module.css";
+import { colors } from "../../../data/constant";
 
 interface IProps {
   allowToggle?: boolean;
@@ -17,12 +17,12 @@ const SideBarNav: FunctionComponent<IProps> = ({
   panel,
 }) => {
   const [slideOpen, setSlideOpen] = useState(true);
-
   return (
     <Box
       minWidth={slideOpen ? "250px" : "95px"}
-      className="h-screen shadow-lg rounded-lg relative duration-550 px-6 sticky top-0 "
-      sx={{ display: {xs: 'none', sm: 'block'} }}
+      className="shadow-lg rounded-lg relative duration-550 px-6 sticky top-0 "
+      sx={{ display: { xs: "none", md: "block" } }}
+      height="100vh"
     >
       <img
         alt="logo"

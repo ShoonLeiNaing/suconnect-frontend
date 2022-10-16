@@ -6,20 +6,35 @@ import { Swiper } from "swiper/react";
 
 interface IProps {
   children: any;
-  maxWidth?: string;
+  maxWidth?: any;
 }
+
+const breakpoints = {
+  0: {
+    slidesPerView: 2,
+  },
+  750: {
+    slidesPerView: 3,
+  },
+  1400: { slidesPerView: 4 },
+};
 
 const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
   return (
     <Box>
-      <Box width="100%" maxWidth={maxWidth} py={4} zIndex={10}
-        sx={{ display: {xs: 'none', sm: 'block'} }}
+      <Box
+        width="100%"
+        maxWidth={maxWidth}
+        py={4}
+        zIndex={10}
+        sx={{ display: { xs: "none", sm: "block" } }}
       >
         <Swiper
           pagination={{
             dynamicBullets: true,
             clickable: true,
           }}
+          breakpoints={breakpoints}
           slidesPerView={4}
           modules={[Pagination, Navigation]}
           navigation
@@ -27,23 +42,25 @@ const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
           {children}
         </Swiper>
       </Box>
-      
-      <Box width="100%" maxWidth="350px" py={1} zIndex={10}
-        sx={{ display: {xs: 'block', sm: 'none'} }}
+
+      <Box
+        width="100%"
+        maxWidth="350px"
+        py={1}
+        zIndex={10}
+        sx={{ display: { xs: "block", sm: "none" } }}
       >
         <Swiper
           pagination={{
             dynamicBullets: true,
             clickable: true,
           }}
-          slidesPerView={1}
           modules={[Pagination, Navigation]}
           navigation
         >
           {children}
         </Swiper>
       </Box>
-      
     </Box>
   );
 };

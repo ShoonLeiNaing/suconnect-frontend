@@ -7,7 +7,8 @@ const PreviousPage = () => {
   const router = useRouter();
   return (
     <Box
-      sx={{ display: {xs: "none", sm: "flex"} }}
+      // sx={{ display: "flex" }}
+      display="flex"
       alignItems="center"
       color={colors.primaryColors.lightblue.lightblue1}
       onClick={() => router.back()}
