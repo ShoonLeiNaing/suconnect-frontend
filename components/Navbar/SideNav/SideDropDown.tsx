@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { Box, Typography, Icon } from "@mui/material";
 import { useRouter } from "next/router";
-import { colors } from "../../data/constant";
+import { colors } from "../../../data/constant";
 
 interface IProps {
   data: any;
