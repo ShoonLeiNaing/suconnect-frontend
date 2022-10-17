@@ -9,7 +9,6 @@ import { colors } from "../../data/constant";
 import NameTag from "../../components/Profile/NameTag";
 import SearchInput from "../../components/DateFilter/SearchInput";
 import DropDown from "../../components/DateFilter/DropDown";
-import BankingInfoEditCard from "../../components/Banking/BankInfoEditCard";
 import { byCategory, byDate } from "../../data/testData";
 import MenuComponent from "../../components/MenuButton";
 import ChipComponent from "../../components/ChipComponent";
@@ -72,7 +71,7 @@ const Banking = ({ bankAccounts }: any) => {
   ];
 
   const fetchBankAccounts = async () => {
-    console.log("hehe");
+    console.log("hello");
 
     const res = await getBankAccountsOfUser(1);
     setData(res.data?.bankaccount_set);

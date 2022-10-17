@@ -22,6 +22,7 @@ import styles from "./banking.module.css";
 import BankingInfoEditCard from "./BankInfoEditCard";
 import SmallButton from "../Button/SmallButton";
 import { createBankAccount } from "../../api/banking/create";
+import { updateBankAccount } from "../../api/banking/update";
 
 const BankAccountSchema = Yup.object().shape({
   owner_name: Yup.string().required("Bank account name is required"),
@@ -33,7 +34,6 @@ const BankAccountSchema = Yup.object().shape({
 
 interface IProps {
   data?: any;
-  title?: string;
   bgColor: string;
   stateUpdate?: boolean;
   setStateUpdate?: any;
@@ -52,7 +52,6 @@ interface BankAccount {
 }
 
 const BankingInfoCard: FunctionComponent<IProps> = ({
-  title,
   bgColor,
   data,
   stateUpdate,
@@ -110,6 +109,24 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
           } else {
             console.log("hehe");
           }
+          if(edit) {
+            const res = await updateBankAccount(1, values);
+            if (res.code === "ERR_BAD_REQUEST") {
+              toast.error("Something went wrong", {
+                position: "top-right",
+                className: "hot-toast",
+              });
+            } else {
+              setAdd(false);
+              toast.success("Bank Acccount updated successfully", {
+                position: "top-right",
+                className: "hot-toast",
+              });
+              setStateUpdate(!stateUpdate);
+            }
+          }else {
+            console.log("hehe");
+          }
           setLoading(false);
         }}
       >
@@ -164,7 +181,9 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
                         text="Edit"
                         customHeight="40px"
                         customFontSize="15px"
-                        onClickHandler={() => setEdit(!edit)}
+                        onClickHandler={() => {
+                          setEdit(true);
+                        }}
                       />
                     </Box>
                   </Box>

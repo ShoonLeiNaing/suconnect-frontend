@@ -8,12 +8,9 @@ import {
   MenuItem,
   Select,
   Input,
-  SelectChangeEvent,
   Typography,
 } from "@mui/material";
 import InputLabel from "../Input/InputLabel";
-import { colors } from "../../data/constant";
-import CardStatus from "./CardStatus";
 import DynamicInput from "../Input/DynamicInput";
 import styles from "./banking.module.css";
 import SmallButton from "../Button/SmallButton";
@@ -46,17 +43,8 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
   loading,
   data,
 }) => {
-  // const [bank, setBank] = useState(values.bank_type);
-  // const [name, setName] = useState(values.owner_name);
+ 
   const [bankAccNo, setBankAccNo] = useState(values.number);
-
-  const [cardTitle, setCardTitle] = useState(values.save_name);
-
-  const updateTitle = (event: any) => {
-    const titleData = event.target.value;
-    setCardTitle(titleData);
-    handleChange(titleData);
-  };
 
   const formatNumber = (e: any) => {
     const inputValue = e.target.value.replace(/ /g, "");
@@ -71,15 +59,10 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
     if (splits) {
       spacedNumber = splits.join(" ");
     }
-    // handleChange();
 
     setBankAccNo(spacedNumber);
     handleChange(e);
   };
-
-  // const selectBankType = (event: SelectChangeEvent) => {
-  //   setBank(event.target.value as string);
-  // };
 
   const BootstrapInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
@@ -89,7 +72,6 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
 
   return (
     <Box>
-      {setAdd && isNew && (
         <Box width="340px" className="rounded-xl shadow-lg mb-4 duration-300">
           <Box
             sx={{ backgroundColor: bgColor }}
@@ -185,7 +167,6 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
             </Box>
           </Box>
         </Box>
-      )}
     </Box>
   );
 };

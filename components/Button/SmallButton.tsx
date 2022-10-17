@@ -65,6 +65,7 @@ const SmallButton: FunctionComponent<IProps> = ({
       type={type || "button"}
       variant="contained"
       disableRipple
+      onClick={onClickHandler}
       sx={{
         height: customHeight && customHeight,
         width: customWidth && customWidth,
