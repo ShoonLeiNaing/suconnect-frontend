@@ -12,7 +12,11 @@ const SubTitle: FunctionComponent<IProps> = ({ title, icon, color }) => {
     <Box display="flex" alignItems="center">
       <Typography
         fontWeight={600}
-        fontSize="24px"
+        fontSize={{
+          xl: "22px",
+          lg: "20px",
+          md: "18px",
+        }}
         color="grey"
         sx={{ zIndex: 2 }}
       >

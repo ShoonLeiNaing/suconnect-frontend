@@ -3,7 +3,7 @@ import { FunctionComponent, useState } from "react";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import LoginNavbar from "../Navbar/LoginNavbar";
-import SideBarNav from "../Navbar/SideBarNav";
+import SideBarNav from "../Navbar/SideNav/SideBarNav";
 
 interface IProps {
   children: any;
@@ -36,6 +36,7 @@ const Layout: FunctionComponent<IProps> = ({
             <LoginNavbar
               changeLanguage={changeLanguage}
               showSideNav={showSideNav}
+              data={data}
             />
             <Box margin="auto">{children}</Box>
           </Box>

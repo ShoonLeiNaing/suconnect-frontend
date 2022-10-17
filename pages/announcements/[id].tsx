@@ -6,7 +6,7 @@ import { navigation } from "../../data/navigationData";
 
 const AnnouncementDetail: NextPage = () => {
   return (
-    <Layout data={navigation}>
+    <Layout data={navigation} hiddenFooter>
       {/* <Box display="flex">
         <Box> */}
       <Box color="black" py={2}>

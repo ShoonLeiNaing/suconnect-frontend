@@ -1,4 +1,4 @@
-import { Icon } from "@mui/material";
+import { Icon, Box } from "@mui/material";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import {
@@ -21,9 +21,18 @@ const Footer: FunctionComponent<FooterProps> = ({
   titleColor,
 }) => {
   return (
-    <>
-      <div style={{ backgroundColor, width: "100%", position: "relative" }}>
-        <div className="max-w-screen-2xl flex justify-between items-center py-6  px-16 m-auto">
+    <Box
+      display="flex"
+      flexDirection="column"
+    > 
+      <Box sx={{ backgroundColor, width: "100%", position: "relative" }}>
+        <Box 
+          className="max-w-screen-2xl py-6  px-16 m-auto"
+          display="flex"
+          flexDirection={{xs: "column", sm: "row"}}
+          justifyContent="space-between"
+          alignItems={{xs: "left", sm: "center"}}
+        >
           <div className="flex flex-col">
             <Image
               height={50}
@@ -151,10 +160,10 @@ const Footer: FunctionComponent<FooterProps> = ({
               <p className="text-sm ml-2 lg:mt-[-0.1rem]">LinkedIn</p>
             </a>
           </div>
-        </div>
-      </div>
-      <div
-        style={{
+        </Box>
+      </Box>
+      <Box
+        sx={{
           background: backgroundColor,
           color: textColor,
           width: "100%",
@@ -176,8 +185,8 @@ const Footer: FunctionComponent<FooterProps> = ({
             </a>
           </div>
         </div>
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 };
 

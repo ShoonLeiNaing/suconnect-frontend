@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/router";
-import { colors } from "../../data/constant";
+import { colors } from "../../../data/constant";
 import SideDropDown from "./SideDropDown";
 
 interface NavTitle {
@@ -23,7 +23,7 @@ interface NavTitle {
 }
 interface IProps {
   data: any[];
-  status: boolean;
+  status?: boolean;
   panel?: any;
 }
 
@@ -46,9 +46,9 @@ const SideBarNavItems: FunctionComponent<IProps> = ({
       transitionDuration: "300s",
       marginLeft: "-1rem",
     },
-    "&.MuiAccordionSummary-content.Mui-expanded" : {
+    "&.MuiAccordionSummary-content.Mui-expanded": {
       margin: "0px",
-    }
+    },
   });
 
   const router = useRouter();
@@ -73,13 +73,15 @@ const SideBarNavItems: FunctionComponent<IProps> = ({
     <Box>
       {data?.map((navTitle, index) => (
         <BootstrapAccordion
-          className={` ${ expanded && !status && "!m-auto" } ${status ? "w-56" : "w-8 ml-0"} `}
+          className={` ${expanded && !status && "!m-auto"} ${
+            status ? "w-56" : "w-8 ml-0"
+          } `}
           key={index}
           expanded={expanded === `panel${index + 1}`}
           onChange={handleChange(`panel${index + 1}`)}
         >
           <AccordionSummary
-            className={`mt-0  ${ expanded && !status ? "": "!my-0" }`}
+            className={`mt-0  ${expanded && !status ? "" : "!my-0"}`}
             expandIcon={
               <Box
                 className={` ${
