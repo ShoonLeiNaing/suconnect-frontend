@@ -20,31 +20,6 @@ interface IProps {
   bgColor?: string;
 }
 
-const BootstrapSmallButton = styled(LoadingButton)({
-  "&.MuiButtonBase-root": {
-    backgroundColor: colors.primaryColors.lightblue.lightblue1,
-  },
-  boxShadow: "none",
-  textTransform: "none",
-  fontSize: "14px",
-  lineHeight: 1.5,
-  borderRadius: "10px",
-  // padding: "10px 20px",
-
-  "&:hover": {
-    backgroundColor: colors.primaryColors.lightblue.lightblue1,
-    borderColor: "#0062cc",
-    boxShadow: "none",
-  },
-  "&:active": {
-    boxShadow: "none",
-    backgroundColor: colors.primaryColors.lightblue.lightblue1,
-  },
-  "&:focus": {
-    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-  },
-});
-
 const SmallButton: FunctionComponent<IProps> = ({
   text,
   color,
@@ -60,6 +35,31 @@ const SmallButton: FunctionComponent<IProps> = ({
   loading,
   bgColor,
 }) => {
+  const BootstrapSmallButton = styled(LoadingButton)({
+    "&.MuiButtonBase-root": {
+      backgroundColor: bgColor,
+    },
+    boxShadow: "none",
+    textTransform: "none",
+    fontSize: "14px",
+    lineHeight: 1.5,
+    borderRadius: "10px",
+    // padding: "10px 20px",
+
+    "&:hover": {
+      backgroundColor: bgColor,
+      borderColor: "#0062cc",
+      boxShadow: "none",
+    },
+    "&:active": {
+      boxShadow: "none",
+      backgroundColor: bgColor,
+    },
+    "&:focus": {
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+    },
+  });
+
   return (
     <BootstrapSmallButton
       type={type || "button"}
@@ -69,7 +69,8 @@ const SmallButton: FunctionComponent<IProps> = ({
         height: customHeight && customHeight,
         width: customWidth && customWidth,
         marginX: customMarginX,
-        backgroundColor: bgColor,
+        backgroundColor: bgColor && bgColor,
+        color: color && color,
         fontSize: customFontSize,
       }}
       startIcon={icon}

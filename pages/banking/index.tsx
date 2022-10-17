@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiFilterFill } from "react-icons/ri";
 import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
@@ -15,6 +15,8 @@ import MenuComponent from "../../components/MenuButton";
 import ChipComponent from "../../components/ChipComponent";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { navigation } from "../../data/navigationData";
+import { getBankAccountsOfUser } from "../../api/banking/getBankAccountsOfUser";
+import { generateColor } from "../../utils/common/generateColor";
 
 const breadCrumbsData = [
   {
@@ -27,14 +29,20 @@ const breadCrumbsData = [
   },
 ];
 
-const Banking = () => {
+const Banking = ({ bankAccounts }: any) => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
+  const [stateUpdate, setStateUpdate] = useState(false);
+  const [data, setData] = useState<any>(bankAccounts);
 
   const newAccountCard = () => {
-    setAdd(!add);
-    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    if (!add) {
+      setAdd(true);
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    } else {
+      setAdd(false);
+    }
   };
 
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
@@ -62,6 +70,17 @@ const Banking = () => {
       },
     },
   ];
+
+  const fetchBankAccounts = async () => {
+    console.log("hehe");
+
+    const res = await getBankAccountsOfUser(1);
+    setData(res.data?.bankaccount_set);
+  };
+
+  useEffect(() => {
+    fetchBankAccounts();
+  }, [stateUpdate]);
 
   const handleDelete = () => {};
 
@@ -124,26 +143,26 @@ const Banking = () => {
             Clear all
           </Typography>
         </Box>
-        <Box className="flex justify-between items-center">
-          <BankingInfoCard
-            title="My Account 1"
-            bgColor={colors.primaryColors.pink.pink1}
-          />
-          <BankingInfoCard
-            title="My Account 2"
-            bgColor={colors.secondaryColors.green.green1}
-          />
-          <BankingInfoCard
-            title="My Account 3"
-            bgColor={colors.primaryColors.yellow.yellow1}
-          />
+        <Box className=" grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {data?.map((bankAccount: any, index: number) => (
+            <BankingInfoCard
+              data={bankAccount}
+              bgColor={generateColor(index + 1)}
+              key={index}
+              orderNo={index + 1}
+            />
+          ))}
+
+          {add && (
+            <BankingInfoCard
+              orderNo={data.length + 1}
+              bgColor={generateColor(data.length + 1)}
+              setAdd={setAdd}
+              isNew
+              {...{ stateUpdate, setStateUpdate }}
+            />
+          )}
         </Box>
-        {add && (
-          <BankingInfoEditCard
-            title="My Account 4"
-            bgColor={colors.secondaryColors.orange.orange1}
-          />
-        )}
       </Box>
       <FilterSideBar
         open={showSideFilter}
@@ -155,5 +174,14 @@ const Banking = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps() {
+  const bankAccounts = await getBankAccountsOfUser(1);
+  return {
+    props: {
+      bankAccounts: bankAccounts?.data?.bankaccount_set,
+    },
+  };
+}
 
 export default Banking;
