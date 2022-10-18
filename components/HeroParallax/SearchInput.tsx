@@ -34,13 +34,14 @@ const SearchInput: FunctionComponent<IProps> = ({
     <Box
       px={2}
       width={customWidth || "300px"}
-      display="flex"
+      // display="flex"
       height={customHeight && customHeight}
       alignItems="center"
       bgcolor={outline ? "transparent" : "#f6f9fe"}
       sx={{
         borderRadius: "15px",
         border: outline ? `1px solid ${colors.grey.grey1}` : "none",
+        display: {xs: 'none', sm: 'flex'}
       }}
     >
       <BiSearchAlt2 fontSize="22px" color={colors.grey.grey2} />
