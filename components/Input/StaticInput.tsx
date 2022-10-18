@@ -25,7 +25,7 @@ const StaticInput: FunctionComponent<IProps> = ({
         sx={{ backgroundColor: colors.white.white2 }}
         color={colors.black.black2}
         maxWidth="350px"
-        height="140px"
+        height="150px"
         borderRadius="15px"
         display="flex"
       >

@@ -11,15 +11,21 @@ import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 const ViewProfileForm = () => {
   return (
-    <Box m={4} display="flex">
-      <Box flex="0.5" px={4}>
+    <Box
+      m={4}
+      className="flex flex-col md:flex-row justify-center items-center"
+    >
+      <Box className="w-full md:px-4">
         <Box display="flex" flexDirection="column" alignItems="center">
           <img
             src="/images/profile.jpeg"
             alt="profile"
-            className={styles.profile_img}
+            className="w-[150px] h-[150px] md:w-[200px] md:h-[200px] rounded-full"
           />
-          <Typography fontWeight={600} fontSize="18px" mt={3}>
+          <Typography
+            fontWeight={600}
+            className="text-[1.1rem] md:text-lg mt-3"
+          >
             Thiha Swan Htet
           </Typography>
 
@@ -62,7 +68,7 @@ const ViewProfileForm = () => {
             </Box>
           </Box>
 
-          <Box mb={3}>
+          <Box mb={3} className={styles.input_boxes}>
             <InputLabel label="Bio" />
             <StaticInput
               isLocked
@@ -72,12 +78,12 @@ const ViewProfileForm = () => {
           </Box>
         </Box>
       </Box>
-      <Box flex="0.5" px={4}>
-        <Box mb={3}>
+      <Box className="w-full md:px-4 flex flex-col justify-center items-center lg:jusitfy-start lg:items-start md:mb-16">
+        <Box mb={3} className={styles.input_boxes}>
           <InputLabel label="Email" />
           <StaticInput isLocked value="ThihaSwanHtet@gmail.com" />
         </Box>
-        <Box mb={3}>
+        <Box mb={3} className={styles.input_boxes}>
           <Box
             display="flex"
             maxWidth="345px"
@@ -93,15 +99,16 @@ const ViewProfileForm = () => {
             isTextArea
           />
         </Box>
-        <Box mb={3}>
+        <Box mb={3} className={styles.input_boxes}>
           <InputLabel label="Primary Contact" />
           <StaticInput isLocked value="ThihaSwanHtet@gmail.com" />
         </Box>
-        <Box mb={3}>
+        <Box mb={3} className={styles.input_boxes}>
           <InputLabel label="Secondary Contact" />
-          <NoInput />
+          {/* <NoInput /> */}
+          <StaticInput isLocked value="-" />
         </Box>
-        <Box mb={3}>
+        <Box mb={3} className={styles.input_boxes}>
           <InputLabel label="Date of Birth" />
           <StaticInput isLocked value="01 / 12 / 2002" />
         </Box>

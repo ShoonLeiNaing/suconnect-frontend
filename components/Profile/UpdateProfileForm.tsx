@@ -54,14 +54,17 @@ const UpdateProfileForm = () => {
 
   return (
     <Box px={4}>
-      <Box my={4} display="flex">
-        <Box flex="0.5">
+      <Box
+        my={4}
+        className="flex flex-col md:flex-row justify-center items-center"
+      >
+        <Box className="w-full md:-mt-24 flex flex-col justify-center items-center">
           <Box display="flex" flexDirection="column" alignItems="center">
             <Box position="relative">
               <img
                 src={profileImg}
                 alt="profile"
-                className={styles.profile_img}
+                className="w-[150px] h-[150px] md:w-[200px] md:h-[200px] rounded-full"
               />
               <Box position="absolute" bottom={0} right="0" marginBottom="15px">
                 <Box
@@ -85,7 +88,10 @@ const UpdateProfileForm = () => {
                 </Box>
               </Box>
             </Box>
-            <Typography fontWeight={600} fontSize="18px" mt={3}>
+            <Typography
+              fontWeight={600}
+              className="text-[1.1rem] md:text-lg mt-3"
+            >
               Thiha Swan Htet
             </Typography>
 
@@ -110,7 +116,13 @@ const UpdateProfileForm = () => {
                 Choose your profile picture
                 <br /> (Can be: jpg, jpeg, png)
               </Typography>
-              <Grid container paddingX={12} paddingY={2} rowGap={2} mb={2}>
+              <Grid
+                container
+                className="px-4 sm:px-24 md:px-16 lg:px-24"
+                paddingY={2}
+                rowGap={2}
+                mb={2}
+              >
                 {avatars.map((avatar) => (
                   <Grid
                     key={avatar.img}
@@ -148,43 +160,51 @@ const UpdateProfileForm = () => {
               <br />
             </Box>
 
-            <Box mb={3}>
+            <Box mb={3} className={styles.bio_input}>
               <InputLabel label="Bio" />
-              <DynamicInput value={bio} setValue={setBio} isTextArea />
+              <DynamicInput
+                value={bio}
+                setValue={setBio}
+                isTextArea
+                maxiWidth="350px"
+                customWidth="100%"
+                customHeight="150px"
+              />
               <WordsCount maxCount="250" currentCount={bio.length} />
             </Box>
           </Box>
         </Box>
-        <Box flex="0.5">
-          <Box mb={3}>
+        <Box className="w-full flex flex-col justify-center items-center lg:jusitfy-start lg:items-start">
+          <Box mb={3} className={styles.input_boxes}>
             <InputLabel label="Name" isRequired />
             <DynamicInput value={name} setValue={setName} maxiWidth="350px" />
           </Box>
-          <Box mb={3}>
+          <Box mb={3} className={styles.input_boxes}>
             <InputLabel label="Email" isRequired />
             <StaticInput value="ThihaSwanHtet@gmail.com" showLock />
           </Box>
 
-          <Box mb={3}>
+          <Box mb={3} className={styles.phone_boxes}>
             <InputLabel label="Primary Contact" />
             <PhoneNumberInput />
             {/* <StaticInput value="ThihaSwanHtet@gmail.com" /> */}
           </Box>
-          <Box mb={3}>
+          <Box mb={3} className={styles.phone_boxes}>
             <InputLabel label="Secondary Contact" isOptional />
             <PhoneNumberInput />
           </Box>
-          <Box mb={3}>
+          <Box mb={3} className={styles.phone_boxes}>
             <InputLabel label="Date of Birth" />
             <DateInput
-              customWidth="350px"
+              maxWidth="350px"
+              customWidth="100%"
               customHeight="18px"
               dateValue={birthDate}
               setDateValue={setBirthDate}
             />
             {/* <StaticInput value="01 / 12 / 2002" /> */}
           </Box>
-          <Box mb={3} maxWidth="350px">
+          <Box mb={3} className={styles.input_boxes}>
             <Box
               display="flex"
               maxWidth="345px"
