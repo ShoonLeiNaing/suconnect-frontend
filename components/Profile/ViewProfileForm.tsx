@@ -12,7 +12,8 @@ import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 const ViewProfileForm = () => {
   return (
     <Box
-      m={4}
+      my={4}
+      mx={2}
       className="flex flex-col md:flex-row justify-center items-center"
     >
       <Box className="w-full md:px-4">

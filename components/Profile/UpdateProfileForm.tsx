@@ -53,7 +53,7 @@ const UpdateProfileForm = () => {
   };
 
   return (
-    <Box px={4}>
+    <Box mx={2} py={4}>
       <Box
         my={4}
         className="flex flex-col md:flex-row justify-center items-center"
@@ -222,7 +222,7 @@ const UpdateProfileForm = () => {
             />
             <WordsCount maxCount="250" currentCount={bio.length} />
           </Box>
-          <Box maxWidth="355px" mt={8} mb={4}>
+          <Box maxWidth="355px" mt={8} mb={4} width="100%">
             <ReminderAlert reminderText="Save Changes" />
           </Box>
         </Box>
