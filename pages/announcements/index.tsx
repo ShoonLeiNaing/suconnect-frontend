@@ -106,7 +106,7 @@ const AnnouncementUserView: NextPage = () => {
             </Box>
           )}
 
-          {/* {isAdmin ? (
+          {isAdmin ? (
             <DataTable columns={columns} data={announcements} />
           ) : (
             <Box className="container" py={2}>
@@ -115,7 +115,7 @@ const AnnouncementUserView: NextPage = () => {
                 <Paginator />
               </Box>
             </Box>
-          )} */}
+          )}
         </Box>
       </Box>
     </Layout>

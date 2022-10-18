@@ -11,6 +11,7 @@ interface IProps {
   dateValue?: number | Date | string;
   setDateValue?: any;
   color?: string;
+  onChangeHandler?: any;
 }
 
 const DateInput: FunctionComponent<IProps> = ({
@@ -19,19 +20,21 @@ const DateInput: FunctionComponent<IProps> = ({
   dateValue,
   setDateValue,
   color,
+  onChangeHandler,
 }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         value={dateValue}
-        onChange={(newValue) => {
-          setDateValue(moment(newValue).format("YYYY-MM-DD"));
-        }}
+        onChange={onChangeHandler}
+        // onChange={(newValue) => {
+        //   setDateValue(moment(newValue).format("YYYY-MM-DD"));
+        // }}
         renderInput={(params) => (
           <TextField
             sx={{
-                width: customWidth && customWidth,
-            
+              width: customWidth && customWidth,
+
               "& .MuiInputBase-input": {
                 height: customHeight || "10px",
                 color: color && color,
