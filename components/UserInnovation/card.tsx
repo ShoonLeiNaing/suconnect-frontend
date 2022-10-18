@@ -24,6 +24,7 @@ const Card: FunctionComponent<CardProps> = ({
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      width="350px"
       // cursor="pointer"
     >
       <Image src={image} width={200} height={200} />

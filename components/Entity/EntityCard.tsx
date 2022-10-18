@@ -19,7 +19,7 @@ const EntityCard: FunctionComponent<IProps> = ({
   return (
     <Box
       height="250px"
-      width="250px"
+      width="230px"
       color="white"
       className="cursor"
       sx={{ backgroundColor: color, zIndex: 2 }}

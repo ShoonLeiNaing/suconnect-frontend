@@ -39,7 +39,11 @@ const Announcements = () => {
         src="../../images/bgelement2.svg"
         alt=""
       />
-      <Box className="inner-container">
+      <Box className="inner-container"
+        display={{xs: "flex", md: "block"}}
+        flexDirection="column"
+        alignItems="center"
+      >
         <SubTitle
           title="Recent Announcements"
           icon
@@ -47,9 +51,10 @@ const Announcements = () => {
         />
         <Box
           display="flex"
+          flexDirection={{xs: "column", md: "row"}}
           alignItems="center"
           mb={2}
-          justifyContent="space-between"
+          justifyContent={{xs: "center", sm: "space-between"}}
         >
           <Tagline text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac ultrices nunc commodo nunc consequat." />
 
@@ -60,13 +65,15 @@ const Announcements = () => {
             bgColor={colors.white.white2}
           />
         </Box>
-        <CardCarousel>
-          {announcements.map((announcement, index) => (
-            <SwiperSlide key={index}>
-              <GridCard color={chooseColor(index + 1)} />
-            </SwiperSlide>
-          ))}
-        </CardCarousel>
+        <Box display="block">
+          <CardCarousel>
+            {announcements.map((announcement, index) => (
+              <SwiperSlide key={index}>
+                <GridCard color={chooseColor(index + 1)} />
+              </SwiperSlide>
+            ))}
+          </CardCarousel>
+        </Box>
       </Box>
     </Box>
   );

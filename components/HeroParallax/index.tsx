@@ -22,11 +22,11 @@ const HeroParallax = () => {
           height="100%"
           sx={{ position: "relative" }}
         >
-          <Typography fontSize="40px" fontWeight={700}>
+          <Typography fontSize={{xs: "25px", sm: "30px", md: "40px"}} fontWeight={700}>
             {t("landing:title")}
           </Typography>
           <Typography
-            fontSize="20px"
+            fontSize={{xs: "15px", sm: "18px", md: "20px"}}
             my={4}
             textAlign="center"
             maxWidth="700px"
@@ -55,7 +55,10 @@ const HeroParallax = () => {
         >
           <SearchInput />
         </Box>
-        <Box my={6} mb={16}>
+        <Box my={6} mb={16} 
+        display="flex" 
+        justifyContent="center"
+        >
           <LinkSection />
         </Box>
       </Box>

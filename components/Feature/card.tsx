@@ -11,7 +11,7 @@ const Card: FunctionComponent = () => {
       <div className={styles.bg_img_one}>
         <img className="w-32 mb-6" src="/images/greencardicon.svg" alt="icon" />
         <div className={styles.card_text_one}>
-          <h3 className="text-2xl font-semibold mb-3">Monthly Payroll</h3>
+          <h3 className="lg:text-2xl xs:text-xl font-semibold mb-3">Monthly Payroll</h3>
           <p className="text-base mb-6">
             The distribution of algal species has been fairly well studied since
             the founding of
@@ -25,7 +25,7 @@ const Card: FunctionComponent = () => {
       <div className={styles.bg_img_two}>
         <img className="w-32 mb-6" src="/images/pinkcardicon.svg" alt="icon" />
         <div className={styles.card_text_two}>
-          <h3 className="text-2xl font-semibold mb-3">Calendar Scheduling</h3>
+          <h3 className="lg:text-2xl xs:text-xl font-semibold mb-3">Calendar Scheduling</h3>
           <p className="text-base mb-6">
             The distribution of algal species has been fairly well studied since
             the founding of
@@ -43,7 +43,7 @@ const Card: FunctionComponent = () => {
           alt="icon"
         />
         <div className={styles.card_text_one}>
-          <h3 className="text-2xl font-semibold mb-3">Staff Management</h3>
+          <h3 className="lg:text-2xl xs:text-xl font-semibold mb-3">Staff Management</h3>
           <p className="text-base mb-6">
             The distribution of algal species has been fairly well studied since
             the founding of
@@ -61,7 +61,7 @@ const Card: FunctionComponent = () => {
           alt="icon"
         />
         <div className={styles.card_text_one}>
-          <h3 className="text-2xl font-semibold mb-3">Data Dump</h3>
+          <h3 className="lg:text-2xl xs:text-xl font-semibold mb-3">Data Dump</h3>
           <p className="text-base mb-6">
             The distribution of algal species has been fairly well studied since
             the founding of

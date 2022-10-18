@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const breakpoints = {
-  0: {
+  360: {
     slidesPerView: 2,
   },
   750: {
@@ -35,7 +35,7 @@ const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
             clickable: true,
           }}
           breakpoints={breakpoints}
-          slidesPerView={4}
+          // slidesPerView={4}
           modules={[Pagination, Navigation]}
           navigation
         >
