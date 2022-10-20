@@ -4,11 +4,13 @@ import { colors } from "../../data/constant";
 import SubTitle from "../SubTitle";
 import Tagline from "../SubTitle/Tagline";
 import Card from "./card";
+import styles from "./benefits.module.css"
 
 const Benefit: FunctionComponent = () => {
   return (
     <div className="relative">
       <img
+        className={styles.bg_element}
         style={{
           position: "absolute",
           top: "-10rem",

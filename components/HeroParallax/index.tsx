@@ -44,7 +44,7 @@ const HeroParallax = () => {
           </Box>
         </Box>
       </Box>
-      <Box height="25vh">
+      <Box height={{xs: "10vh", sm: "20vh", md: "25vh"}}>
         <Box
           mt={6}
           display="flex"
@@ -55,7 +55,7 @@ const HeroParallax = () => {
         >
           <SearchInput />
         </Box>
-        <Box my={6} mb={16} 
+        <Box my={{xs: 0, sm: 4, md: 6}}
         display="flex" 
         justifyContent="center"
         >

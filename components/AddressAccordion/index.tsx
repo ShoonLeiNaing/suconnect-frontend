@@ -138,7 +138,8 @@ const AccordionComponent: FunctionComponent<IProps> = ({
               setStateUpdate(!stateUpdate);
             }
           } else {
-            console.log("hehe");
+            // console.log("hehe");
+            // do something
           }
           setLoading(false);
         }}

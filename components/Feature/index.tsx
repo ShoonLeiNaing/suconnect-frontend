@@ -19,7 +19,7 @@ const Feature: FunctionComponent = () => {
           color={colors.secondaryColors.green.green1}
         />
         <Tagline text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac ultrices nunc commodo nunc consequat." />
-        <Box className="grid md:grid-cols-2 xs:grid-cols-1 gap-10 my-8 px-4">
+        <Box className="grid md:grid-cols-2 xs:grid-cols-1 sm:gap-10 my-8 px-4">
           <Card />
         </Box>
       </Box>

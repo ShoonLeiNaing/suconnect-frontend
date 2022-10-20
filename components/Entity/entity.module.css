@@ -1,0 +1,14 @@
+/* Background Element */
+
+/* .bg_element {
+  position: "absolute";
+  top: "-3.5rem";
+  left: "-5rem";
+  width: "19rem";
+} */
+
+@media (max-width : 1000px) {
+  .bg_element {
+    display: none;
+  }
+}

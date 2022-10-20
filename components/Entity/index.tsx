@@ -3,11 +3,13 @@ import { colors } from "../../data/constant";
 import SubTitle from "../SubTitle";
 import Tagline from "../SubTitle/Tagline";
 import EntityCard from "./EntityCard";
+import styles from "./entity.module.css"
 
 const Entity = () => {
   return (
     <Box className="relative" maxWidth="1600px">
       <img
+        className={styles.bg_element}
         style={{
           position: "absolute",
           top: "-3.5rem",
