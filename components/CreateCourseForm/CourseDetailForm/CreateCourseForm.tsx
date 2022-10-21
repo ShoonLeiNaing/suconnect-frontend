@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import {
   Box,
   Typography,
@@ -23,9 +24,9 @@ import DateInput from "../../Input/DateInput";
 import DynamicInput from "../../Input/DynamicInput";
 import InputLabel from "../../Input/InputLabel";
 import PaginationButton from "../../Stepper/PaginationButton";
-import TimeRangePicker from "../../TimeRangePicker";
 import ChooseDaysComponent from "./ChooseDaysComponent";
 import { createCourse } from "../../../api/courses/create";
+import { createEvent } from "../../../api/events/create";
 
 interface IProps {
   handleNext?: any;
@@ -35,6 +36,7 @@ interface IProps {
 const CourseSchema = Yup.object().shape({
   name: Yup.string().required("Course name is required"),
   code: Yup.string().required("Course code is required"),
+  description: Yup.string().required("Course description is required"),
   monthly_fee: Yup.number()
     .min(0)
     .typeError("Monthly fee is required")
@@ -42,17 +44,21 @@ const CourseSchema = Yup.object().shape({
   category: Yup.number().required("Category is required"),
   start_date: Yup.string().required("Start date is required"),
   end_date: Yup.string().required("End date is required"),
+  selected_days: Yup.array()
+    .min(1, "Course day is required")
+    .of(
+      Yup.object().shape({
+        date: Yup.string(),
+      })
+    )
+    .required("Course day is required"),
 });
 
 const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<any>([]);
   const [startDate, setStartDate] = useState<any>(Date.now());
-  const [endDate, setEndDate] = useState<any>(Date.now());
-  const [startHour, setStartHour] = useState<number>(0);
-  const [startMin, setStartMin] = useState<number>(0);
-  const [endHour, setEndHour] = useState<number>(0);
-  const [endMin, setEndMin] = useState<number>(0);
+  const [endDate, setEndDate] = useState<any>(moment().add(1, "M"));
 
   const [selectCampus, setSelectCampus] = useState("Select campus");
 
@@ -74,7 +80,8 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const createCourseHandler = async (values: any) => {
     // console.log({ hhe: values });
     setLoading(true);
-    const res = await createCourse({
+    console.log({ values });
+    await createCourse({
       name: values.name,
       description: values.description,
       code: values.code,
@@ -82,19 +89,54 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       category: values.category,
       start_date: values.start_date,
       end_date: values.end_date,
+    }).then((result) => {
+      if (result.code === "ERR_BAD_REQUEST") {
+        toast.error("Something went wrong with creating course", {
+          position: "top-right",
+          className: "hot-toast",
+        });
+      } else {
+        const id = result?.data?.data?.id;
+        values.events.forEach((obj: any) => {
+          obj.course = id;
+          obj.classification = 10;
+        });
+        values.events?.map(async (event: any) => {
+          const res = await createEvent(event);
+          if (res.code === "ERR_BAD_REQUEST") {
+            toast.error(
+              `Something went wrong with creating ${event.date} event`,
+              {
+                position: "top-right",
+                className: "hot-toast",
+              }
+            );
+          }
+        });
+        handleNext();
+      }
     });
-    if (res.code === "ERR_BAD_REQUEST") {
-      toast.error("Something went wrong", {
-        position: "top-right",
-        className: "hot-toast",
-      });
-    } else {
-      toast.success("Address created successfully", {
-        position: "top-right",
-        className: "hot-toast",
-      });
-      handleNext();
-    }
+    // const res = await createCourse({
+    //   name: values.name,
+    //   description: values.description,
+    //   code: values.code,
+    //   monthly_fee: values.monthly_fee,
+    //   category: values.category,
+    //   start_date: values.start_date,
+    //   end_date: values.end_date,
+    // });
+    // if (res.code === "ERR_BAD_REQUEST") {
+    //   toast.error("Something went wrong with creating course", {
+    //     position: "top-right",
+    //     className: "hot-toast",
+    //   });
+    // } else {
+    // toast.success("Address created successfully", {
+    //   position: "top-right",
+    //   className: "hot-toast",
+    // });
+    // handleNext();
+    // }
     setLoading(false);
   };
 
@@ -105,8 +147,10 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
     monthly_fee: "",
     category: "",
     start_date: moment().format("YYYY-MM-DD"),
-    end_date: moment().format("YYYY-MM-DD"),
+    end_date: moment().add(1, "M").format("YYYY-MM-DD"),
     is_campus: "online-learnig",
+    selected_days: [],
+    events: [],
   };
 
   useEffect(() => {
@@ -119,8 +163,9 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={CourseSchema}
-        onSubmit={(values, actions) => {
-          console.log({ haha: values });
+        onSubmit={async (values, errors) => {
+          console.log({ errors });
+          createCourseHandler(values);
         }}
       >
         {({
@@ -166,6 +211,13 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                     isTextArea
                     placeholder="Type course description here..."
                   />
+                  <Box position="relative">
+                    {errors.description && touched.description && (
+                      <Typography className="error-message" position="absolute">
+                        {errors.description}
+                      </Typography>
+                    )}
+                  </Box>
                 </Box>
                 <Box>
                   <InputLabel label="Course category" />
@@ -286,36 +338,19 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                   </Box>
                 </Box>
                 <Box>
-                  <InputLabel label="Choose course days" />
-                  <ChooseDaysComponent />
-                </Box>
-                <Box>
-                  <TimeRangePicker
-                    labelText="Choose course time"
-                    startHour={startHour}
-                    endHour={endHour}
-                    startMin={startMin}
-                    endMin={endMin}
-                    setStartHour={setStartHour}
-                    setEndHour={setEndHour}
-                    setStartMin={setStartMin}
-                    setEndMin={setEndMin}
+                  <ChooseDaysComponent
+                    selectedDays={values.selected_days}
+                    {...{ setFieldValue, values, errors, touched }}
                   />
                 </Box>
-                <Box>
-                  <Checkbox className="text-[#3B8CF7]" />
-                  <Typography className="inline-block text-[0.95rem] text-[#737373]">
-                    Choose separately
-                  </Typography>
-                  {}
-                </Box>
-                <Box>
+
+                {/* <Box>
                   <InputLabel label="Repeat on" />
                   <Checkbox defaultChecked className="text-[#3B8CF7]" />
                   <Typography className="inline-block text-[0.95rem] text-[#737373]">
                     Every two weeks
                   </Typography>
-                </Box>
+                </Box> */}
                 <Box>
                   <InputLabel label="Class type" />
                   <FormControl className="ml-2 text-[#737373]">
@@ -381,7 +416,7 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                         placeholder="Type here..."
                         value={values.monthly_fee}
                         customType="number"
-                        onChangeHandler={(e) =>
+                        onChangeHandler={(e: any) =>
                           setFieldValue(
                             "monthly_fee",
                             parseInt(e.target.value, 10)
@@ -411,15 +446,7 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <Box className=" my-3 flex justify-end">
               <PaginationButton
                 {...{
-                  handleNext: () => {
-                    console.log(values);
-                    handleSubmit();
-                    console.log({ errors });
-                    if (Object.keys(errors).length === 0) {
-                      createCourseHandler(values);
-                    }
-                    // createCourseHandler(values);
-                  },
+                  handleNext: handleSubmit,
                   showPrevious: false,
                 }}
               />
