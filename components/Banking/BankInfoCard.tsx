@@ -107,27 +107,22 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
               setStateUpdate(!stateUpdate);
             }
           } else {
-            console.log("hehe");
-          }
-          if(edit) {
-            const res = await updateBankAccount(1, values);
+            const res = await updateBankAccount(data?.id, values);
             if (res.code === "ERR_BAD_REQUEST") {
               toast.error("Something went wrong", {
                 position: "top-right",
                 className: "hot-toast",
               });
             } else {
-              setAdd(false);
+              setEdit(false);
               toast.success("Bank Acccount updated successfully", {
                 position: "top-right",
                 className: "hot-toast",
               });
               setStateUpdate(!stateUpdate);
             }
-          }else {
-            console.log("hehe");
           }
-          setLoading(false);
+          setLoading(false); 
         }}
       >
         {({ handleSubmit, values, handleChange, errors, touched }) => (
@@ -203,7 +198,6 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
                     setStateUpdate,
                     isNew,
                     loading,
-                    data,
                   }}
                 />
               )}

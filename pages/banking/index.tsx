@@ -149,6 +149,7 @@ const Banking = ({ bankAccounts }: any) => {
               bgColor={generateColor(index + 1)}
               key={index}
               orderNo={index + 1}
+              {...{ stateUpdate, setStateUpdate }}
             />
           ))}
 
@@ -156,9 +157,8 @@ const Banking = ({ bankAccounts }: any) => {
             <BankingInfoCard
               orderNo={data.length + 1}
               bgColor={generateColor(data.length + 1)}
-              setAdd={setAdd}
               isNew
-              {...{ stateUpdate, setStateUpdate }}
+              {...{ stateUpdate, setStateUpdate, setAdd }}
             />
           )}
         </Box>

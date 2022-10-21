@@ -27,7 +27,6 @@ interface IProps {
   bgColor: string;
   isNew?: any;
   loading?: any;
-  data?: any;
 }
 
 const BankingInfoEditCard: FunctionComponent<IProps> = ({
@@ -41,7 +40,6 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
   setAdd,
   isNew,
   loading,
-  data,
 }) => {
  
   const [bankAccNo, setBankAccNo] = useState(values.number);

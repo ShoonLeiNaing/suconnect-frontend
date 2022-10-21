@@ -1,14 +1,13 @@
 import { axiosInstance } from "../axios";
 
-export const updateBankAccount = async (id: number, values: any) => {
+export const editAddress = async (id: number, values: any) => {
   try {
-    const res = await axiosInstance.put(`/bankaccounts/${id}`,  values,
-    {
+    const res = await axiosInstance.put(`/addresses/${id}`, values, {
       headers: {
         Accept: "application/json",
       },
     });
-    return res?.data;
+    return res;
   } catch (error: any) {
     console.log({ error });
     return error;
