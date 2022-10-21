@@ -4,10 +4,9 @@ import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import moment from "moment";
 import { FunctionComponent, useEffect, useState } from "react";
 import { colors } from "../../../data/constant";
-import OutlineWhiteButton from "../../Button/OutlineWhiteButton";
 import SmallButton from "../../Button/SmallButton";
 import InputLabel from "../../Input/InputLabel";
-import TimeRangePicker from "../../TimeRangePicker";
+import TimeRangePicker from "../../Input/TimeRangePicker";
 
 const sevenDays = [
   {
@@ -68,11 +67,7 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
   errors,
   touched,
 }) => {
-  const [time, setTime] = useState({
-    startTime: { hour: 9, min: "00", prefix: "AM" },
-    endTime: { hour: 12, min: 30, prefix: "PM" },
-  });
-  const [separateTime, setSeparateTime] = useState<any>([]);
+  const [time, setTime] = useState<any>([]);
   const [total, setTotal] = useState<number>(0);
   const [chooseSeparately, setChooseSeparately] = useState<boolean>(false);
 
@@ -82,28 +77,36 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
     if (isExist) {
       temp = selectedDays?.filter((item) => item.date !== data.word);
       setFieldValue("selected_days", temp);
+      if (chooseSeparately && time.length > 0) {
+        const timeTemp = time.filter(
+          (item: any) => Object.keys(item)[0] !== data.word
+        );
+        setTime(timeTemp);
+      }
     } else {
       temp = [...selectedDays, { date: data.word, number: data.number }];
       setFieldValue("selected_days", temp);
     }
   };
 
-  const checkPrefix = (data: any) => {
-    if (data.prefix === "PM") {
-      return `${data.hour + 12 === 24 ? "12" : data.hour + 12}:${data.min}`;
-    } else {
-      return `${data.hour}:${data.min}`;
-    }
-  };
-
   const generateEvents = () => {
     const eventsArray: Events[] = [];
     let startDate = values.start_date;
-    const time_from = checkPrefix(time.startTime);
-    const time_to = checkPrefix(time.endTime);
+
     while (moment(startDate).isSameOrBefore(values.end_date)) {
       selectedDays?.map((day) => {
         if (moment(startDate).day() === day?.number) {
+          const dayName = day.date;
+          let time_to;
+          let time_from;
+
+          time?.map((item: any) => {
+            if (Object.keys(item)[0] === dayName) {
+              time_to = item[Object.keys(item)[0]].endTime;
+              time_from = item[Object.keys(item)[0]].startTime;
+            }
+          });
+
           eventsArray.push({
             date: moment(startDate).format("YYYY-MM-DD"),
             time_to,
@@ -113,6 +116,8 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
       });
       startDate = moment(startDate).add(1, "d");
     }
+
+    console.log({ eventsArray });
     setFieldValue("events", eventsArray);
     setTotal(eventsArray.length);
   };
@@ -123,24 +128,6 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
     }
   }, [selectedDays]);
 
-  console.log({ selectedDays });
-
-  // useEffect(() => {
-  //   const temp: any[] = [];
-  //   if (chooseSeparately) {
-  //     selectedDays?.forEach((obj: any) => {
-  //       temp.push({
-  //         [obj.date]: {
-  //           startTime: { hour: 9, min: "00", prefix: "AM" },
-  //           endTime: { hour: 12, min: 30, prefix: "PM" },
-  //         },
-  //       });
-  //     });
-  //   }
-  //   setSeparateTime(temp);
-  // }, [chooseSeparately, selectedDays]);
-
-  console.log({ separateTime });
   return (
     <>
       <InputLabel label="Choose course days" />
@@ -173,22 +160,16 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
       </Box>
 
       {!chooseSeparately ? (
-        <Box mt={5}>
+        <Box my={3}>
+          {/* <TimeRangePicker
+            labelText="Choose course time"
+            {...{ time, setTime, selectedDays }}
+          /> */}
           <TimeRangePicker
             labelText="Choose course time"
-            {...{ time, setTime }}
+            {...{ time, setTime, selectedDays }}
           />
 
-          {selectedDays?.length > 0 && (
-            <Box display="flex" justifyContent="flex-end" pr={1} mt={3}>
-              <OutlineWhiteButton
-                customHeight="35px"
-                customWidth="80px"
-                text="confirm"
-                onClickHandler={generateEvents}
-              />
-            </Box>
-          )}
           {total > 0 && selectedDays?.length > 0 && (
             <Box mt={2} color={colors.black.black2} fontSize="14px">
               Total {total} course days for the course
@@ -196,17 +177,29 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
           )}
         </Box>
       ) : (
-        <Box>
-          {separateTime &&
-            selectedDays?.map((selected: any) => (
-              <TimeRangePicker
-                labelText="Choose course time"
-                time={separateTime[selected.date]}
-                setTime={setSeparateTime}
-                separated
-                day={selected.date}
-              />
-            ))}
+        <Box my={3}>
+          {selectedDays?.map((selected: any) => (
+            <TimeRangePicker
+              key={selected.date}
+              labelText={`Choose course time for ${selected.date}`}
+              {...{ time, setTime, separated: true, day: selected.date }}
+            />
+            // <TimeRangePicker
+            //   labelText={`Choose course time for ${selected.date}`}
+            //   {...{ time, setTime, separated: true, day: selected.date }}
+            // />
+          ))}
+        </Box>
+      )}
+
+      {selectedDays?.length > 0 && (
+        <Box display="flex" justifyContent="flex-end" pr={1} my={2}>
+          <SmallButton
+            customHeight="45px"
+            customWidth="100%"
+            text="Confirm Course Days"
+            onClickHandler={generateEvents}
+          />
         </Box>
       )}
 
@@ -217,19 +210,8 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
             <Checkbox
               value={chooseSeparately}
               onChange={(e) => {
-                const temp: any[] = [];
                 setChooseSeparately(e.target.checked);
-                if (e.target.checked) {
-                  selectedDays?.forEach((obj: any) => {
-                    temp.push({
-                      [obj.date]: {
-                        startTime: { hour: 9, min: "00", prefix: "AM" },
-                        endTime: { hour: 12, min: 30, prefix: "PM" },
-                      },
-                    });
-                  });
-                }
-                setSeparateTime(temp);
+                setTime([]);
               }}
             />
           }

@@ -74,6 +74,7 @@ const SmallButton: FunctionComponent<IProps> = ({
       }}
       startIcon={icon}
       loading={loading}
+      onClick={onClickHandler}
     >
       {text}
 

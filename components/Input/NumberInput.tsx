@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { Box } from "@mui/material";
-import styles from "./input.module.css";
 import { colors } from "../../data/constant";
 
 interface NumberInputProps {
