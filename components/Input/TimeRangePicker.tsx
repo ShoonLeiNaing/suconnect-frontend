@@ -28,8 +28,8 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
   separated,
   selectedDays,
 }) => {
-  const [startTime, setStartTime] = useState<Dayjs | null>(null);
-  const [endTime, setEndTime] = useState<Dayjs | null>(null);
+  const [startTime, setStartTime] = useState<Dayjs | null | any>(null);
+  const [endTime, setEndTime] = useState<Dayjs | null | any>(null);
 
   const startTimeChangeHandler = (e: any) => {
     if (separated && day) {
@@ -58,7 +58,7 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
     }
   };
 
-  const endTimeChangeHandler = (e) => {
+  const endTimeChangeHandler = (e: any) => {
     if (separated && day) {
       let temp: any = time?.filter((item: any) => Object.keys(item)[0] !== day);
       temp = [
