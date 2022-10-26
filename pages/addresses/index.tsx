@@ -71,8 +71,6 @@ const Addresses = ({ addresses }: any) => {
   ];
 
   const fetchAddresses = async () => {
-    console.log("hehe");
-
     const res = await getAddressesOfUser(1);
     setData(res.data?.address_set);
   };
