@@ -1,0 +1,5 @@
+@media (max-width : 1000px) {
+    .bg_element {
+      display: none;
+    }
+}

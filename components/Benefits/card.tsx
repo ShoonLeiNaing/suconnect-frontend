@@ -18,13 +18,17 @@ const Card: FunctionComponent<CardProps> = ({
 }) => {
   return (
     <Box
-      width="200px"
+      width={{ md: "165px", sm: "150px", xs: "140px" }}
       sx={{ color: textColor, backgroundColor: bgColor, zIndex: 2 }}
-      padding="1.5rem 1rem 1.5rem 1.2rem"
+      padding={{ md: "1.5rem 1rem 1.5rem 1.2rem", xs: "15px" }}
       borderRadius="20px"
     >
       <img src={icon} alt="benefit icon" height="45px" width="45px" />
-      <Typography fontWeight={500} fontSize="17px" marginTop="0.8rem">
+      <Typography
+        fontWeight={500}
+        fontSize={{ md: "17px", sm: "16px", xs: "15px" }}
+        marginTop="0.8rem"
+      >
         {title}
       </Typography>
     </Box>

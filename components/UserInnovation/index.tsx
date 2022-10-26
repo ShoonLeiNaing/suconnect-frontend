@@ -7,7 +7,13 @@ import Card from "./card";
 
 const UserInnovation: FunctionComponent = () => {
   return (
-    <Box marginY="4rem" className="inner-container">
+    <Box
+      marginY="4rem"
+      className="inner-container"
+      display={{ xs: "flex", md: "block" }}
+      alignItems="center"
+      flexDirection="column"
+    >
       <SubTitle
         title="Powering User Innovation"
         icon
@@ -17,10 +23,11 @@ const UserInnovation: FunctionComponent = () => {
       <Box
         margin="auto"
         display="flex"
-        gap={12}
-        mt={8}
+        gap={{ md: 8, sm: 6, xs: 4 }}
+        mt={{ md: 8, sm: 4, xs: 2 }}
         justifyContent="center"
         alignItems="center"
+        flexWrap="wrap"
       >
         <Card
           image="/images/userinnovation1.svg"
