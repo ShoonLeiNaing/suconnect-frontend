@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+/* eslint-disable camelcase, no-nested-ternary */
 
 import { FunctionComponent, useState, SyntheticEvent } from "react";
 import {
@@ -22,8 +22,9 @@ import SmallButton from "../Button/SmallButton";
 import styles from "./accordion.module.css";
 import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 import { createAddress } from "../../api/address/create";
+import { editAddress } from "../../api/address/edit";
 
-const AddressSchema = Yup.object().shape({
+const CourseSchema = Yup.object().shape({
   house_number: Yup.string().required("House number is required"),
   street_name: Yup.string().required("Street name is required"),
   township: Yup.string().required("Township is required"),
@@ -86,17 +87,13 @@ const AccordionComponent: FunctionComponent<IProps> = ({
   const [expanded, setExpanded] = useState<string | false>(
     isOpen || isNew ? `panel${orderNo}` : ""
   );
-  const [cardTitle, setCardTitle] = useState(data?.save_name);
-  const updateTitle = (event: any) => {
-    setCardTitle(event.target.value);
-  };
 
   const handleChangeAccordionPanel =
     (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
 
-  const editAddress = () => {
+  const clickEdit = () => {
     setEdit(true);
     handleChangeAccordionPanel(`panel${orderNo}`);
   };
@@ -119,7 +116,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
       <Toaster />
       <Formik
         initialValues={initialValues}
-        validationSchema={AddressSchema}
+        validationSchema={CourseSchema}
         onSubmit={async (values, actions) => {
           setLoading(true);
           if (isNew) {
@@ -138,8 +135,20 @@ const AccordionComponent: FunctionComponent<IProps> = ({
               setStateUpdate(!stateUpdate);
             }
           } else {
-            // console.log("hehe");
-            // do something
+            const res = await editAddress(data?.id, values);
+            if (res.code === "ERR_BAD_REQUEST") {
+              toast.error("Something went wrong", {
+                position: "top-right",
+                className: "hot-toast",
+              });
+            } else {
+              setEdit(false);
+              toast.success("Address edited successfully", {
+                position: "top-right",
+                className: "hot-toast",
+              });
+              setStateUpdate(!stateUpdate);
+            }
           }
           setLoading(false);
         }}
@@ -250,7 +259,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
 
                 <Box className="flex-col px-6">
                   <Box className="flex justify-end mt-4 mb-4 gap-4">
-                    {!edit && isNew && (
+                    {/* {!edit && isNew && (
                       <OutlineWhiteButton
                         text="Cancel"
                         customWidth="80px"
@@ -259,19 +268,45 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                           setAdd(false);
                         }}
                       />
-                    )}
+                    )} */}
                     {!edit && isNew ? (
-                      <SmallButton
-                        text="Create"
-                        customHeight="40px"
-                        type="submit"
-                        loading={loading}
-                      />
+                      <>
+                        <OutlineWhiteButton
+                          text="Cancel"
+                          customWidth="80px"
+                          onClickHandler={() => {
+                            setEdit(!edit);
+                            setAdd(false);
+                          }}
+                        />
+                        <SmallButton
+                          text="Create"
+                          customHeight="40px"
+                          type="submit"
+                          loading={loading}
+                        />
+                      </>
+                    ) : edit ? (
+                      <>
+                        <OutlineWhiteButton
+                          text="Cancel"
+                          customWidth="80px"
+                          onClickHandler={() => {
+                            setEdit(!edit);
+                          }}
+                        />
+                        <SmallButton
+                          text="Save"
+                          customHeight="40px"
+                          type="submit"
+                          loading={loading}
+                        />
+                      </>
                     ) : (
                       <SmallButton
                         text="Edit"
                         customHeight="40px"
-                        onClickHandler={editAddress}
+                        onClickHandler={clickEdit}
                       />
                     )}
                   </Box>

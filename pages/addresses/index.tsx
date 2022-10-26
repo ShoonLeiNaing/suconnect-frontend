@@ -146,15 +146,15 @@ const Addresses = ({ addresses }: any) => {
               isOpen={index === 0}
               orderNo={index + 1}
               bgColor={generateColor(index + 1)}
+              {...{ stateUpdate, setStateUpdate }}
             />
           ))}
           {add && (
             <AccordionComponent
               orderNo={data.length + 1}
               bgColor={generateColor(data.length + 1)}
-              setAdd={setAdd}
               isNew
-              {...{ stateUpdate, setStateUpdate }}
+              {...{ stateUpdate, setStateUpdate, setAdd }}
             />
           )}
         </Box>

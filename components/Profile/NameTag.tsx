@@ -24,7 +24,7 @@ const NameTag: FunctionComponent<IProps> = ({
         alt="nametag"
       />
       <Box mx={2} className="cursor">
-        <Typography fontWeight={600} fontSize="18px">
+        <Typography fontWeight={600} className="text-base md:text-lg">
           {name}{" "}
           {previousPage && (
             <>

@@ -22,13 +22,19 @@ const breadCrumbsData = [
 
 const EditProfile = () => {
   return (
-    <Layout allowToggle={false} data={navigation} panel="panel3">
-      <Box color="black" className="container" px={7}>
-        <BreadcrumbsComponent
-          currentPage="Edit Profile"
-          previousPages={breadCrumbsData}
-        />
-        <NameTag name="Thiha Swan Htet" currentPage="Update Profile" />
+    <Layout allowToggle={false} data={navigation} panel="panel3" hiddenFooter>
+      <Box
+        color="black"
+        className="container"
+        px={{ lg: 6, md: 4, sm: 4, xs: 2 }}
+      >
+        <Box>
+          <BreadcrumbsComponent
+            currentPage="Edit Profile"
+            previousPages={breadCrumbsData}
+          />
+          <NameTag name="Thiha Swan Htet" currentPage="Update Profile" />
+        </Box>
         <UpdateProfileForm />
       </Box>
     </Layout>

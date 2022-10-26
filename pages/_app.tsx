@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "react-phone-number-input/style.css";
 import { appWithTranslation } from "next-i18next";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { wrapper } from "../redux/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const theme = createTheme({
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     },
   });
   return (
+    // <Provider store={store}>
     <ThemeProvider theme={theme}>
       <NextNProgress
         color="#3B8CF7"
@@ -25,7 +27,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
       <Component {...pageProps} />
     </ThemeProvider>
+    // </Provider>
   );
 }
 
-export default appWithTranslation(MyApp);
+export default wrapper.withRedux(appWithTranslation(MyApp));

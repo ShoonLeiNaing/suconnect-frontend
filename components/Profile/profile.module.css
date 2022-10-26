@@ -13,6 +13,7 @@
   color: #bbbbbb;
   font-size: 14px;
   margin-top: 2px;
+  text-align: center;
 }
 .edit_btn {
   display: flex;
@@ -45,4 +46,28 @@
   width: 45px;
   border-radius: 10px;
   margin: auto;
+}
+
+.input_boxes {
+  width: 100%;
+}
+
+.bio_input,
+.phone_boxes {
+  width: 350px;
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+  .input_boxes,
+  .phone_boxes,
+  .bio_input {
+    width: 100%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1120px) {
+  .input_boxes,
+  .bio_input {
+    width: 350px;
+  }
 }
