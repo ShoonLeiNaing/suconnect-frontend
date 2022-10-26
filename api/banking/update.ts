@@ -1,12 +1,8 @@
 import { axiosInstance } from "../axios";
-import { encodeString } from "../../utils/common/encodeString";
 
 export const updateBankAccount = async (id: number, values: any) => {
-    const encoded = encodeString("['bankaccount-details']");
-
   try {
-    const res = await axiosInstance.put(`/bankaccounts/${id}?expand=${encoded}`, 
-    { ...values, account: 1,},
+    const res = await axiosInstance.put(`/bankaccounts/${id}`,  values,
     {
       headers: {
         Accept: "application/json",

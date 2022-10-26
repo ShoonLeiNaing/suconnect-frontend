@@ -23,6 +23,7 @@ import BankingInfoEditCard from "./BankInfoEditCard";
 import SmallButton from "../Button/SmallButton";
 import { createBankAccount } from "../../api/banking/create";
 import { updateBankAccount } from "../../api/banking/update";
+import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 const BankAccountSchema = Yup.object().shape({
   owner_name: Yup.string().required("Bank account name is required"),
@@ -78,11 +79,6 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
     account: 1 || data?.account,
   };
 
-  const [bank, setBank] = useState(initialValues?.bank_type);
-  const selectBankType = (event: SelectChangeEvent) => {
-    setBank(event.target.value as string);
-  };
-
   return (
     <Box>
       <Toaster />
@@ -107,25 +103,20 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
               setStateUpdate(!stateUpdate);
             }
           } else {
-            console.log("hehe");
-          }
-          if(edit) {
-            const res = await updateBankAccount(1, values);
+            const res = await updateBankAccount(data?.id, values);
             if (res.code === "ERR_BAD_REQUEST") {
               toast.error("Something went wrong", {
                 position: "top-right",
                 className: "hot-toast",
               });
             } else {
-              setAdd(false);
+              setEdit(false);
               toast.success("Bank Acccount updated successfully", {
                 position: "top-right",
                 className: "hot-toast",
               });
               setStateUpdate(!stateUpdate);
             }
-          }else {
-            console.log("hehe");
           }
           setLoading(false);
         }}
@@ -140,13 +131,13 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
                     className="flex p-6 rounded-t-xl justify-between items-center text-white py-6"
                   >
                     <Typography fontSize="17px" color={colors.black.black2}>
-                      {initialValues?.save_name}
+                      {values?.save_name}
                     </Typography>
                   </Box>
                   <Box className="bg-white p-4 mb-4 rounded-b-xl">
                     <Box mb={3}>
                       <InputLabel label="Bank Account Name" />
-                      <StaticInput isLocked value={initialValues?.owner_name} />
+                      <StaticInput isLocked value={values?.owner_name} />
                     </Box>
                     <Box mb={3}>
                       <InputLabel label="Bank Type" />
@@ -159,8 +150,7 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
                         className={styles.form_control}
                       >
                         <Select
-                          value={bank}
-                          onChange={selectBankType}
+                          value={values?.bank_type}
                           input={<BootstrapInput />}
                           className={styles.select_box}
                         >
@@ -173,7 +163,7 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
                     </Box>
                     <Box mb={3}>
                       <InputLabel label="Bank Account Number" />
-                      <StaticInput isLocked value={initialValues?.number} />
+                      <StaticInput isLocked value={values?.number} />
                     </Box>
 
                     <Box className="flex justify-end mt-4">
@@ -203,12 +193,11 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
                     setStateUpdate,
                     isNew,
                     loading,
-                    data,
                   }}
                 />
               )}
-              {!setAdd && !isNew && <CardStatus data={data} />}
             </Box>
+            {!setAdd && !isNew && <CardStatus data={data} />}
           </form>
         )}
       </Formik>
