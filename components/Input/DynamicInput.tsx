@@ -7,7 +7,6 @@ interface IProps {
   id?: string;
   name?: string;
   value: string;
-  setValue?: any;
   onChangeHandler?: any;
   isTextArea?: boolean;
   customWidth?: any;
@@ -23,7 +22,6 @@ const DynamicInput: FunctionComponent<IProps> = ({
   name,
   value,
   isTextArea,
-  setValue,
   maxiWidth,
   maxiHeight,
   customType,
@@ -34,17 +32,21 @@ const DynamicInput: FunctionComponent<IProps> = ({
 }) => {
   if (isTextArea) {
     return (
-      <Box color={colors.black.black2} maxWidth={maxiWidth} height={maxiHeight}>
+      <Box
+        border="1px solid grey"
+        borderRadius="15px"
+        color={colors.black.black2}
+        maxWidth={maxiWidth}
+        height={maxiHeight}
+      >
         <textarea
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onChangeHandler}
           placeholder={placeholder}
           style={{
             height: maxiHeight,
-            width: customWidth,
+            width: customWidth || "100%",
             maxWidth: maxiWidth,
-            border: "1px solid grey",
-            borderRadius: "15px",
           }}
           className="bg-transparent py-[10px] px-[15px] text-[15px]"
         />
@@ -66,7 +68,6 @@ const DynamicInput: FunctionComponent<IProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChangeHandler}
-        // onChange={(e) => setValue(e.target.value)}
         style={{
           height: customHeight,
           width: customWidth || maxiWidth,

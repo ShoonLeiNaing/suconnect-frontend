@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { colors } from "../../data/constant";
+import SmallButton from "../Button/SmallButton";
 
 interface IProps {
   handleNext?: any;
@@ -33,7 +34,7 @@ const PaginationButton: FunctionComponent<IProps> = ({
       <Typography
         fontSize="15px"
         className="flex gap-2 items-center"
-        onClick={() => handleNext()}
+        onClick={handleNext}
       >
         {nextBtnTitle} <IoIosArrowForward fontSize="20px" />
       </Typography>
