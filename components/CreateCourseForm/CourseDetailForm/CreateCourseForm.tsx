@@ -197,6 +197,7 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                 <Box>
                   <InputLabel label="Course description" />
                   <DynamicInput
+                    customWidth="100%"
                     value={values.description}
                     onChangeHandler={(e: any) => {
                       setFieldValue("description", e.target.value);

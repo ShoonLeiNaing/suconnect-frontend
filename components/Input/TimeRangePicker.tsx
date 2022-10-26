@@ -1,19 +1,15 @@
 /* eslint-disable array-callback-return */
 
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import moment from "moment";
 import { TimePicker } from "@mui/x-date-pickers";
 import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import InputLabel from "./InputLabel";
-import NumberInput from "./NumberInput";
-import AMPMInput from "./AMPMInput";
 import { colors } from "../../data/constant";
-import SmallButton from "../Button/SmallButton";
-import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 interface IProps {
   time?: any;
@@ -32,8 +28,8 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
   separated,
   selectedDays,
 }) => {
-  const [startTime, setStartTime] = useState<Dayjs | null>(null);
-  const [endTime, setEndTime] = useState<Dayjs | null>(null);
+  const [startTime, setStartTime] = useState<Dayjs | null | any>(null);
+  const [endTime, setEndTime] = useState<Dayjs | null | any>(null);
 
   const startTimeChangeHandler = (e: any) => {
     if (separated && day) {
@@ -62,7 +58,7 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
     }
   };
 
-  const endTimeChangeHandler = (e) => {
+  const endTimeChangeHandler = (e: any) => {
     if (separated && day) {
       let temp: any = time?.filter((item: any) => Object.keys(item)[0] !== day);
       temp = [

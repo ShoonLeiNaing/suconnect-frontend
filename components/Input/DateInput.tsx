@@ -12,6 +12,7 @@ interface IProps {
   setDateValue?: any;
   color?: string;
   onChangeHandler?: any;
+  maxWidth?: string;
 }
 
 const DateInput: FunctionComponent<IProps> = ({
@@ -21,6 +22,7 @@ const DateInput: FunctionComponent<IProps> = ({
   setDateValue,
   color,
   onChangeHandler,
+  maxWidth,
 }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -34,7 +36,7 @@ const DateInput: FunctionComponent<IProps> = ({
           <TextField
             sx={{
               width: customWidth && customWidth,
-
+              maxWidth: maxWidth && maxWidth,
               "& .MuiInputBase-input": {
                 height: customHeight || "10px",
                 color: color && color,

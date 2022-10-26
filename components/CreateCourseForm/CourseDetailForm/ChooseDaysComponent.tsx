@@ -169,12 +169,6 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
             labelText="Choose course time"
             {...{ time, setTime, selectedDays }}
           />
-
-          {total > 0 && selectedDays?.length > 0 && (
-            <Box mt={2} color={colors.black.black2} fontSize="14px">
-              Total {total} course days for the course
-            </Box>
-          )}
         </Box>
       ) : (
         <Box my={3}>
@@ -191,7 +185,11 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
           ))}
         </Box>
       )}
-
+      {total > 0 && selectedDays?.length > 0 && (
+        <Box mt={2} color={colors.black.black2} fontSize="14px">
+          Total {total} course days for the course
+        </Box>
+      )}
       {selectedDays?.length > 0 && (
         <Box display="flex" justifyContent="flex-end" pr={1} my={2}>
           <SmallButton
