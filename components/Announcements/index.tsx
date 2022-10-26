@@ -19,7 +19,7 @@ const breakpoints = {
   750: {
     slidesPerView: 3,
   },
-  1100: { slidesPerView: 4 },
+  1300: { slidesPerView: 4 },
 };
 
 const Announcements = () => {
@@ -77,7 +77,11 @@ const Announcements = () => {
             bgColor={colors.white.white2}
           />
         </Box>
-        <Box display="block" width="100%">
+        <Box
+          display="block"
+          width={{ xl: "100%", md: "90%", xs: "100%" }}
+          margin="auto"
+        >
           <CardCarousel breakpoints={breakpoints} maxWidth="100%">
             {announcements.map((announcement, index) => (
               <SwiperSlide key={index}>
