@@ -7,17 +7,14 @@ interface IProps {
   id?: string;
   name?: string;
   value: string;
-  setValue?: any;
   onChangeHandler?: any;
   isTextArea?: boolean;
-  customWidth?: string;
+  customWidth?: any;
   customHeight?: string;
   maxiWidth?: string;
   maxiHeight?: string;
   customType?: string;
   placeholder?: string;
-  customBorderRadius?: string;
-  bgColor?: string;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
@@ -25,37 +22,31 @@ const DynamicInput: FunctionComponent<IProps> = ({
   name,
   value,
   isTextArea,
-  setValue,
   maxiWidth,
   maxiHeight,
   customType,
   customWidth,
   customHeight,
   placeholder,
-  customBorderRadius,
   onChangeHandler,
-  bgColor,
 }) => {
   if (isTextArea) {
     return (
       <Box
+        border="1px solid grey"
+        borderRadius="15px"
         color={colors.black.black2}
         maxWidth={maxiWidth}
         height={maxiHeight}
-        // borderRadius={customBorderRadius}
-        // border="1px solid grey"
       >
         <textarea
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onChangeHandler}
           placeholder={placeholder}
           style={{
             height: maxiHeight,
-            width: customWidth,
+            width: customWidth || "100%",
             maxWidth: maxiWidth,
-            border: "1px solid grey",
-            borderRadius: customBorderRadius,
-            backgroundColor: bgColor
           }}
           className="bg-transparent py-[10px] px-[15px] text-[15px]"
         />
@@ -68,19 +59,18 @@ const DynamicInput: FunctionComponent<IProps> = ({
       maxWidth={maxiWidth}
       height={customHeight}
       paddingX={2}
-      borderRadius={customBorderRadius}
       border="1px solid grey"
+      borderRadius="15px"
     >
       <input
         type={customType}
         className={styles.input}
         placeholder={placeholder}
         value={value}
-        // onChange={onChangeHandler}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={onChangeHandler}
         style={{
           height: customHeight,
-          width: customWidth || maxiWidth || "350px",
+          width: customWidth || maxiWidth,
         }}
         id={id}
         name={name}
@@ -91,10 +81,9 @@ const DynamicInput: FunctionComponent<IProps> = ({
 
 DynamicInput.defaultProps = {
   isTextArea: false,
-  customWidth: "350px",
+  customWidth: { lg: "350px", sm: "350px" },
   customType: "text",
   maxiHeight: "120px",
-  customBorderRadius: "15px",
   customHeight: "55px",
 };
 

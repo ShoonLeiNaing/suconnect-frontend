@@ -44,7 +44,11 @@ const Layout: FunctionComponent<IProps> = ({
       ) : (
         <Box>
           <Navbar changeLanguage={changeLanguage} />
-          <Box>{children}</Box>
+          <Box
+            sx={{
+              paddingX: 2
+            }}
+          >{children}</Box>
         </Box>
       )}
       {hiddenFooter ? "" : <Footer />}

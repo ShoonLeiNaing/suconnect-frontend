@@ -50,9 +50,7 @@ const Schedules: FunctionComponent<IProps> = ({
     index: null,
     filterParam: "",
   });
-
-  console.log({ courses, classifications });
-
+  
   const filterOptions = [
     {
       text: "Courses",

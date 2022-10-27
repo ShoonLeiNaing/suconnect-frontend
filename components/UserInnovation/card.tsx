@@ -24,19 +24,22 @@ const Card: FunctionComponent<CardProps> = ({
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      width={{ lg: "330px", md: "280px", sm: "200px", xs: "80%" }}
       // cursor="pointer"
     >
-      <Image src={image} width={200} height={200} />
+      <Box width={{ lg: "200px", md: "150px", sm: "100px", xs: "150px" }}>
+        <Image src={image} width={200} height={200} />
+      </Box>
       <Typography
         fontWeight={500}
-        fontSize="20px"
+        fontSize={{ md: "20px", sm: "16px" }}
         marginTop="1rem"
         color={titleColor}
       >
         {title}
       </Typography>
       <Typography
-        fontSize="16px"
+        fontSize={{ md: "16px", xs: "14px" }}
         marginTop="0.6rem"
         textAlign="center"
         color={textColor}

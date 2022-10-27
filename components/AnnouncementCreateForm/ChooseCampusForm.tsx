@@ -42,7 +42,7 @@ const ChooseCampusForm: FunctionComponent<IProps> = ({
     }
   };
 
-  console.log({ selectedValues });
+  // console.log({ selectedValues });
   return (
     <>
       <Box

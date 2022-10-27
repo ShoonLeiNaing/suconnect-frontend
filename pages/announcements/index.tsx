@@ -106,7 +106,7 @@ const AnnouncementUserView: FunctionComponent<IProps> = ({ announcements }) => {
                 <SmallButton
                   text="Create"
                   customHeight="45px"
-                  customPaddingX="15px"
+                  // customPaddingX="15px"
                 />
                 <IconButton
                   icon={<BiRefresh fontSize="24px" />}

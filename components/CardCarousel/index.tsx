@@ -7,19 +7,14 @@ import { Swiper } from "swiper/react";
 interface IProps {
   children: any;
   maxWidth?: any;
+  breakpoints?: any;
 }
 
-const breakpoints = {
-  0: {
-    slidesPerView: 2,
-  },
-  750: {
-    slidesPerView: 3,
-  },
-  1400: { slidesPerView: 4 },
-};
-
-const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
+const CardCarousel: FunctionComponent<IProps> = ({
+  children,
+  maxWidth,
+  breakpoints,
+}) => {
   return (
     <Box>
       <Box
@@ -27,7 +22,7 @@ const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
         maxWidth={maxWidth}
         py={4}
         zIndex={10}
-        sx={{ display: { xs: "none", sm: "block" } }}
+        // sx={{ display: { xs: "none", sm: "block" } }}
       >
         <Swiper
           pagination={{
@@ -35,7 +30,7 @@ const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
             clickable: true,
           }}
           breakpoints={breakpoints}
-          slidesPerView={4}
+          // slidesPerView={4}
           modules={[Pagination, Navigation]}
           navigation
         >
@@ -43,7 +38,7 @@ const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
         </Swiper>
       </Box>
 
-      <Box
+      {/* <Box
         width="100%"
         maxWidth="350px"
         py={1}
@@ -60,7 +55,7 @@ const CardCarousel: FunctionComponent<IProps> = ({ children, maxWidth }) => {
         >
           {children}
         </Swiper>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

@@ -4,11 +4,13 @@ import { colors } from "../../data/constant";
 import SubTitle from "../SubTitle";
 import Tagline from "../SubTitle/Tagline";
 import Card from "./card";
+import styles from "./benefits.module.css"
 
 const Benefit: FunctionComponent = () => {
   return (
     <div className="relative">
       <img
+        className={styles.bg_element}
         style={{
           position: "absolute",
           top: "-10rem",
@@ -18,14 +20,17 @@ const Benefit: FunctionComponent = () => {
         src="../../images/bgelement4.svg"
         alt=""
       />
-      <Box marginY="4rem" className="inner-container">
+      <Box marginY="4rem" className="inner-container" display={{xs: "flex", md: "block"}}
+        alignItems="center"
+        flexDirection="column"
+      >
         <SubTitle
           title="Benefits"
           icon
           color={colors.primaryColors.yellow.yellow1}
         />
         <Tagline text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac ultrices nunc commodo nunc consequat." />
-        <Box margin="auto" display="flex" gap={2} mt={4}>
+        <Box margin="auto" display="flex" gap={2} mt={4} flexWrap="wrap" justifyContent="center">
           <Card icon="/images/benefit1.svg" title="Organized" />
           <Card icon="/images/benefit2.svg" title="Self-manage" />
           <Card icon="/images/benefit3.svg" title="Customization" />

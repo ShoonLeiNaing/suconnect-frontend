@@ -24,7 +24,7 @@ import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 import { createAddress } from "../../api/address/create";
 import { editAddress } from "../../api/address/edit";
 
-const AddressSchema = Yup.object().shape({
+const CourseSchema = Yup.object().shape({
   house_number: Yup.string().required("House number is required"),
   street_name: Yup.string().required("Street name is required"),
   township: Yup.string().required("Township is required"),
@@ -87,10 +87,6 @@ const AccordionComponent: FunctionComponent<IProps> = ({
   const [expanded, setExpanded] = useState<string | false>(
     isOpen || isNew ? `panel${orderNo}` : ""
   );
-  const [cardTitle, setCardTitle] = useState(data?.save_name);
-  const updateTitle = (event: any) => {
-    setCardTitle(event.target.value);
-  };
 
   const handleChangeAccordionPanel =
     (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
@@ -120,7 +116,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
       <Toaster />
       <Formik
         initialValues={initialValues}
-        validationSchema={AddressSchema}
+        validationSchema={CourseSchema}
         onSubmit={async (values, actions) => {
           setLoading(true);
           if (isNew) {
