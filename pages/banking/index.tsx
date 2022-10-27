@@ -79,7 +79,6 @@ const Banking = ({ bankAccounts }: any) => {
 
   useEffect(() => {
     fetchBankAccounts();
-    console.log("smth");
   }, [stateUpdate]);
 
   const handleDelete = () => {};

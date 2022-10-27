@@ -9,6 +9,16 @@ import PreviousPage from "../PreviousPage";
 import SubTitle from "../SubTitle";
 import styles from "./announcementDetail.module.css";
 
+const breakpoints = {
+  520: {
+    slidesPerView: 2,
+  },
+  750: {
+    slidesPerView: 3,
+  },
+  1400: { slidesPerView: 4 },
+};
+
 const AnnouncementDetailComponent = () => {
   return (
     <Box maxWidth="1400px" margin="auto">
@@ -101,7 +111,7 @@ const AnnouncementDetailComponent = () => {
             />
           </Box>
           <Box className={styles.carousel_container}>
-            <CardCarousel maxWidth="100%">
+            <CardCarousel maxWidth="100%" breakpoints={breakpoints}>
               <SwiperSlide>
                 <GridCard color={colors.primaryColors.lightblue.lightblue1} />
               </SwiperSlide>

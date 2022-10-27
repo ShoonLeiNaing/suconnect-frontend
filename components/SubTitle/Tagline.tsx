@@ -13,6 +13,7 @@ const Tagline: FunctionComponent<IProps> = ({ text }) => {
       maxWidth="500px"
       color={colors.grey.grey2}
       sx={{ zIndex: 2, position: "relative" }}
+      textAlign={{xs: "center", md: "left"}}
     >
       {text}
     </Typography>

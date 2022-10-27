@@ -14,10 +14,16 @@ const ViewProfileForm = () => {
     <Box
       my={4}
       mx={2}
-      className="flex flex-col md:flex-row justify-center items-center"
+      flexWrap={{ lg: "unset", md: "wrap" }}
+      className="flex flex-col md:flex-row  justify-center items-center "
     >
-      <Box className="w-full md:px-4">
-        <Box display="flex" flexDirection="column" alignItems="center">
+      <Box className="xl:w-full md:w-50% lg:px-4 sm:px-2">
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
           <img
             src="/images/profile.jpeg"
             alt="profile"
@@ -69,17 +75,19 @@ const ViewProfileForm = () => {
             </Box>
           </Box>
 
-          <Box mb={3} className={styles.input_boxes}>
-            <InputLabel label="Bio" />
-            <StaticInput
-              isLocked
-              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing "
-              isTextArea
-            />
+          <Box>
+            <Box mb={3} className={styles.input_boxes}>
+              <InputLabel label="Bio" />
+              <StaticInput
+                isLocked
+                value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing "
+                isTextArea
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
-      <Box className="w-full md:px-4 flex flex-col justify-center items-center lg:jusitfy-start lg:items-start md:mb-16">
+      <Box className="xl:w-full md:px-4 flex flex-col justify-center items-center lg:jusitfy-start lg:items-start md:mb-16">
         <Box mb={3} className={styles.input_boxes}>
           <InputLabel label="Email" />
           <StaticInput isLocked value="ThihaSwanHtet@gmail.com" />

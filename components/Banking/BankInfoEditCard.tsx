@@ -141,7 +141,7 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
             </Typography>
           )}
         </Box>
-        <Box className="flex items-center justify-end mt-4 mb-4 gap-4">
+        <Box className="flex items-center justify-end mt-4  gap-4">
           {!edit && isNew && (
             <OutlineWhiteButton
               text="Cancel"
@@ -151,6 +151,14 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
                 setEdit(!edit);
                 setAdd(false);
               }}
+            />
+          )}
+          {edit && (
+            <OutlineWhiteButton
+              text="Cancel"
+              customWidth="80px"
+              customHeight="38px"
+              onClickHandler={() => setEdit(false)}
             />
           )}
           <SmallButton

@@ -1,19 +1,27 @@
 import { Box, Typography } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { useState } from "react";
+import { FunctionComponent } from "react";
 
-const AMPMInput = () => {
-  const [meridiem, setMeridiem] = useState(true);
+interface IProps {
+  time: any;
+  setTime: any;
+  type: string;
+}
 
+const AMPMInput: FunctionComponent<IProps> = ({ time, setTime, type }) => {
   const handleClick = () => {
-    setMeridiem(!meridiem);
+    if (time[type].prefix === "AM") {
+      setTime({ ...time, [type]: { ...time[type], prefix: "PM" } });
+    } else {
+      setTime({ ...time, [type]: { ...time[type], prefix: "AM" } });
+    }
   };
 
   return (
     <Box className="w-10 flex items-center text-[#737373]">
       <Typography mr="6px" fontSize="12px">
-        {meridiem ? "AM" : "PM"}
+        {time[type].prefix}
       </Typography>
       <Box>
         <KeyboardArrowUpIcon fontSize="small" onClick={handleClick} />
