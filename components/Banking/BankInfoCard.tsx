@@ -9,7 +9,6 @@ import {
   FormControl,
   MenuItem,
   Select,
-  SelectChangeEvent,
 } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -23,7 +22,6 @@ import BankingInfoEditCard from "./BankInfoEditCard";
 import SmallButton from "../Button/SmallButton";
 import { createBankAccount } from "../../api/banking/create";
 import { updateBankAccount } from "../../api/banking/update";
-import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 const BankAccountSchema = Yup.object().shape({
   owner_name: Yup.string().required("Bank account name is required"),

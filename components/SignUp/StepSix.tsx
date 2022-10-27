@@ -57,26 +57,28 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       justifyContent="center"
       alignItems="center"
       width="100%"
+      className="px-4 sm:px-6"
     >
-      <Box>
+      <Box maxWidth="500px" className="w-full">
       <Box className="w-full mb-2 -mt-4">
             <img
               alt="logo"
-              className="-ml-4"
+              className="hidden md:block -ml-4"
               style={{ height: "50px" }}
               src="/images/logo.svg"
             />
           </Box>
-        <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
+        <Typography className="text-[1.15rem] -mt-2 md:mt-0 sm:text-[1.3rem] md:text-xl text-[#737373] font-semibold w-full mb-8">
           Review your information...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[32rem] overflow-y-auto">
+        <Box className="w-full flex flex-col border px-6 py-6 sm:px-8 sm:py-7 md:py-8 md:px-10 rounded-xl max-h-[32rem] overflow-y-auto">
           <Box className="mb-6">
             <InputLabel label="Mail" isRequired />
             <DynamicInput
               value={mail}
               setValue={setMail}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="example@gmail.com"
             />
           </Box>
@@ -148,6 +150,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               value={mail}
               setValue={setMail}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="example@gmail.com"
             />
           </Box>
@@ -165,6 +168,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               value={houseNo}
               setValue={setHouseNo}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="Type number..."
             />
           </Box>
@@ -174,6 +178,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               value={blockNo}
               setValue={setBlockNo}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="Type here..."
             />
           </Box>
@@ -192,6 +197,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               value={township}
               setValue={setTownship}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. Insein"
             />
           </Box>
@@ -201,6 +207,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               value={city}
               setValue={setCity}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. Yangon"
             />
           </Box>
@@ -236,6 +243,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               value={postalCode}
               setValue={setPostalCode}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. 11361"
             />
           </Box>
@@ -272,6 +280,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               setValue={setName}
               placeholder="eg. Thiha Swan Htet"
               maxiWidth="500px"
+              customWidth="100%"
             />
           </Box>
           <Box>
@@ -281,6 +290,7 @@ const StepSix: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               setValue={setBankAccNo}
               placeholder="xxxx-xxxx-xxxx-xxxx"
               maxiWidth="500px"
+              customWidth="100%"
             />
           </Box>
         </Box>

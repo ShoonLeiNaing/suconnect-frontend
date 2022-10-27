@@ -21,27 +21,29 @@ const StepOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       justifyContent="center"
       alignItems="center"
       width="100%"
+      className="px-4 sm:px-6"
     >
-      <Box maxWidth="500px">
+      <Box maxWidth="500px" className="w-full">
         <Box className="w-full mb-8">
             <img
               alt="logo"
-              className="-ml-4"
+              className="hidden md:block -ml-4"
               style={{ height: "50px" }}
               src="/images/logo.svg"
             />
         </Box>
-        <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
+        <Typography className="text-[1.15rem] -mt-10 md:mt-0 sm:text-[1.3rem] md:text-xl text-[#737373] font-semibold w-full mb-8">
           Let&lsquo;s get started registeration...
         </Typography>
         <Box>
-          <Box className="w-full flex flex-col border py-8 px-10 rounded-xl">
+          <Box className="w-full flex flex-col border px-6 py-6 sm:px-8 sm:py-7 md:py-8 md:px-10 rounded-xl">
             <Box className="mb-6">
               <InputLabel label="Mail" isRequired />
               <DynamicInput
                 value={mail}
                 setValue={setMail}
                 maxiWidth="500px"
+                customWidth="100%"
                 placeholder="example@gmail.com"
               />
             </Box>

@@ -30,21 +30,22 @@ const StepTwo: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       justifyContent="center"
       alignItems="center"
       width="100%"
+      className="px-4 sm:px-6"
     >
       {/* <Box className="flex flex-col justify-center items-center bg-white px-24"> */}
-      <Box width="500px">
+      <Box maxWidth="500px" className="w-full">
         <Box className="w-full mb-2 -mt-4">
           <img
             alt="logo"
-            className="-ml-4"
+            className="hidden md:block -ml-4"
             style={{ height: "50px" }}
             src="/images/logo.svg"
           />
         </Box>
-        <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
+        <Typography className="text-[1.15rem] -mt-2 md:mt-0 sm:text-[1.3rem] md:text-xl text-[#737373] font-semibold w-full mb-8">
           Build a profile to tell who you are...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl">
+        <Box className="w-full flex flex-col border px-6 py-6 sm:px-8 sm:py-7 md:py-8 md:px-10 rounded-xl">
           <Box className="mb-6">
             <InputLabel label="Upload profile" />
             <Box className="w-fit ml-2 flex justify-center items-center relative">
@@ -77,7 +78,7 @@ const StepTwo: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <DateInput
               dateValue={date}
               setDateValue={setDate}
-              customWidth="70%"
+              customWidth="100%"
               customHeight="20px"
             />
           </Box>
