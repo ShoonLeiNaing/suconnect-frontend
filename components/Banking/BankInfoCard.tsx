@@ -78,7 +78,7 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
   };
 
   return (
-    <Box>
+    <Box className="flex flex-col items-center mx-10">
       <Toaster />
       <Formik
         initialValues={initialValues}
