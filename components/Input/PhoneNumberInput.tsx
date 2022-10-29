@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import styles from "./input.module.css";
 
 interface IProps {
-  width?: string;
+  width?: any;
 }
 
 const PhoneNumberInput: FunctionComponent<IProps> = ({ width }) => {
@@ -32,7 +32,7 @@ const PhoneNumberInput: FunctionComponent<IProps> = ({ width }) => {
 };
 
 PhoneNumberInput.defaultProps = {
-  width: "350px",
+  width: { lg: "350px", sm: "350px" },
 };
 
 export default PhoneNumberInput;

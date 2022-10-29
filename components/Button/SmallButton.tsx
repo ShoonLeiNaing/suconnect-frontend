@@ -10,8 +10,6 @@ interface IProps {
   onClickHandler?: any;
   customWidth?: string;
   customHeight?: string;
-  customPaddingX?: string;
-  customPaddingY?: string;
   customMarginX?: string;
   customFontSize?: string;
   customBorder?: string;
@@ -27,8 +25,6 @@ const SmallButton: FunctionComponent<IProps> = ({
   onClickHandler,
   customWidth,
   customHeight,
-  customPaddingX,
-  customPaddingY,
   customMarginX,
   customFontSize,
   customBorder,
@@ -102,8 +98,8 @@ const SmallButton: FunctionComponent<IProps> = ({
 
 SmallButton.defaultProps = {
   color: "white",
-  customPaddingX: "1rem",
-  customPaddingY: "4px",
+  // customPaddingX: "1rem",
+  // customPaddingY: "4px",
   type: "button",
   bgColor: colors.primaryColors.lightblue.lightblue1,
 };

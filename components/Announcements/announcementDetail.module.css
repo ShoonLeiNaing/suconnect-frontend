@@ -16,6 +16,13 @@
   max-width: 1180px;
 }
 
+/* Background Element */
+@media (max-width : 1000px) {
+  .bg_element {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .carousel_container {
     max-width: 900px;

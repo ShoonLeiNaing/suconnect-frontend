@@ -51,7 +51,7 @@ const AnnouncementDetailForm: FunctionComponent<IProps> = ({
       setCrop({ x: 0, y: 0 });
       setCroppedPixels({ height: 0, width: 0, x: 0, y: 0 });
     } catch (e) {
-      console.error(e);
+      // console.error(e);
     }
   }, [selectedImage, croppedPixels]);
 

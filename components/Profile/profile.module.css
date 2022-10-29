@@ -49,7 +49,7 @@
 }
 
 .input_boxes {
-  width: fit-content;
+  width: 100%;
 }
 
 .bio_input,
@@ -62,5 +62,12 @@
   .phone_boxes,
   .bio_input {
     width: 100%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1120px) {
+  .input_boxes,
+  .bio_input {
+    width: 350px;
   }
 }

@@ -246,8 +246,9 @@ const CourseDetailForm: FunctionComponent = () => {
         />
         <SmallButton
           text="View all in calendar"
-          customPaddingX="0.5rem"
-          customPaddingY="1.5rem"
+          customHeight="40px"
+          // customPaddingX="0.5rem"
+          // customPaddingY="1.5rem"
         />
       </Box>
     </Box>

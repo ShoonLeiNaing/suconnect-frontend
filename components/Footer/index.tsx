@@ -21,24 +21,21 @@ const Footer: FunctionComponent<FooterProps> = ({
   titleColor,
 }) => {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-    > 
+    <Box display="flex" flexDirection="column">
       <Box sx={{ backgroundColor, width: "100%", position: "relative" }}>
         <Box 
           className="max-w-screen-2xl py-10  px-16 m-auto"
           display="flex"
-          flexDirection={{xs: "column", sm: "row"}}
+          flexDirection={{ xs: "column", sm: "row" }}
           justifyContent="space-between"
-          alignItems={{xs: "left", sm: "center"}}
+          alignItems={{ xs: "left", sm: "center" }}
         >
-          <div className="flex flex-col mr-6">
+          <div className="flex flex-col mr-10">
             <Image
               height={50}
-              width={140}
+              width={180}
               // className="w-40"
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               layout="fixed"
             />
@@ -84,7 +81,7 @@ const Footer: FunctionComponent<FooterProps> = ({
               </a>
             </div>
           </div>
-          <div className="flex flex-col mt-8 mr-6">
+          <div className="flex flex-col mt-8 mr-10">
             <h4
               className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"
               style={{ color: titleColor }}
@@ -104,7 +101,7 @@ const Footer: FunctionComponent<FooterProps> = ({
               Link One
             </a>
           </div>
-          <div className="flex flex-col mt-8 mr-6">
+          <div className="flex flex-col mt-8 mr-10">
             <h4
               className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"
               style={{ color: titleColor }}

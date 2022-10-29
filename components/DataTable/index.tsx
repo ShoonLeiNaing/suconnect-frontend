@@ -7,17 +7,17 @@ import { courseData } from "../../data/testData";
 import Paginator from "../Paginator";
 
 const handleCellClick = (param: any, event: any) => {
-  console.log(param);
-  console.log(event);
+  // console.log(param);
+  // console.log(event);
   if (param.colIndex === 2) {
     event.stopPropagation();
   }
 };
 
 const handleRowClick = (param: any, event: any) => {
-  console.log("Row:");
-  console.log(param);
-  console.log(event);
+  // console.log("Row:");
+  // console.log(param);
+  // console.log(event);
 };
 
 const BootstrapDataGrid = styled(DataGrid)({

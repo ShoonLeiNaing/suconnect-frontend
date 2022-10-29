@@ -1,8 +1,7 @@
 // import { Box, Image, Text } from "@chakra-ui/react";
-import { Box, Icon, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { RiMoonClearLine } from "react-icons/ri";
-import { FiSun } from "react-icons/fi";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, FunctionComponent, useState } from "react";
 import { colors } from "../../data/constant";
@@ -25,33 +24,29 @@ const Navbar: FunctionComponent<IProps> = ({ changeLanguage }) => {
     });
   };
   return (
-    <Box
-      height="70px"
-      className={styles.navbar_container}
-      // sx={{ boxShadow: 3 }}
-      // w="100%"
-    >
+    <Box height="70px" className={styles.navbar_container}>
       <Box
-        // maxWidth="1600px"
         width="100%"
-        // margin="auto"
         height="70px"
         paddingX="80px"
         display="flex"
         alignItems="center"
         justifyContent="space-between"
       >
-        <Image
-          height={50}
-          width={140}
-          // className="w-40"
-          src="/images/logo.svg"
-          alt="logo"
-          layout="fixed"
-        />{" "}
+        <Link href="/">
+          <a>
+            <Image
+              height={50}
+              width={140}
+              src="/images/logo.svg"
+              alt="logo"
+              layout="fixed"
+            />
+          </a>
+        </Link>
+
         <Box
           flex="1"
-          // cursor="pointer"
           display="flex"
           justifyContent="flex-end"
           alignItems="center"

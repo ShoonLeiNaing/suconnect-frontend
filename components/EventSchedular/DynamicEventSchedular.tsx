@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Paper from "@mui/material/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
@@ -5,11 +7,10 @@ import {
   Appointments,
   Toolbar,
   DateNavigator,
-  TodayButton,
   MonthView,
-  ViewSwitcher,
   AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import { FunctionComponent } from "react";
 import moment from "moment";
 import { Box } from "@mui/material";
 import { FaGraduationCap } from "react-icons/fa";
@@ -17,7 +18,11 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 import { appointments } from "../../data/date";
 
-const DynamicEventSchedular = () => {
+interface IProps {
+  setShowEditEvent?: any;
+}
+
+const DynamicEventSchedular: FunctionComponent<IProps> = () => {
   const Header = ({ children, appointmentData, ...restProps }: any) => (
     <AppointmentTooltip.Header
       {...restProps}
