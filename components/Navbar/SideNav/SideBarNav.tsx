@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { FunctionComponent, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 import SideBarNavItems from "./SideBarNavItems";
 import styles from "../navbar.module.css";
@@ -20,16 +22,21 @@ const SideBarNav: FunctionComponent<IProps> = ({
   return (
     <Box
       minWidth={slideOpen ? "250px" : "95px"}
-      className="shadow-lg rounded-lg relative duration-550 px-6 sticky top-0 "
+      className="shadow-lg rounded-lg relative duration-550 pt-2 px-6 sticky top-0 "
       sx={{ display: { xs: "none", md: "block" } }}
       height="100vh"
     >
-      <img
-        alt="logo"
-        className={styles.navbar_logo}
-        style={{ height: slideOpen ? "50px" : "32px" }}
-        src={slideOpen ? "/images/logo.svg" : "/images/logosm.png"}
-      />
+      <Link href="/">
+        <a>
+          <Image
+            alt="logo"
+            className={styles.navbar_logo}
+            height={50}
+            width={200}
+            src={slideOpen ? "/images/logo.svg" : "/images/logosm.png"}
+          />
+        </a>
+      </Link>
 
       <SideBarNavItems data={data} status={slideOpen} panel={panel} />
       <Box

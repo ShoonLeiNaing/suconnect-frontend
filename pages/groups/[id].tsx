@@ -344,10 +344,7 @@ const GroupDetail: FunctionComponent<GroupDetailProps> = () => {
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
       {addMember || addGroup ? (
-        <AddMemberGroupScreen
-          addMember={addMember}
-          addGroup={addGroup}
-        />
+        <AddMemberGroupScreen addMember={addMember} addGroup={addGroup} />
       ) : (
         <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
           <BreadcrumbsComponent
@@ -367,7 +364,7 @@ const GroupDetail: FunctionComponent<GroupDetailProps> = () => {
             <DynamicInput
               value={description}
               setValue={setDescription}
-              bgColor="#F6F9FE"
+              // bgColor="#F6F9FE"
               customWidth="400px"
               isTextArea
             />

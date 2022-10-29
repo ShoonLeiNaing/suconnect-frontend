@@ -10,7 +10,7 @@ const ResetPasswordForm: FunctionComponent = () => {
   const [save, setSave] = useState(false);
 
   return (
-    <Box maxWidth="450px" margin="auto" my={6}>
+    <Box maxWidth="450px" margin="auto" my={4}>
       <Typography fontSize="20px" fontWeight={600}>
         Reset Password
       </Typography>
@@ -50,17 +50,11 @@ const ResetPasswordForm: FunctionComponent = () => {
         display="flex"
         alignItems="center"
         justifyContent="flex-end"
-        maxWidth="412px"
+        maxWidth="100%"
         mt={2}
+        gap={3}
       >
-        <SmallButton
-          text="Cancel"
-          bgColor="white"
-          customPaddingX="2rem"
-          color={colors.black.black1}
-          customFontSize="15px"
-          onClickHandler={() => setEdit(!edit)}
-        />
+        <Typography color={colors.grey.grey2}>Cancel</Typography>
         <SmallButton
           text="Save Changes"
           customHeight="40px"

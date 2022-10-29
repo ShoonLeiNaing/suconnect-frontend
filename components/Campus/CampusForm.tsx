@@ -44,14 +44,14 @@ const CampusForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
           </Box>
           <TimeRangePicker
             labelText="Available hours"
-            startHour={startHour}
-            endHour={endHour}
-            startMin={startMin}
-            endMin={endMin}
-            setStartHour={setStartHour}
-            setEndHour={setEndHour}
-            setStartMin={setStartMin}
-            setEndMin={setEndMin}
+            // startHour={startHour}
+            // endHour={endHour}
+            // startMin={startMin}
+            // endMin={endMin}
+            // setStartHour={setStartHour}
+            // setEndHour={setEndHour}
+            // setStartMin={setStartMin}
+            // setEndMin={setEndMin}
           />
           <Box>
             <InputLabel label="House number" />

@@ -350,7 +350,7 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
             <DynamicInput
               value={description}
               setValue={setDescription}
-              bgColor="#F6F9FE"
+              // bgColor="#F6F9FE"
               customWidth="400px"
               isTextArea
             />
