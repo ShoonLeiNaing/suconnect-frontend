@@ -27,13 +27,13 @@ const Footer: FunctionComponent<FooterProps> = ({
     > 
       <Box sx={{ backgroundColor, width: "100%", position: "relative" }}>
         <Box 
-          className="max-w-screen-2xl py-6  px-16 m-auto"
+          className="max-w-screen-2xl py-10  px-16 m-auto"
           display="flex"
           flexDirection={{xs: "column", sm: "row"}}
           justifyContent="space-between"
           alignItems={{xs: "left", sm: "center"}}
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col mr-6">
             <Image
               height={50}
               width={140}
@@ -42,7 +42,7 @@ const Footer: FunctionComponent<FooterProps> = ({
               alt="logo"
               layout="fixed"
             />
-            <p className="text-md mt-4 mb-6">
+            <p className="text-[.95rem] lg:text-base mt-4 mb-6">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             </p>
             <div className="flex">
@@ -84,9 +84,9 @@ const Footer: FunctionComponent<FooterProps> = ({
               </a>
             </div>
           </div>
-          <div className="flex flex-col mt-8">
+          <div className="flex flex-col mt-8 mr-6">
             <h4
-              className="text-xl mb-6 font-semibold"
+              className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"
               style={{ color: titleColor }}
             >
               Column One
@@ -104,9 +104,9 @@ const Footer: FunctionComponent<FooterProps> = ({
               Link One
             </a>
           </div>
-          <div className="flex flex-col mt-8">
+          <div className="flex flex-col mt-8 mr-6">
             <h4
-              className="text-xl mb-6 font-semibold"
+              className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"
               style={{ color: titleColor }}
             >
               Column Two
@@ -126,7 +126,7 @@ const Footer: FunctionComponent<FooterProps> = ({
           </div>
           <div className="flex flex-col mt-8">
             <h4
-              className="font-semibold text-xl mb-4"
+              className="font-semibold text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-4"
               style={{ color: titleColor }}
             >
               Follow Us
@@ -169,15 +169,15 @@ const Footer: FunctionComponent<FooterProps> = ({
           width: "100%",
         }}
       >
-        <div className="max-w-screen-2xl m-auto flex justify-between items-center py-4 lg:px-16 border-t border-[#252525]">
+        <div className="max-w-screen-2xl m-auto flex justify-between items-center py-4 px-6 sm:px-12 lg:px-16 border-t border-[#252525]">
           <p className="text-sm text-[#9C9C9C]">
             &copy;2022, All rights reserved.
           </p>
           <div className="flex flex-end">
-            <a href="#index" className="text-sm mr-6">
+            <a href="#index" className="text-sm mr-2 sm:mr-6">
               Privacy Policy
             </a>
-            <a href="#index" className="text-sm mr-6">
+            <a href="#index" className="text-sm mr-2 sm:mr-6">
               Terms of Service
             </a>
             <a href="#index" className="text-sm">
