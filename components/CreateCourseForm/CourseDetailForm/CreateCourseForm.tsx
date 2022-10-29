@@ -52,7 +52,7 @@ const CourseSchema = Yup.object().shape({
     .required("Course day is required"),
 });
 
-const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
+const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<any>([]);
   const [startDate, setStartDate] = useState<any>(Date.now());
@@ -76,7 +76,6 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   };
 
   const createCourseHandler = async (values: any) => {
-    // console.log({ hhe: values });
     setLoading(true);
     console.log({ values });
     await createCourse({
@@ -145,7 +144,7 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       <Toaster />
       <Formik
         initialValues={initialValues}
-        validationSchema={CourseSchema}
+        // validationSchema={CourseSchema}
         validate={(values) => {
           if (moment(values.end_date).isBefore(values.start_date)) {
             return {
@@ -154,7 +153,8 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
           }
         }}
         onSubmit={async (values, errors) => {
-          createCourseHandler(values);
+          handleNext();
+          // createCourseHandler(values);
         }}
       >
         {({
@@ -164,7 +164,6 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
           errors,
           touched,
           setFieldValue,
-          setFieldError,
           setErrors,
         }) => (
           <form onSubmit={handleSubmit}>
@@ -179,7 +178,6 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                     value={values.name}
                     onChangeHandler={(e: any) => {
                       handleChange(e);
-                      setErrors({ code: "hehe" });
                     }}
                     // onChangeHandler={() => {}}
                     id="name"
@@ -451,4 +449,4 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   );
 };
 
-export default StepperOne;
+export default CreateCourseDetailForm;

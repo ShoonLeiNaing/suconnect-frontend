@@ -6,7 +6,7 @@ import AddLectureForm from "../../components/CreateCourseForm/AddLecture/AddLect
 import AssignInstructorForm from "../../components/CreateCourseForm/AssignInstructorForm/AssignInstructorForm";
 import AssignStaffForm from "../../components/CreateCourseForm/AssignStaff/AssignStaffForm";
 import AssignStudentForm from "../../components/CreateCourseForm/AssignStudent/AssignStudentForm";
-import StepperOne from "../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm";
+import CreateCourseDetailForm from "../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm";
 import Layout from "../../components/Layout";
 import StepperComponent from "../../components/Stepper/Stepper";
 import { navigation } from "../../data/navigationData";
@@ -39,7 +39,7 @@ const CreateCourseForm = () => {
     {
       title: "Create course",
       component: (
-        <StepperOne
+        <CreateCourseDetailForm
           {...{
             handleNext,
           }}
@@ -70,7 +70,7 @@ const CreateCourseForm = () => {
     },
     {
       title: "Assign students",
-      component:  (
+      component: (
         <AssignStudentForm
           {...{
             handleNext,
@@ -81,7 +81,7 @@ const CreateCourseForm = () => {
     },
     {
       title: "Assign staff",
-      component:  (
+      component: (
         <AssignStaffForm
           {...{
             handleNext,

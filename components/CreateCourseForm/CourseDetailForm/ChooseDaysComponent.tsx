@@ -6,7 +6,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { colors } from "../../../data/constant";
 import SmallButton from "../../Button/SmallButton";
 import InputLabel from "../../Input/InputLabel";
-import TimeRangePicker from "../../Input/TimeRangePicker";
+import TimeRangePicker from "./TimeRangePicker";
 
 const sevenDays = [
   {

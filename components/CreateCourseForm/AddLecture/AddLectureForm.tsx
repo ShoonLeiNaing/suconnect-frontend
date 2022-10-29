@@ -1,7 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import { Box } from "@mui/material";
-import { useState, FunctionComponent } from "react";
+import { useState, FunctionComponent, useEffect } from "react";
 import { RiFilterFill } from "react-icons/ri";
+import { getEventsOfCourse } from "../../../api/events/getEventsOfCourse";
 import { colors } from "../../../data/constant";
 import DynamicEventSchedular from "../../EventSchedular/DynamicEventSchedular";
 import IconButton from "../../IconButton";
@@ -21,12 +22,24 @@ const AddLectureForm: FunctionComponent<IProps> = ({
   handleNext,
 }) => {
   const [searchText, setSearchText] = useState("");
+  const [course, setCourse] = useState<any>();
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
   const [showEditEvent, setShowEditEvent] = useState<boolean>(false);
   const [selectedEvent, setSelectedEvent] = useState<any>();
+  const [events, setEvents] = useState([]);
+
+  const fetchEvents = async () => {
+    const res = await getEventsOfCourse(36);
+    setCourse(res?.data);
+    setEvents(res?.data?.event_set);
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   return showAddEvent ? (
-    <LectureEventForm {...{ setShowForm: setShowAddEvent }} />
+    <LectureEventForm {...{ setShowForm: setShowAddEvent, course }} />
   ) : showEditEvent ? (
     <LectureEventForm {...{ setShowForm: setShowEditEvent, isEdit: true }} />
   ) : (
@@ -64,7 +77,9 @@ const AddLectureForm: FunctionComponent<IProps> = ({
           </Box>
         ) : (
           <Box paddingLeft={3}>
-            <DynamicEventSchedular {...{ setShowEditEvent }} />
+            <DynamicEventSchedular
+              {...{ setShowEditEvent, events, courseName: course?.name }}
+            />
           </Box>
         )}
       </Box>

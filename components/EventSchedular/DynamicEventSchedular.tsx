@@ -1,5 +1,6 @@
 import Paper from "@mui/material/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
+import { FunctionComponent } from "react";
 import {
   Scheduler,
   Appointments,
@@ -15,9 +16,21 @@ import { Box } from "@mui/material";
 import { FaGraduationCap } from "react-icons/fa";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
-import { appointments } from "../../data/date";
+import { generateEvents } from "../../utils/common/generateEvents";
 
-const DynamicEventSchedular = () => {
+interface IProps {
+  events: any;
+  setShowEditEvent: any;
+  courseName: string;
+}
+
+const DynamicEventSchedular: FunctionComponent<IProps> = ({
+  events,
+  setShowEditEvent,
+  courseName,
+}) => {
+  const modifiedEvents = generateEvents(events);
+  console.log({ events });
   const Header = ({ children, appointmentData, ...restProps }: any) => (
     <AppointmentTooltip.Header
       {...restProps}
@@ -91,7 +104,7 @@ const DynamicEventSchedular = () => {
   return (
     <Box pb={4} height="100%" overflow="scroll">
       <Paper>
-        <Scheduler data={appointments} height={700}>
+        <Scheduler data={modifiedEvents} height={700}>
           <ViewState
             defaultCurrentDate={moment().format("YYYY-MM-DD")}
             defaultCurrentViewName="Month"
