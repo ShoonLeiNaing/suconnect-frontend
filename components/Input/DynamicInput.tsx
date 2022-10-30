@@ -7,7 +7,6 @@ interface IProps {
   id?: string;
   name?: string;
   value: string;
-  setValue?: any;
   onChangeHandler?: any;
   isTextArea?: boolean;
   customWidth?: any;
@@ -16,6 +15,7 @@ interface IProps {
   maxiHeight?: string;
   customType?: string;
   placeholder?: string;
+  setValue?: any;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
@@ -23,7 +23,6 @@ const DynamicInput: FunctionComponent<IProps> = ({
   name,
   value,
   isTextArea,
-  setValue,
   maxiWidth,
   maxiHeight,
   customType,
@@ -31,6 +30,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
   customHeight,
   placeholder,
   onChangeHandler,
+  setValue,
 }) => {
   if (isTextArea) {
     return (

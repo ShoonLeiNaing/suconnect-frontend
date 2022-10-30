@@ -71,8 +71,6 @@ const Banking = ({ bankAccounts }: any) => {
   ];
 
   const fetchBankAccounts = async () => {
-    console.log("hello");
-
     const res = await getBankAccountsOfUser(1);
     setData(res.data?.bankaccount_set);
   };
@@ -159,9 +157,9 @@ const Banking = ({ bankAccounts }: any) => {
             </Box>
           </Box>
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mb={4}>
+        <Box display="flex" alignItems="center" mb={4}>
           {/* <Box className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"> */}
-          <Box className=" grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 xl:grid-cols-3 items-center gap-2 md:gap-4 xl:gap-12">
+          <Box className="flex flex-wrap gap-x-6 justify-center items-center ">
             {data?.map((bankAccount: any, index: number) => (
               <BankingInfoCard
                 data={bankAccount}

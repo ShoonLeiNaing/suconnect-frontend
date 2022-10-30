@@ -114,7 +114,7 @@ const SignUp: FunctionComponent = () => {
           setOpen={setShowPopUp}
         />
       )}
-      <Box className={`w-full flex items-center mb-0 sm:mb-2 sm:mt-2 md:hidden ${signUp ? "px-4" : "px-8" } sm:px-12`}>
+      <Box className="w-full flex items-center mb-0 sm:mb-2 sm:mt-2 md:hidden px-6">
         <Box className="w-full flex">
           <img
             alt="logo"
@@ -133,7 +133,7 @@ const SignUp: FunctionComponent = () => {
             <option value="my">မြန်မာ</option>
           </select>
         </Box>
-        <Box className={` ${signUp ? "hidden" : "flex" } md:hidden `}>
+        <Box className={` ${signUp ? "hidden" : "flex"} md:hidden `}>
           <svg
             width="80"
             height="41"
@@ -155,19 +155,27 @@ const SignUp: FunctionComponent = () => {
       </Box>
 
       <Box
-        className={` ${
-          signUp && screenWidth <= 1000 ? "hidden" : "flex"
-        } justify-center items-center bg-[#F6F9FE] h-screen w-full py-8`}
-        flex={1}
+        width={{ lg: "40%", md: "30%", sm: "100%" }}
+        className="flex justify-center items-center md:bg-[#F6F9FE] h-screen w-full py-4"
+        flex={{ sm: 1, xs: signUp ? 0 : 0.5 }}
+        // flex={{ xs: 0 }}
       >
-        <Image src={image} height={450} width={450} />
+        <Box
+          display={{ sm: "block", xs: signUp ? "none" : "block" }}
+          height={{ xl: "300px", lg: "300px", sm: "250px", xs: "200px" }}
+          width={{ xl: "300px", lg: "300px", sm: "250px", xs: "200px" }}
+        >
+          <Image src={image} height={300} width={300} />
+        </Box>
       </Box>
+
       {!signUp ? (
         <Box
-          className="flex flex-col justify-center items-center bg-white px-8 sm:px-12 md:px-16 lg:px-24"
+          className="flex flex-col items-center bg-white px-6 sm:px-8 md:px-6 lg:px-20"
           flex={1}
+          justifyContent={{ sm: "center", xs: "flex-start" }}
         >
-          <Box className="w-full flex items-center mb-0 sm:mb-8 mt-8 sm:mt-4">
+          <Box className="w-full flex items-center mb-0 sm:mb-8 mt-8 sm:mt-0">
             <Box className="w-full flex">
               <img
                 alt="logo"
@@ -180,28 +188,26 @@ const SignUp: FunctionComponent = () => {
           <Typography className="md:my-6 mb-6 text-center md:text-left text-[1.15rem] sm:text-[1.3rem] text-[#737373] font-semibold w-full">
             Welcome to Su Connect
           </Typography>
-          <Typography className="text-[#737373] text-[0.95rem] sm:text-base leading-7 mb-4 sm:mb-6">
+          <Typography
+            fontSize={{ md: "16px", base: "14px" }}
+            className="text-[#737373]  mb-4 sm:mb-6"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
             mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien
             fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
             vitae mattis tellus. Nullam quis imperdiet augue.
           </Typography>
-          <Box className="w-full flex justify-end items-center mt-8">
+          <Box
+            mt={{ md: 8, sm: 4, xs: 2 }}
+            className="w-full flex justify-end items-center gap-4"
+          >
             <OutlineWhiteButton
               text="Login"
               customHeight="40px"
+              customWidth="70px"
               onClickHandler={() => login()}
             />
-            {/* <SmallButton
-              text="Login"
-              customHeight="40px"
-              bgColor="white"
-              color="#737373"
-              customMarginX="1rem"
-              customFontSize="15px"
-              customBorder="1px solid #BBBBBB"
-              onClickHandler={() => login()}
-            /> */}
+
             <SmallButton
               text="Sign Up"
               customHeight="40px"
@@ -226,21 +232,19 @@ const SignUp: FunctionComponent = () => {
         </Box>
       ) : (
         <Box
-          className="bg-white -mt-4 md:mt-0 w-full sm:px-8"
+          // className="bg-white -mt-4 md:mt-0 w-full sm:px-8"
+          // flex={1}
+          // height="100%"
+          className=" w-full flex flex-col items-center bg-white px-4 sm:px-8 md:px-6 lg:px-20"
+          justifyContent={{ sm: "center", xs: "flex-start" }}
           flex={1}
-          height="100%"
-          // display="flex"
-          // flexDirection="column"
-          // alignItems="center"
-          // justifyContent="center"
         >
-          
           <StepperComponent
             {...{
               steps,
               activeStep,
               setActiveStep,
-              maxWidth: "600px",
+              maxWidth: "100%",
               marginY: "50px",
             }}
           />
