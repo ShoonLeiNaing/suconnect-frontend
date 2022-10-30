@@ -1,8 +1,15 @@
 import { NextPage } from "next";
 import { Box } from "@mui/material";
-import AnnouncementDetailComponent from "../../components/Announcements/AnnouncementDetail";
-import Layout from "../../components/Layout";
+import dynamic from "next/dynamic";
 import { navigation } from "../../data/navigationData";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const AnnouncementDetailComponent = dynamic(
+  import("../../components/Announcements/AnnouncementDetail"),
+  {
+    ssr: false,
+  }
+);
 
 const AnnouncementDetail: NextPage = () => {
   return (

@@ -1,9 +1,11 @@
-import Forbidden from '../components/Error/Forbidden';
+import dynamic from "next/dynamic";
+
+const Forbidden = dynamic(import("../components/Error/Forbidden"), {
+  ssr: false,
+});
 
 const Custom403 = () => {
-    return ( 
-        <Forbidden />
-     );
-}
- 
+  return <Forbidden />;
+};
+
 export default Custom403;

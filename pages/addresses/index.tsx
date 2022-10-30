@@ -1,21 +1,29 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { RiFilterFill } from "react-icons/ri";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
+import dynamic from "next/dynamic";
 import { colors } from "../../data/constant";
-import NameTag from "../../components/Profile/NameTag";
-import SearchInput from "../../components/DateFilter/SearchInput";
-import DropDown from "../../components/DateFilter/DropDown";
-import AccordionComponent from "../../components/AddressAccordion";
 import { byCategory, byDate } from "../../data/testData";
-import MenuComponent from "../../components/MenuButton";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import ChipComponent from "../../components/ChipComponent";
 import { navigation } from "../../data/navigationData";
 import { getAddressesOfUser } from "../../api/address/getAddressesOfUser";
 import { generateColor } from "../../utils/common/generateColor";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const AccordionComponent = dynamic(
+  import("../../components/AddressAccordion"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
