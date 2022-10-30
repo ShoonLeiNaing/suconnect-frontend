@@ -104,11 +104,11 @@ const Addresses = ({ addresses }: any) => {
               <FaPlus />{" "}
               <span className="ml-2" style={{ fontSize: "14px" }}>
                 {" "}
-                Add new addresses{" "}
+                Add new address{" "}
               </span>
             </Box>
           </Box>
-          <Box className="flex justify-between items-center sm:mb-8">
+          <Box className="flex justify-between items-center ">
             <Box display="flex" gap={2}>
               <SearchInput
                 setFilterText={setFilterText}
@@ -150,11 +150,11 @@ const Addresses = ({ addresses }: any) => {
               <FaPlus />{" "}
               <span className="ml-2" style={{ fontSize: "14px" }}>
                 {" "}
-                Add new addresses{" "}
+                Add new address{" "}
               </span>
             </Box>
           </Box>
-          <Box className="mb-4 flex flex-col gap-y-8">
+          <Box className="mb-4 flex flex-col md:gap-y-2">
             {data?.map((address: any, index: number) => (
               <AccordionComponent
                 key={index}
