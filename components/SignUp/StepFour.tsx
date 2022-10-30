@@ -44,27 +44,28 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      width="100%"
+      width={{ lg: "500px", md: "430px", sm: "370px", xs: "360px" }}
     >
-      <Box maxWidth="500px">
+      <Box maxWidth="500px" className="w-full">
         <Box className="w-full mb-2 -mt-4">
           <img
             alt="logo"
-            className="-ml-4"
+            className="hidden md:block -ml-4"
             style={{ height: "50px" }}
             src="/images/logo.svg"
           />
         </Box>
-        <Typography className="text-2xl text-[#737373] font-semibold w-full mb-8">
+        <Typography className="text-[1.15rem] -mt-2 md:mt-0 sm:text-[1.3rem] md:text-xl text-[#737373] font-semibold w-full mb-8">
           Let&lsquo;s us know where you live...
         </Typography>
-        <Box className="w-full flex flex-col border py-8 px-10 rounded-xl max-h-[32rem] overflow-y-auto">
+        <Box className="w-full flex flex-col border px-6 py-6 sm:py-7 md:py-8 rounded-xl max-h-[32rem] overflow-y-auto">
           <Box className="mb-6">
             <InputLabel label="House number" />
             <DynamicInput
               value={houseNo}
-              setValue={setHouseNo}
+              // setValue={setHouseNo}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="Type number..."
             />
           </Box>
@@ -72,8 +73,9 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <InputLabel label="Block number" />
             <DynamicInput
               value={blockNo}
-              setValue={setBlockNo}
+              // setValue={setBlockNo}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="Type here..."
             />
           </Box>
@@ -81,8 +83,9 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <InputLabel label="Street name" />
             <DynamicInput
               value={streetName}
-              setValue={setStreetName}
+              // setValue={setStreetName}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. Min Ye Kyaw Swar Street"
             />
           </Box>
@@ -90,8 +93,9 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <InputLabel label="Township" />
             <DynamicInput
               value={township}
-              setValue={setTownship}
+              // setValue={setTownship}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. Insein"
             />
           </Box>
@@ -99,8 +103,9 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <InputLabel label="City" />
             <DynamicInput
               value={city}
-              setValue={setCity}
+              // setValue={setCity}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. Yangon"
             />
           </Box>
@@ -134,8 +139,9 @@ const StepFour: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <InputLabel label="Postal code" />
             <DynamicInput
               value={postalCode}
-              setValue={setPostalCode}
+              // setValue={setPostalCode}
               maxiWidth="500px"
+              customWidth="100%"
               placeholder="eg. 11361"
             />
           </Box>
