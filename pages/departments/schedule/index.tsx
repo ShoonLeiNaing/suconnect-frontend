@@ -8,8 +8,8 @@ import Layout from "../../../components/Layout";
 import { navigation } from "../../../data/navigationData";
 
 interface IProps {
-  addMember: boolean;
-  addDepartment: boolean;
+  addMember?: boolean;
+  addDepartment?: boolean;
 }
 
 const breadCrumbsData = [

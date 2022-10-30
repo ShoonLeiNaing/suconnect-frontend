@@ -11,6 +11,8 @@ import BreadcrumbsComponent from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import { navigation } from "../../data/navigationData";
 import CourseDetailForm from "../../components/CourseDetailForm";
+import StaffViewScreen from "../../components/CourseDetailForm/StaffViewScreen";
+import StudentListScreen from "../../components/CourseDetailForm/StudentListScreen";
 
 const breadCrumbsData = [
   {
@@ -111,10 +113,10 @@ const CourseDetail: FunctionComponent = () => {
             Item Two
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Item Three
+            <StaffViewScreen />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            Item Four
+            <StudentListScreen />
           </TabPanel>
         </Box>
       </Box>
