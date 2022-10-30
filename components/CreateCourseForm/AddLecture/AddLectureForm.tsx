@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { Box } from "@mui/material";
 import { useState, FunctionComponent, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { RiFilterFill } from "react-icons/ri";
 import { getEventsOfCourse } from "../../../api/events/getEventsOfCourse";
 import { colors } from "../../../data/constant";
@@ -26,6 +27,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
   const [showEditEvent, setShowEditEvent] = useState<boolean>(false);
   const [selectedEvent, setSelectedEvent] = useState<any>();
+  const [stateUpdate, setStateUpdate] = useState<boolean>(false);
   const [events, setEvents] = useState([]);
 
   const fetchEvents = async () => {
@@ -34,16 +36,26 @@ const AddLectureForm: FunctionComponent<IProps> = ({
     setEvents(res?.data?.event_set);
   };
 
+  const clickEditEventHandler = (event: any) => {
+    setShowEditEvent(true);
+    setSelectedEvent(event);
+  };
+
   useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [stateUpdate]);
 
   return showAddEvent ? (
-    <LectureEventForm {...{ setShowForm: setShowAddEvent, course }} />
+    <LectureEventForm
+      {...{ setShowForm: setShowAddEvent, course, stateUpdate, setStateUpdate }}
+    />
   ) : showEditEvent ? (
-    <LectureEventForm {...{ setShowForm: setShowEditEvent, isEdit: true }} />
+    <LectureEventForm
+      {...{ setShowForm: setShowEditEvent, selectedEvent, setSelectedEvent }}
+    />
   ) : (
     <>
+      <Toaster />
       <Box
         className="rounded-xl flex"
         height="77vh"
@@ -78,7 +90,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
         ) : (
           <Box paddingLeft={3}>
             <DynamicEventSchedular
-              {...{ setShowEditEvent, events, courseName: course?.name }}
+              {...{ events, courseName: course?.name, clickEditEventHandler }}
             />
           </Box>
         )}

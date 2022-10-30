@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
+import EventComponent from "../../components/SearchResults/EventComponent";
 import IndicatorLine from "../../components/SearchResults/IndicatorLine";
 import { colors } from "../../data/constant";
-import EventComponent from "./EventComponent";
 
 const displayTime = [
   {
@@ -148,20 +148,18 @@ const events = [
 ];
 
 const Schedule: FunctionComponent = () => {
-
   const [eventData, setEventData] = useState(true);
 
   const getData = (e: any) => {
     const filteredEvents = events.filter(
-      (event) => 
-         event.start === e.timeValue || event.end === e.timeValue
+      (event) => event.start === e.timeValue || event.end === e.timeValue
     );
-    return filteredEvents.map((event) => ( 
-        <EventComponent
-            title={event.title}
-            time={e.defaultPrefix}
-            // course={event.course}
-        />
+    return filteredEvents.map((event) => (
+      <EventComponent
+        title={event.title}
+        time={e.defaultPrefix}
+        // course={event.course}
+      />
     ));
 
     //   });
@@ -198,14 +196,21 @@ const Schedule: FunctionComponent = () => {
                  )) */}
           {showHour === data.defaultPrefix ? (
             <Box className="left-20 absolute w-full z-[2]">
-            <IndicatorLine show color={colors.secondaryColors.orange.orange1} />
+              <IndicatorLine
+                show
+                color={colors.secondaryColors.orange.orange1}
+              />
             </Box>
           ) : (
             <Box className="absolute left-20 w-full h-[0.1rem] bg-gray-100" />
           )}
-           <Box className={` ${ eventData ? "flex" : "hidden"  } w-full justify-evenly z-[1]`}>
-            {getData(data)}  
-            </Box>
+          <Box
+            className={` ${
+              eventData ? "flex" : "hidden"
+            } w-full justify-evenly z-[1]`}
+          >
+            {getData(data)}
+          </Box>
         </Box>
       ))}
     </Box>

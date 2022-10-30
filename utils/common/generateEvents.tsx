@@ -9,14 +9,16 @@ export const generateEvents = (events: any) => {
     const eventType = event.classification === 10 && "Lecture Day";
     return {
       id: event.id,
-      day: daysOfWeek[moment(new Date(date[0], date[1], date[2])).day()],
+      day: daysOfWeek[
+        moment(new Date(date[0], date[1], date[2])).subtract(1, "months").day()
+      ],
       classification: event.classification,
       course: event.course,
       title: `${eventType} ${index}`,
       color: "pink",
       startDate: new Date(
         date[0],
-        date[1],
+        date[1] - 1,
         date[2],
         startTime[0],
         startTime[1],
@@ -24,7 +26,7 @@ export const generateEvents = (events: any) => {
       ),
       endDate: new Date(
         date[0],
-        date[1],
+        date[1] - 1,
         date[2],
         endTime[0],
         endTime[1],
@@ -32,5 +34,6 @@ export const generateEvents = (events: any) => {
       ),
     };
   });
+  console.log({ generatedEvents });
   return generatedEvents;
 };

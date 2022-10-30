@@ -164,7 +164,6 @@ const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
           errors,
           touched,
           setFieldValue,
-          setErrors,
         }) => (
           <form onSubmit={handleSubmit}>
             <Box

@@ -320,7 +320,6 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
     },
   ];
 
-
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
       <Box className=" px-12  overflow-y-auto flex flex-col gap-4">
@@ -341,7 +340,7 @@ const DepartmentDetail: FunctionComponent<DepartmentDetailProps> = () => {
           <DynamicInput
             value={description}
             setValue={setDescription}
-            bgColor="#F6F9FE"
+            // bgColor="#F6F9FE"
             customWidth="400px"
             isTextArea
           />

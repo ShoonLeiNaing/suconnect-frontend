@@ -7,12 +7,14 @@ interface IProps {
   color?: string;
   text: string;
   onClickHandler?: any;
+  customWidth?: any;
 }
 
 const LongButton: FunctionComponent<IProps> = ({
   color,
   text,
   onClickHandler,
+  customWidth,
 }) => {
   return (
     <Box

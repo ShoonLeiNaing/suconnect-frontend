@@ -11,6 +11,7 @@ import StepSix from "../../components/SignUp/StepSix";
 import StepThree from "../../components/SignUp/StepThree";
 import StepTwo from "../../components/SignUp/StepTwo";
 import DialogComponent from "../../components/SignUp/DialogComponent";
+import OutlineWhiteButton from "../../components/Button/OutlineWhiteButton";
 
 const SignUp: FunctionComponent = () => {
   const [signup, setSignUp] = useState(false);
@@ -120,7 +121,12 @@ const SignUp: FunctionComponent = () => {
             vitae mattis tellus. Nullam quis imperdiet augue.
           </Typography>
           <Box className="w-full flex justify-end items-center mt-8">
-            <SmallButton
+            <OutlineWhiteButton
+              text="Login"
+              customHeight="40px"
+              onClickHandler={() => login()}
+            />
+            {/* <SmallButton
               text="Login"
               customHeight="40px"
               bgColor="white"
@@ -129,7 +135,7 @@ const SignUp: FunctionComponent = () => {
               customFontSize="15px"
               customBorder="1px solid #BBBBBB"
               onClickHandler={() => login()}
-            />
+            /> */}
             <SmallButton
               text="Sign Up"
               customHeight="40px"
