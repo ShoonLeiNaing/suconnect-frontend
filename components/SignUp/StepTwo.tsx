@@ -29,8 +29,7 @@ const StepTwo: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      width="100%"
-      className="px-4 sm:px-6"
+      width={{ lg: "500px", md: "430px", sm: "370px", xs: "360px" }}
     >
       {/* <Box className="flex flex-col justify-center items-center bg-white px-24"> */}
       <Box maxWidth="500px" className="w-full">
@@ -45,7 +44,7 @@ const StepTwo: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
         <Typography className="text-[1.15rem] -mt-2 md:mt-0 sm:text-[1.3rem] md:text-xl text-[#737373] font-semibold w-full mb-8">
           Build a profile to tell who you are...
         </Typography>
-        <Box className="w-full flex flex-col border px-6 py-6 sm:px-8 sm:py-7 md:py-8 md:px-10 rounded-xl">
+        <Box className="w-full flex flex-col border px-6 py-6  sm:py-7 md:py-8  rounded-xl">
           <Box className="mb-6">
             <InputLabel label="Upload profile" />
             <Box className="w-fit ml-2 flex justify-center items-center relative">
@@ -103,10 +102,10 @@ const StepTwo: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
             <InputLabel label="Describe yourself" />
             <DynamicInput
               value={bio}
-              setValue={setBio}
+              // setValue={setBio}
               customWidth="100%"
               maxiWidth="500px"
-              maxiHeight="70px"
+              maxiHeight="100px"
               isTextArea
               placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing"
             />

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export const createImage = (url: any) =>
   new Promise((resolve, reject) => {
     const image = new Image();
@@ -46,8 +48,8 @@ export default async function getCroppedImg(
 
   // calculate bounding box of the rotated image
   const { width: bBoxWidth, height: bBoxHeight } = rotateSize(
-    image.width,
-    image.height,
+    image?.width,
+    image?.height,
     rotation
   );
 

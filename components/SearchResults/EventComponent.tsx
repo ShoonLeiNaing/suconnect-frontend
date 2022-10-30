@@ -5,13 +5,14 @@ import { colors } from "../../data/constant";
 import HighlightKeyword from "./Highlight";
 
 interface IProps {
-  date: string;
-  day: string;
+  date?: string;
+  day?: string;
   keyword?: any;
-  title: string;
-  detailTime: string;
+  title?: string;
+  detailTime?: string;
   type?: string;
   onClickHandler?: any;
+  time?: any;
 }
 
 const EventComponent: FunctionComponent<IProps> = ({
@@ -22,6 +23,7 @@ const EventComponent: FunctionComponent<IProps> = ({
   detailTime,
   type,
   onClickHandler,
+  time,
 }) => {
   return (
     <Box

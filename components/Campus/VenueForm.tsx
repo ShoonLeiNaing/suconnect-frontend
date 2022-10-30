@@ -41,14 +41,14 @@ const VenueForm: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
           </Box>
           <TimeRangePicker
             labelText="Available hours"
-            startHour={startHour}
-            endHour={endHour}
-            startMin={startMin}
-            endMin={endMin}
-            setStartHour={setStartHour}
-            setEndHour={setEndHour}
-            setStartMin={setStartMin}
-            setEndMin={setEndMin}
+            // startHour={startHour}
+            // endHour={endHour}
+            // startMin={startMin}
+            // endMin={endMin}
+            // setStartHour={setStartHour}
+            // setEndHour={setEndHour}
+            // setStartMin={setStartMin}
+            // setEndMin={setEndMin}
           />
           <Box>
             <InputLabel label="Venue number" />

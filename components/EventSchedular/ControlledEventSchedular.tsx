@@ -116,7 +116,7 @@ const ControlledEventSchedular = () => {
           onClick={({ target }) => {
             toggleVisibility();
             onAppointmentMetaChange({
-              target: target.parentElement.parentElement,
+              // target: target.parentElement.parentElement,
               data,
             });
           }}
@@ -167,7 +167,7 @@ const ControlledEventSchedular = () => {
   return (
     <Box pb={4} height="100%" overflow="scroll">
       <Paper>
-        <Scheduler data={appointments} height={700}>
+        {/* <Scheduler data={appointments} height={700}>
           <ViewState
             defaultCurrentDate={moment().format("YYYY-MM-DD")}
             defaultCurrentViewName="Month"
@@ -186,15 +186,8 @@ const ControlledEventSchedular = () => {
           <AppointmentTooltip
             headerComponent={Header}
             contentComponent={Content}
-            // showCloseButton
-            // visible={visiblity}
-            // onVisibilityChange={toggleVisibility}
-            // appointmentMeta={appointmentMeta}
-            // onAppointmentMetaChange={onAppointmentMetaChange}
-            // showCloseButton
-            // showDeleteButton
           />
-        </Scheduler>
+        </Scheduler> */}
       </Paper>
     </Box>
   );

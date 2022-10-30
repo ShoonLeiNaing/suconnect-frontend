@@ -105,14 +105,14 @@ const LectureEventForm: FunctionComponent<IProps> = ({
           <Box maxWidth="390px">
             <TimeRangePicker
               labelText="Choose course time"
-              startHour={startHour}
-              endHour={endHour}
-              startMin={startMin}
-              endMin={endMin}
-              setStartHour={setStartHour}
-              setEndHour={setEndHour}
-              setStartMin={setStartMin}
-              setEndMin={setEndMin}
+              // startHour={startHour}
+              // endHour={endHour}
+              // startMin={startMin}
+              // endMin={endMin}
+              // setStartHour={setStartHour}
+              // setEndHour={setEndHour}
+              // setStartMin={setStartMin}
+              // setEndMin={setEndMin}
             />
           </Box>
           <Box>
