@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { useState, FunctionComponent, useCallback } from "react";
+import { FunctionComponent } from "react";
 import LongButton from "../../Button/LongButton";
 import EventComponent from "../../SearchResults/EventComponent";
 

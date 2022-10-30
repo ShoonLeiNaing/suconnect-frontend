@@ -78,7 +78,6 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const createCourseHandler = async (values: any) => {
     // console.log({ hhe: values });
     setLoading(true);
-    console.log({ values });
     await createCourse({
       name: values.name,
       description: values.description,

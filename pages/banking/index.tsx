@@ -71,8 +71,6 @@ const Banking = ({ bankAccounts }: any) => {
   ];
 
   const fetchBankAccounts = async () => {
-    console.log("hello");
-
     const res = await getBankAccountsOfUser(1);
     setData(res.data?.bankaccount_set);
   };

@@ -21,24 +21,21 @@ const Footer: FunctionComponent<FooterProps> = ({
   titleColor,
 }) => {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-    > 
+    <Box display="flex" flexDirection="column">
       <Box sx={{ backgroundColor, width: "100%", position: "relative" }}>
-        <Box 
+        <Box
           className="max-w-screen-2xl py-6  px-16 m-auto"
           display="flex"
-          flexDirection={{xs: "column", sm: "row"}}
+          flexDirection={{ xs: "column", sm: "row" }}
           justifyContent="space-between"
-          alignItems={{xs: "left", sm: "center"}}
+          alignItems={{ xs: "left", sm: "center" }}
         >
           <div className="flex flex-col">
             <Image
               height={50}
-              width={140}
+              width={180}
               // className="w-40"
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               layout="fixed"
             />

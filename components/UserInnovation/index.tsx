@@ -8,7 +8,7 @@ import Card from "./card";
 const UserInnovation: FunctionComponent = () => {
   return (
     <Box
-      marginY="4rem"
+      paddingY="4rem"
       className="inner-container"
       display={{ xs: "flex", md: "block" }}
       alignItems="center"

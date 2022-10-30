@@ -15,6 +15,7 @@ interface IProps {
   maxiHeight?: string;
   customType?: string;
   placeholder?: string;
+  setValue?: any;
 }
 
 const DynamicInput: FunctionComponent<IProps> = ({
@@ -29,6 +30,7 @@ const DynamicInput: FunctionComponent<IProps> = ({
   customHeight,
   placeholder,
   onChangeHandler,
+  setValue,
 }) => {
   if (isTextArea) {
     return (

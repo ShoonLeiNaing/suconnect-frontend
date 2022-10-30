@@ -44,7 +44,11 @@ const PasswordInput: FunctionComponent = () => {
         type={values.showPassword ? "text" : "password"}
         value={values.password}
         onChange={handleChange("password")}
-        className="rounded-xl"
+        sx={{
+          "&.MuiOutlinedInput-root": {
+            borderRadius: "30px",
+          },
+        }}
         endAdornment={
           <InputAdornment position="end" className="p-2">
             <IconButton
