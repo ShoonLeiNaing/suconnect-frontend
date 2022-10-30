@@ -3,13 +3,7 @@
 import { useState, FunctionComponent } from "react";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  Typography,
-  FormControl,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { Box, Typography, FormControl, MenuItem, Select } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
@@ -78,7 +72,7 @@ const BankingInfoCard: FunctionComponent<IProps> = ({
   };
 
   return (
-    <Box>
+    <Box className="flex flex-col items-center">
       <Toaster />
       <Formik
         initialValues={initialValues}
