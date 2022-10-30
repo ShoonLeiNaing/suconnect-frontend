@@ -110,7 +110,6 @@ const StepperOne: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                 className: "hot-toast",
               }
             );
-            console.log({ res });
           }
         });
         if (success) {
