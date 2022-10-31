@@ -1,20 +1,42 @@
 import { Box } from "@mui/material";
 import { RiFilterFill } from "react-icons/ri";
 import { FunctionComponent, useEffect, useState } from "react";
-import Layout from "../../components/Layout";
-import NameTag from "../../components/Profile/NameTag";
+import dynamic from "next/dynamic";
 import { navigation } from "../../data/navigationData";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import SearchInput from "../../components/DateFilter/SearchInput";
-import MenuComponent from "../../components/MenuButton";
 import { getAllEvents } from "../../api/events/list";
-import EventSchedular from "../../components/EventSchedular";
 import { getAllCourses } from "../../api/courses/list";
 import { getAllClassifications } from "../../api/classifications/list";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import FilterValueList from "../../components/FilterSideBar/FilterValueList";
 import { getFilterParams } from "../../utils/common/getFilterParams";
 import { filterEvents } from "../../api/events/filter";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const EventSchedular = dynamic(import("../../components/EventSchedular"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const FilterValueList = dynamic(
+  import("../../components/FilterSideBar/FilterValueList"),
+  {
+    ssr: false,
+  }
+);
+const MenuComponent = dynamic(import("../../components/MenuButton"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const FilterSideBar = dynamic(
+  import("../../components/FilterSideBar/FilterSideBar"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
@@ -50,7 +72,7 @@ const Schedules: FunctionComponent<IProps> = ({
     index: null,
     filterParam: "",
   });
-  
+
   const filterOptions = [
     {
       text: "Courses",

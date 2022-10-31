@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { Box, Typography } from "@mui/material";
-import CampusForm from "../../components/Campus/CampusForm";
-import VenueForm from "../../components/Campus/VenueForm";
-import Layout from "../../components/Layout";
-import StepperComponent from "../../components/Stepper/Stepper";
+import dynamic from "next/dynamic";
 import { navigation } from "../../data/navigationData";
 import { colors } from "../../data/constant";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const CampusForm = dynamic(import("../../components/Campus/CampusForm"), {
+  ssr: false,
+});
+const VenueForm = dynamic(import("../../components/Campus/VenueForm"), {
+  ssr: false,
+});
+
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const StepperComponent = dynamic(import("../../components/Stepper/Stepper"), {
+  ssr: false,
+});
 
 const breadCrumbsData = [
   {
@@ -88,7 +99,13 @@ const CreateCampus = () => {
         </Box>
 
         <StepperComponent
-          {...{ steps, activeStep, setActiveStep, divided: true, showContent: true}}
+          {...{
+            steps,
+            activeStep,
+            setActiveStep,
+            divided: true,
+            showContent: true,
+          }}
         />
       </Box>
     </Layout>
