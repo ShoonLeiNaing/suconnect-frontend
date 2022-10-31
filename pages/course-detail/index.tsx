@@ -3,14 +3,20 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import dynamic from "next/dynamic";
 import { GiGraduateCap } from "react-icons/gi";
 import { AiFillCalendar } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
 import { navigation } from "../../data/navigationData";
-import CourseDetailForm from "../../components/CourseDetailForm";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const CourseDetailForm = dynamic(import("../../components/CourseDetailForm"), {
+  ssr: false,
+});
 
 const breadCrumbsData = [
   {

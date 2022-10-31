@@ -2,16 +2,44 @@ import { FunctionComponent, useEffect, useState, ChangeEvent } from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import SmallButton from "../../components/Button/SmallButton";
-import StepFive from "../../components/SignUp/StepFive";
-import StepFour from "../../components/SignUp/StepFour";
-import StepOne from "../../components/SignUp/StepOne";
-import StepperComponent from "../../components/Stepper/Stepper";
-import StepSix from "../../components/SignUp/StepSix";
-import StepThree from "../../components/SignUp/StepThree";
-import StepTwo from "../../components/SignUp/StepTwo";
-import DialogComponent from "../../components/SignUp/DialogComponent";
-import OutlineWhiteButton from "../../components/Button/OutlineWhiteButton";
+import dynamic from "next/dynamic";
+
+const SmallButton = dynamic(import("../../components/Button/SmallButton"), {
+  ssr: false,
+});
+const StepperComponent = dynamic(import("../../components/Stepper/Stepper"), {
+  ssr: false,
+});
+const DialogComponent = dynamic(
+  import("../../components/SignUp/DialogComponent"),
+  {
+    ssr: false,
+  }
+);
+const OutlineWhiteButton = dynamic(
+  import("../../components/Button/OutlineWhiteButton"),
+  {
+    ssr: false,
+  }
+);
+const StepOne = dynamic(import("../../components/SignUp/StepOne"), {
+  ssr: false,
+});
+const StepTwo = dynamic(import("../../components/SignUp/StepTwo"), {
+  ssr: false,
+});
+const StepThree = dynamic(import("../../components/SignUp/StepThree"), {
+  ssr: false,
+});
+const StepFour = dynamic(import("../../components/SignUp/StepFour"), {
+  ssr: false,
+});
+const StepFive = dynamic(import("../../components/SignUp/StepFive"), {
+  ssr: false,
+});
+const StepSix = dynamic(import("../../components/SignUp/StepSix"), {
+  ssr: false,
+});
 
 const SignUp: FunctionComponent = () => {
   const [signUp, setSignUp] = useState(false);

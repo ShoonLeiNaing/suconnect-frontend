@@ -1,11 +1,21 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import SearchInput from "../../components/DateFilter/SearchInput";
-import FaqAccordions from "../../components/FaqAccordions";
-import Layout from "../../components/Layout";
-import NameTag from "../../components/Profile/NameTag";
+import dynamic from "next/dynamic";
 import { navigation } from "../../data/navigationData";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const FaqAccordions = dynamic(import("../../components/FaqAccordions"), {
+  ssr: false,
+});
 
 const breadCrumbsData = [
   {

@@ -1,11 +1,19 @@
 import { FunctionComponent, useState, ChangeEvent } from "react";
 import { Box, Typography, Checkbox } from "@mui/material";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import PasswordInput from "../../components/Input/PasswordInput";
-import DynamicInput from "../../components/Input/DynamicInput";
-import SmallButton from "../../components/Button/SmallButton";
+
+const PasswordInput = dynamic(import("../../components/Input/PasswordInput"), {
+  ssr: false,
+});
+const DynamicInput = dynamic(import("../../components/Input/DynamicInput"), {
+  ssr: false,
+});
+const SmallButton = dynamic(import("../../components/Button/SmallButton"), {
+  ssr: false,
+});
 
 const Login: FunctionComponent = () => {
   const [mail, setMail] = useState("");
