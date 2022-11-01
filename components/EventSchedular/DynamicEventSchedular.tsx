@@ -21,13 +21,13 @@ import { generateEvents } from "../../utils/common/generateEvents";
 interface IProps {
   events: any;
   clickEditEventHandler: any;
-  courseName: string;
+  clickDeleteEventHandler: any;
 }
 
 const DynamicEventSchedular: FunctionComponent<IProps> = ({
   events,
   clickEditEventHandler,
-  courseName,
+  clickDeleteEventHandler,
 }) => {
   const modifiedEvents = generateEvents(events);
   const Header = ({ children, appointmentData, ...restProps }: any) => (
@@ -64,14 +64,20 @@ const DynamicEventSchedular: FunctionComponent<IProps> = ({
           <AiFillEdit fontSize="18px" />
           Edit
         </Box>
-        <Box className="flex items-center gap-2">
+        <Box
+          className="flex items-center gap-2"
+          onClick={(e: any) => {
+            // e.stopPropagation();
+            clickDeleteEventHandler(appointmentData);
+          }}
+        >
           <AiFillDelete fontSize="18px" />
           Delete
         </Box>
-        <Box className="flex items-center gap-2">
+        {/* <Box className="flex items-center gap-2">
           <BiCopy fontSize="18px" />
           Duplicate
-        </Box>
+        </Box> */}
       </Box>
     </AppointmentTooltip.Content>
   );

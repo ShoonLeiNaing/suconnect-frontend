@@ -1,12 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import { Box } from "@mui/material";
 import { useState, FunctionComponent, useEffect } from "react";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { RiFilterFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
+import { deleteEvent } from "../../../api/events/delete";
 import { getEventsOfCourse } from "../../../api/events/getEventsOfCourse";
 import { colors } from "../../../data/constant";
 import { selectCourse } from "../../../redux/slices/courseSlice";
+import ConfirmationDialog from "../../Dialog/ConfirmationDialog";
 import DynamicEventSchedular from "../../EventSchedular/DynamicEventSchedular";
 import IconButton from "../../IconButton";
 import SearchInput from "../../SearchInput";
@@ -28,6 +30,8 @@ const AddLectureForm: FunctionComponent<IProps> = ({
   const [searchText, setSearchText] = useState("");
   const [course, setCourse] = useState<any>();
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] =
+    useState<boolean>(false);
   const [showEditEvent, setShowEditEvent] = useState<boolean>(false);
   const [selectedEvent, setSelectedEvent] = useState<any>();
   const [stateUpdate, setStateUpdate] = useState<boolean>(false);
@@ -44,21 +48,64 @@ const AddLectureForm: FunctionComponent<IProps> = ({
     setSelectedEvent(event);
   };
 
+  const clickDeleteEventHandler = (event: any) => {
+    setShowDeleteConfirmation(true);
+    setSelectedEvent(event);
+  };
+
+  const deleteEventHandler = async () => {
+    const res = await deleteEvent(selectedEvent?.id);
+    if (res.code === "ERR_BAD_REQUEST") {
+      toast.error(res?.response?.data?.details[0] || "Something went wrong", {
+        position: "top-right",
+        className: "hot-toast",
+      });
+    } else {
+      setStateUpdate(!stateUpdate);
+      toast.success("Lecture deleted successfully", {
+        position: "top-right",
+        className: "hot-toast",
+      });
+      setShowDeleteConfirmation(false);
+      setSelectedEvent(null);
+    }
+  };
+
   useEffect(() => {
     fetchEvents();
   }, [stateUpdate]);
 
   return showAddEvent ? (
     <LectureEventForm
-      {...{ setShowForm: setShowAddEvent, course, stateUpdate, setStateUpdate }}
+      {...{ setShowForm: setShowAddEvent, stateUpdate, setStateUpdate }}
     />
   ) : showEditEvent ? (
     <LectureEventForm
-      {...{ setShowForm: setShowEditEvent, selectedEvent, setSelectedEvent }}
+      {...{
+        setShowForm: setShowEditEvent,
+        selectedEvent,
+        setSelectedEvent,
+        stateUpdate,
+        setStateUpdate,
+        isEdit: true,
+      }}
     />
   ) : (
     <>
       <Toaster />
+      <ConfirmationDialog
+        {...{
+          open: showDeleteConfirmation,
+          setOpen: setShowDeleteConfirmation,
+          type: "error",
+          btnLabel: "Delete",
+          handleClose: () => setShowDeleteConfirmation(false),
+          color: colors.secondaryColors.red.red1,
+          dialogTitle: "Warning!",
+          dialogBody: "Are you sure you want to delete this lecture?",
+          btnClickHandler: deleteEventHandler,
+        }}
+      />
       <Box
         className="rounded-xl flex"
         height="77vh"
@@ -84,19 +131,38 @@ const AddLectureForm: FunctionComponent<IProps> = ({
             />
           </Box>
         </Box>
-        {selectedEvent ? (
+        {/* {selectedEvent ? (
           <Box paddingLeft={3} height="90%" width="100%" mt="61px">
             <EventDetailComponent
-              {...{ setSelectedEvent, setShowEditForm: setShowEditEvent }}
+              {...{
+                setSelectedEvent,
+                setShowEditForm: setShowEditEvent,
+                selectedEvent,
+              }}
             />
           </Box>
         ) : (
           <Box paddingLeft={3}>
             <DynamicEventSchedular
-              {...{ events, courseName: course?.name, clickEditEventHandler }}
+              {...{
+                events,
+                courseName: course?.name,
+                clickEditEventHandler,
+                clickDeleteEventHandler,
+              }}
             />
           </Box>
-        )}
+        )} */}
+        <Box paddingLeft={3}>
+          <DynamicEventSchedular
+            {...{
+              events,
+              courseName: course?.name,
+              clickEditEventHandler,
+              clickDeleteEventHandler,
+            }}
+          />
+        </Box>
       </Box>
       <Box className=" my-3 flex justify-end">
         <PaginationButton {...{ handleNext, handleBack }} />

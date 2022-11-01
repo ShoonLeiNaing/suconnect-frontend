@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 import {
   Box,
   FormControlLabel,
@@ -10,6 +12,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
 import { FaGraduationCap } from "react-icons/fa";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { colors } from "../../../data/constant";
@@ -20,35 +23,45 @@ import InputLabel from "../../Input/InputLabel";
 import StaticInput from "../../Input/StaticInput";
 import TimePickerComponent from "../../Input/TimeRangePicker";
 import { createEvent } from "../../../api/events/create";
+import { selectCourse } from "../../../redux/slices/courseSlice";
+import { compareSeconds } from "../../../utils/common/compareSeconds";
+import { updateEvent } from "../../../api/events/update";
 
 interface IProps {
   setShowForm: any;
-  course?: any;
   stateUpdate?: boolean;
   setStateUpdate?: any;
   selectedEvent?: any;
   setSelectedEvent?: any;
+  isEdit?: boolean;
 }
 
 const EventSchema = Yup.object().shape({
-  time_to: Yup.string().required("Start time is required"),
-  time_from: Yup.string().required("End time is required"),
+  time_to: Yup.string().required("End time is required"),
+  time_from: Yup.string().required("Start time is required"),
   date: Yup.string().required("Event date is required"),
 });
 
 const LectureEventForm: FunctionComponent<IProps> = ({
   setShowForm,
-  course,
   stateUpdate,
   setStateUpdate,
   selectedEvent,
   setSelectedEvent,
+  isEdit,
 }) => {
   const [loading, setLoading] = useState(false);
+  const course = useSelector(selectCourse);
 
   const createEventHandler = async (values: any) => {
     setLoading(true);
-    const res = await createEvent(values);
+    let res;
+    if (isEdit) {
+      res = await updateEvent(values);
+      setSelectedEvent(null);
+    } else {
+      res = await createEvent(values);
+    }
     if (res.code === "ERR_BAD_REQUEST") {
       toast.error(res?.response?.data?.details[0] || "Something went wrong", {
         position: "top-right",
@@ -57,21 +70,30 @@ const LectureEventForm: FunctionComponent<IProps> = ({
     } else {
       setStateUpdate(!stateUpdate);
       setTimeout(() => {
-        toast.success("Lecture added successfully", {
-          position: "top-right",
-          className: "hot-toast",
-        });
+        toast.success(
+          isEdit
+            ? "Lecture updated successfully"
+            : "Lecture added successfully",
+          {
+            position: "top-right",
+            className: "hot-toast",
+          }
+        );
       }, 500);
       setShowForm(false);
     }
     setLoading(false);
   };
 
-  console.log({ selectedEvent });
   const initialValues = {
-    time_to: "",
-    time_from: "",
-    date: moment().format("YYYY-MM-DD"),
+    id: selectedEvent?.id || "",
+    time_to: moment(selectedEvent?.endDate).format("hh:mm") || "",
+    time_from: moment(selectedEvent?.startDate).format("hh:mm") || "",
+    startTime: selectedEvent?.startDate || "",
+    endTime: selectedEvent?.endDate || "",
+    date:
+      moment(selectedEvent?.startDate).format("YYYY-MM-DD") ||
+      moment().format("YYYY-MM-DD"),
     course: course?.id,
     accout: 1,
     classification: 10,
@@ -83,7 +105,12 @@ const LectureEventForm: FunctionComponent<IProps> = ({
       <Formik
         initialValues={initialValues}
         validationSchema={EventSchema}
-        onSubmit={async (values) => {
+        validate={(values) => {
+          const res = compareSeconds(values.time_from, values.time_to);
+          if (!res)
+            return { time_to: "End time should not be before start time" };
+        }}
+        onSubmit={async (values, errors) => {
           await createEventHandler(values);
         }}
       >
@@ -96,6 +123,7 @@ const LectureEventForm: FunctionComponent<IProps> = ({
           touched,
         }) => (
           <form onSubmit={handleSubmit}>
+            {/* {console.log({ errors })} */}
             <Box
               className="border py-6 px-8 rounded-xl"
               height="77vh"
@@ -177,7 +205,13 @@ const LectureEventForm: FunctionComponent<IProps> = ({
                 <Box maxWidth="400px">
                   <TimePickerComponent
                     labelText="Choose event time"
-                    {...{ values, setFieldValue, errors, touched }}
+                    {...{
+                      values,
+                      setFieldValue,
+                      errors,
+                      touched,
+                      isEdit,
+                    }}
                   />
                 </Box>
                 {/* <Box>
