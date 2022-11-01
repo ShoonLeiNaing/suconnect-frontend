@@ -126,7 +126,7 @@ const Banking = ({ bankAccounts }: any) => {
             <DropDown setFilterText={setFilterText} individual />
           </Box>
 
-          <Box display="flex" alignItems="center" gap={2} mb={4}>
+          {/* <Box display="flex" alignItems="center" gap={2} mb={4}>
           {filterOptions.map((option) => (
             <ChipComponent
               key={option.text}
@@ -143,7 +143,7 @@ const Banking = ({ bankAccounts }: any) => {
             Clear all
           </Typography>
           
-        </Box>
+        </Box> */}
 
           <Box className="flex justify-end ">
             <Box

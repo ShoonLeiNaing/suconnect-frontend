@@ -10,6 +10,7 @@ import HeroParallax from "../components/HeroParallax";
 import UserInnovation from "../components/UserInnovation";
 // import FaqAccordions from "../components/FaqAccordions";
 import { navigation } from "../data/navigationData";
+import MeetDevTeam from "../components/MeetDevTeam";
 // import { axiosInstance } from "../api/axios";
 
 const Layout = dynamic(import("../components/Layout"), { ssr: false });
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
         <Feature />
         <Benefit />
         <UserInnovation />
+        <MeetDevTeam />
       </Box>
     </Layout>
   );
