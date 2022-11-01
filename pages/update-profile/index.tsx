@@ -1,10 +1,14 @@
 import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
-import NameTag from "../../components/Profile/NameTag";
 import { navigation } from "../../data/navigationData";
 
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
 const UpdateProfileForm = dynamic(
   import("../../components/Profile/UpdateProfileForm")
 );

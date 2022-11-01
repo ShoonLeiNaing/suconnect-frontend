@@ -14,7 +14,7 @@ export const generateEvents = (events: any) => {
       ],
       classification: event.classification,
       course: event.course,
-      title: `${eventType} ${index}`,
+      title: `${eventType} ${index + 1}`,
       color: "pink",
       startDate: new Date(
         date[0],

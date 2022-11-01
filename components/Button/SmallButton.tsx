@@ -12,6 +12,7 @@ interface IProps {
   customHeight?: string;
   customMarginX?: string;
   customFontSize?: string;
+  customBorder?: string;
   icon?: any;
   type?: any;
   loading?: boolean;
@@ -26,6 +27,7 @@ const SmallButton: FunctionComponent<IProps> = ({
   customHeight,
   customMarginX,
   customFontSize,
+  customBorder,
   icon,
   type,
   loading,
@@ -69,6 +71,7 @@ const SmallButton: FunctionComponent<IProps> = ({
         backgroundColor: bgColor && bgColor,
         color: color && color,
         fontSize: customFontSize,
+        border: customBorder && customBorder,
       }}
       startIcon={icon}
       loading={loading}

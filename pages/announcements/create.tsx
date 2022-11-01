@@ -1,11 +1,27 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import Layout from "../../components/Layout";
-import StepperComponent from "../../components/Stepper/Stepper";
 import { navigation } from "../../data/navigationData";
-import SelectAccountsForm from "../../components/AnnouncementCreateForm/SelectAccountsForm";
-import ChooseCampusForm from "../../components/AnnouncementCreateForm/ChooseCampusForm";
-import ConfirmationDialog from "../../components/Dialog/ConfirmationDialog";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const StepperComponent = dynamic(import("../../components/Stepper/Stepper"), {
+  ssr: false,
+});
+const SelectAccountsForm = dynamic(
+  import("../../components/AnnouncementCreateForm/SelectAccountsForm"),
+  { ssr: false }
+);
+const ChooseCampusForm = dynamic(
+  import("../../components/AnnouncementCreateForm/ChooseCampusForm"),
+  {
+    ssr: false,
+  }
+);
+const ConfirmationDialog = dynamic(
+  import("../../components/Dialog/ConfirmationDialog"),
+  {
+    ssr: false,
+  }
+);
 
 const AnnouncementDetailForm = dynamic(
   import("../../components/AnnouncementCreateForm/AnnouncementDetailForm"),

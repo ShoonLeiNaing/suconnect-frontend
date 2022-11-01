@@ -3,8 +3,10 @@ import { Box } from "@mui/material";
 import { useState, FunctionComponent, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { RiFilterFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 import { getEventsOfCourse } from "../../../api/events/getEventsOfCourse";
 import { colors } from "../../../data/constant";
+import { selectCourse } from "../../../redux/slices/courseSlice";
 import DynamicEventSchedular from "../../EventSchedular/DynamicEventSchedular";
 import IconButton from "../../IconButton";
 import SearchInput from "../../SearchInput";
@@ -22,6 +24,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
   handleBack,
   handleNext,
 }) => {
+  const createdCourse = useSelector(selectCourse);
   const [searchText, setSearchText] = useState("");
   const [course, setCourse] = useState<any>();
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
@@ -31,7 +34,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
   const [events, setEvents] = useState([]);
 
   const fetchEvents = async () => {
-    const res = await getEventsOfCourse(36);
+    const res = await getEventsOfCourse(parseInt(createdCourse?.id, 10));
     setCourse(res?.data);
     setEvents(res?.data?.event_set);
   };

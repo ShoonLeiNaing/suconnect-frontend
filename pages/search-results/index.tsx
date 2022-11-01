@@ -1,12 +1,22 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
-import NameTag from "../../components/Profile/NameTag";
-import SearchInput from "../../components/DateFilter/SearchInput";
+import dynamic from "next/dynamic";
 import { byCalendar } from "../../data/testData";
-import SearchResultsComponent from "../../components/SearchResults";
 import { navigation } from "../../data/navigationData";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const SearchResultsComponent = dynamic(
+  import("../../components/SearchResults")
+);
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
 
 const breadCrumbsData = [
   {

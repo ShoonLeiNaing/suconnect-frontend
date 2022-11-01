@@ -117,7 +117,6 @@ const ChooseDaysComponent: FunctionComponent<IProps> = ({
       startDate = moment(startDate).add(1, "d");
     }
 
-    console.log({ eventsArray });
     setFieldValue("events", eventsArray);
     setTotal(eventsArray.length);
   };

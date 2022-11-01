@@ -183,62 +183,63 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                   )}
                 </Box>
               </AccordionSummary>
-              <AccordionDetails className="bg-white justify-between px-6 rounded-b-2xl">
+              <AccordionDetails className="bg-white grid justify-center items-center px-6 rounded-b-2xl">
                 {!edit && !isNew ? (
-                  <Box className="flex justify-between  px-6">
-                    <Box className="flex flex-col">
-                      <Box className="mt-4">
-                        <InputLabel label="House Number" />
-                        <StaticInput
-                          isLocked
-                          value={initialValues?.house_number}
-                          maxWidth="300px"
-                        />
-                      </Box>
-                      <Box className="my-4">
-                        <InputLabel label="City" />
-                        <StaticInput
-                          isLocked
-                          value={initialValues?.city}
-                          maxWidth="300px"
-                        />
-                      </Box>
+                  // <Box className="flex justify-between flex-col sm:flex-row px-6">
+                  <Box className="grid grid-cols-1 gap-x-4 md:grid-cols-2 xl:grid-cols-3 md:gap-x-4 lg:gap-x-12 xl:gap-x-14">
+                    {/* <Box className="flex flex-col"> */}
+                    <Box className="mt-4">
+                      <InputLabel label="House Number" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.house_number}
+                        maxWidth="300px"
+                      />
                     </Box>
-                    <Box className="flex flex-col mx-12">
-                      <Box className="mt-4">
-                        <InputLabel label="Street Name" />
-                        <StaticInput
-                          isLocked
-                          value={initialValues?.street_name}
-                          maxWidth="300px"
-                        />
-                      </Box>
-                      <Box className="my-4">
-                        <InputLabel label="Country" />
-                        <StaticInput
-                          isLocked
-                          value={initialValues?.country}
-                          maxWidth="300px"
-                        />
-                      </Box>
+                    <Box className="my-4">
+                      <InputLabel label="City" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.city}
+                        maxWidth="300px"
+                      />
                     </Box>
-                    <Box className="flex flex-col">
-                      <Box className="mt-4">
-                        <InputLabel label="Township" />
-                        <StaticInput
-                          isLocked
-                          value={initialValues?.township}
-                          maxWidth="300px"
-                        />
-                      </Box>
-                      <Box className="my-4">
-                        <InputLabel label="Postal Code" />
-                        <StaticInput
-                          isLocked
-                          value={initialValues?.postal_code}
-                          maxWidth="300px"
-                        />
-                      </Box>
+                    {/* </Box> */}
+                    {/* <Box className="flex flex-col sm:mx-12"> */}
+                    <Box className="mt-4">
+                      <InputLabel label="Street Name" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.street_name}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                    <Box className="my-4">
+                      <InputLabel label="Country" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.country}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                    {/* </Box> */}
+                    {/* <Box className="flex flex-col"> */}
+                    <Box className="mt-4">
+                      <InputLabel label="Township" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.township}
+                        maxWidth="300px"
+                      />
+                    </Box>
+                    <Box className="my-4">
+                      <InputLabel label="Postal Code" />
+                      <StaticInput
+                        isLocked
+                        value={initialValues?.postal_code}
+                        maxWidth="300px"
+                      />
+                      {/* </Box> */}
                     </Box>
                   </Box>
                 ) : (
@@ -287,7 +288,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                         />
                       </>
                     ) : edit ? (
-                      <>
+                      <Box className="flex justify-end gap-x-4">
                         <OutlineWhiteButton
                           text="Cancel"
                           customWidth="80px"
@@ -301,7 +302,7 @@ const AccordionComponent: FunctionComponent<IProps> = ({
                           type="submit"
                           loading={loading}
                         />
-                      </>
+                      </Box>
                     ) : (
                       <SmallButton
                         text="Edit"

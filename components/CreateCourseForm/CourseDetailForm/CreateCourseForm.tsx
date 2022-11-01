@@ -17,6 +17,7 @@ import * as Yup from "yup";
 import { FunctionComponent, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import moment from "moment";
+import { useSelector, useDispatch } from "react-redux";
 import { getAllCategories } from "../../../api/categories/list";
 import DateInput from "../../Input/DateInput";
 import DynamicInput from "../../Input/DynamicInput";
@@ -25,6 +26,7 @@ import PaginationButton from "../../Stepper/PaginationButton";
 import ChooseDaysComponent from "./ChooseDaysComponent";
 import { createCourse } from "../../../api/courses/create";
 import { createEvent } from "../../../api/events/create";
+import { storeCourse } from "../../../redux/slices/courseSlice";
 
 interface IProps {
   handleNext?: any;
@@ -59,6 +61,7 @@ const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
   const [endDate, setEndDate] = useState<any>(moment().add(1, "M"));
   const [success, setSuccess] = useState(true);
   const [selectCampus, setSelectCampus] = useState("Select campus");
+  const dispatch = useDispatch();
 
   const campusHandleChange = (event: SelectChangeEvent) => {
     setSelectCampus(event.target.value as string);
@@ -77,8 +80,8 @@ const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
 
   const createCourseHandler = async (values: any) => {
     setLoading(true);
-    console.log({ values });
-    await createCourse({
+
+    const res = await createCourse({
       name: values.name,
       description: values.description,
       code: values.code,
@@ -86,38 +89,63 @@ const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
       category: values.category,
       start_date: values.start_date,
       end_date: values.end_date,
-    }).then((result) => {
-      if (result.code === "ERR_BAD_REQUEST") {
-        toast.error("Something went wrong with creating course", {
-          position: "top-right",
-          className: "hot-toast",
-        });
-      } else {
-        const id = result?.data?.data?.id;
-        values.events.forEach((obj: any) => {
-          obj.course = id;
-          obj.classification = 10;
-        });
-        values.events?.map(async (event: any) => {
-          const res = await createEvent(event);
-          if (res.code === "ERR_BAD_REQUEST") {
-            setSuccess(false);
-            toast.error(
-              res?.response?.data?.details[0] ||
-                `Something went wrong with creating ${event.date} event`,
-              {
-                position: "top-right",
-                className: "hot-toast",
-              }
-            );
-            console.log({ res });
-          }
-        });
-        if (success) {
-          handleNext();
-        }
-      }
     });
+    if (res?.code === "ERR_BAD_REQUEST") {
+      toast.error("Something went wrong with creating course", {
+        position: "top-right",
+        className: "hot-toast",
+      });
+    } else {
+      const id = res?.data?.data?.id;
+      values.events.forEach((obj: any) => {
+        obj.course = id;
+        obj.classification = 10;
+      });
+      values.events?.map(async (event: any) => {
+        const response = await createEvent(event);
+        if (response?.code === "ERR_BAD_REQUEST") {
+          setSuccess(false);
+          toast.error(
+            res?.response?.data?.details[0] ||
+              `Something went wrong with creating ${event.date} event`,
+            {
+              position: "top-right",
+              className: "hot-toast",
+            }
+          );
+        }
+      });
+      if (success) {
+        dispatch(storeCourse(res?.data?.data));
+        handleNext();
+      }
+    }
+
+    // await createCourse({
+    //   name: values.name,
+    //   description: values.description,
+    //   code: values.code,
+    //   monthly_fee: values.monthly_fee,
+    //   category: values.category,
+    //   start_date: values.start_date,
+    //   end_date: values.end_date,
+    // })
+    //   .then((result) => {
+    //     console.log("here");
+    //     const id = result?.data?.data?.id;
+    //     values.events.forEach((obj: any) => {
+    //       obj.course = id;
+    //       obj.classification = 10;
+    //     });
+
+    //   })
+    //   .catch((error) => {
+    //     console.log({ error });
+    //     toast.error("Something went wrong with creating course", {
+    //       position: "top-right",
+    //       className: "hot-toast",
+    //     });
+    //   });
     setLoading(false);
     setSuccess(true);
   };
@@ -144,7 +172,7 @@ const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
       <Toaster />
       <Formik
         initialValues={initialValues}
-        // validationSchema={CourseSchema}
+        validationSchema={CourseSchema}
         validate={(values) => {
           if (moment(values.end_date).isBefore(values.start_date)) {
             return {
@@ -153,8 +181,7 @@ const CreateCourseDetailForm: FunctionComponent<IProps> = ({ handleNext }) => {
           }
         }}
         onSubmit={async (values, errors) => {
-          handleNext();
-          // createCourseHandler(values);
+          createCourseHandler(values);
         }}
       >
         {({

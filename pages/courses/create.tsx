@@ -1,15 +1,57 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import SmallButton from "../../components/Button/SmallButton";
-import AddLectureForm from "../../components/CreateCourseForm/AddLecture/AddLectureForm";
-import AssignInstructorForm from "../../components/CreateCourseForm/AssignInstructorForm/AssignInstructorForm";
-import AssignStaffForm from "../../components/CreateCourseForm/AssignStaff/AssignStaffForm";
-import AssignStudentForm from "../../components/CreateCourseForm/AssignStudent/AssignStudentForm";
-import CreateCourseDetailForm from "../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm";
-import Layout from "../../components/Layout";
-import StepperComponent from "../../components/Stepper/Stepper";
+import dynamic from "next/dynamic";
 import { navigation } from "../../data/navigationData";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const SmallButton = dynamic(import("../../components/Button/SmallButton"), {
+  ssr: false,
+});
+const CreateCourseDetailForm = dynamic(
+  import("../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm"),
+  {
+    ssr: false,
+  }
+);
+
+const AssignStudentForm = dynamic(
+  import("../../components/CreateCourseForm/AssignStudent/AssignStudentForm"),
+  {
+    ssr: false,
+  }
+);
+const StepperOne = dynamic(
+  import("../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm"),
+  {
+    ssr: false,
+  }
+);
+const StepperComponent = dynamic(import("../../components/Stepper/Stepper"), {
+  ssr: false,
+});
+const AddLectureForm = dynamic(
+  import("../../components/CreateCourseForm/AddLecture/AddLectureForm"),
+  {
+    ssr: false,
+  }
+);
+const AssignInstructorForm = dynamic(
+  import(
+    "../../components/CreateCourseForm/AssignInstructorForm/AssignInstructorForm"
+  ),
+  {
+    ssr: false,
+  }
+);
+const AssignStaffForm = dynamic(
+  import("../../components/CreateCourseForm/AssignStaff/AssignStaffForm"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
