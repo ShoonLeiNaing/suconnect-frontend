@@ -53,7 +53,7 @@ interface IProps {
 const AnnouncementUserView: FunctionComponent<IProps> = ({ announcements }) => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
-  const [isAdmin, setIsAdmin] = useState<boolean>(true);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [data, setData] = useState<any>(announcements.data);
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(6);
@@ -142,7 +142,10 @@ const AnnouncementUserView: FunctionComponent<IProps> = ({ announcements }) => {
             />
           ) : (
             <Box className="container" py={2}>
-              <UserViewCards />
+              <UserViewCards  showCategory
+              data={data}
+              type="announcement"
+              loading={loading}/>
               <Box mt={2}>
                 <Paginator
                   {...{
