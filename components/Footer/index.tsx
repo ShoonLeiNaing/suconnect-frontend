@@ -23,14 +23,18 @@ const Footer: FunctionComponent<FooterProps> = ({
   return (
     <Box display="flex" flexDirection="column">
       <Box sx={{ backgroundColor, width: "100%", position: "relative" }}>
-        <Box 
-          className="max-w-screen-2xl py-10  px-16 m-auto"
+        <Box
+          className="max-w-screen-2xl py-4 md:py-8 px-4 lg:px-16 md:px-8 sm:px-6 m-auto"
           display="flex"
-          flexDirection={{ xs: "column", sm: "row" }}
+          flexDirection="row"
+          flexWrap={{ xs: "wrap" }}
           justifyContent="space-between"
           alignItems={{ xs: "left", sm: "center" }}
         >
-          <div className="flex flex-col mr-10">
+          <Box
+            width={{ md: "fit-content", sm: "100%" }}
+            className="flex flex-col mr-10 "
+          >
             <Image
               height={50}
               width={180}
@@ -80,7 +84,7 @@ const Footer: FunctionComponent<FooterProps> = ({
                 {/* <Icon as={FaLinkedin} fontSize="24px" /> */}
               </a>
             </div>
-          </div>
+          </Box>
           <div className="flex flex-col mt-8 mr-10">
             <h4
               className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"

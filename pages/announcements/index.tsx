@@ -1,21 +1,37 @@
 import { Box, Typography } from "@mui/material";
 import { FunctionComponent, useState, useEffect } from "react";
 import { BiRefresh } from "react-icons/bi";
-import Layout from "../../components/Layout";
-import UserViewCards from "../../components/UserViewCards";
-import DateFilter from "../../components/DateFilter";
-import SearchInput from "../../components/DateFilter/SearchInput";
-import SubTitle from "../../components/SubTitle";
+import dynamic from "next/dynamic";
 import { colors } from "../../data/constant";
-import Paginator from "../../components/Paginator";
-import IconButton from "../../components/IconButton";
-import SmallButton from "../../components/Button/SmallButton";
-import ActionsMenu from "../../components/DataTable/ActionsMenu";
-import DataTable from "../../components/DataTable";
 import { navigation } from "../../data/navigationData";
 import { getFilterParams } from "../../utils/common/getFilterParams";
 import { getAllAnnouncements } from "../../api/announcements/list";
 import { filterAnnouncements } from "../../api/announcements/filter";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const UserViewCards = dynamic(import("../../components/UserViewCards"), {
+  ssr: false,
+});
+const DateFilter = dynamic(import("../../components/DateFilter"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const SubTitle = dynamic(import("../../components/SubTitle"), { ssr: false });
+const Paginator = dynamic(import("../../components/Paginator"), { ssr: false });
+const IconButton = dynamic(import("../../components/IconButton"), {
+  ssr: false,
+});
+const SmallButton = dynamic(import("../../components/Button/SmallButton"), {
+  ssr: false,
+});
+const ActionsMenu = dynamic(import("../../components/DataTable/ActionsMenu"), {
+  ssr: false,
+});
+const DataTable = dynamic(import("../../components/DataTable"), {
+  ssr: false,
+});
 
 const columns = [
   {

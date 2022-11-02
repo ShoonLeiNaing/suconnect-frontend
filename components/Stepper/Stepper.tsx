@@ -84,7 +84,13 @@ const StepperComponent: FunctionComponent<IProps> = ({
         </>
       ) : (
         <>
-          <Box maxWidth={maxWidth} width={width} margin="auto" my={marginY} className="px-1 sm:px-4 lg:px-8">
+          <Box
+            maxWidth={maxWidth}
+            width={width}
+            margin="auto"
+            my={marginY}
+            className="px-1 sm:px-4 lg:px-8"
+          >
             {stepperStatus()}
           </Box>
           <Box width="100%" height="100%">
