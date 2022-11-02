@@ -10,6 +10,13 @@ const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
 const SmallButton = dynamic(import("../../components/Button/SmallButton"), {
   ssr: false,
 });
+const CreateCourseDetailForm = dynamic(
+  import("../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm"),
+  {
+    ssr: false,
+  }
+);
+
 const AssignStudentForm = dynamic(
   import("../../components/CreateCourseForm/AssignStudent/AssignStudentForm"),
   {
@@ -74,7 +81,7 @@ const CreateCourseForm = () => {
     {
       title: "Create course",
       component: (
-        <StepperOne
+        <CreateCourseDetailForm
           {...{
             handleNext,
           }}

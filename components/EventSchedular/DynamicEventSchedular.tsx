@@ -2,6 +2,7 @@
 
 import Paper from "@mui/material/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
+import { FunctionComponent } from "react";
 import {
   Scheduler,
   Appointments,
@@ -10,19 +11,25 @@ import {
   MonthView,
   AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { FunctionComponent } from "react";
 import moment from "moment";
 import { Box } from "@mui/material";
 import { FaGraduationCap } from "react-icons/fa";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
-import { appointments } from "../../data/date";
+import { generateEvents } from "../../utils/common/generateEvents";
 
 interface IProps {
-  setShowEditEvent?: any;
+  events: any;
+  clickEditEventHandler: any;
+  clickDeleteEventHandler: any;
 }
 
-const DynamicEventSchedular: FunctionComponent<IProps> = () => {
+const DynamicEventSchedular: FunctionComponent<IProps> = ({
+  events,
+  clickEditEventHandler,
+  clickDeleteEventHandler,
+}) => {
+  const modifiedEvents = generateEvents(events);
   const Header = ({ children, appointmentData, ...restProps }: any) => (
     <AppointmentTooltip.Header
       {...restProps}
@@ -50,18 +57,27 @@ const DynamicEventSchedular: FunctionComponent<IProps> = () => {
         paddingY="15px"
         paddingX="20px"
       >
-        <Box className="flex items-center gap-2">
+        <Box
+          className="flex items-center gap-2"
+          onClick={() => clickEditEventHandler(appointmentData)}
+        >
           <AiFillEdit fontSize="18px" />
           Edit
         </Box>
-        <Box className="flex items-center gap-2">
+        <Box
+          className="flex items-center gap-2"
+          onClick={(e: any) => {
+            // e.stopPropagation();
+            clickDeleteEventHandler(appointmentData);
+          }}
+        >
           <AiFillDelete fontSize="18px" />
           Delete
         </Box>
-        <Box className="flex items-center gap-2">
+        {/* <Box className="flex items-center gap-2">
           <BiCopy fontSize="18px" />
           Duplicate
-        </Box>
+        </Box> */}
       </Box>
     </AppointmentTooltip.Content>
   );
@@ -96,7 +112,7 @@ const DynamicEventSchedular: FunctionComponent<IProps> = () => {
   return (
     <Box pb={4} height="100%" overflow="scroll">
       <Paper>
-        <Scheduler data={appointments} height={700}>
+        <Scheduler data={modifiedEvents} height={700}>
           <ViewState
             defaultCurrentDate={moment().format("YYYY-MM-DD")}
             defaultCurrentViewName="Month"

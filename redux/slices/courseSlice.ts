@@ -1,9 +1,9 @@
-/* eslint-disable camelcase */
+/* eslint-disable camelcase, no-param-reassign */
 
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "../store";
 
-interface CourseInterface {
+interface Course {
   id: string;
   name: string;
   description?: string;
@@ -15,7 +15,7 @@ interface CourseInterface {
   category: number;
 }
 
-const initialState: CourseInterface = {
+const initialState: Course = {
   id: "",
   name: "",
   description: "",
@@ -31,13 +31,21 @@ export const courseSlice = createSlice({
   name: "course",
   initialState,
   reducers: {
-    createCourse: (state, action) => {
-      console.log(state);
+    storeCourse: (state, action) => {
+      state.id = action.payload.id;
+      state.name = action.payload.name;
+      state.description = action.payload.description;
+      state.code = action.payload.code;
+      state.start_date = action.payload.end_date;
+      state.end_date = action.payload.end_date;
+      state.monthly_fee = action.payload.monthly_fee;
+      state.color = action.payload.color;
+      state.category = action.payload.category;
     },
   },
 });
 
-export const { createCourse } = courseSlice.actions;
+export const { storeCourse } = courseSlice.actions;
 
 export const selectCourse = (state: AppState) => state.course;
 
