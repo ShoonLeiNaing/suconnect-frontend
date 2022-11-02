@@ -22,8 +22,8 @@ const BreadcrumbsComponent = dynamic(
 );
 
 interface IProps {
-  addMember: boolean;
-  addDepartment: boolean;
+  addMember?: boolean;
+  addDepartment?: boolean;
 }
 
 const breadCrumbsData = [

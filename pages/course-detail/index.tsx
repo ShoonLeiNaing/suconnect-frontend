@@ -17,6 +17,18 @@ const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
 const CourseDetailForm = dynamic(import("../../components/CourseDetailForm"), {
   ssr: false,
 });
+const StaffViewScreen = dynamic(
+  import("../../components/CourseDetailForm/StaffViewScreen"),
+  {
+    ssr: false,
+  }
+);
+const StudentListScreen = dynamic(
+  import("../../components/CourseDetailForm/StudentListScreen"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
@@ -87,26 +99,46 @@ const CourseDetail: FunctionComponent = () => {
               <Tab
                 icon={<GiGraduateCap className="text-2xl mr-2" />}
                 label="Course Detail"
-                className="capitalize flex flex-row items-center text-[0.96rem]"
+                className="flex flex-row items-center text-[0.96rem]"
                 {...a11yProps(0)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
               <Tab
                 icon={<AiFillCalendar className="text-xl mr-2" />}
                 label="Calendar"
                 className="capitalize flex flex-row items-center mx-16 text-[0.96rem]"
                 {...a11yProps(1)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
               <Tab
                 icon={<BsFillPersonFill className="text-2xl mr-2" />}
                 label="Staff"
                 className="capitalize flex flex-row items-center mr-16 text-[0.96rem]"
                 {...a11yProps(2)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
               <Tab
                 icon={<FaUserGraduate className="text-lg mr-2" />}
                 label="Student"
                 className="capitalize flex flex-row items-center text-[0.96rem]"
                 {...a11yProps(3)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
             </Tabs>
           </Box>
@@ -117,10 +149,10 @@ const CourseDetail: FunctionComponent = () => {
             Item Two
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Item Three
+            <StaffViewScreen />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            Item Four
+            <StudentListScreen />
           </TabPanel>
         </Box>
       </Box>

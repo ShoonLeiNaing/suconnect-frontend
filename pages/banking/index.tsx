@@ -8,6 +8,7 @@ import { byCategory, byDate } from "../../data/testData";
 import { navigation } from "../../data/navigationData";
 import { getBankAccountsOfUser } from "../../api/banking/getBankAccountsOfUser";
 import { generateColor } from "../../utils/common/generateColor";
+import ChipComponent from "../../components/ChipComponent";
 
 const Layout = dynamic(import("../../components/Layout"), { ssr: false });
 const DropDown = dynamic(import("../../components/DateFilter/DropDown"), {
@@ -145,25 +146,23 @@ const Banking = ({ bankAccounts }: any) => {
             </Box>
             <DropDown setFilterText={setFilterText} individual />
           </Box>
+          <Box display="flex" alignItems="center" gap={2} mb={4}>
+            {filterOptions.map((option) => (
+              <ChipComponent
+                key={option.text}
+                label={`by ${option.text.toLowerCase()}`}
+                handleDelete={handleDelete}
+              />
+            ))}
 
-          {/* <Box display="flex" alignItems="center" gap={2} mb={4}>
-          {filterOptions.map((option) => (
-            <ChipComponent
-              key={option.text}
-              label={`by ${option.text.toLowerCase()}`}
-              handleDelete={handleDelete}
-            />
-          ))}
-
-          <Typography
-            color={colors.secondaryColors.red.red1}
-            fontSize="14px"
-            className="cursor"
-          >
-            Clear all
-          </Typography>
-          
-        </Box> */}
+            <Typography
+              color={colors.secondaryColors.red.red1}
+              fontSize="14px"
+              className="cursor"
+            >
+              Clear all
+            </Typography>
+          </Box>
 
           <Box className="flex justify-end ">
             <Box
