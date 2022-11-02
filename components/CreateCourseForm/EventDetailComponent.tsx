@@ -9,11 +9,13 @@ import { FunctionComponent } from "react";
 interface IProps {
   setSelectedEvent?: any;
   setShowEditForm?: any;
+  selectedEvent?: any;
 }
 
 const EventDetailComponent: FunctionComponent<IProps> = ({
   setSelectedEvent,
   setShowEditForm,
+  selectedEvent,
 }) => {
   return (
     <Box className="border rounded-xl p-4 px-8" height="100%">

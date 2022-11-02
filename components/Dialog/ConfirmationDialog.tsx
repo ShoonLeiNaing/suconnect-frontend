@@ -11,20 +11,24 @@ import SmallButton from "../Button/SmallButton";
 import { colors } from "../../data/constant";
 
 interface IProps {
+  btnClickHandler?: any;
   open: boolean;
   handleClose?: any;
   type?: string;
   btnLabel?: string;
   dialogTitle: string;
   dialogBody: string;
+  color?: string;
 }
 const ConfirmationDialog: FunctionComponent<IProps> = ({
+  btnClickHandler,
   open,
   handleClose,
   type,
   btnLabel,
   dialogTitle,
   dialogBody,
+  color,
 }) => {
   return (
     <Dialog
@@ -60,8 +64,10 @@ const ConfirmationDialog: FunctionComponent<IProps> = ({
         />
 
         <SmallButton
-          customHeight="28px"
-          customWidth="45px"
+          bgColor={color}
+          customHeight="40px"
+          // customWidth="45px"
+          onClickHandler={btnClickHandler}
           text={btnLabel || "Save"}
           type="submit"
         />
