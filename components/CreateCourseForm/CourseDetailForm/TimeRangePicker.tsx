@@ -3,41 +3,94 @@
 import { FunctionComponent, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Dayjs } from "dayjs";
 import moment from "moment";
-import dayjs, { Dayjs } from "dayjs";
 import { TimePicker } from "@mui/x-date-pickers";
-import { TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
-import InputLabel from "./InputLabel";
-import { colors } from "../../data/constant";
+import { colors } from "../../../data/constant";
+import InputLabel from "../../Input/InputLabel";
 
 interface IProps {
-  values?: any;
-  setFieldValue?: any;
+  time?: any;
+  setTime?: any;
   labelText: string;
-  errors?: any;
-  touched?: any;
-  isEdit?: boolean;
+  day?: string;
+  separated?: boolean;
+  selectedDays?: any[];
 }
 
 const TimePickerComponent: FunctionComponent<IProps> = ({
-  values,
-  setFieldValue,
+  time,
+  setTime,
   labelText,
-  errors,
-  touched,
-  isEdit,
+  day,
+  separated,
+  selectedDays,
 }) => {
-  // console.log({ values });
-  const [startTime, setStartTime] = useState<Dayjs | null | any>(
-    (isEdit && dayjs(values.startTime).format()) || null
-  );
-  const [endTime, setEndTime] = useState<Dayjs | null | any>(
-    (isEdit && dayjs(values.endTime).format()) || null
-  );
-  // console.log({ startTime });
+  const [startTime, setStartTime] = useState<Dayjs | null | any>(null);
+  const [endTime, setEndTime] = useState<Dayjs | null | any>(null);
+
+  const startTimeChangeHandler = (e: any) => {
+    if (separated && day) {
+      let temp: any = time?.filter((item: any) => Object.keys(item)[0] !== day);
+      temp = [
+        ...temp,
+        {
+          [day]: {
+            startTime: moment(e.$d).format("HH:mm"),
+            endTime: moment(endTime?.$d).format("HH:mm"),
+          },
+        },
+      ];
+      setTime(temp);
+    } else {
+      const temp: any = [];
+      selectedDays?.map((item) => {
+        temp.push({
+          [item.date]: {
+            startTime: moment(e.$d).format("HH:mm"),
+            endTime: moment(endTime?.$d).format("HH:mm"),
+          },
+        });
+      });
+      setTime(temp);
+    }
+  };
+
+  const endTimeChangeHandler = (e: any) => {
+    if (separated && day) {
+      let temp: any = time?.filter((item: any) => Object.keys(item)[0] !== day);
+      temp = [
+        ...temp,
+        {
+          [day]: {
+            startTime: moment(startTime?.$d).format("HH:mm"),
+            endTime: moment(e.$d).format("HH:mm"),
+          },
+        },
+      ];
+      setTime(temp);
+    } else {
+      const temp: any = [];
+      selectedDays?.map((item) => {
+        temp.push({
+          [item.date]: {
+            startTime: moment(startTime?.$d).format("HH:mm"),
+            endTime: moment(e.$d).format("HH:mm"),
+          },
+        });
+      });
+      setTime(temp);
+    }
+  };
+
   return (
-    <Box maxWidth="500px" className="gap-3 flex flex-col" mb={4}>
+    <Box
+      maxWidth="500px"
+      className="gap-3 flex flex-col"
+      mb={separated ? 4 : 0}
+    >
       <InputLabel label={labelText} />
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -51,7 +104,7 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
               value={startTime}
               onChange={(e) => {
                 setStartTime(e);
-                setFieldValue("time_from", moment(e?.$d).format("HH:mm"));
+                startTimeChangeHandler(e);
               }}
               renderInput={(params) => (
                 <TextField
@@ -66,22 +119,15 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
                 />
               )}
             />
-            <Box position="relative">
-              {errors.time_from && touched.time_from && (
-                <Typography className="error-message" position="absolute">
-                  {errors.time_from}
-                </Typography>
-              )}
-            </Box>
           </Box>
           <Box>
             <InputLabel label="End Time" />
             <TimePicker
-              // minTime={startTime}
               value={endTime}
+              minTime={startTime}
               onChange={(e) => {
                 setEndTime(e);
-                setFieldValue("time_to", moment(e?.$d).format("HH:mm"));
+                endTimeChangeHandler(e);
               }}
               renderInput={(params) => (
                 <TextField
@@ -96,13 +142,6 @@ const TimePickerComponent: FunctionComponent<IProps> = ({
                 />
               )}
             />
-            <Box position="relative">
-              {errors.time_to && touched.time_to && (
-                <Typography className="error-message" position="absolute">
-                  {errors.time_to}
-                </Typography>
-              )}
-            </Box>
           </Box>
         </Box>
         {/* <Box my={3} display="flex" justifyContent="flex-end">

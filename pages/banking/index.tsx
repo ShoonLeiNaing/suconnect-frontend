@@ -2,20 +2,43 @@ import { Box, Typography } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { RiFilterFill } from "react-icons/ri";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
-import BankingInfoCard from "../../components/Banking/BankInfoCard";
+import dynamic from "next/dynamic";
 import { colors } from "../../data/constant";
-import NameTag from "../../components/Profile/NameTag";
-import SearchInput from "../../components/DateFilter/SearchInput";
-import DropDown from "../../components/DateFilter/DropDown";
 import { byCategory, byDate } from "../../data/testData";
-import MenuComponent from "../../components/MenuButton";
-import ChipComponent from "../../components/ChipComponent";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 import { navigation } from "../../data/navigationData";
 import { getBankAccountsOfUser } from "../../api/banking/getBankAccountsOfUser";
 import { generateColor } from "../../utils/common/generateColor";
+import ChipComponent from "../../components/ChipComponent";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const DropDown = dynamic(import("../../components/DateFilter/DropDown"), {
+  ssr: false,
+});
+const MenuComponent = dynamic(import("../../components/MenuButton"), {
+  ssr: false,
+});
+const FilterSideBar = dynamic(
+  import("../../components/FilterSideBar/FilterSideBar"),
+  {
+    ssr: false,
+  }
+);
+
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const BankingInfoCard = dynamic(
+  import("../../components/Banking/BankInfoCard"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
@@ -71,8 +94,6 @@ const Banking = ({ bankAccounts }: any) => {
   ];
 
   const fetchBankAccounts = async () => {
-    console.log("hello");
-
     const res = await getBankAccountsOfUser(1);
     setData(res.data?.bankaccount_set);
   };
@@ -125,25 +146,23 @@ const Banking = ({ bankAccounts }: any) => {
             </Box>
             <DropDown setFilterText={setFilterText} individual />
           </Box>
-
           <Box display="flex" alignItems="center" gap={2} mb={4}>
-          {filterOptions.map((option) => (
-            <ChipComponent
-              key={option.text}
-              label={`by ${option.text.toLowerCase()}`}
-              handleDelete={handleDelete}
-            />
-          ))}
+            {filterOptions.map((option) => (
+              <ChipComponent
+                key={option.text}
+                label={`by ${option.text.toLowerCase()}`}
+                handleDelete={handleDelete}
+              />
+            ))}
 
-          <Typography
-            color={colors.secondaryColors.red.red1}
-            fontSize="14px"
-            className="cursor"
-          >
-            Clear all
-          </Typography>
-          
-        </Box>
+            <Typography
+              color={colors.secondaryColors.red.red1}
+              fontSize="14px"
+              className="cursor"
+            >
+              Clear all
+            </Typography>
+          </Box>
 
           <Box className="flex justify-end ">
             <Box
@@ -159,9 +178,9 @@ const Banking = ({ bankAccounts }: any) => {
             </Box>
           </Box>
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mb={4}>
+        <Box display="flex" alignItems="center" mb={4}>
           {/* <Box className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"> */}
-          <Box className=" grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 xl:grid-cols-3 items-center gap-2 md:gap-4 xl:gap-12">
+          <Box className="flex flex-wrap gap-x-6 justify-center items-center ">
             {data?.map((bankAccount: any, index: number) => (
               <BankingInfoCard
                 data={bankAccount}

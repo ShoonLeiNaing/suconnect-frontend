@@ -1,11 +1,25 @@
 import { Box } from "@mui/material";
-import { FunctionComponent, useState } from "react";
-import BreadcrumbsComponent from "../../../components/Breadcrumbs";
-import SearchInput from "../../../components/DateFilter/SearchInput";
-import AddDepartments from "../../../components/Department/AddData/add-department";
-import AddMembers from "../../../components/Department/AddData/add-member";
-import Layout from "../../../components/Layout";
-import { navigation } from "../../../data/navigationData";
+import { FunctionComponent } from "react";
+import dynamic from "next/dynamic";
+
+const AddDepartments = dynamic(
+  import("../../../components/Department/AddData/add-department"),
+  {
+    ssr: false,
+  }
+);
+const AddMembers = dynamic(
+  import("../../../components/Department/AddData/add-member"),
+  {
+    ssr: false,
+  }
+);
+const BreadcrumbsComponent = dynamic(
+  import("../../../components/Breadcrumbs"),
+  {
+    ssr: false,
+  }
+);
 
 interface IProps {
   addMember?: boolean;

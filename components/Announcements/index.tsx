@@ -1,6 +1,5 @@
 // import { Box } from "@chakra-ui/react";
 import { Box } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { SwiperSlide } from "swiper/react";
 import { colors } from "../../data/constant";
@@ -52,7 +51,6 @@ const Announcements = () => {
       <Box
         className="inner-container"
         display="block"
-        // display={{ xs: "flex", md: "block" }}
         flexDirection="column"
         alignItems="center"
       >

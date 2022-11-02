@@ -1,24 +1,39 @@
 import { FunctionComponent, useState } from "react";
 import Link from "next/link";
-import { Box, Button, Typography, Tab } from "@mui/material";
+import dynamic from "next/dynamic";
+import { Box, Typography, Tab } from "@mui/material";
 import { RiFilterFill } from "react-icons/ri";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { FaUserAlt, FaSitemap, FaPlus } from "react-icons/fa";
-import InputLabel from "../../components/Input/InputLabel";
-import DynamicInput from "../../components/Input/DynamicInput";
-import DataTable from "../../components/DataTable";
-
-import SearchInput from "../../components/SearchInput";
-import MenuComponent from "../../components/MenuButton";
-import Layout from "../../components/Layout";
+import { FaUserAlt, FaPlus } from "react-icons/fa";
 import { navigation } from "../../data/navigationData";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import { colors } from "../../data/constant";
-import SmallButton from "../../components/Button/SmallButton";
-import AddMembers from "../../components/Department/AddData/add-member";
-import AddMemberDepartmentScreen from "./schedule";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const InputLabel = dynamic(import("../../components/Input/InputLabel"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const DynamicInput = dynamic(import("../../components/Input/DynamicInput"), {
+  ssr: false,
+});
+const SmallButton = dynamic(import("../../components/Button/SmallButton"), {
+  ssr: false,
+});
+const DataTable = dynamic(import("../../components/DataTable"), {
+  ssr: false,
+});
+const MenuComponent = dynamic(import("../../components/MenuButton"), {
+  ssr: false,
+});
+const AddMemberDepartmentScreen = dynamic(import("./schedule"), {
+  ssr: false,
+});
 
 interface DepartmentDetailProps {}
 

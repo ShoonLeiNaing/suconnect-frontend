@@ -17,9 +17,7 @@ import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import InstructorComponent from "../CreateCourseForm/AssignInstructorForm/InstructorComponent";
 import WordsCount from "../Input/WordsCount";
-import EventComponent from "../SearchResults/EventComponent";
-import IndicatorLine from "../SearchResults/IndicatorLine";
-import SmallButton from "../Button/SmallButton";
+import EventsItem from "../CreateCourseForm/AddLecture/EventsItem";
 
 const instructors = [
   {
@@ -57,7 +55,11 @@ const CourseDetailForm: FunctionComponent = () => {
           Main Lecturer
         </Typography>
         <Box className="-ml-8 mt-1">
-          <InstructorComponent datas={instructors} color="#FF7FEB" />
+          <InstructorComponent
+            datas={instructors}
+            color="#FF7FEB"
+            hover={false}
+          />
         </Box>
         <Box className="flex flex-col gap-8" maxWidth="400px">
           <Box>
@@ -114,7 +116,7 @@ const CourseDetailForm: FunctionComponent = () => {
               setValue={setBio}
               customWidth="100%"
               maxiWidth="500px"
-              maxiHeight="70px"
+              maxiHeight="100px"
               isTextArea
               placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sed adipiscing"
             />
@@ -171,6 +173,22 @@ const CourseDetailForm: FunctionComponent = () => {
         </Box>
       </Box>
       <Box
+        // backgroundColor="red"
+        className="border rounded-xl mt-4"
+        width="350px"
+        height="68vh"
+      >
+        <EventsItem
+          {...{ btnText: "View all in calendar" }}
+          // {...{
+          //   showAddEvent,
+          //   setShowAddEvent,
+          //   selectedEvent,
+          //   setSelectedEvent,
+          // }}
+        />
+      </Box>{" "}
+      {/* <Box
         className="w-1/3 flex flex-col border rounded-l-lg px-4 py-8 overflow-y-auto"
         maxHeight="131vh"
       >
@@ -250,7 +268,7 @@ const CourseDetailForm: FunctionComponent = () => {
           // customPaddingX="0.5rem"
           // customPaddingY="1.5rem"
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 };
