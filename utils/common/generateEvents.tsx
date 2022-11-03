@@ -1,4 +1,9 @@
+/* eslint-disable no-nested-ternary */
+
 import moment from "moment";
+import { AiFillHome } from "react-icons/ai";
+import { FaGraduationCap, FaBookReader } from "react-icons/fa";
+import { BsFillCalendar2CheckFill } from "react-icons/bs";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 export const generateEvents = (events: any) => {
@@ -6,16 +11,36 @@ export const generateEvents = (events: any) => {
     const date = event.date.split("-");
     const startTime = event.time_from.split(":");
     const endTime = event.time_to.split(":");
-    const eventType = event.classification === 10 && "Lecture Day";
+
     return {
       id: event.id,
       day: daysOfWeek[
         moment(new Date(date[0], date[1], date[2])).subtract(1, "months").day()
       ],
+      icon:
+        event?.classification === 10 ? (
+          <FaGraduationCap fontSize="16px" />
+        ) : event.classification === 9 ? (
+          <AiFillHome fontSize="16px" />
+        ) : event.classification === 8 ? (
+          <FaBookReader fontSize="16px" />
+        ) : (
+          <BsFillCalendar2CheckFill fontSize="16px" />
+        ),
       classification: event.classification,
       course: event.course,
-      title: `${eventType} ${index + 1}`,
-      color: "pink",
+      title:
+        event.classification !== 10
+          ? event.name
+          : `Lecture Day ${event.classification === 10 ? index + 1 : ""}`,
+      color:
+        event.classification === 10
+          ? "pink"
+          : event.classification === 9
+          ? "blue"
+          : event.classification === 8
+          ? "orange"
+          : "green",
       startDate: new Date(
         date[0],
         date[1] - 1,

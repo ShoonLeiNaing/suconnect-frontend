@@ -22,12 +22,14 @@ interface IProps {
   events: any;
   clickEditEventHandler: any;
   clickDeleteEventHandler: any;
+  classification?: number;
 }
 
 const DynamicEventSchedular: FunctionComponent<IProps> = ({
   events,
   clickEditEventHandler,
   clickDeleteEventHandler,
+  classification,
 }) => {
   const modifiedEvents = generateEvents(events);
   const Header = ({ children, appointmentData, ...restProps }: any) => (
@@ -52,33 +54,35 @@ const DynamicEventSchedular: FunctionComponent<IProps> = ({
       }}
       appointmentData={appointmentData}
     >
-      <Box
-        className="flex items-center gap-6 cursor"
-        paddingY="15px"
-        paddingX="20px"
-      >
+      {appointmentData?.classification === classification && (
         <Box
-          className="flex items-center gap-2"
-          onClick={() => clickEditEventHandler(appointmentData)}
+          className="flex items-center gap-6 cursor"
+          paddingY="15px"
+          paddingX="20px"
         >
-          <AiFillEdit fontSize="18px" />
-          Edit
-        </Box>
-        <Box
-          className="flex items-center gap-2"
-          onClick={(e: any) => {
-            // e.stopPropagation();
-            clickDeleteEventHandler(appointmentData);
-          }}
-        >
-          <AiFillDelete fontSize="18px" />
-          Delete
-        </Box>
-        {/* <Box className="flex items-center gap-2">
+          <Box
+            className="flex items-center gap-2"
+            onClick={() => clickEditEventHandler(appointmentData)}
+          >
+            <AiFillEdit fontSize="18px" />
+            Edit
+          </Box>
+          <Box
+            className="flex items-center gap-2"
+            onClick={(e: any) => {
+              // e.stopPropagation();
+              clickDeleteEventHandler(appointmentData);
+            }}
+          >
+            <AiFillDelete fontSize="18px" />
+            Delete
+          </Box>
+          {/* <Box className="flex items-center gap-2">
           <BiCopy fontSize="18px" />
           Duplicate
         </Box> */}
-      </Box>
+        </Box>
+      )}
     </AppointmentTooltip.Content>
   );
 
@@ -95,7 +99,8 @@ const DynamicEventSchedular: FunctionComponent<IProps> = ({
       }}
     >
       <Box position="absolute" left={0} margin="4px">
-        <FaGraduationCap fontSize="16px" />
+        {children[1].props.data.icon}
+        {/* <FaGraduationCap fontSize="16px" /> */}
       </Box>
       {children}
     </Appointments.Appointment>
