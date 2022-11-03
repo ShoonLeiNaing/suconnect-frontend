@@ -19,7 +19,7 @@ const CardCarousel: FunctionComponent<IProps> = ({
     <Box>
       <Box
         width="100%"
-        maxWidth={maxWidth}
+        maxWidth={maxWidth || "100%"}
         py={4}
         zIndex={10}
         // sx={{ display: { xs: "none", sm: "block" } }}

@@ -225,14 +225,11 @@ const SignUp: FunctionComponent = () => {
             fringilla, mattis ligula consectetur, ultrices mauris. Maecenas
             vitae mattis tellus. Nullam quis imperdiet augue.
           </Typography>
-          <Box
-            mt={{ md: 8, sm: 4, xs: 2 }}
-            className="w-full flex justify-end items-center gap-4"
-          >
+          <Box className="w-full flex justify-end items-center mt-8 gap-x-4">
             <OutlineWhiteButton
               text="Login"
               customHeight="40px"
-              customWidth="70px"
+              customWidth="80px"
               onClickHandler={() => login()}
             />
 

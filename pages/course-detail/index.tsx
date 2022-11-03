@@ -17,6 +17,7 @@ const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
 const CourseDetailForm = dynamic(import("../../components/CourseDetailForm"), {
   ssr: false,
 });
+
 const StaffViewScreen = dynamic(
   import("../../components/CourseDetailForm/StaffViewScreen"),
   {
