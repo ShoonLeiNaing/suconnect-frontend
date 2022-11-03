@@ -180,10 +180,10 @@ const LectureEventForm: FunctionComponent<IProps> = ({
                       label="Holidays"
                     />
                     <FormControlLabel
-                      value="events"
+                      value="exam"
                       control={<Radio />}
-                      disabled={type !== "events"}
-                      label="Events"
+                      disabled={type !== "exam"}
+                      label="Exams"
                     />
                     <FormControlLabel
                       value="others"

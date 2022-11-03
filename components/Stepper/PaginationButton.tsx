@@ -22,7 +22,7 @@ const PaginationButton: FunctionComponent<IProps> = ({
       color={colors.primaryColors.lightblue.lightblue1}
       className="flex gap-10 cursor-pointer"
     >
-      {showPrevious && (
+      {handleBack && (
         <Typography
           fontSize="15px"
           className="flex gap-2 items-center"

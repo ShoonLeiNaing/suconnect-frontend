@@ -121,6 +121,7 @@ const CreateCourseForm = () => {
         />
       ),
     },
+
     {
       title: "Assign other events",
       component: (
@@ -134,6 +135,7 @@ const CreateCourseForm = () => {
         />
       ),
     },
+
     {
       title: "Assign lecturer",
       component: (
