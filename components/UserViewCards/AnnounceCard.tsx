@@ -2,6 +2,7 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 
 export interface CardProps {
+  index?: number;
   image: string;
   title: string;
   date: string;
@@ -14,6 +15,7 @@ export interface CardProps {
 }
 
 const AnnounceCard: FunctionComponent<CardProps> = ({
+  index,
   image,
   title,
   date,
@@ -25,7 +27,7 @@ const AnnounceCard: FunctionComponent<CardProps> = ({
   cardHeight,
 }) => {
   return (
-    <Card sx={{ width: customWidth, borderRadius: "25px", height: cardHeight }}>
+    <Card sx={{ width: customWidth, borderRadius: "25px", height: cardHeight }} >
       <CardMedia
         sx={{ height: customHeight }}
         component="img"

@@ -158,7 +158,7 @@ const AnnouncementUserView: FunctionComponent<IProps> = ({ announcements }) => {
             />
           ) : (
             <Box className="container" py={2}>
-              <UserViewCards  showCategory
+              <UserViewCards
               data={data}
               type="announcement"
               loading={loading}/>
@@ -169,7 +169,7 @@ const AnnouncementUserView: FunctionComponent<IProps> = ({ announcements }) => {
                     setPage,
                     totalPages,
                     item: "item",
-                    size,
+                    size: 9,
                     setSize,
                   }}
                 />
