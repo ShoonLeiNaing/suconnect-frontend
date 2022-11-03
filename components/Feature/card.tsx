@@ -26,11 +26,14 @@ const Card: FunctionComponent = () => {
           />
         </Box>
         <div className={styles.card_text_one}>
-          <Typography fontSize={{ lg: "20px", md: "18px" }} fontWeight="bold">
+          <Typography
+            fontSize={{ lg: "20px", md: "18px", xs: "15px" }}
+            fontWeight="bold"
+          >
             Monthly Payroll
           </Typography>
           <Typography
-            fontSize={{ lg: "16px", xs: "14px" }}
+            fontSize={{ lg: "16px", xs: "13px" }}
             my={{ xl: 3, md: 2, xs: 1 }}
           >
             The distribution of algal species has been fairly well studied since
@@ -60,12 +63,15 @@ const Card: FunctionComponent = () => {
           />
         </Box>{" "}
         <div className={styles.card_text_two}>
-          <Typography fontSize={{ lg: "20px", md: "18px" }} fontWeight="bold">
+          <Typography
+            fontSize={{ lg: "20px", md: "18px", xs: "15px" }}
+            fontWeight="bold"
+          >
             Calendar Scheduling
           </Typography>
 
           <Typography
-            fontSize={{ lg: "16px", xs: "14px" }}
+            fontSize={{ lg: "16px", xs: "13px" }}
             my={{ xl: 3, md: 2, xs: 1 }}
           >
             The distribution of algal species has been fairly well studied since
@@ -95,12 +101,15 @@ const Card: FunctionComponent = () => {
           />
         </Box>
         <div className={styles.card_text_one}>
-          <Typography fontSize={{ lg: "20px", md: "18px" }} fontWeight="bold">
+          <Typography
+            fontSize={{ lg: "20px", md: "18px", xs: "15px" }}
+            fontWeight="bold"
+          >
             Staff Management
           </Typography>
 
           <Typography
-            fontSize={{ lg: "16px", xs: "14px" }}
+            fontSize={{ lg: "16px", xs: "13px" }}
             my={{ xl: 3, md: 2, xs: 1 }}
           >
             The distribution of algal species has been fairly well studied since
@@ -130,12 +139,15 @@ const Card: FunctionComponent = () => {
           />
         </Box>
         <div className={styles.card_text_one}>
-          <Typography fontSize={{ lg: "20px", md: "18px" }} fontWeight="bold">
+          <Typography
+            fontSize={{ lg: "20px", md: "18px", xs: "15px" }}
+            fontWeight="bold"
+          >
             Data Dump{" "}
           </Typography>
 
           <Typography
-            fontSize={{ lg: "16px", xs: "14px" }}
+            fontSize={{ lg: "16px", xs: "13px" }}
             my={{ xl: 3, md: 2, xs: 1 }}
           >
             The distribution of algal species has been fairly well studied since

@@ -8,6 +8,7 @@ import { byCategory, byDate } from "../../data/testData";
 import { navigation } from "../../data/navigationData";
 import { getBankAccountsOfUser } from "../../api/banking/getBankAccountsOfUser";
 import { generateColor } from "../../utils/common/generateColor";
+import ChipComponent from "../../components/ChipComponent";
 
 const Layout = dynamic(import("../../components/Layout"), { ssr: false });
 const DropDown = dynamic(import("../../components/DateFilter/DropDown"), {
