@@ -26,7 +26,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
   handleBack,
   handleNext,
 }) => {
-  const createdCourse = useSelector(selectCourse);
+  const createdCourse: any = useSelector(selectCourse);
   const [searchText, setSearchText] = useState("");
   const [course, setCourse] = useState<any>();
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
@@ -124,9 +124,11 @@ const AddLectureForm: FunctionComponent<IProps> = ({
             <EventsItem
               {...{
                 showAddEvent,
-                setShowAddEvent,
+                // setShowAddEvent,
                 selectedEvent,
                 setSelectedEvent,
+                btnText: "Add new event",
+                onClickHandler: () => setShowAddEvent(true),
               }}
             />
           </Box>
