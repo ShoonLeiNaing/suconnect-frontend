@@ -89,7 +89,6 @@ const CreateCourseForm = () => {
         <AddLectureForm
           {...{
             handleNext,
-            handleBack,
             type: "lecture",
             classification: 10,
           }}
@@ -105,6 +104,32 @@ const CreateCourseForm = () => {
             handleBack,
             type: "holiday",
             classification: 9,
+          }}
+        />
+      ),
+    },
+    {
+      title: "Assign exams",
+      component: (
+        <AddLectureForm
+          {...{
+            handleNext,
+            handleBack,
+            type: "exam",
+            classification: 8,
+          }}
+        />
+      ),
+    },
+    {
+      title: "Assign other events",
+      component: (
+        <AddLectureForm
+          {...{
+            handleNext,
+            handleBack,
+            type: "others",
+            classification: 7,
           }}
         />
       ),
@@ -141,26 +166,6 @@ const CreateCourseForm = () => {
           }}
         />
       ),
-    },
-    {
-      title: "Step 6:",
-      component: "",
-    },
-    {
-      title: "Step 7:",
-      component: "",
-    },
-    {
-      title: "Step 8:",
-      component: "",
-    },
-    {
-      title: "Step 9:",
-      component: "",
-    },
-    {
-      title: "Step 10:",
-      component: "",
     },
   ];
 

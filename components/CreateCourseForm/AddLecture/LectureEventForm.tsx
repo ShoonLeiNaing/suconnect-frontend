@@ -26,6 +26,7 @@ import { createEvent } from "../../../api/events/create";
 import { selectCourse } from "../../../redux/slices/courseSlice";
 import { compareSeconds } from "../../../utils/common/compareSeconds";
 import { updateEvent } from "../../../api/events/update";
+import DynamicInput from "../../Input/DynamicInput";
 
 interface IProps {
   setShowForm: any;
@@ -88,9 +89,11 @@ const LectureEventForm: FunctionComponent<IProps> = ({
     }
     setLoading(false);
   };
+  console.log({ selectedEvent });
 
   const initialValues = {
     id: selectedEvent?.id || "",
+    name: type === "lecture" ? "test event" : selectedEvent?.title || "",
     time_to:
       type === "holiday"
         ? "23:00"
@@ -194,6 +197,19 @@ const LectureEventForm: FunctionComponent<IProps> = ({
                   <InputLabel label="Course Name" />
                   <StaticInput maxWidth="400px" value={course?.name} showLock />
                 </Box>
+                {type !== "lecture" && (
+                  <Box>
+                    <InputLabel label="Event Name" />
+                    <DynamicInput
+                      maxiWidth="400px"
+                      onChangeHandler={handleChange}
+                      id="name"
+                      name="name"
+                      placeholder="eg. Christmas"
+                      value={values.name}
+                    />
+                  </Box>
+                )}
                 <Box>
                   <InputLabel label="Date" />
                   <DateInput
