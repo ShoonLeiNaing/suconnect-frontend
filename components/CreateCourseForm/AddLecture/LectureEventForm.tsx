@@ -26,6 +26,7 @@ import { createEvent } from "../../../api/events/create";
 import { selectCourse } from "../../../redux/slices/courseSlice";
 import { compareSeconds } from "../../../utils/common/compareSeconds";
 import { updateEvent } from "../../../api/events/update";
+import DynamicInput from "../../Input/DynamicInput";
 
 interface IProps {
   setShowForm: any;
@@ -34,6 +35,8 @@ interface IProps {
   selectedEvent?: any;
   setSelectedEvent?: any;
   isEdit?: boolean;
+  classification?: number;
+  type?: string;
 }
 
 const EventSchema = Yup.object().shape({
@@ -49,6 +52,8 @@ const LectureEventForm: FunctionComponent<IProps> = ({
   selectedEvent,
   setSelectedEvent,
   isEdit,
+  classification,
+  type,
 }) => {
   const [loading, setLoading] = useState(false);
   const course = useSelector(selectCourse);
@@ -72,8 +77,8 @@ const LectureEventForm: FunctionComponent<IProps> = ({
       setTimeout(() => {
         toast.success(
           isEdit
-            ? "Lecture updated successfully"
-            : "Lecture added successfully",
+            ? `${type} updated successfully`
+            : `${type} added successfully`,
           {
             position: "top-right",
             className: "hot-toast",
@@ -84,11 +89,19 @@ const LectureEventForm: FunctionComponent<IProps> = ({
     }
     setLoading(false);
   };
+  console.log({ selectedEvent });
 
   const initialValues = {
     id: selectedEvent?.id || "",
-    time_to: moment(selectedEvent?.endDate).format("hh:mm") || "",
-    time_from: moment(selectedEvent?.startDate).format("hh:mm") || "",
+    name: type === "lecture" ? "test event" : selectedEvent?.title || "",
+    time_to:
+      type === "holiday"
+        ? "23:00"
+        : moment(selectedEvent?.endDate).format("hh:mm") || "",
+    time_from:
+      type === "holiday"
+        ? "01:00"
+        : moment(selectedEvent?.startDate).format("hh:mm") || "",
     startTime: selectedEvent?.startDate || "",
     endTime: selectedEvent?.endDate || "",
     date:
@@ -96,7 +109,7 @@ const LectureEventForm: FunctionComponent<IProps> = ({
       moment().format("YYYY-MM-DD"),
     course: course?.id,
     accout: 1,
-    classification: 10,
+    classification,
   };
 
   return (
@@ -111,6 +124,7 @@ const LectureEventForm: FunctionComponent<IProps> = ({
             return { time_to: "End time should not be before start time" };
         }}
         onSubmit={async (values, errors) => {
+          console.log({ values });
           await createEventHandler(values);
         }}
       >
@@ -134,7 +148,9 @@ const LectureEventForm: FunctionComponent<IProps> = ({
                 <Box className="flex items-center gap-4">
                   <FaGraduationCap fontSize="30px" />
                   <Typography fontSize="20px" fontWeight={600}>
-                    {selectedEvent ? "Edit Lecture Event" : "Add Lecture Event"}
+                    {selectedEvent
+                      ? `Edit ${type} event `
+                      : `Add ${type} Event`}
                   </Typography>
                 </Box>
                 <RiCloseCircleLine
@@ -150,28 +166,28 @@ const LectureEventForm: FunctionComponent<IProps> = ({
               <Box className="flex flex-col gap-8">
                 <Box width="450px">
                   <InputLabel label="Event Type" />
-                  <RadioGroup row defaultValue="Lecture">
+                  <RadioGroup row defaultValue={type}>
                     <FormControlLabel
-                      value="Lecture"
+                      value="lecture"
                       control={<Radio />}
                       label="Lecture"
-                    />
-
-                    <FormControlLabel
-                      value="events"
-                      control={<Radio />}
-                      disabled
-                      label="Events"
+                      disabled={type !== "lecture"}
                     />
                     <FormControlLabel
-                      value="holidays"
+                      value="holiday"
                       control={<Radio />}
-                      disabled
+                      disabled={type !== "holiday"}
                       label="Holidays"
                     />
                     <FormControlLabel
+                      value="exam"
+                      control={<Radio />}
+                      disabled={type !== "exam"}
+                      label="Exams"
+                    />
+                    <FormControlLabel
                       value="others"
-                      disabled
+                      disabled={type !== "others"}
                       control={<Radio />}
                       label="Others"
                     />
@@ -181,6 +197,19 @@ const LectureEventForm: FunctionComponent<IProps> = ({
                   <InputLabel label="Course Name" />
                   <StaticInput maxWidth="400px" value={course?.name} showLock />
                 </Box>
+                {type !== "lecture" && (
+                  <Box>
+                    <InputLabel label="Event Name" />
+                    <DynamicInput
+                      maxiWidth="400px"
+                      onChangeHandler={handleChange}
+                      id="name"
+                      name="name"
+                      placeholder="eg. Christmas"
+                      value={values.name}
+                    />
+                  </Box>
+                )}
                 <Box>
                   <InputLabel label="Date" />
                   <DateInput
@@ -202,18 +231,20 @@ const LectureEventForm: FunctionComponent<IProps> = ({
                     )}
                   </Box>
                 </Box>
-                <Box maxWidth="400px">
-                  <TimePickerComponent
-                    labelText="Choose event time"
-                    {...{
-                      values,
-                      setFieldValue,
-                      errors,
-                      touched,
-                      isEdit,
-                    }}
-                  />
-                </Box>
+                {type !== "holiday" && (
+                  <Box maxWidth="400px">
+                    <TimePickerComponent
+                      labelText="Choose event time"
+                      {...{
+                        values,
+                        setFieldValue,
+                        errors,
+                        touched,
+                        isEdit,
+                      }}
+                    />
+                  </Box>
+                )}
                 {/* <Box>
             <InputLabel label="Class Type" />
             <RadioGroup row defaultValue="Lecture">
@@ -260,7 +291,7 @@ const LectureEventForm: FunctionComponent<IProps> = ({
               />
               <SmallButton
                 type="submit"
-                text="Create"
+                text={isEdit ? "Save" : "Create"}
                 onClickHandler={handleSubmit}
                 customHeight="35px"
               />

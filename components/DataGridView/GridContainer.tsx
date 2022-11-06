@@ -3,7 +3,6 @@
 import { Box, Grid, Skeleton } from "@mui/material";
 import moment from "moment";
 import { FunctionComponent } from "react";
-import { BsBoxArrowDownRight } from "react-icons/bs";
 import DataGridCard from "./DataGridCard";
 
 interface IProps {
@@ -21,7 +20,8 @@ const GridContainer: FunctionComponent<IProps> = ({
 }) => {
   return (
     // <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center" alignItems="center">
-    <Box className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 xl:grid-cols-3 items-center gap-2 md:gap-4 xl:gap-12">
+    // <Box className="grid xs:grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 xl:grid-cols-3 items-center gap-2 md:gap-4 xl:gap-12">
+    <Box className="flex flex-wrap justify-center gap-6 md:gap-6 xl:gap-12">
       {!loading && data ? (
         data?.map((card: any, index: number) => (
           // <Grid item key={index} xs={12} sm={4} md={4}>
@@ -30,6 +30,7 @@ const GridContainer: FunctionComponent<IProps> = ({
               showCategory={showCategory || false}
               index={index}
               title={card.name}
+              category={card?.category?.name}
               position={
                 type === "course"
                   ? `Code - ${card.code}`

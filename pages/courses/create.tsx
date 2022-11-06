@@ -23,12 +23,7 @@ const AssignStudentForm = dynamic(
     ssr: false,
   }
 );
-const StepperOne = dynamic(
-  import("../../components/CreateCourseForm/CourseDetailForm/CreateCourseForm"),
-  {
-    ssr: false,
-  }
-);
+
 const StepperComponent = dynamic(import("../../components/Stepper/Stepper"), {
   ssr: false,
 });
@@ -94,11 +89,53 @@ const CreateCourseForm = () => {
         <AddLectureForm
           {...{
             handleNext,
-            handleBack,
+            type: "lecture",
+            classification: 10,
           }}
         />
       ),
     },
+    {
+      title: "Assign holidays",
+      component: (
+        <AddLectureForm
+          {...{
+            handleNext,
+            handleBack,
+            type: "holiday",
+            classification: 9,
+          }}
+        />
+      ),
+    },
+    {
+      title: "Assign exams",
+      component: (
+        <AddLectureForm
+          {...{
+            handleNext,
+            handleBack,
+            type: "exam",
+            classification: 8,
+          }}
+        />
+      ),
+    },
+
+    {
+      title: "Assign other events",
+      component: (
+        <AddLectureForm
+          {...{
+            handleNext,
+            handleBack,
+            type: "others",
+            classification: 7,
+          }}
+        />
+      ),
+    },
+
     {
       title: "Assign lecturer",
       component: (
@@ -131,26 +168,6 @@ const CreateCourseForm = () => {
           }}
         />
       ),
-    },
-    {
-      title: "Step 6:",
-      component: "",
-    },
-    {
-      title: "Step 7:",
-      component: "",
-    },
-    {
-      title: "Step 8:",
-      component: "",
-    },
-    {
-      title: "Step 9:",
-      component: "",
-    },
-    {
-      title: "Step 10:",
-      component: "",
     },
   ];
 
