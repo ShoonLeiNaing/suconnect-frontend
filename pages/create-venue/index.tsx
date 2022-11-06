@@ -80,7 +80,6 @@ const CreateCampus = () => {
               }}
             />
           </Box> */}
-          
         </Box>
 
         <StepperComponent

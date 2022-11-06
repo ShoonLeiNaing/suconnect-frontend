@@ -32,7 +32,8 @@ interface IProps {
 const VenueSchema = Yup.object().shape({
   code: Yup.string().required("Venue code is required"),
   location: Yup.string().required("Venue location is required"),
-  campus: Yup.string().required("Venue campus is required"),
+  campus: Yup.number().required("Venue campus is required"),
+  classification: Yup.number().required("Venue classification is required"),
 });
 
 const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
@@ -46,21 +47,11 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
     },
   }));
 
- 
   const createVenueHandler = async (values: any) => {
     setLoading(true);
 
     const res = await createVenue({
-      name: values.name,
-      opening_time: values.opening_time,
-      closing_time: values.closing_time,
-      house_number: values.house_number,
-      block_number: values.block_number,
-      street_name: values.street_name,
-      township: values.township,
-      city: values.city,
-      country: values.country,
-      postal_code: values.postal_code,
+      values,
     });
     if (res?.code === "ERR_BAD_REQUEST") {
       toast.error("Something went wrong with creating campus form", {
@@ -82,10 +73,9 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const initialValues = {
     code: "",
     location: "",
-    classification: "",
-    campus: "",
+    classification: null,
+    campus: null,
   };
-
 
   return (
     <>
@@ -111,23 +101,23 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
               minHeight="77vh"
             >
               <Box className="flex flex-col gap-8" maxWidth="400px">
-              <Box>
-                <InputLabel label="Venue code" />
-                <DynamicInput
-                value={values.code}
-                onChangeHandler={handleChange}
-                id="code"
-                name="code"
-                placeholder="eg.L6A-IELTS"
-                />
-                <Box position="relative">
+                <Box>
+                  <InputLabel label="Venue code" />
+                  <DynamicInput
+                    value={values.code}
+                    onChangeHandler={handleChange}
+                    id="code"
+                    name="code"
+                    placeholder="eg.L6A-IELTS"
+                  />
+                  <Box position="relative">
                     {errors.code && touched.code && (
                       <Typography className="error-message" position="absolute">
                         {errors.code}
                       </Typography>
                     )}
                   </Box>
-            </Box>
+                </Box>
                 <Box>
                   <InputLabel label="Venue location" />
                   <DynamicInput
@@ -168,10 +158,9 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                       id="classification"
                       name="classification"
                     >
-                        <MenuItem value="1">1</MenuItem>
-                        <MenuItem value="2">2</MenuItem>
-                        <MenuItem value="3">3</MenuItem>
-                    
+                      <MenuItem value="1">1</MenuItem>
+                      <MenuItem value="2">2</MenuItem>
+                      <MenuItem value="3">3</MenuItem>
                     </Select>
                     <Box position="relative">
                       {errors.classification && touched.classification && (
@@ -208,10 +197,9 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                       id="campus"
                       name="campus"
                     >
-                        <MenuItem value="yangon">Yangon Campus</MenuItem>
-                        <MenuItem value="mandalay">Mandalay Campus</MenuItem>
-                        <MenuItem value="naypyitaw">Nay Pyi Taw Campus</MenuItem>
-                    
+                      <MenuItem value="yangon">Yangon Campus</MenuItem>
+                      <MenuItem value="mandalay">Mandalay Campus</MenuItem>
+                      <MenuItem value="naypyitaw">Nay Pyi Taw Campus</MenuItem>
                     </Select>
                     <Box position="relative">
                       {errors.campus && touched.campus && (
@@ -224,9 +212,9 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                       )}
                     </Box>
                   </FormControl>
-                  </Box>
-                  </Box>
-                  </Box>
+                </Box>
+              </Box>
+            </Box>
             <Box className="mx-8 my-3 flex justify-end">
               <PaginationButton
                 {...{ handleNext: handleSubmit, showPrevious: false }}
