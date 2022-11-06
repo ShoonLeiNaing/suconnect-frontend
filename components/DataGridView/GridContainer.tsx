@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return, array-callback-return, no-nested-ternary */
 
-import { Grid, Skeleton } from "@mui/material";
+import { Box, Grid, Skeleton } from "@mui/material";
 import moment from "moment";
 import { FunctionComponent } from "react";
 import DataGridCard from "./DataGridCard";
@@ -19,14 +19,18 @@ const GridContainer: FunctionComponent<IProps> = ({
   loading,
 }) => {
   return (
-    <Grid container gap={3} justifyContent="center">
+    // <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center" alignItems="center">
+    // <Box className="grid xs:grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 xl:grid-cols-3 items-center gap-2 md:gap-4 xl:gap-12">
+    <Box className="flex flex-wrap justify-center gap-6 md:gap-6 xl:gap-12">
       {!loading && data ? (
         data?.map((card: any, index: number) => (
-          <Grid item key={index} xs={3}>
+          // <Grid item key={index} xs={12} sm={4} md={4}>
+          <Box className="flex justify-center items-center">
             <DataGridCard
               showCategory={showCategory || false}
               index={index}
               title={card.name}
+              category={card?.category?.name}
               position={
                 type === "course"
                   ? `Code - ${card.code}`
@@ -43,7 +47,7 @@ const GridContainer: FunctionComponent<IProps> = ({
               }
               image="/images/viewcard.svg"
             />
-          </Grid>
+          </Box>
         ))
       ) : loading ? (
         [0, 1, 2, 3, 4, 5]?.map((card: any, index: number) => (
@@ -57,7 +61,7 @@ const GridContainer: FunctionComponent<IProps> = ({
       ) : (
         <p>no data</p>
       )}
-    </Grid>
+    </Box>
   );
 };
 

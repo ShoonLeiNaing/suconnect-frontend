@@ -12,7 +12,9 @@ const UserInnovation = dynamic(import("../components/UserInnovation"), {
 const HeroParallax = dynamic(import("../components/HeroParallax"), {
   ssr: false,
 });
-const MeetDevTeam = dynamic(import("../components/MeetDevTeam"), { ssr: false })
+const MeetDevTeam = dynamic(import("../components/MeetDevTeam"), {
+  ssr: false,
+});
 const Feature = dynamic(import("../components/Feature"), { ssr: false });
 const Entity = dynamic(import("../components/Entity"), { ssr: false });
 const Benefit = dynamic(import("../components/Benefits"), { ssr: false });

@@ -107,6 +107,7 @@ const columns = [
     flex: 1,
     minWidth: 150,
     filterable: false,
+    valueGetter: (params: any) => params?.value?.name,
   },
   {
     field: "description",
@@ -225,12 +226,18 @@ const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
 
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
-      <Box color="black" className="container" px={6}>
-        <BreadcrumbsComponent
-          currentPage="Courses"
-          previousPages={breadCrumbsData}
-        />
-        <NameTag name="Thiha Swan Htet" currentPage="Courses" />
+      <Box
+        color="black"
+        className="container"
+        px={{ lg: 6, md: 4, sm: 4, xs: 2 }}
+      >
+        <Box>
+          <BreadcrumbsComponent
+            currentPage="Courses"
+            previousPages={breadCrumbsData}
+          />
+          <NameTag name="Thiha Swan Htet" currentPage="Courses" />
+        </Box>
         <Box
           my={2}
           display="flex"
@@ -293,14 +300,22 @@ const Courses: FunctionComponent<IProps> = ({ courses, categories }) => {
           }}
         />
         {!isListView ? (
-          <Box margin="auto" maxWidth="1200px" mt={2} mb={8}>
+          <Box
+            margin="auto"
+            maxWidth="1200px"
+            mt={2}
+            mb={8}
+            display="grid"
+            justifyContent="center"
+            alignItems="center"
+          >
             <GridContainer
               showCategory
               data={data}
               type="course"
               loading={loading}
             />
-            <Box px={12} my={2}>
+            <Box my={4}>
               <Paginator
                 {...{ page, setPage, totalPages, item: "item", size, setSize }}
               />

@@ -108,11 +108,11 @@ const Paginator: FunctionComponent<IProps> = ({
           <FloatButton
             icon={<MdOutlineKeyboardArrowRight fontSize="20px" />}
             onClickHandler={() => {
-              if (page !== totalPages) {
+              if (page !== totalPages && totalPages !== undefined) {
                 setPage(page + 1);
               }
             }}
-            disable={page === totalPages}
+            disable={page === totalPages || totalPages === undefined}
           />
           {/* <img
             src="/images/leftpagination.svg"

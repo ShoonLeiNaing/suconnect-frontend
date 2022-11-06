@@ -4,7 +4,19 @@ import { colors } from "../../data/constant";
 import AnnounceCard from "./AnnounceCard";
 import SlideCard from "./SlideCard";
 
-const UserViewCards: FunctionComponent = () => {
+interface IProps {
+  showCategory?: boolean;
+  data: any;
+  type: string;
+  loading: boolean;
+}
+
+const UserViewCards: FunctionComponent<IProps> = ( {
+  showCategory,
+  data,
+  type,
+  loading,
+}) => {
   return (
     <Box marginY={1} display="flex" flexDirection="column" gap={3}>
       <Box
