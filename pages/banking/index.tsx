@@ -180,9 +180,9 @@ const Banking = ({ bankAccounts }: any) => {
             </Box>
           </Box>
         </Box>
-        <Box display="flex" alignItems="center" mb={4}>
-          {/* <Box className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"> */}
-          <Box className="flex flex-wrap gap-x-6 justify-center items-center ">
+        <Box display="grid" alignItems="center" mb={4}>
+          <Box className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* <Box className="flex flex-wrap gap-x-6 justify-center items-center "> */}
             {data?.map((bankAccount: any, index: number) => (
               <BankingInfoCard
                 data={bankAccount}
