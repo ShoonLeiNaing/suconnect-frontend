@@ -1,9 +1,7 @@
 import { Box, Drawer } from "@mui/material";
 import { FunctionComponent, useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
-import { filterCourses } from "../../api/courses/filter";
 import { colors } from "../../data/constant";
-import { getFilterParams } from "../../utils/common/getFilterParams";
 import { removeFromObject } from "../../utils/common/removeFromObj";
 import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 import SmallButton from "../Button/SmallButton";
@@ -71,8 +69,8 @@ const FilterSideBar: FunctionComponent<IProps> = ({
           />
           <SmallButton
             text="Confirm"
-            customHeight="40px"
-            customWidth="95px"
+            type="submit"
+            customWidth="65px"
             onClickHandler={() => filterConfirmHandler()}
           />
         </Box>

@@ -9,10 +9,14 @@ interface IProps {
 }
 const SubTitle: FunctionComponent<IProps> = ({ title, icon, color }) => {
   return (
-    <Box display="flex" alignItems="center">
+    <Box display="flex" alignItems="center" justifyContent={{xs: "center", md: "left"}}>
       <Typography
         fontWeight={600}
-        fontSize="24px"
+        fontSize={{
+          xl: "22px",
+          lg: "20px",
+          md: "18px",
+        }}
         color="grey"
         sx={{ zIndex: 2 }}
       >

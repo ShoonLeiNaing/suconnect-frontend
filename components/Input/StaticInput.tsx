@@ -6,10 +6,10 @@ import styles from "./input.module.css";
 
 interface IProps {
   isLocked?: boolean;
-  value: string;
+  value: string | number;
   isTextArea?: boolean;
   showLock?: boolean;
-  maxWidth?: string;
+  maxWidth?: any;
 }
 
 const StaticInput: FunctionComponent<IProps> = ({
@@ -25,7 +25,7 @@ const StaticInput: FunctionComponent<IProps> = ({
         sx={{ backgroundColor: colors.white.white2 }}
         color={colors.black.black2}
         maxWidth="350px"
-        height="140px"
+        height="150px"
         borderRadius="15px"
         display="flex"
       >
@@ -66,7 +66,7 @@ const StaticInput: FunctionComponent<IProps> = ({
 StaticInput.defaultProps = {
   isTextArea: false,
   showLock: false,
-  maxWidth: "350px",
+  maxWidth: { lg: "350px", md: "350px", base: "100%" },
 };
 
 export default StaticInput;

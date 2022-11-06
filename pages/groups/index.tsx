@@ -4,22 +4,53 @@ import { IoGrid, IoListOutline } from "react-icons/io5";
 import { BiRefresh } from "react-icons/bi";
 import { RiFilterFill } from "react-icons/ri";
 import moment from "moment";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import MenuComponent from "../../components/MenuButton";
-import Layout from "../../components/Layout";
-import NameTag from "../../components/Profile/NameTag";
-import SearchInput from "../../components/SearchInput";
-import GridContainer from "../../components/DataGridView/GridContainer";
-import Paginator from "../../components/Paginator";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import IconButton from "../../components/IconButton";
-import FilterValueList from "../../components/FilterSideBar/FilterValueList";
-import DataTable from "../../components/DataTable";
-import ActionsMenu from "../../components/DataTable/ActionsMenu";
+import dynamic from "next/dynamic";
 import { navigation } from "../../data/navigationData";
 import { getAllGroups } from "../../api/groups/list";
 import { getFilterParams } from "../../utils/common/getFilterParams";
 import { filterGroups } from "../../api/groups/filter";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const GridContainer = dynamic(
+  import("../../components/DataGridView/GridContainer"),
+  {
+    ssr: false,
+  }
+);
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const FilterValueList = dynamic(
+  import("../../components/FilterSideBar/FilterValueList"),
+  {
+    ssr: false,
+  }
+);
+const Paginator = dynamic(import("../../components/Paginator"), { ssr: false });
+const IconButton = dynamic(import("../../components/IconButton"), {
+  ssr: false,
+});
+const ActionsMenu = dynamic(import("../../components/DataTable/ActionsMenu"), {
+  ssr: false,
+});
+const DataTable = dynamic(import("../../components/DataTable"), {
+  ssr: false,
+});
+const MenuComponent = dynamic(import("../../components/MenuButton"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const FilterSideBar = dynamic(
+  import("../../components/FilterSideBar/FilterSideBar"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
@@ -152,12 +183,18 @@ const Groups: FunctionComponent<IProps> = ({ groups, parents }) => {
 
   return (
     <Layout allowToggle={false} hiddenFooter data={navigation} panel="panel2">
-      <Box color="black" className="container" px={6}>
-        <BreadcrumbsComponent
-          currentPage="Groups"
-          previousPages={breadCrumbsData}
-        />
-        <NameTag name="Thiha Swan Htet" currentPage="Groups" />
+      <Box
+        color="black"
+        className="container"
+        px={{ lg: 6, md: 4, sm: 4, xs: 2 }}
+      >
+        <Box>
+          <BreadcrumbsComponent
+            currentPage="Groups"
+            previousPages={breadCrumbsData}
+          />
+          <NameTag name="Thiha Swan Htet" currentPage="Groups" />
+        </Box>
         <Box
           my={2}
           display="flex"
@@ -221,9 +258,17 @@ const Groups: FunctionComponent<IProps> = ({ groups, parents }) => {
         />
         {!isListView ? (
           <Box>
-            <Box margin="auto" maxWidth="1200px" mt={2} mb={8}>
+            <Box
+              margin="auto"
+              maxWidth="1200px"
+              mt={2}
+              mb={8}
+              display="grid"
+              justifyContent="center"
+              alignItems="center"
+            >
               <GridContainer data={data} type="group" loading={loading} />
-              <Box px={12} my={2}>
+              <Box my={4}>
                 <Paginator
                   {...{
                     page,

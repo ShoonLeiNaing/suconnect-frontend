@@ -82,6 +82,120 @@ export const announcements = [
   },
 ];
 
+export const staffData = [
+  {
+    id: 1,
+    no: 1,
+    date: "21/08/2022",
+    name: "Mg Mg",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+
+  {
+    id: 2,
+    no: 2,
+    date: "21/08/2022",
+    name: "Su Su",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 3,
+    no: 3,
+    date: "21/08/2022",
+    name: "Mya Mya",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 4,
+    no: 4,
+    date: "21/08/2022",
+    name: "Hla Hla",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 5,
+    no: 5,
+    date: "21/08/2022",
+    name: "Kyaw Kyaw",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 6,
+    no: 6,
+    date: "21/08/2022",
+    name: "Aye Aye",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 7,
+    no: 7,
+    date: "21/08/2022",
+    name: "Kaung Kaung",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 8,
+    no: 8,
+    date: "21/08/2022",
+    name: "Zaw Zaw",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 9,
+    no: 9,
+    date: "21/08/2022",
+    name: "Aung Aung",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+  {
+    id: 10,
+    no: 10,
+    date: "21/08/2022",
+    name: "Nyein Nyein",
+    totalEvent: 20,
+    column1: "Lorem Ipsumn blah blah",
+    column2: "Lorem Ipsumn blah blah",
+    column3:
+      "The distribution of algal species has been fairly well studied sincethe founding.",
+  },
+];
+
 export const byCategory = [
   {
     value: "Pre-elementary",
@@ -585,4 +699,21 @@ export const casesData = [
     status: "declined",
     amount: "40,000 mmk",
   },
+];
+
+export const users = [
+  "Laura",
+  "Mandy",
+  "Harry",
+  "Susan",
+  "Christopher",
+  "Brian",
+  "Chole",
+  "James",
+  "Rose",
+  "Christopher",
+  "Brian",
+  "Chole",
+  "James",
+  "Rose",
 ];

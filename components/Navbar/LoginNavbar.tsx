@@ -1,5 +1,7 @@
 // import { Box, Image, Text } from "@chakra-ui/react";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, FunctionComponent, useState } from "react";
@@ -7,18 +9,23 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { colors } from "../../data/constant";
 import styles from "./navbar.module.css";
 import SearchInput from "../HeroParallax/SearchInput";
+import FloatButton from "../IconButton/FloatButton";
+import MobileNav from "./MobileNav/MobileNav";
 
 interface IProps {
   changeLanguage?: boolean;
   showSideNav?: boolean;
+  data?: any;
 }
 const LoginNavbar: FunctionComponent<IProps> = ({
   changeLanguage,
   showSideNav,
+  data,
 }) => {
   // const { locale } = useRouter();
   const router = useRouter();
   const [language, setLanguage] = useState<string>(router.locale || "en");
+  const [openMobileNav, setOpenMobileNav] = useState<boolean>(false);
   const [lightMode, setLightMode] = useState<boolean>(true);
 
   const changeLanguageHandler = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -50,52 +57,101 @@ const LoginNavbar: FunctionComponent<IProps> = ({
         // maxWidth="1600px"
         margin="auto"
         height="70px"
-        paddingX="40px"
+        paddingX={{ lg: "40px", sm: "20px", xs: "10px" }}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
       >
-        <Box display="flex" alignItems="center" gap={3}>
+        <Box
+          sx={{ display: { xs: "none", md: "flex" } }}
+          alignItems="center"
+          gap={3}
+        >
           {!showSideNav && (
             <Image
               height={50}
               width={140}
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               layout="fixed"
             />
           )}
-          <Box display="flex" ml={2}>
+          <Box sx={{ display: { xs: "none", md: "flex" } }} ml={2} pt="0.45rem">
             <Typography>Welcome Thiha! </Typography>
             <img src="/images/celebrate.svg" alt="celebrate" />
           </Box>
         </Box>
 
-        <SearchInput />
+        <Box sx={{ display: { xs: "none", lg: "flex" } }}>
+          <SearchInput />
+        </Box>
+
+        {/* Mobile View Start */}
+        <Box
+          sx={{ display: { xs: "flex", md: "none" } }}
+          className="items-center"
+        >
+          <MenuIcon
+            sx={{ fontSize: "30px" }}
+            onClick={() => setOpenMobileNav(true)}
+          />
+          <img alt="logo" src="/images/nn-logo.svg" width="80px" />
+        </Box>
+        <MobileNav
+          open={openMobileNav}
+          setOpenMobileNav={setOpenMobileNav}
+          data={data}
+        />
+        {/* Mobile View End */}
+
         <Box display="flex" justifyContent="flex-end" alignItems="center">
-          <Box display="flex" gap={1}>
+          <Box display={{ xs: "block", lg: "none" }} margin={{ xs: 1, sm: 2 }}>
+            <FloatButton icon={<SearchIcon />} onClickHandler={() => {}} />
+          </Box>
+          <Box sx={{ display: { xs: "none", sm: "flex" } }} gap={1}>
             <img alt="setting" src="/images/setting.svg" />
             <img alt="help" src="/images/help.svg" />
             <img alt="noti" src="/images/noti.svg" />
           </Box>
+
           <Box
             borderRadius="30px"
             py={1}
             px={3}
             ml={2}
-            display="flex"
-            sx={{ backgroundColor: colors.white.white2 }}
+            sx={{
+              backgroundColor: colors.white.white2,
+              display: { xs: "none", sm: "flex" },
+            }}
             color={colors.primaryColors.lightblue.lightblue1}
             gap={1}
             alignItems="center"
+            onClick={() => router.push("/profile")}
           >
             <img
               className={styles.profile_img}
               alt="profile"
               src="/images/profile.jpeg"
             />
-            <Typography fontSize="13px">Loreum Ipsm</Typography>
+            <Typography fontSize="13px" className="cursor">
+              Loreum Ipsm
+            </Typography>
           </Box>
+
+          {/* Mobile View Start */}
+
+          <Box
+            sx={{ display: { xs: "flex", sm: "none" }, gap: 1 }}
+            className="items-center"
+          >
+            <img alt="noti" src="/images/noti.svg" />
+            <img
+              className={styles.profile_img}
+              alt="profile"
+              src="/images/profile.jpeg"
+            />
+          </Box>
+          {/* Mobile View End */}
 
           <Box
             ml={1}

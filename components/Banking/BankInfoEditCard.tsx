@@ -8,37 +8,40 @@ import {
   MenuItem,
   Select,
   Input,
-  SelectChangeEvent,
+  Typography,
 } from "@mui/material";
 import InputLabel from "../Input/InputLabel";
-import { colors } from "../../data/constant";
-import CardStatus from "./CardStatus";
 import DynamicInput from "../Input/DynamicInput";
 import styles from "./banking.module.css";
 import SmallButton from "../Button/SmallButton";
+import OutlineWhiteButton from "../Button/OutlineWhiteButton";
 
 interface IProps {
-  title: string;
+  values: any;
+  edit: boolean;
+  setEdit: any;
+  setAdd: any;
+  handleChange?: any;
+  errors?: any;
+  touched?: any;
   bgColor: string;
-  edit?: boolean;
-  setEdit?: any;
+  isNew?: any;
+  loading?: any;
 }
 
 const BankingInfoEditCard: FunctionComponent<IProps> = ({
-  title,
-  bgColor,
+  values,
   edit,
   setEdit,
+  handleChange,
+  errors,
+  touched,
+  bgColor,
+  setAdd,
+  isNew,
+  loading,
 }) => {
-  const [bank, setBank] = useState("KBZ");
-  const [name, setName] = useState("Thiha Swan Htet");
-  const [bankAccNo, setBankAccNo] = useState("0000 0000 0000 0000");
-
-  const [cardTitle, setCardTitle] = useState(title);
-
-  const updateTitle = (event: any) => {
-    setCardTitle(event.target.value);
-  };
+  const [bankAccNo, setBankAccNo] = useState(values.number);
 
   const formatNumber = (e: any) => {
     const inputValue = e.target.value.replace(/ /g, "");
@@ -53,11 +56,9 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
     if (splits) {
       spacedNumber = splits.join(" ");
     }
-    setBankAccNo(spacedNumber);
-  };
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setBank(event.target.value as string);
+    setBankAccNo(spacedNumber);
+    handleChange(e);
   };
 
   const BootstrapInput = styled(InputBase)(() => ({
@@ -67,71 +68,108 @@ const BankingInfoEditCard: FunctionComponent<IProps> = ({
   }));
 
   return (
-    <Box>
-      <Box width="340px" className="rounded-xl shadow-lg mb-4 duration-300">
-        <Box
-          sx={{ backgroundColor: bgColor }}
-          className="flex px-6 py-5 rounded-t-xl justify-between items-center text-white py-6"
-        >
-          <FormControl variant="standard">
-            <Input
-              className={styles.card_title}
-              value={cardTitle}
-              onChange={updateTitle}
-            />
-          </FormControl>
+    <Box width="340px" className="rounded-xl shadow-lg mb-4">
+      <Box
+        sx={{ backgroundColor: bgColor }}
+        className="flex px-6 py-5 rounded-t-xl justify-between items-center text-white py-6"
+      >
+        <FormControl variant="standard">
+          <Input
+            id="save_name"
+            name="save_name"
+            className={styles.card_title}
+            value={values.save_name}
+            onChange={handleChange}
+          />
+        </FormControl>
+      </Box>
+      <Box className="bg-white p-4 mb-4 rounded-b-xl">
+        <Box mb={3}>
+          <InputLabel label="Bank Account Name" />
+          <DynamicInput
+            value={values.owner_name}
+            onChangeHandler={handleChange}
+            id="owner_name"
+            name="owner_name"
+          />
+          {errors.owner_name && touched.owner_name && (
+            <Typography className="error-message" position="absolute">
+              {errors.owner_name}
+            </Typography>
+          )}
         </Box>
-        <Box className="bg-white p-4 mb-4 rounded-b-xl">
-          <Box mb={3}>
-            <InputLabel label="Bank Account Name" />
-            <DynamicInput value={name} setValue={setName} />
-          </Box>
-          <Box mb={3}>
-            <InputLabel label="Bank Type" />
-            <FormControl
-              sx={{
-                border: "1px solid grey",
-              }}
-              className={styles.form_control}
+        <Box mb={3}>
+          <InputLabel label="Bank Type" />
+          <FormControl
+            sx={{
+              border: "1px solid grey",
+            }}
+            className={styles.form_control}
+          >
+            <Select
+              value={values.bank_type}
+              onChange={handleChange}
+              input={<BootstrapInput />}
+              className={styles.select_box}
+              id="bank_type"
+              name="bank_type"
             >
-              <Select
-                value={bank}
-                onChange={handleChange}
-                input={<BootstrapInput />}
-                className={styles.select_box}
-              >
-                <MenuItem value="KBZ">KBZ</MenuItem>
-                <MenuItem value="AYA">AYA</MenuItem>
-                <MenuItem value="UAB">UAB</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Box mb={3}>
-            <InputLabel label="Bank Account Number" />
-            <input
-              className={styles.edit_box}
-              value={bankAccNo}
-              onChange={formatNumber}
-            />
-          </Box>
-          <Box className="flex items-center justify-end mt-4">
-            <SmallButton
+              <MenuItem value="KBZ">KBZ</MenuItem>
+              <MenuItem value="AYA">AYA</MenuItem>
+              <MenuItem value="CB">CB</MenuItem>
+              <MenuItem value="UAB">UAB</MenuItem>
+            </Select>
+          </FormControl>
+          {errors.bank_type && touched.bank_type && (
+            <Typography className="error-message" position="absolute">
+              {errors.bank_type}
+            </Typography>
+          )}
+        </Box>
+        <Box mb={3}>
+          <InputLabel label="Bank Account Number" />
+          <input
+            className={styles.edit_box}
+            value={bankAccNo}
+            onChange={formatNumber}
+            id="number"
+            name="number"
+          />
+          {errors.number && touched.number && (
+            <Typography className="error-message" position="absolute">
+              {errors.number}
+            </Typography>
+          )}
+        </Box>
+        <Box className="flex items-center justify-end mt-4  gap-4">
+          {!edit && isNew && (
+            <OutlineWhiteButton
               text="Cancel"
-              bgColor="white"
-              customPaddingY="0.5rem"
-              color={colors.black.black1}
-              customFontSize="15px"
-              onClickHandler={() => setEdit(!edit)}
+              customWidth="80px"
+              customHeight="38px"
+              onClickHandler={() => {
+                setEdit(!edit);
+                setAdd(false);
+              }}
             />
-            <SmallButton
-              text="Save"
-              customHeight="40px"
-              customFontSize="15px"
+          )}
+          {edit && (
+            <OutlineWhiteButton
+              text="Cancel"
+              customWidth="80px"
+              customHeight="38px"
+              onClickHandler={() => setEdit(false)}
             />
-          </Box>
+          )}
+          <SmallButton
+            text="Save"
+            customHeight="40px"
+            customFontSize="15px"
+            type="submit"
+            loading={loading}
+          />
         </Box>
       </Box>
-      <CardStatus createdTime="1/10/2022" updatedTime="2/10/2022" />
     </Box>
   );
 };

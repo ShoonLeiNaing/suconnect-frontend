@@ -11,3 +11,50 @@
   right: -4rem;
   height: 45rem;
 }
+/* maxWidth={{ xl: "1180px", lg: "900px", md: "700px" }} */
+.carousel_container {
+  max-width: 1180px;
+}
+
+/* Background Element */
+@media (max-width : 1000px) {
+  .bg_element {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .carousel_container {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .carousel_container {
+    max-width: 75vw;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+  .carousel_container {
+    max-width: 70vw;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 900px) {
+  .carousel_container {
+    max-width: 95vw;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 750px) {
+  .carousel_container {
+    max-width: 85vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel_container {
+    max-width: 95vw;
+  }
+}

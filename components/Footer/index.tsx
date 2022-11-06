@@ -1,4 +1,4 @@
-import { Icon } from "@mui/material";
+import { Icon, Box } from "@mui/material";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import {
@@ -21,19 +21,29 @@ const Footer: FunctionComponent<FooterProps> = ({
   titleColor,
 }) => {
   return (
-    <>
-      <div style={{ backgroundColor, width: "100%", position: "relative" }}>
-        <div className="max-w-screen-2xl flex justify-between items-center py-6  px-16 m-auto">
-          <div className="flex flex-col">
+    <Box display="flex" flexDirection="column">
+      <Box sx={{ backgroundColor, width: "100%", position: "relative" }}>
+        <Box
+          className="max-w-screen-2xl py-4 md:py-8 px-4 lg:px-16 md:px-8 sm:px-6 m-auto"
+          display="flex"
+          flexDirection="row"
+          flexWrap={{ xs: "wrap" }}
+          justifyContent="space-between"
+          alignItems={{ xs: "left", sm: "center" }}
+        >
+          <Box
+            width={{ md: "fit-content", sm: "100%" }}
+            className="flex flex-col mr-10 "
+          >
             <Image
               height={50}
-              width={140}
+              width={180}
               // className="w-40"
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               layout="fixed"
             />
-            <p className="text-md mt-4 mb-6">
+            <p className="text-[.95rem] lg:text-base mt-4 mb-6">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             </p>
             <div className="flex">
@@ -74,10 +84,10 @@ const Footer: FunctionComponent<FooterProps> = ({
                 {/* <Icon as={FaLinkedin} fontSize="24px" /> */}
               </a>
             </div>
-          </div>
-          <div className="flex flex-col mt-8">
+          </Box>
+          <div className="flex flex-col mt-8 mr-10">
             <h4
-              className="text-xl mb-6 font-semibold"
+              className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"
               style={{ color: titleColor }}
             >
               Column One
@@ -95,9 +105,9 @@ const Footer: FunctionComponent<FooterProps> = ({
               Link One
             </a>
           </div>
-          <div className="flex flex-col mt-8">
+          <div className="flex flex-col mt-8 mr-10">
             <h4
-              className="text-xl mb-6 font-semibold"
+              className="text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-6 font-semibold"
               style={{ color: titleColor }}
             >
               Column Two
@@ -117,7 +127,7 @@ const Footer: FunctionComponent<FooterProps> = ({
           </div>
           <div className="flex flex-col mt-8">
             <h4
-              className="font-semibold text-xl mb-4"
+              className="font-semibold text-[1.05rem] sm:text-[.95rem] md:text-[1.05rem] lg:text-[1.1rem] mb-4"
               style={{ color: titleColor }}
             >
               Follow Us
@@ -151,24 +161,24 @@ const Footer: FunctionComponent<FooterProps> = ({
               <p className="text-sm ml-2 lg:mt-[-0.1rem]">LinkedIn</p>
             </a>
           </div>
-        </div>
-      </div>
-      <div
-        style={{
+        </Box>
+      </Box>
+      <Box
+        sx={{
           background: backgroundColor,
           color: textColor,
           width: "100%",
         }}
       >
-        <div className="max-w-screen-2xl m-auto flex justify-between items-center py-4 lg:px-16 border-t border-[#252525]">
+        <div className="max-w-screen-2xl m-auto flex justify-between items-center py-4 px-6 sm:px-12 lg:px-16 border-t border-[#252525]">
           <p className="text-sm text-[#9C9C9C]">
             &copy;2022, All rights reserved.
           </p>
           <div className="flex flex-end">
-            <a href="#index" className="text-sm mr-6">
+            <a href="#index" className="text-sm mr-2 sm:mr-6">
               Privacy Policy
             </a>
-            <a href="#index" className="text-sm mr-6">
+            <a href="#index" className="text-sm mr-2 sm:mr-6">
               Terms of Service
             </a>
             <a href="#index" className="text-sm">
@@ -176,8 +186,8 @@ const Footer: FunctionComponent<FooterProps> = ({
             </a>
           </div>
         </div>
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 };
 

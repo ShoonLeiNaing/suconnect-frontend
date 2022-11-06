@@ -1,19 +1,29 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
-import { useState } from "react";
-import { RiFilterFill } from "react-icons/ri";
-import BreadcrumbsComponent from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { colors } from "../../data/constant";
-import NameTag from "../../components/Profile/NameTag";
-import SearchInput from "../../components/DateFilter/SearchInput";
-import DropDown from "../../components/DateFilter/DropDown";
-import AccordionComponent from "../../components/Accordion";
 import { byCategory, byDate } from "../../data/testData";
-import MenuComponent from "../../components/MenuButton";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
-import ChipComponent from "../../components/ChipComponent";
 import { navigation } from "../../data/navigationData";
+import { getAddressesOfUser } from "../../api/address/getAddressesOfUser";
+import { generateColor } from "../../utils/common/generateColor";
+
+const Layout = dynamic(import("../../components/Layout"), { ssr: false });
+const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
+  ssr: false,
+});
+const NameTag = dynamic(import("../../components/Profile/NameTag"), {
+  ssr: false,
+});
+const SearchInput = dynamic(import("../../components/DateFilter/SearchInput"), {
+  ssr: false,
+});
+const AccordionComponent = dynamic(
+  import("../../components/AddressAccordion"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
@@ -26,15 +36,21 @@ const breadCrumbsData = [
   },
 ];
 
-const Addresses = () => {
+const Addresses = ({ addresses }: any) => {
   const [filterText, setFilterText] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [add, setAdd] = useState(false);
   const [showSideFilter, setShowSideFilter] = useState<boolean>(false);
+  const [stateUpdate, setStateUpdate] = useState(false);
+  const [data, setData] = useState<any>(addresses);
 
   const newAddressCard = () => {
-    setAdd(!add);
-    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    if (!add) {
+      setAdd(true);
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+    } else {
+      setAdd(false);
+    }
   };
 
   const [filterValue, setFilterValue] = useState<any>({
@@ -62,49 +78,60 @@ const Addresses = () => {
     },
   ];
 
+  const fetchAddresses = async () => {
+    const res = await getAddressesOfUser(1);
+    setData(res.data?.address_set);
+  };
+
+  useEffect(() => {
+    fetchAddresses();
+  }, [stateUpdate]);
+
   const handleDelete = () => {};
 
   return (
-    <Layout hiddenFooter data={navigation} panel="panel3">
-      <Box color="black" className="container" px={6}>
-        <BreadcrumbsComponent
-          currentPage="Addresses"
-          previousPages={breadCrumbsData}
-        />
-        <Box className="flex justify-between mb-8 mt-2">
-          <NameTag
-            name="Thiha Swan Htet"
-            previousPage="My Profile"
+    <Layout hiddenFooter data={navigation} panel="panel3" allowToggle>
+      <Box color="black" className="container md:px-14">
+        <Box className="px-4 md:px-0">
+          <BreadcrumbsComponent
             currentPage="Addresses"
-            tag="Lorem Ipsum Dolorum"
+            previousPages={breadCrumbsData}
           />
-          <Box
-            className="flex items-center my-4 py-2 px-4 text-white cursor-pointer rounded-lg"
-            bgcolor={colors.primaryColors.lightblue.lightblue1}
-            onClick={() => newAddressCard()}
-          >
-            <FaPlus />{" "}
-            <span className="ml-2" style={{ fontSize: "14px" }}>
-              {" "}
-              Add new addresses{" "}
-            </span>
-          </Box>
-        </Box>
-        <Box className="flex justify-between items-center mb-8">
-          <Box display="flex" gap={2}>
-            <SearchInput
-              setFilterText={setFilterText}
-              setSearchText={setSearchText}
+          <Box className="flex justify-between mb-8 mt-2">
+            <NameTag
+              name="Thiha Swan Htet"
+              previousPage="My Profile"
+              currentPage="Addresses"
+              tag="Lorem Ipsum Dolorum"
             />
-            <MenuComponent
+            <Box
+              className="hidden sm:flex items-center my-4 py-2 px-4 text-white cursor-pointer rounded-lg"
+              bgcolor={colors.primaryColors.lightblue.lightblue1}
+              onClick={() => newAddressCard()}
+            >
+              <FaPlus />{" "}
+              <span className="ml-2" style={{ fontSize: "14px" }}>
+                {" "}
+                Add new address{" "}
+              </span>
+            </Box>
+          </Box>
+          <Box className="flex justify-between items-center ">
+            <Box display="flex" gap={2}>
+              <SearchInput
+                setFilterText={setFilterText}
+                setSearchText={setSearchText}
+              />
+              {/* <MenuComponent
               filterOptions={filterOptions}
               isIcon
               icon={<RiFilterFill />}
-            />
-          </Box>
-          <DropDown setFilterText={setFilterText} individual />
-        </Box>
-        <Box display="flex" alignItems="center" gap={2} mb={4}>
+            /> */}
+            </Box>
+
+            {/* <DropDown setFilterText={setFilterText} individual /> */}
+
+            {/* <Box display="flex" alignItems="center" gap={2} mb={4}>
           {filterOptions.map((option) => (
             <ChipComponent
               key={option.text}
@@ -120,43 +147,61 @@ const Addresses = () => {
           >
             Clear all
           </Typography>
+        </Box> */}
+          </Box>
+          <Box className="flex justify-end my-4">
+            <Box
+              className="flex sm:hidden w-fit items-center my-4 py-2 px-4 text-white cursor-pointer rounded-lg"
+              bgcolor={colors.primaryColors.lightblue.lightblue1}
+              onClick={() => newAddressCard()}
+            >
+              <FaPlus />{" "}
+              <span className="ml-2" style={{ fontSize: "14px" }}>
+                {" "}
+                Add new address{" "}
+              </span>
+            </Box>
+          </Box>
+          <Box className="mb-4 flex flex-col md:gap-y-2">
+            {data?.map((address: any, index: number) => (
+              <AccordionComponent
+                key={index}
+                data={address}
+                isOpen={index === 0}
+                orderNo={index + 1}
+                bgColor={generateColor(index + 1)}
+                {...{ stateUpdate, setStateUpdate }}
+              />
+            ))}
+            {add && (
+              <AccordionComponent
+                orderNo={data.length + 1}
+                bgColor={generateColor(data.length + 1)}
+                isNew
+                {...{ stateUpdate, setStateUpdate, setAdd }}
+              />
+            )}
+          </Box>
         </Box>
-        <Box className="mb-4">
-          <AccordionComponent
-            title="My Address 1"
-            isOpen
-            orderNo={1}
-            bgColor={colors.primaryColors.pink.pink1}
-          />
-          <AccordionComponent
-            title="My Address 2"
-            orderNo={2}
-            bgColor={colors.secondaryColors.green.green1}
-          />
-          <AccordionComponent
-            title="My Address 3"
-            orderNo={3}
-            bgColor={colors.primaryColors.yellow.yellow1}
-          />
-          {add && (
-            <AccordionComponent
-              title="My new address"
-              orderNo={4}
-              bgColor={colors.primaryColors.pink.pink1}
-              isNew
-            />
-          )}
-        </Box>
-        <FilterSideBar
+        {/* <FilterSideBar
           open={showSideFilter}
           setShowSideFilter={setShowSideFilter}
           filterValue={filterValue}
           setFilterValue={setFilterValue}
           filterOptions={filterOptions}
-        />
+        /> */}
       </Box>
     </Layout>
   );
 };
+
+export async function getServerSideProps() {
+  const addresses = await getAddressesOfUser(1);
+  return {
+    props: {
+      addresses: addresses?.data?.address_set,
+    },
+  };
+}
 
 export default Addresses;

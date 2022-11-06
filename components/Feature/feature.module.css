@@ -18,12 +18,17 @@
 .bg_img_two,
 .bg_img_three,
 .bg_img_four {
+  width: 550px;
+  height: 350px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
   align-items: center;
-  padding: 5rem;
+  margin: auto;
+  padding: 20px 40px;
+  margin-bottom: 10px;
+  /* padding: 5rem; */
 }
 
 .card_text_one {
@@ -42,4 +47,42 @@
   width: 5.5rem;
   margin-left: 0.5rem;
   margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .bg_img_one,
+  .bg_img_two,
+  .bg_img_three,
+  .bg_img_four {
+    max-width: 450px;
+    height: 280px;
+  }
+  .card_text_one,
+  .card_text_two,
+  .card_text_three,
+  .card_text_four {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .bg_img_one,
+  .bg_img_two,
+  .bg_img_three,
+  .bg_img_four {
+    max-width: 400px;
+    height: 250px;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .bg_img_one,
+  .bg_img_two,
+  .bg_img_three,
+  .bg_img_four {
+    max-width: 350px;
+    height: 220px;
+    /* padding: 20px; */
+  }
 }

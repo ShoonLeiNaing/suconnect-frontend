@@ -1,6 +1,5 @@
 // import { Box } from "@chakra-ui/react";
 import { Box } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { SwiperSlide } from "swiper/react";
 import { colors } from "../../data/constant";
@@ -11,6 +10,16 @@ import GridCard from "../GridCard";
 import SubTitle from "../SubTitle";
 import Tagline from "../SubTitle/Tagline";
 import styles from "./announcementDetail.module.css";
+
+const breakpoints = {
+  520: {
+    slidesPerView: 2,
+  },
+  750: {
+    slidesPerView: 3,
+  },
+  1300: { slidesPerView: 4 },
+};
 
 const Announcements = () => {
   const router = useRouter();
@@ -39,7 +48,12 @@ const Announcements = () => {
         src="../../images/bgelement2.svg"
         alt=""
       />
-      <Box className="inner-container">
+      <Box
+        className="inner-container"
+        display="block"
+        flexDirection="column"
+        alignItems="center"
+      >
         <SubTitle
           title="Recent Announcements"
           icon
@@ -47,9 +61,10 @@ const Announcements = () => {
         />
         <Box
           display="flex"
+          flexDirection={{ xs: "column", md: "row" }}
           alignItems="center"
           mb={2}
-          justifyContent="space-between"
+          justifyContent={{ xs: "center", sm: "space-between" }}
         >
           <Tagline text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac ultrices nunc commodo nunc consequat." />
 
@@ -60,13 +75,19 @@ const Announcements = () => {
             bgColor={colors.white.white2}
           />
         </Box>
-        <CardCarousel>
-          {announcements.map((announcement, index) => (
-            <SwiperSlide key={index}>
-              <GridCard color={chooseColor(index + 1)} />
-            </SwiperSlide>
-          ))}
-        </CardCarousel>
+        <Box
+          display="block"
+          width={{ xl: "100%", md: "90%", xs: "100%" }}
+          margin="auto"
+        >
+          <CardCarousel breakpoints={breakpoints} maxWidth="100%">
+            {announcements.map((announcement, index) => (
+              <SwiperSlide key={index}>
+                <GridCard color={chooseColor(index + 1)} />
+              </SwiperSlide>
+            ))}
+          </CardCarousel>
+        </Box>
       </Box>
     </Box>
   );

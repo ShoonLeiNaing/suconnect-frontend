@@ -12,7 +12,7 @@ import { byCategory, byDate, byPosition, casesData } from "../../data/testData";
 import { colors } from "../../data/constant";
 import DateFilter from "../../components/Calendar/DateFilter";
 // import FullDayTime from "./FullDayTime";
-import Event from "./Event";
+// import Event from "./Event";
 import FilterValueList from "../../components/FilterSideBar/FilterValueList";
 
 const breadCrumbsData = [
