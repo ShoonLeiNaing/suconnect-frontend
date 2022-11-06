@@ -20,13 +20,17 @@ import LectureEventForm from "./LectureEventForm";
 interface IProps {
   handleNext?: any;
   handleBack?: any;
+  type?: string;
+  classification?: number;
 }
 
 const AddLectureForm: FunctionComponent<IProps> = ({
   handleBack,
   handleNext,
+  type,
+  classification,
 }) => {
-  const createdCourse = useSelector(selectCourse);
+  const createdCourse: any = useSelector(selectCourse);
   const [searchText, setSearchText] = useState("");
   const [course, setCourse] = useState<any>();
   const [showAddEvent, setShowAddEvent] = useState<boolean>(false);
@@ -62,7 +66,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
       });
     } else {
       setStateUpdate(!stateUpdate);
-      toast.success("Lecture deleted successfully", {
+      toast.success(`${type} deleted successfully`, {
         position: "top-right",
         className: "hot-toast",
       });
@@ -77,7 +81,13 @@ const AddLectureForm: FunctionComponent<IProps> = ({
 
   return showAddEvent ? (
     <LectureEventForm
-      {...{ setShowForm: setShowAddEvent, stateUpdate, setStateUpdate }}
+      {...{
+        setShowForm: setShowAddEvent,
+        stateUpdate,
+        setStateUpdate,
+        classification,
+        type,
+      }}
     />
   ) : showEditEvent ? (
     <LectureEventForm
@@ -88,6 +98,8 @@ const AddLectureForm: FunctionComponent<IProps> = ({
         stateUpdate,
         setStateUpdate,
         isEdit: true,
+        classification,
+        type,
       }}
     />
   ) : (
@@ -102,7 +114,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
           handleClose: () => setShowDeleteConfirmation(false),
           color: colors.secondaryColors.red.red1,
           dialogTitle: "Warning!",
-          dialogBody: "Are you sure you want to delete this lecture?",
+          dialogBody: `Are you sure you want to delete this ${type}?`,
           btnClickHandler: deleteEventHandler,
         }}
       />
@@ -124,9 +136,11 @@ const AddLectureForm: FunctionComponent<IProps> = ({
             <EventsItem
               {...{
                 showAddEvent,
-                setShowAddEvent,
+                // setShowAddEvent,
                 selectedEvent,
                 setSelectedEvent,
+                btnText: "Add new event",
+                onClickHandler: () => setShowAddEvent(true),
               }}
             />
           </Box>
@@ -160,6 +174,7 @@ const AddLectureForm: FunctionComponent<IProps> = ({
               courseName: course?.name,
               clickEditEventHandler,
               clickDeleteEventHandler,
+              classification,
             }}
           />
         </Box>

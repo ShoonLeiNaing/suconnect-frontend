@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Box } from "@mui/material";
 import { navigation } from "../data/navigationData";
-import MeetDevTeam from "../components/MeetDevTeam";
 // import { axiosInstance } from "../api/axios";
 
 const Layout = dynamic(import("../components/Layout"), { ssr: false });
@@ -11,6 +10,9 @@ const UserInnovation = dynamic(import("../components/UserInnovation"), {
   ssr: false,
 });
 const HeroParallax = dynamic(import("../components/HeroParallax"), {
+  ssr: false,
+});
+const MeetDevTeam = dynamic(import("../components/MeetDevTeam"), {
   ssr: false,
 });
 const Feature = dynamic(import("../components/Feature"), { ssr: false });

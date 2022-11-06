@@ -11,6 +11,7 @@ interface IProps {
   date: string;
   index: number;
   showCategory: boolean;
+  category?: string;
 }
 
 const DataGridCard: FunctionComponent<IProps> = ({
@@ -20,6 +21,7 @@ const DataGridCard: FunctionComponent<IProps> = ({
   date,
   index,
   showCategory,
+  category,
 }) => {
   const color =
     index === 0 || index === 3
@@ -30,15 +32,15 @@ const DataGridCard: FunctionComponent<IProps> = ({
   return (
     <Card
       sx={{
-        width: "280px",
+        width: { md: "280px", sm: "260px", xs: "280px" },
         borderRadius: "25px",
-        height: "330px",
+        height: { md: "330px", sm: "300px", xs: "300px" },
         boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.07)",
         position: "relative",
       }}
     >
       <CardMedia
-        sx={{ height: "230px" }}
+        sx={{ height: { md: "230px", sm: "200px", xs: "190px" } }}
         component="img"
         image={image}
         alt="green iguana"
@@ -54,13 +56,13 @@ const DataGridCard: FunctionComponent<IProps> = ({
             marginBottom: "115px",
             marginLeft: "20px",
           }}
-          label="course cate"
+          label={category}
         />
       )}
       <CardContent
         sx={{
           backgroundColor: colors.white.white2,
-          padding: "10px 20px",
+          padding: { md: "10px 20px", xs: "8px 10px" },
           height: "100%",
           color: colors.primaryColors.lightblue.lightblue1,
         }}

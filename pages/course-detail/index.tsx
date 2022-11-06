@@ -9,8 +9,6 @@ import { AiFillCalendar } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { navigation } from "../../data/navigationData";
-import StaffViewScreen from "../../components/CourseDetailForm/StaffViewScreen";
-import StudentListScreen from "../../components/CourseDetailForm/StudentListScreen";
 
 const Layout = dynamic(import("../../components/Layout"), { ssr: false });
 const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
@@ -19,6 +17,19 @@ const BreadcrumbsComponent = dynamic(import("../../components/Breadcrumbs"), {
 const CourseDetailForm = dynamic(import("../../components/CourseDetailForm"), {
   ssr: false,
 });
+
+const StaffViewScreen = dynamic(
+  import("../../components/CourseDetailForm/StaffViewScreen"),
+  {
+    ssr: false,
+  }
+);
+const StudentListScreen = dynamic(
+  import("../../components/CourseDetailForm/StudentListScreen"),
+  {
+    ssr: false,
+  }
+);
 
 const breadCrumbsData = [
   {
@@ -89,26 +100,46 @@ const CourseDetail: FunctionComponent = () => {
               <Tab
                 icon={<GiGraduateCap className="text-2xl mr-2" />}
                 label="Course Detail"
-                className="capitalize flex flex-row items-center text-[0.96rem]"
+                className="flex flex-row items-center text-[0.96rem]"
                 {...a11yProps(0)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
               <Tab
                 icon={<AiFillCalendar className="text-xl mr-2" />}
                 label="Calendar"
                 className="capitalize flex flex-row items-center mx-16 text-[0.96rem]"
                 {...a11yProps(1)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
               <Tab
                 icon={<BsFillPersonFill className="text-2xl mr-2" />}
                 label="Staff"
                 className="capitalize flex flex-row items-center mr-16 text-[0.96rem]"
                 {...a11yProps(2)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
               <Tab
                 icon={<FaUserGraduate className="text-lg mr-2" />}
                 label="Student"
                 className="capitalize flex flex-row items-center text-[0.96rem]"
                 {...a11yProps(3)}
+                sx={{
+                  textTransform: "unset",
+                  paddingBottom: "40px",
+                  width: "150px",
+                }}
               />
             </Tabs>
           </Box>

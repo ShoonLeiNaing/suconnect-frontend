@@ -107,6 +107,7 @@ const columns = [
     flex: 1,
     minWidth: 150,
     filterable: false,
+    valueGetter: (params: any) => params?.value?.name,
   },
   {
     field: "description",
