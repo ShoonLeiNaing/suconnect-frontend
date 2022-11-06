@@ -12,21 +12,21 @@ import {
 } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import DynamicInput from "../Input/DynamicInput";
 import InputLabel from "../Input/InputLabel";
 import PaginationButton from "../Stepper/PaginationButton";
-import TimePickerComponent from "../Input/TimeRangePicker";
-import { createCampus } from "../../api/campus/create";
 import { storeCampus } from "../../redux/slices/campusSlice";
-import { getAllCountries } from "../../api/countries/list";
 import { createVenue } from "../../api/venue/create";
+import SmallButton from "../Button/SmallButton";
 
 interface IProps {
   handleNext?: any;
   handleBack?: any;
+  showCreateButton?: any;
+  classifications?: any[];
+  campuses?: any[];
 }
 
 const VenueSchema = Yup.object().shape({
@@ -36,7 +36,13 @@ const VenueSchema = Yup.object().shape({
   classification: Yup.number().required("Venue classification is required"),
 });
 
-const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
+const VenuePage: FunctionComponent<IProps> = ({
+  handleNext,
+  handleBack,
+  showCreateButton,
+  classifications,
+  campuses,
+}) => {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -50,22 +56,22 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
   const createVenueHandler = async (values: any) => {
     setLoading(true);
 
-    const res = await createVenue({
-      values,
-    });
+    const res = await createVenue(values);
     if (res?.code === "ERR_BAD_REQUEST") {
       toast.error("Something went wrong with creating campus form", {
         position: "top-right",
         className: "hot-toast",
       });
     } else {
-      toast.success("Created successfully", {
+      toast.success("Campus created successfully", {
         position: "top-right",
         className: "hot-toast",
       });
 
       dispatch(storeCampus(res?.data?.data));
-      handleNext();
+      if (handleNext) {
+        handleNext();
+      }
     }
     setLoading(false);
   };
@@ -87,18 +93,11 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
           createVenueHandler(values);
         }}
       >
-        {({
-          handleSubmit,
-          values,
-          handleChange,
-          errors,
-          touched,
-          setFieldValue,
-        }) => (
+        {({ handleSubmit, values, handleChange, errors, touched }) => (
           <form onSubmit={handleSubmit}>
             <Box
-              className="mx-8 border py-6 px-8 rounded-xl overflow-y-auto"
-              minHeight="77vh"
+              className="border py-6 px-8 rounded-xl overflow-y-auto"
+              height="77vh"
             >
               <Box className="flex flex-col gap-8" maxWidth="400px">
                 <Box>
@@ -158,9 +157,11 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                       id="classification"
                       name="classification"
                     >
-                      <MenuItem value="1">1</MenuItem>
-                      <MenuItem value="2">2</MenuItem>
-                      <MenuItem value="3">3</MenuItem>
+                      {classifications?.map((item) => (
+                        <MenuItem key={item.name} value={item.id}>
+                          {item.name}
+                        </MenuItem>
+                      ))}
                     </Select>
                     <Box position="relative">
                       {errors.classification && touched.classification && (
@@ -197,9 +198,11 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                       id="campus"
                       name="campus"
                     >
-                      <MenuItem value="yangon">Yangon Campus</MenuItem>
-                      <MenuItem value="mandalay">Mandalay Campus</MenuItem>
-                      <MenuItem value="naypyitaw">Nay Pyi Taw Campus</MenuItem>
+                      {campuses?.map((item) => (
+                        <MenuItem key={item.name} value={item.id}>
+                          {item.name}
+                        </MenuItem>
+                      ))}
                     </Select>
                     <Box position="relative">
                       {errors.campus && touched.campus && (
@@ -215,11 +218,21 @@ const VenuePage: FunctionComponent<IProps> = ({ handleNext, handleBack }) => {
                 </Box>
               </Box>
             </Box>
-            <Box className="mx-8 my-3 flex justify-end">
-              <PaginationButton
-                {...{ handleNext: handleSubmit, showPrevious: false }}
-              />
-            </Box>
+            {showCreateButton ? (
+              <Box className="mx-0 my-3 flex justify-end">
+                <SmallButton
+                  text="Create"
+                  onClickHandler={handleSubmit}
+                  customHeight="40px"
+                />
+              </Box>
+            ) : (
+              <Box className="mx-8 my-3 flex justify-end">
+                <PaginationButton
+                  {...{ handleNext: handleSubmit, showPrevious: false }}
+                />
+              </Box>
+            )}
           </form>
         )}
       </Formik>
